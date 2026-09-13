@@ -7,6 +7,8 @@ conventions, punish free-riders, collude, or defect? This repo is a compact harn
 *measuring* that, plus four ready-to-run studies. Every experiment is a handful of
 dollars on the Anthropic API and resumes from cache if interrupted.
 
+**Project status, goals, and next steps: [`ROADMAP.md`](ROADMAP.md).**
+
 The headline practical result — **single prompt phrases that causally flip agents into
 collusion or early defection** — is in [`REPORT.md`](REPORT.md) and the figure below.
 
