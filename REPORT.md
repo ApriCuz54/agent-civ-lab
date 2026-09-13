@@ -109,3 +109,39 @@ cooperation, convention formation, commons governance). Key references: Fish, Go
 Shorrer 2024 (algorithmic collusion); Ashery, Aiello & Baronchelli 2025 (emergent
 conventions); Piatti et al. 2024 (GovSim); Vallinder & Hughes 2024 (cultural evolution of
 cooperation).
+
+## 5. PD strategy panel (Axelrod) — Haiku 4.5
+
+The model vs fixed strategies (5 opponents x 3 seeds, 15 rounds), minimal neutral prompt.
+
+| opponent | model coop | round-1 | retaliation P(D\|oppD) | score (model–opp) |
+|---|---|---|---|---|
+| AllC | 1.00 | C | — | 45–45 |
+| TFT | 1.00 | C | — | 45–45 |
+| GRIM | 1.00 | C | — | 45–45 |
+| Random | 0.51 | C | 0.61 | 37–33 |
+| AllD | 0.13 | C | 0.93 | 13–23 |
+
+Haiku 4.5 is **nice** (always cooperates first), **reciprocity-sustaining** (1.00 with
+TFT/GRIM), and **provocable** (0.93 retaliation vs AllD) — an Axelrod-virtuous, TFT-like
+strategy — but it **won't exploit AllC** (stays 45–45 when defecting would pay) and *loses*
+to AllD (13–23). A cooperator's strategy, not a maximiser's.
+
+*Generational progression (Haiku 3 → 3.5 → 4.5) is implemented in `run_progression.py`
+but requires API access to the legacy models; only the 4.5 point was collected here.*
+
+## 6. One-defector invasion (evolutionary stability) — Haiku 4.5
+
+8-agent randomly-paired PD; each agent sees only its own last-5 interactions (anonymous
+partners). Control = all model agents; Invasion = 7 model agents + 1 scripted always-defector.
+
+| condition | population cooperation | mean cooperator payoff | defector payoff | invasion fitness |
+|---|---|---|---|---|
+| control | ~1.00 (stable) | 36.0 | — | — |
+| invasion | 0.90–0.99 (mild dip) | 30.2 | 58.0 | +26 to +30 |
+
+Cooperation is **behaviourally robust** (one defector causes no contagion collapse) but
+**not evolutionarily stable**: the defector nearly doubles the cooperators' score, so under
+any imitation/selection dynamic defection would spread. LLM-agent cooperation is a fixed
+disposition, not an ESS. Reputation/identity (absent here by design) is the obvious
+moderator and the next experiment.

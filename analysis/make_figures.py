@@ -30,3 +30,28 @@ def collusion_defection():
 
 if __name__ == "__main__":
     collusion_defection()
+
+def game_theory():
+    import csv, statistics as st
+    from collections import defaultdict
+    import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+    RES="results"
+    rows=[r for r in csv.DictReader(open(f"{RES}/progression_summary.csv"))]
+    opps=["AllC","TFT","GRIM","Random","AllD"]
+    def agg(o,f):
+        v=[float(r[f]) for r in rows if r["opp"]==o and r[f] not in ("","None")]
+        return st.mean(v) if v else float("nan")
+    fig,ax=plt.subplots(1,2,figsize=(12,4.6))
+    coops=[agg(o,"coop_rate") for o in opps]
+    ax[0].bar(opps,coops,color=["#54a24b" if c>=.8 else ("#d1495b" if c<.3 else "#e0b341") for c in coops])
+    ax[0].set_ylim(0,1.05); ax[0].set_title("PD panel: cooperation vs fixed strategies"); ax[0].set_ylabel("cooperation")
+    tr=[r for r in csv.DictReader(open(f"{RES}/invasion_trajectory.csv"))]
+    byrc=defaultdict(lambda:defaultdict(list))
+    for r in tr: byrc[r["cond"]][int(r["round"])].append(float(r["coop_rate"]))
+    for cond,c in [("control","#4c78a8"),("invasion","#d1495b")]:
+        xs=sorted(byrc[cond]); ax[1].plot(xs,[st.mean(byrc[cond][x]) for x in xs],marker="o",ms=4,label=cond,color=c)
+    ax[1].set_ylim(0,1.05); ax[1].set_title("One-defector invasion"); ax[1].set_xlabel("round"); ax[1].legend()
+    plt.tight_layout(); plt.savefig(f"{RES}/gametheory_figure.png",dpi=110); print("wrote gametheory_figure.png")
+
+if __name__ == "__main__":
+    game_theory()
