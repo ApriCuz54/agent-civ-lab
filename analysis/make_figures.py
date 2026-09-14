@@ -73,3 +73,41 @@ def reputation():
 
 if __name__ == "__main__":
     reputation()
+
+def stealth():
+    """Trust-then-betray invader vs the reputation defense. Left: invasion fitness by
+    betrayal timing (naive AllD K=0 from reputation_summary, then stealth K=3,6,9).
+    Right: cooperation TOWARD the invader, pre- vs post-betrayal, next to the 0.08
+    targeting a *known* defector receives -- the exploit the slow-decaying image score allows."""
+    import csv, statistics as st
+    from collections import defaultdict
+    import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+    RES="results"
+    rp=[r for r in csv.DictReader(open(f"{RES}/reputation_summary.csv")) if r["cond"]=="invasion"]
+    alld_fit=st.mean(float(r["invasion_fitness"]) for r in rp)
+    known_def=st.mean(float(r["coop_vs_defector"]) for r in rp)   # cooperation a lifelong defector gets (~0.08)
+    sr=defaultdict(list)
+    for r in csv.DictReader(open(f"{RES}/stealth_summary.csv")): sr[int(r["K"])].append(r)
+    Ks=sorted(sr)
+    fit=[st.mean(float(r["invasion_fitness"]) for r in sr[K]) for K in Ks]
+    pre=[st.mean(float(r["coop_vs_invader_pre"]) for r in sr[K]) for K in Ks]
+    post=[st.mean(float(r["coop_vs_invader_post"]) for r in sr[K]) for K in Ks]
+    fig,ax=plt.subplots(1,2,figsize=(12,4.6))
+    labels=["naive AllD\n(betray r1)"]+[f"stealth\n(betray r{K+1})" for K in Ks]
+    vals=[alld_fit]+fit
+    ax[0].bar(labels,vals,color=["#d1495b"]+["#54a24b" if v>0 else "#d1495b" for v in fit])
+    ax[0].axhline(0,color="k",lw=1)
+    peak=Ks[fit.index(max(fit))]
+    ax[0].set_title(f"Trust-then-betray beats the reputation defense (peak: betray r{peak+1})")
+    ax[0].set_ylabel("invasion fitness (invader − mean peer)")
+    x=range(len(Ks)); w=0.38
+    ax[1].bar([i-w/2 for i in x],pre,w,label="before betrayal",color="#4c78a8")
+    ax[1].bar([i+w/2 for i in x],post,w,label="after betrayal",color="#e0b341")
+    ax[1].axhline(known_def,ls="--",c="#d1495b",lw=1.5,label=f"a KNOWN defector gets ({known_def:.2f})")
+    ax[1].set_xticks(list(x)); ax[1].set_xticklabels([f"betray r{K+1}" for K in Ks])
+    ax[1].set_ylim(0,1.05); ax[1].set_ylabel("cooperation TOWARD the invader")
+    ax[1].set_title("Peers never cut off a clean-record exploiter"); ax[1].legend(fontsize=8)
+    plt.tight_layout(); plt.savefig(f"{RES}/stealth_figure.png",dpi=110); print("wrote stealth_figure.png")
+
+if __name__ == "__main__":
+    stealth()

@@ -26,6 +26,7 @@ collusion or early defection** — is in [`REPORT.md`](REPORT.md) and the figure
 | **PD strategy panel (Axelrod)** | What is a model's PD disposition vs AllC/AllD/TFT/GRIM/Random? | `experiments/run_progression.py` |
 | **One-defector invasion** | Does one always-defector destabilise a cooperating population? Is cooperation an ESS? | `experiments/run_invasion.py` |
 | **Reputation-enabled invasion** | Does showing partners' reputation let cooperators punish the defector and restore an ESS? | `experiments/run_reputation.py` |
+| **Stealth defector** | Can a trust-then-betray invader game the reputation defense? When is the best time to betray? | `experiments/run_stealth.py` |
 | **Commons ("GovSim with teeth")** | Given fines/exclusion but no instruction to use them, do agents self-govern a shared resource? | `experiments/run_govsim.py` |
 
 Shared infrastructure lives in `civlab/`:
@@ -61,6 +62,7 @@ python -m experiments.run_govsim run --model haiku --cond A,B,C,D --seeds 1,2,3 
 python -m experiments.run_progression # PD strategy panel (Axelrod)        (~$0.4)
 python -m experiments.run_invasion    # one-defector invasion / ESS         (~$1)
 python -m experiments.run_reputation  # reputation / indirect reciprocity   (~$1)
+python -m experiments.run_stealth     # stealth trust-then-betray defector   (~$1.2)
 python -m analysis.make_figures       # rebuild figures from the summaries
 ```
 
@@ -79,6 +81,12 @@ experiments you run and how many seeds.
   this round matters, no future"* collapse cooperation to ~5–10% with defection on **round 1**.
 - **Prosocial nudges do nothing above a good baseline.** "Be the first to cooperate",
   "reputation matters", "treat others well" left the 100% cooperation ceiling untouched.
+- **Reputation stops the loud cheater, not the patient one.** A lone always-defector
+  out-earns an anonymous cooperating population (invasion fitness +28) — cooperation is
+  robust but not an ESS. Showing each agent its partner's public record flips that (−16:
+  peers punish the known defector 0.92 of the time). But a **trust-then-betray** invader
+  that builds a clean record first still invades at *every* betrayal timing (fitness +7 to
+  +14, best mid-game) — a rate-based reputation decays too slowly to catch it.
 - **Conventions form; institutions don't.** All naming-game seeds converged on the same
   word by round ~10, with a large pre-interaction **collective bias** (one word held by
   ~45% of agents at round 1 vs 10% by chance). In the commons, agents given fines used them

@@ -164,5 +164,28 @@ A single honest reputation signal flips the outcome: cooperators cooperate with 
 now earns *less* than the cooperators (invasion fitness −16), so cooperation becomes
 approximately an ESS. Anonymity, not disposition, was what made cooperation invadable in §6.
 This reproduces classical indirect reciprocity / image scoring (Nowak & Sigmund 1998) in
-LLM agents. Follow-up: noisy/forgeable reputation and a stealth defector that builds trust
-then defects.
+LLM agents. But that defender only punishes a *visible* cheater — see §8.
+
+## 8. Stealth defector — the reputation defense is gameable — Haiku 4.5
+
+Same reputation-enabled population as §7, but the invader is no longer a naive always-defector:
+it **cooperates for K rounds to build a spotless record, then defects**. Sweep the betrayal
+round K over a 12-round horizon (8 agents, 4 seeds).
+
+| invader | invasion fitness | coop toward it, pre-betrayal | coop toward it, post-betrayal | exploit-window payoff |
+|---|---|---|---|---|
+| naive AllD (betray r1, §7) | −16 | — | 0.08 *(known defector)* | — |
+| stealth, betray r4 (K=3) | +10.4 | 1.00 | 0.70 | ~34 |
+| **stealth, betray r7 (K=6)** | **+13.6** | 1.00 | 0.96 | ~29 |
+| stealth, betray r10 (K=9) | +7.3 | 1.00 | 1.00 | ~15 |
+
+**Every** betrayal timing invades profitably (invasion fitness +7 to +14, vs the naive
+defector's −16), with the optimum at a **mid-game betrayal (round 7): +13.6**. The image score
+is a *cooperation rate over history*, so after a long clean run a few late defections barely
+move the public number — a known defector receives 0.08 cooperation, but a trust-then-betray
+exploiter still receives 0.70–1.00. Betray too early and the record decays enough for peers to
+withdraw (0.70) over the remaining rounds; betray too late and the take is small (~3 rounds to
+harvest). Population mutual cooperation stays near 1.0 throughout: this is **parasitism on a
+healthy group, not a contagion collapse**. So §7's defense disarms the *visible* cheater, not
+the *patient* one. The repair to test is a **recency-weighted or one-strike** reputation that
+punishes recent defection rather than a lifetime average.
