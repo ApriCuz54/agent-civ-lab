@@ -2,7 +2,7 @@
 
 # Project Status and Roadmap
 
-**The single handoff doc: goals, what's done, what's next, and how any new chat/agent continues the work.** Complements Agent Civilizations Plan (the original phased plan) with the current *state*. Mirror of the vault's `Project Status and Roadmap` note.
+**The single handoff doc: goals, what's done, what's next, and how any new chat/agent continues the work.** Complements Agent Civilizations Plan (the original phased plan) with the current *state*. Mirror of `ROADMAP.md` in the published repo.
 
 **One-line goal.** Empirically measure how LLM agents behave in multi-agent games — cooperation, competition, convention formation, collusion, defection — and turn it into practical guidance (e.g. prompt phrases that cause or prevent collusion / early defection). Cheap, reproducible, resumable.
 
@@ -21,6 +21,8 @@
 - GovSim with Teeth — A/B/C/D × 3 seeds (myopic). All collapse except **1/3 under the universalization prompt (D)**; fines used only retaliatorily; no rule emerged.
 - Levers on the Job — dropped: Haiku ceilings the coding suite (~95%); only "urgency hurts" survived.
 
+**Run 4 — reputation / indirect reciprocity.** Reputation-Enabled Invasion: showing each agent its partner's cooperation record flips the defector's invasion fitness from +28 to −16 (cooperators target the defector 0.99 vs 0.08) — reputation restores cooperation as an ESS.
+
 **Run 3 — game theory & evolutionary games.** PD Strategy Panel (Axelrod) (Haiku 4.5 fingerprint: nice, provocable, TFT-like, won't exploit AllC); One-Defector Invasion (cooperation behaviourally robust to one defector but NOT an ESS — invasion fitness +26 to +30) → Cooperation Is Behaviorally Robust but Not Evolutionarily Stable. Generational progression coded but blocked on legacy-model API access.
 
 **Run 2 — collusion & defection (strongest line).** See Collusion and Defection Keywords.
@@ -33,7 +35,7 @@
 1. **Extend the keyword line (highest value, cheapest).** More phrases + *combinations* (does "regulator" cancel "avoid price wars"?); a naturally-*collusive* baseline (differentiated goods / longer memory) so anti-collusion phrases have room to move; a public-goods game with a tempting free-ride so the **protective** phrases can be *ranked* (IPD/pricing hit ceilings/floors that hide them).
 2. **Cross-model replication.** Do GPT / Gemini / Qwen share the same triggers? Same harness, change the model id — the biggest credibility upgrade (turns "on Haiku" into "across models").
 3. **Generational progression (now unblocked only with an API key).** Run `run_progression.py --models claude-3-haiku-20240307,claude-3-5-haiku-20241022,claude-haiku-4-5` to chart how the PD disposition drifts across Haiku generations — the panel harness is ready.
-4. **Add reputation/identity to the invasion** (can cooperators punish a *known* defector?) and an explicit replicator/imitation loop to watch defection spread or be contained.
+4. **Noisy / forgeable reputation** (Run 4 used honest image scores — now degrade them), a *stealth* defector that builds reputation then defects, and an explicit replicator/imitation loop to watch defection spread or be contained.
 5. **Finish Run 1 loose ends.** Tipping second seed + 20-round horizon; a **thinking-ON** GovSim A-vs-C contrast (myopia is a confound — a cached thinking-ON run had survived).
 4. **One Agent Same Tokens** — single vs self-refine vs cited-critic, pass-rate-per-token. Coded, never run.
 5. **Longer horizons & memory** for naming game and commons.

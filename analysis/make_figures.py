@@ -55,3 +55,21 @@ def game_theory():
 
 if __name__ == "__main__":
     game_theory()
+
+def reputation():
+    import csv, statistics as st
+    import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+    RES="results"
+    def inv(p): return [r for r in csv.DictReader(open(p)) if r["cond"]=="invasion"]
+    nr=inv(f"{RES}/invasion_summary.csv"); rp=inv(f"{RES}/reputation_summary.csv")
+    nf=st.mean(float(r["invasion_fitness"]) for r in nr); rf=st.mean(float(r["invasion_fitness"]) for r in rp)
+    cvd=st.mean(float(r["coop_vs_defector"]) for r in rp); cvc=st.mean(float(r["coop_vs_cooperator"]) for r in rp)
+    fig,ax=plt.subplots(1,2,figsize=(12,4.6))
+    ax[0].bar(["no reputation","with reputation"],[nf,rf],color=["#d1495b","#54a24b"]); ax[0].axhline(0,color="k",lw=1)
+    ax[0].set_title("Reputation flips the defector's advantage"); ax[0].set_ylabel("invasion fitness")
+    ax[1].bar(["toward a\ncooperator","toward the\ndefector"],[cvc,cvd],color=["#4c78a8","#d1495b"]); ax[1].set_ylim(0,1.05)
+    ax[1].set_title("With reputation, cooperators target the defector"); ax[1].set_ylabel("cooperation rate")
+    plt.tight_layout(); plt.savefig(f"{RES}/reputation_figure.png",dpi=110); print("wrote reputation_figure.png")
+
+if __name__ == "__main__":
+    reputation()

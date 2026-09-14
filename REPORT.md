@@ -145,3 +145,24 @@ Cooperation is **behaviourally robust** (one defector causes no contagion collap
 any imitation/selection dynamic defection would spread. LLM-agent cooperation is a fixed
 disposition, not an ESS. Reputation/identity (absent here by design) is the obvious
 moderator and the next experiment.
+
+## 7. Reputation-enabled invasion (indirect reciprocity) — Haiku 4.5
+
+Same population invasion as §6, but each agent is shown its partner's public cooperation
+record before choosing (image scoring).
+
+| metric | no reputation (§6) | with reputation |
+|---|---|---|
+| defector payoff | 58 | 16 |
+| mean cooperator payoff | 30 | 32 |
+| invasion fitness (defector − cooperator) | +28 | −16 |
+| cooperation toward a cooperator | — | 0.99 |
+| cooperation toward the defector | — | 0.08 |
+
+A single honest reputation signal flips the outcome: cooperators cooperate with each other
+(~0.99) but punish the known defector (~0.08), with no instruction to do so. The defector
+now earns *less* than the cooperators (invasion fitness −16), so cooperation becomes
+approximately an ESS. Anonymity, not disposition, was what made cooperation invadable in §6.
+This reproduces classical indirect reciprocity / image scoring (Nowak & Sigmund 1998) in
+LLM agents. Follow-up: noisy/forgeable reputation and a stealth defector that builds trust
+then defects.

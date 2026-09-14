@@ -25,6 +25,7 @@ collusion or early defection** — is in [`REPORT.md`](REPORT.md) and the figure
 | **Naming game** | Do agents spontaneously form a shared convention? Can a committed minority flip it? | `experiments/run_tipping.py` |
 | **PD strategy panel (Axelrod)** | What is a model's PD disposition vs AllC/AllD/TFT/GRIM/Random? | `experiments/run_progression.py` |
 | **One-defector invasion** | Does one always-defector destabilise a cooperating population? Is cooperation an ESS? | `experiments/run_invasion.py` |
+| **Reputation-enabled invasion** | Does showing partners' reputation let cooperators punish the defector and restore an ESS? | `experiments/run_reputation.py` |
 | **Commons ("GovSim with teeth")** | Given fines/exclusion but no instruction to use them, do agents self-govern a shared resource? | `experiments/run_govsim.py` |
 
 Shared infrastructure lives in `civlab/`:
@@ -59,6 +60,7 @@ python -m experiments.run_tipping     # naming game / tipping  (~$8,   ~3000 cal
 python -m experiments.run_govsim run --model haiku --cond A,B,C,D --seeds 1,2,3   # commons (~$1)
 python -m experiments.run_progression # PD strategy panel (Axelrod)        (~$0.4)
 python -m experiments.run_invasion    # one-defector invasion / ESS         (~$1)
+python -m experiments.run_reputation  # reputation / indirect reciprocity   (~$1)
 python -m analysis.make_figures       # rebuild figures from the summaries
 ```
 
