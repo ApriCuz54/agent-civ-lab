@@ -1,0 +1,17 @@
+PHASE 0 RIGOR STATS — generated 2026-09-17
+
+Parse-fallback audit: 0/3648 game moves, 0/840 answers, 0/1080 prices used the fallback default.
+  -> the pro-cooperation/pro-collusion parse default NEVER fired on Haiku data; latent risk only.
+
+Practical demo, clustered-by-problem bootstrap CI (correct) vs naive pooled (as-shipped):
+  rushed  0.608 clustered[0.425,0.767] naive[0.517,0.692]
+  persona 0.708 clustered[0.533,0.858] naive[0.625,0.792]
+  vote3   0.625 clustered[0.433,0.792] naive[0.533,0.708]
+  verify  0.992 clustered[0.975,1.000]
+  plain   0.992 clustered[0.975,1.000]
+  -> reasoning family (verify/plain ~99%) separates cleanly; rushed/persona/vote3 overlap and are NOT distinguishable.
+
+Keyword sweeps, Holm-Bonferroni corrected (cluster=seed permutation p):
+  IPD: selfish(0.10,p=.0068) and oneshot(0.05,p=.0068) SURVIVE; all prosocial nudges n.s.
+  Pricing: avoid_pricewar(1.00,p=.026) does NOT survive Holm at n=4 seeds (underpowered); longrun n.s.
+  -> effect sizes real; pricing needs more seeds for a corrected claim (cheap on Haiku).

@@ -1,9 +1,11 @@
-import asyncio, csv, os, statistics as st
+import asyncio, csv, os, argparse, statistics as st
 from civlab.llm import LLM
 from civlab.games import ipd as G
 
-OUT="results/ipd"; os.makedirs(OUT,exist_ok=True)
-SEEDS=[1,2,3,4,5]; MODEL="haiku"
+_ap=argparse.ArgumentParser(); _ap.add_argument("--model",default="haiku"); _ap.add_argument("--seeds",type=int,default=5)
+_A=_ap.parse_args()
+OUT=os.path.join("results","ipd" if _A.model=="haiku" else f"ipd_{_A.model}"); os.makedirs(OUT,exist_ok=True)
+SEEDS=list(range(1,_A.seeds+1)); MODEL=_A.model
 INTERV=list(G.INTERVENTIONS.keys())
 
 async def one_game(llm, interv, seed):
@@ -30,16 +32,21 @@ def analyze(moves):
     first_def=next((i+1 for i,(a,b) in enumerate(moves) if a=="D" or b=="D"), G.ROUNDS+1)
     return coop_rate, mutual, first_def
 
+def _checkpoint(rows):
+    if not rows: return
+    with open(os.path.join(OUT,"summary.csv"),"w",newline="") as f:
+        w=csv.DictWriter(f,fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
+
 async def main():
-    llm=LLM(os.path.join(OUT,"calls.jsonl"), concurrency=8)
+    llm=LLM(os.path.join(OUT,"calls.jsonl"), concurrency=int(os.environ.get("CIV_CONC","8")))
+    rows=[]
     async def game(interv,seed):
         moves=await one_game(llm,interv,seed)
         cr,mu,fd=analyze(moves)
-        print(f"{interv} s{seed}: coop={cr:.2f} mutual={mu:.2f} first_def={fd} calls={llm.calls} cost=${llm.total_cost:.2f}",flush=True)
-        return dict(interv=interv,seed=seed,coop_rate=round(cr,3),mutual_coop=round(mu,3),first_defection_round=fd)
-    rows=await asyncio.gather(*[game(i,s) for i in INTERV for s in SEEDS])
-    with open(os.path.join(OUT,"summary.csv"),"w",newline="") as f:
-        w=csv.DictWriter(f,fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
+        rows.append(dict(interv=interv,seed=seed,coop_rate=round(cr,3),mutual_coop=round(mu,3),first_defection_round=fd))
+        _checkpoint(rows)  # write summary after EACH cell so partial runs are usable/resumable
+        print(f"{interv} s{seed}: coop={cr:.2f} mutual={mu:.2f} first_def={fd} done={len(rows)} calls={llm.calls} cost=${llm.total_cost:.2f}",flush=True)
+    await asyncio.gather(*[game(i,s) for i in INTERV for s in SEEDS])
     print("DONE ipd calls",llm.calls,"cost",round(llm.total_cost,3),"fallbacks",llm.fallback_hits)
 
 if __name__=="__main__": asyncio.run(main())

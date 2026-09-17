@@ -1,9 +1,11 @@
-import asyncio, csv, os, statistics as st, random, sys
+import asyncio, csv, os, argparse, statistics as st, random, sys
 from civlab.llm import LLM
 from civlab.games import pricing as P
 
-OUT="results/pricing"; os.makedirs(OUT,exist_ok=True)
-ROUNDS=15; SEEDS=[1,2,3,4]; MODEL="haiku"
+_ap=argparse.ArgumentParser(); _ap.add_argument("--model",default="haiku"); _ap.add_argument("--seeds",type=int,default=4)
+_A=_ap.parse_args()
+OUT=os.path.join("results","pricing" if _A.model=="haiku" else f"pricing_{_A.model}"); os.makedirs(OUT,exist_ok=True)
+ROUNDS=15; SEEDS=list(range(1,_A.seeds+1)); MODEL=_A.model
 INTERV=list(P.INTERVENTIONS.keys())
 
 async def one_market(llm, interv, seed):
@@ -24,7 +26,7 @@ async def one_market(llm, interv, seed):
     return prices
 
 async def main():
-    llm=LLM(os.path.join(OUT,"calls.jsonl"), concurrency=8)
+    llm=LLM(os.path.join(OUT,"calls.jsonl"), concurrency=int(os.environ.get("CIV_CONC","8")))
     async def market(interv,seed):
         prices=await one_market(llm,interv,seed)
         back=prices[len(prices)//2:]

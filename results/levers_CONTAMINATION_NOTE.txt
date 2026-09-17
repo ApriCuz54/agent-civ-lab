@@ -1,0 +1,6 @@
+CONTAMINATION — do not use the "sonnet" rows in calls_summary.csv.
+223 of 224 rows labelled model=sonnet were actually served by claude-haiku-4-5
+(silent subscription Sonnet->Haiku fallback, discovered 2026-09-13; the strict
+model guard in civlab/llm.py was added afterwards). The Levers "Sonnet arm" is void.
+Any cross-model Levers comparison must be re-run under the strict guard. See
+[[Threats to Validity and Reviewer Report]] M2 and [[Cross-Model Run Log 2026-09-17]].

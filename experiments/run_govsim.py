@@ -8,7 +8,7 @@ Usage:
   python3 run_govsim.py judge                     # run judge pass over all transcripts not yet judged
   python3 run_govsim.py aggregate                 # (re)build summary.csv / months.csv from calls made so far
 """
-import asyncio, csv, json, os, random, sys, argparse, statistics as stats
+import asyncio, csv, json, os, random, sys, argparse, hashlib, statistics as stats
 from civlab.llm import LLM, parse_first_int
 from civlab.games import commons as C
 
@@ -57,8 +57,12 @@ def plan():
     return total
 
 
+def _stable_seed(*parts):
+    # Deterministic across processes (Python's hash() is per-process salted; hashlib is not).
+    return int(hashlib.sha256("|".join(map(str, parts)).encode()).hexdigest()[:8], 16)
+
 async def run_game(llm, model, condition, seed):
-    random.seed(hash((model, condition, seed)) & 0xFFFFFFFF)
+    random.seed(_stable_seed(model, condition, seed))
     totals = [0.0] * C.N_AGENTS
     lake = C.LAKE_START
     excluded_now = set()
@@ -303,14 +307,23 @@ def append_months_csv(run):
 
 
 def append_summary_csv(row):
-    exists = os.path.exists(SUMMARY_CSV)
-    fields = ["model", "condition", "seed", "survived", "collapse_month", "total_catch", "gini",
-              "n_fines", "fine_accuracy", "n_exclusions", "final_lake", "rule_emerged", "rule_first_month"]
-    with open(SUMMARY_CSV, "a", newline="") as f:
+    # Dedup on (model,condition,seed,think_enabled): rewrite the file with the newest row winning,
+    # so a re-run replaces its own prior row instead of appending a conflicting duplicate.
+    fields = ["model", "condition", "seed", "think_enabled", "survived", "collapse_month", "total_catch",
+              "gini", "n_fines", "fine_accuracy", "n_exclusions", "final_lake", "rule_emerged", "rule_first_month"]
+    row = dict(row); row.setdefault("think_enabled", False)
+    existing = []
+    if os.path.exists(SUMMARY_CSV):
+        with open(SUMMARY_CSV, newline="") as f:
+            existing = [r for r in csv.DictReader(f)]
+    key = lambda r: (str(r.get("model")), str(r.get("condition")), str(r.get("seed")), str(r.get("think_enabled")))
+    existing = [r for r in existing if key(r) != key(row)]
+    existing.append(row)
+    with open(SUMMARY_CSV, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
-        if not exists:
-            w.writeheader()
-        w.writerow(row)
+        w.writeheader()
+        for r in existing:
+            w.writerow(r)
 
 
 def append_runs_json(run, row):

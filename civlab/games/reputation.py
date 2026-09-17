@@ -20,20 +20,41 @@ SYSTEM = ("You are a member of a group. Each round you are randomly paired with 
           "score across all rounds.")
 
 def reputation_str(partner_moves):
-    """partner_moves: list of that partner's past moves (C/D). Returns an image-score line."""
+    """LIFETIME image score (original). partner_moves: list of that partner's past moves."""
     n=len(partner_moves)
     if n==0: return "Your current partner has no record yet (new or unobserved)."
     c=partner_moves.count("C")
     return f"Your current partner cooperated in {c} of their last {n} rounds ({round(100*c/n)}% cooperation)."
 
-def build_prompt(own_history, partner_moves):
+def reputation_str_window(partner_moves, W=3):
+    """RECENCY-WEIGHTED image score: cooperation rate over only the last W rounds. Added
+    2026-09-17 to test whether recency-weighting closes the trust-then-betray hole
+    ([[Stealth Defector]]); a lifetime average decays too slowly to punish a late betrayal."""
+    recent=partner_moves[-W:]
+    n=len(recent)
+    if n==0: return "Your current partner has no record yet (new or unobserved)."
+    c=recent.count("C")
+    return f"Your current partner cooperated in {c} of their last {n} rounds ({round(100*c/n)}% recent cooperation)."
+
+def reputation_str_onestrike(partner_moves):
+    """ONE-STRIKE reputation: flags the partner as untrustworthy if they defected in either
+    of their last two rounds, regardless of a long clean history before that."""
+    if not partner_moves: return "Your current partner has no record yet (new or unobserved)."
+    recent=partner_moves[-2:]
+    if "D" in recent:
+        return "Your current partner DEFECTED recently (within their last two rounds) — a broken record."
+    return "Your current partner cooperated in both of their last two rounds (clean recent record)."
+
+REP_MODES={"lifetime":reputation_str, "window":reputation_str_window, "onestrike":reputation_str_onestrike}
+
+def build_prompt(own_history, partner_moves, rep_fn=reputation_str):
     if not own_history:
         h="This is round 1. You have not played yet."
     else:
         recent=own_history[-H:]
         h=("Your most recent rounds:\n"+"\n".join(
             f"you={a}, partner={b}, you scored {p}." for a,b,p in recent))
-    rep=reputation_str(partner_moves)
+    rep=rep_fn(partner_moves)
     return (f"{h}\n\n{rep}\n\nChoose your move for the next round. Give one short sentence of "
             "reasoning, then on a new line output exactly:\nMOVE: C   or   MOVE: D")
 
