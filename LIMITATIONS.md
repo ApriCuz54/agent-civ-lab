@@ -33,10 +33,11 @@ is ready for it (`--model sonnet`, strict model-family guard); see `CROSS_MODEL_
     ones shipped earlier (rushed [0.43,0.77], persona [0.53,0.86], vote3 [0.43,0.79]). The
     three no-reasoning conditions are **not** statistically distinguishable from each other;
     only the reasoning family (verify/plain ≈ 99%) separates cleanly.
-  - Under Holm correction, the IPD defection triggers survive (p≈0.007), but the pricing
-    "avoid price wars" collusion effect (0.22→1.00) **does not survive at n=4 seeds** despite
-    its large, zero-variance effect — it is underpowered, not unreal. More seeds (cheap on
-    Haiku) are needed for a corrected claim.
+  - Under Holm correction, the IPD defection triggers survive (p≈0.007). The pricing
+    "avoid price wars" collusion effect did not survive at n=4 seeds (p=0.026, underpowered);
+    **re-run at n=8 seeds it now survives** (mean 0.96 vs control 0.24, p<0.001, Holm thr 0.006).
+    "Long-run profits" (0.41) remains n.s. — so the corrected claim is that *one* phrase reliably
+    induces collusion, not two.
 - **[quarantined] The Levers "Sonnet" arm is void** — 223 of 224 rows were served by Haiku
   under the old fallback bug (see `results/levers/CONTAMINATION_NOTE.txt`).
 
@@ -55,14 +56,23 @@ is ready for it (`--model sonnet`, strict model-family guard); see `CROSS_MODEL_
 - **Ceilings & power.** Cooperation sits at 1.00 in many cells and coding pass-rate at ~95%,
   so several "seeds" carry little independent information and small effects are hidden. Higher
   temptation payoffs, larger populations, longer horizons, and more seeds are needed.
-- **Thinking-off confound.** Nearly all runs disable extended thinking for cost; the one
-  thinking-on GovSim run behaved differently. A thinking-on factorial is owed.
-- **Practical demo construct validity.** "rushed"/"persona" forbid showing work, so they are a
-  chain-of-thought ablation rather than an "urgency"/persona test; `vote3` fans out the
-  no-reasoning prompt (a stacked baseline); items were selected for a mid-difficulty band. A
-  fair rebuild (reasoning-enabled fan-out, persona/verify with reasoning allowed, disclosed
-  selection) is specified and pending budget. Today the honest reading is narrower: **letting
-  the model reason is the lever; an extra verify pass adds ~nothing over that on this suite.**
+- **Thinking-off confound — partially demonstrated.** Nearly all runs disable extended
+  thinking for cost. A `--think` factorial (`run_govsim.py`) now confirms this matters: the
+  no-enforcement commons (condition A) collapses **0/3 with thinking off** but a **thinking-on
+  run survived** (catch 240, lake intact). So "institutions don't emerge / the commons
+  collapses" is confounded with disabling deliberation. Only n=1 on the thinking-on side —
+  extended thinking throttles to ~2 calls/min on this subscription — so a powered factorial
+  (API key / off-peak) is still owed. See `results/rigor_c4_thinking_govsim.txt`.
+- **Practical demo construct validity — REBUILT (`run_practical2.py`).** The v1 demo had
+  "rushed"/"persona" forbid showing work (a chain-of-thought ablation mislabeled as urgency),
+  and its `vote3` fanned out the no-reasoning prompt (a stacked baseline). The rebuild adds the
+  fair arms — persona and a 3-agent vote both *with reasoning allowed* — and clustered CIs.
+  Result (Haiku 4.5, 96 attempts/condition): reasoning-off family ≈ 60–68%, reasoning-on family
+  ≈ 99–100%. **Reasoning is the whole lever**: a verify pass (99%) adds nothing over plain
+  reasoning (100%); a persona is null in both regimes; and a fair 3-reasoning-agent vote (99%)
+  matches one reasoning agent at 3× cost. The item suite is disclosed as selected for a
+  mid-difficulty band, so the *size* of the gap is a property of that choice; the *direction* is
+  robust. The public one-pager was rewritten to match.
 - **Single population design, short horizons, scripted (non-learned) invaders.**
 
 ## What is well-supported (Haiku 4.5)

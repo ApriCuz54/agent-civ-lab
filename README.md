@@ -1,6 +1,6 @@
 # agent-civ-lab
 
-**Behavioral experiments on LLM-agent societies** — small, cheap, fully reproducible.
+**Behavioral experiments on LLM-agent societies (Claude Haiku 4.5)** — small, cheap, fully reproducible. Cross-model replication is stated future work; see [`LIMITATIONS.md`](LIMITATIONS.md).
 
 When you put many language-model agents in the same game, do they cooperate, form
 conventions, punish free-riders, collude, or defect? This repo is a compact harness for
@@ -63,6 +63,10 @@ python -m experiments.run_progression # PD strategy panel (Axelrod)        (~$0.
 python -m experiments.run_invasion    # one-defector invasion / ESS         (~$1)
 python -m experiments.run_reputation  # reputation / indirect reciprocity   (~$1)
 python -m experiments.run_stealth     # stealth trust-then-betray defector   (~$1.2)
+python -m experiments.run_recency     # recency-weighted reputation vs stealth (~$1.8)
+python -m experiments.run_replicator  # replicator/imitation dynamics (real ESS test) (~$1.2)
+python -m experiments.run_practical2  # practical transfer demo, honest v2    (~$1.6)
+python -m experiments.run_govsim run --model haiku --cond A,C --seeds 1,2,3 --think 1  # thinking-ON factorial
 python -m analysis.make_figures       # rebuild figures from the summaries
 ```
 
@@ -107,12 +111,15 @@ tells agents the hypothesis. This follows the PIMMUR principles for LLM social s
 
 ## Limitations
 
-Single model family (Haiku 4.5) on one date; homogeneous same-model pairs; short horizons
-(15 rounds / a few in-game days); light in-prompt reasoning rather than long deliberation.
-Two ceilings (near-competitive pricing, 100% cooperation) mean the *protective* phrases
-can't yet be ranked — a harder game and a cross-model replication are the obvious next
-steps. Treat results as **exploratory behavioral findings on one model**, not claims about
-"LLMs" in general.
+**All results are Claude Haiku 4.5**; homogeneous same-model pairs; short horizons; mostly
+extended-thinking-off. **Cross-model replication (Sonnet+) is future work** — attempted but
+Sonnet is rationed on the subscription used. A 2026-09 rigor pass ([`LIMITATIONS.md`](LIMITATIONS.md))
+addressed the reviewer-grade issues: reproducible seeding and CIs (Holm correction; the pricing
+collusion effect clears it at 8 seeds), a replicator dynamic that turns the "ESS" wording from
+assertion into measurement, a recency-weighted reputation that closes the stealth exploit, a
+`--think` factorial confirming the deliberation confound, and an honestly-rebuilt transfer demo.
+Treat results as **exploratory behavioral findings on one model**, not claims about "LLMs" in
+general.
 
 ## Cite
 

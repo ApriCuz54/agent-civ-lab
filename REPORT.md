@@ -96,11 +96,16 @@ than to add cooperative pep talk.
 
 ## Caveats
 
-Single model family on one date; homogeneous same-model pairs; short horizons; light
-in-prompt reasoning (extended thinking disabled in the commons for cost, which makes those
-agents myopic — a cached thinking-on run had survived, so deliberation may matter more than
-enforcement). Two ceilings prevent ranking the protective phrases. Cross-model replication
-(does GPT / Gemini share these triggers?) and longer horizons are the next steps.
+**All results are Claude Haiku 4.5** — read every "agents do X" as "Haiku-4.5 agents do X".
+**Cross-model replication (Sonnet and beyond) is stated future work**, not done here: it was
+attempted but Sonnet is rationed on the subscription used. A 2026-09 rigor pass (see
+[`LIMITATIONS.md`](LIMITATIONS.md)) fixed the fragile parts: GovSim seeding/reproducibility;
+reproducible clustered-bootstrap CIs and Holm correction (the pricing collusion effect clears
+correction at 8 seeds; the practical demo's no-reasoning conditions are not distinguishable
+from each other); a `--think` factorial confirming the extended-thinking confound (the
+no-enforcement commons collapses 0/3 with thinking off but survived with it on); and the
+"ESS" claim is now backed by a replicator dynamic (§9). Still open: powered thinking-on
+factorial, noisy/forgeable reputation, longer horizons, and the cross-model arms.
 
 ## Background
 
@@ -140,11 +145,11 @@ partners). Control = all model agents; Invasion = 7 model agents + 1 scripted al
 | control | ~1.00 (stable) | 36.0 | — | — |
 | invasion | 0.90–0.99 (mild dip) | 30.2 | 58.0 | +26 to +30 |
 
-Cooperation is **behaviourally robust** (one defector causes no contagion collapse) but
-**not evolutionarily stable**: the defector nearly doubles the cooperators' score, so under
-any imitation/selection dynamic defection would spread. LLM-agent cooperation is a fixed
-disposition, not an ESS. Reputation/identity (absent here by design) is the obvious
-moderator and the next experiment.
+Cooperation is **behaviourally robust** (one defector causes no contagion collapse) but the
+defector nearly doubles the cooperators' score. On its own this single-episode payoff gap is
+only *suggestive* of evolutionary instability; §9 runs the actual replicator dynamic and
+confirms that under an imitation update this Haiku-4.5 population's cooperation is **not an
+ESS**. Reputation/identity (absent here by design) is the obvious moderator (§7).
 
 ## 7. Reputation-enabled invasion (indirect reciprocity) — Haiku 4.5
 
@@ -161,10 +166,11 @@ record before choosing (image scoring).
 
 A single honest reputation signal flips the outcome: cooperators cooperate with each other
 (~0.99) but punish the known defector (~0.08), with no instruction to do so. The defector
-now earns *less* than the cooperators (invasion fitness −16), so cooperation becomes
-approximately an ESS. Anonymity, not disposition, was what made cooperation invadable in §6.
-This reproduces classical indirect reciprocity / image scoring (Nowak & Sigmund 1998) in
-LLM agents. But that defender only punishes a *visible* cheater — see §8.
+now earns *less* than the cooperators (invasion fitness −16), and §9's replicator run confirms
+this makes cooperation resist invasion across generations. Anonymity, not disposition, was
+what made cooperation invadable in §6. This reproduces classical indirect reciprocity / image
+scoring (Nowak & Sigmund 1998) in this Haiku-4.5 population. But that defender only punishes a
+*visible* cheater — see §8.
 
 ## 8. Stealth defector — the reputation defense is gameable — Haiku 4.5
 
@@ -187,5 +193,36 @@ exploiter still receives 0.70–1.00. Betray too early and the record decays eno
 withdraw (0.70) over the remaining rounds; betray too late and the take is small (~3 rounds to
 harvest). Population mutual cooperation stays near 1.0 throughout: this is **parasitism on a
 healthy group, not a contagion collapse**. So §7's defense disarms the *visible* cheater, not
-the *patient* one. The repair to test is a **recency-weighted or one-strike** reputation that
-punishes recent defection rather than a lifetime average.
+the *patient* one. The repair is §10.
+
+## 9. Replicator dynamics (a real ESS test) — Haiku 4.5
+
+§6–8 compared payoffs in a single episode; calling that "ESS" was an overclaim. Here each
+agent's *strategy* (cooperator-prompt vs scripted defector) reproduces by copy-the-richer
+imitation over 8 generations. Defector fraction, mean of 3 seeds, start → end:
+
+| condition | start 1/8 (12%) | start 3/8 (38%) |
+|---|---|---|
+| anonymous | 0.12 → **0.54** | 0.38 → **0.75** |
+| reputation shown | 0.12 → **0.04** | 0.38 → **0.21** |
+
+Under anonymity defection **spreads toward fixation** (not an ESS); with reputation it is
+**driven down** (cooperation resists invasion). This is the dynamical evidence behind the ESS
+language in §6–7 — measured, not asserted, for this scripted-defector / imitation-update
+setting.
+
+## 10. Recency-weighted reputation (closes the stealth hole) — Haiku 4.5
+
+§8's exploit was an artefact of a *slow-decaying* lifetime average. Re-running the same stealth
+invader against recency-weighted image scores:
+
+| betrayal round | lifetime avg (gameable) | recency window (last 3) | one-strike (last 2) |
+|---|---|---|---|
+| r4 (early) | +10.4 | **−4.0** | **−1.2** |
+| r7 (mid) | +13.6 | **+0.8** | **−2.8** |
+| r10 (late) | +7.3 | +5.9 | +4.3 |
+
+Recency-weighting collapses the exploit for early and mid betrayal (the previously-optimal r7
+goes from +13.6 to ≈0 / negative — the invader now earns *less* than its victims); only an
+irreducible last-round betrayal still pays. Indirect reciprocity, given a sensible recency
+weighting, disarms both the visible and the patient cheat.

@@ -61,8 +61,10 @@ def _stable_seed(*parts):
     # Deterministic across processes (Python's hash() is per-process salted; hashlib is not).
     return int(hashlib.sha256("|".join(map(str, parts)).encode()).hexdigest()[:8], 16)
 
-async def run_game(llm, model, condition, seed):
+async def run_game(llm, model, condition, seed, think_mode=0):
     random.seed(_stable_seed(model, condition, seed))
+    tflag = None if think_mode else 0          # None = model's default (thinking ON); 0 = disabled
+    tsuf = "-tk1" if think_mode else ""         # namespace the cache so ON/OFF never collide
     totals = [0.0] * C.N_AGENTS
     lake = C.LAKE_START
     excluded_now = set()
@@ -88,8 +90,8 @@ async def run_game(llm, model, condition, seed):
             sysm = C.build_system(i, condition, excluded_now=(i in excluded_now))
             prompt = C.build_catch_prompt(i, condition, state, months_log)
             r = await llm.ask(prompt, sysm, model=model,
-                               key=f"{model}-{condition}-s{seed}-m{month}-catch-a{i}",
-                               tags={"phase": "catch", "cond": condition, "seed": seed, "month": month, "agent": i}, think=0)
+                               key=f"{model}-{condition}-s{seed}-m{month}-catch-a{i}{tsuf}",
+                               tags={"phase": "catch", "cond": condition, "seed": seed, "month": month, "agent": i}, think=tflag)
             v = parse_first_int(r.text, default=0)
             return max(0, min(100, v))
 
@@ -119,8 +121,8 @@ async def run_game(llm, model, condition, seed):
                 sysm = C.build_system(i, condition, excluded_now=(i in excluded_now))
                 prompt = C.build_enforcement_prompt(i, condition, state, months_log, actual)
                 r = await llm.ask(prompt, sysm, model=model,
-                                   key=f"{model}-{condition}-s{seed}-m{month}-enforce-a{i}",
-                                   tags={"phase": "enforce", "cond": condition, "seed": seed, "month": month, "agent": i}, think=0)
+                                   key=f"{model}-{condition}-s{seed}-m{month}-enforce-a{i}{tsuf}",
+                                   tags={"phase": "enforce", "cond": condition, "seed": seed, "month": month, "agent": i}, think=tflag)
                 return C.parse_enforcement(r.text, i, condition)
 
             results = await asyncio.gather(*[get_enforcement(i) for i in range(C.N_AGENTS)])
@@ -150,8 +152,8 @@ async def run_game(llm, model, condition, seed):
                 sysm = C.build_system(i, condition, excluded_now=(i in excluded_now))
                 prompt = C.build_message_prompt(i, condition, state, months_log, actual, fines_this_month, excluded_next_name)
                 r = await llm.ask(prompt, sysm, model=model,
-                                   key=f"{model}-{condition}-s{seed}-m{month}-msg-a{i}",
-                                   tags={"phase": "msg", "cond": condition, "seed": seed, "month": month, "agent": i}, think=0)
+                                   key=f"{model}-{condition}-s{seed}-m{month}-msg-a{i}{tsuf}",
+                                   tags={"phase": "msg", "cond": condition, "seed": seed, "month": month, "agent": i}, think=tflag)
                 return C.clip_words(r.text.strip())
 
             msgs = await asyncio.gather(*[get_message(i) for i in range(C.N_AGENTS)])
@@ -178,7 +180,8 @@ async def run_game(llm, model, condition, seed):
         f.write("".join(transcript))
 
     return {"model": model, "condition": condition, "seed": seed, "months_log": months_log,
-            "final_totals": totals, "final_lake": lake, "transcript_path": tpath}
+            "final_totals": totals, "final_lake": lake, "transcript_path": tpath,
+            "think_enabled": bool(think_mode)}
 
 
 async def judge_run(llm, run):
@@ -276,14 +279,14 @@ def compute_metrics(run, judge=None):
         tgt_i = C.NAMES.index(f["tgt"])
         mean_c = sum(catches) / len(catches)
         top_c = max(catches)
-        if catches[tgt_i] >= top_c or catches[tgt_i] > mean_c:
+        if catches[tgt_i] > mean_c:  # fine counts as targeted only if the target over-fished (above mean)
             correct += 1
     accuracy = correct / n_fines if n_fines else None
     n_excl_proposals = sum(1 for m in ml if m.get("excluded_next"))  # months a majority formed
     n_excl_actual = n_excl_proposals  # our rule: majority => actually excluded next month
     mean_catch_by_month = [sum(m["catches"]) / C.N_AGENTS for m in ml]
     row = dict(model=run["model"], condition=run["condition"], seed=run["seed"],
-               survived=survived, collapse_month=collapse_month, total_catch=total_catch,
+               think_enabled=run.get("think_enabled", False), survived=survived, collapse_month=collapse_month, total_catch=total_catch,
                gini=g, n_fines=n_fines, fine_accuracy=accuracy, n_exclusions=n_excl_actual,
                final_lake=lake_end)
     if judge:
@@ -334,17 +337,21 @@ def append_runs_json(run, row):
         f.write(json.dumps(rec) + "\n")
 
 
-async def main_run(model, conds, seeds):
-    llm = LLM(CALLS_LOG, concurrency=8)
+async def main_run(model, conds, seeds, think_mode=0):
+    llm = LLM(CALLS_LOG, concurrency=int(os.environ.get("CIV_CONC","8")))
     for cond in conds:
         for seed in seeds:
-            print(f"[run] model={model} cond={cond} seed={seed}", flush=True)
-            run = await run_game(llm, model, cond, seed)
-            judge = await judge_run(llm, run)
-            row = compute_metrics(run, judge)
-            append_months_csv(run)
-            append_summary_csv(row)
-            append_runs_json(run, row)
+            print(f"[run] model={model} cond={cond} seed={seed} think={think_mode}", flush=True)
+            try:
+                run = await run_game(llm, model, cond, seed, think_mode)
+                judge = await judge_run(llm, run)
+                row = compute_metrics(run, judge)
+                append_months_csv(run)
+                append_summary_csv(row)
+                append_runs_json(run, row)
+            except Exception as e:
+                print(f"  !! cond={cond} seed={seed} FAILED ({type(e).__name__}: {str(e)[:80]}) — skipping, cache keeps completed calls", flush=True)
+                continue
             print(f"  -> survived={row['survived']} collapse_month={row['collapse_month']} "
                   f"total_catch={row['total_catch']:.0f} gini={row['gini']:.2f} fines={row['n_fines']} "
                   f"rule_emerged={row.get('rule_emerged')}@{row.get('rule_first_month')} "
@@ -371,13 +378,14 @@ if __name__ == "__main__":
     ap.add_argument("--model", default="haiku")
     ap.add_argument("--cond", default="A,B,C,D")
     ap.add_argument("--seeds", default="1,2,3,4")
+    ap.add_argument("--think", type=int, default=0, help="1 = extended thinking ON, 0 = disabled")
     args = ap.parse_args()
     if args.cmd == "plan":
         plan()
     elif args.cmd == "run":
         conds = args.cond.split(",")
         seeds = [int(s) for s in args.seeds.split(",")]
-        asyncio.run(main_run(args.model, conds, seeds))
+        asyncio.run(main_run(args.model, conds, seeds, args.think))
     elif args.cmd == "null":
         seeds = [int(s) for s in args.seeds.split(",")]
         main_null(seeds)
