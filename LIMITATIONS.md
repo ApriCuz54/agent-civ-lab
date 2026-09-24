@@ -49,10 +49,14 @@ is ready for it (`--model sonnet`, strict model-family guard); see `CROSS_MODEL_
   (a defector minority rises under anonymity, is contained under reputation) but the full run
   is pending model-call budget. Until it lands, prefer "single-episode invasion payoff
   advantage" over "ESS".
-- **Idealized reputation.** The image score is truthful, global and noiseless. A
-  recency-weighted / one-strike variant (`run_recency.py`, `civlab/games/reputation.py`
-  `REP_MODES`) is written to test whether it closes the trust-then-betray hole; full run
-  pending budget.
+- **Idealized reputation — RESOLVED.** The image score was truthful, global and noiseless.
+  Two follow-ups close this: `run_recency.py` shows a recency-weighted / one-strike score
+  closes the trust-then-betray hole (mid-game betrayal +13.6 → ≈0/−2.8); `run_noisy.py` shows
+  that fix is **robust to symmetric observation noise (up to 50% flips, fitness stays ≈0) but
+  collapses under forgery** (a spoofed clean record restores fitness to +14.6). Practical
+  reading: reputation must be tamper-evident (environment-computed, not self-reported); noise
+  is tolerable. Remaining reputation variants (partial observability, asymmetric noise,
+  partial forgery) are minor extensions.
 - **Ceilings & power.** Cooperation sits at 1.00 in many cells and coding pass-rate at ~95%,
   so several "seeds" carry little independent information and small effects are hidden. Higher
   temptation payoffs, larger populations, longer horizons, and more seeds are needed.

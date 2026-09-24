@@ -1,0 +1,24 @@
+# Candidate roster for Program v2 (plan §3.3). tools/discover_models.py resolves each candidate
+# to an exact live model id (first matching source wins), tools/smoke.py tests it, and
+# tools/freeze_roster.py writes the frozen roster.yaml at gate G0. Edit only via DECISIONS.md.
+defaults: {temperature: 0.7, max_tokens: 300}
+candidates:
+  haiku45:      {family: anthropic, tier: M, released: 2025, mvr: true,  sources: [{provider: claude_sdk, model_id: haiku}]}
+  llama31_8b:   {family: meta,      tier: M, released: 2024, mvr: true,  sources: [{provider: groq, match: [llama-3.1-8b-instant]}, {provider: nvidia, match: [meta/llama-3.1-8b-instruct]}]}
+  llama33_70b:  {family: meta,      tier: L, released: 2024, mvr: true,  sources: [{provider: groq, match: [llama-3.3-70b-versatile]}, {provider: nvidia, match: [meta/llama-3.3-70b-instruct]}]}
+  llama4_scout: {family: meta,      tier: L, released: 2025, mvr: false, sources: [{provider: groq, match: [llama-4-scout]}, {provider: nvidia, match: [llama-4-scout]}]}
+  qwen3_32b:    {family: alibaba,   tier: M, released: 2025, mvr: true,  reasoning_model: true,
+                 sources: [{provider: groq, match: [qwen3-32b], extra: {reasoning_effort: none}}]}
+  gptoss_20b:   {family: openai,    tier: M, released: 2025, mvr: true,  reasoning_model: true,
+                 sources: [{provider: groq, match: [gpt-oss-20b], extra: {reasoning_effort: low}}]}
+  gptoss_120b:  {family: openai,    tier: L, released: 2025, mvr: false, reasoning_model: true,
+                 sources: [{provider: groq, match: [gpt-oss-120b], extra: {reasoning_effort: low}}, {provider: nvidia, match: [gpt-oss-120b], extra: {reasoning_effort: low}}]}
+  gemini_flash: {family: google,    tier: L, released: 2025, mvr: true,
+                 sources: [{provider: gemini, match: [gemini-flash-latest, gemini-2.5-flash, gemini-2.0-flash], exclude: [lite, image, tts, audio, live, thinking, exp], extra: {reasoning_effort: none}}]}
+  gemma:        {family: google,    tier: M, released: 2025, mvr: true,
+                 sources: [{provider: gemini, match: [gemma-4-31b-it, gemma-4-26b, gemma-3-27b-it]}, {provider: openrouter, match: ["google/gemma-4-31b-it:free", "google/gemma-3-27b-it:free"]}]}
+  mistral_small: {family: mistral,  tier: M, released: 2025, mvr: true,  sources: [{provider: mistral, match: [mistral-small-latest, mistral-small]}]}
+  ollama_llama2_7b:  {family: meta,    tier: S, released: 2023, local: true, priority: 1, sources: [{provider: ollama, match: ["llama2:7b-chat"]}]}
+  ollama_llama3_8b:  {family: meta,    tier: M, released: 2024, local: true, priority: 2, sources: [{provider: ollama, match: ["llama3:8b"]}]}
+  ollama_qwen25_7b:  {family: alibaba, tier: M, released: 2024, local: true, priority: 3, sources: [{provider: ollama, match: ["qwen2.5:7b"]}]}
+  ollama_llama32_3b: {family: meta,    tier: S, released: 2024, local: true, priority: 4, sources: [{provider: ollama, match: ["llama3.2:3b"]}]}

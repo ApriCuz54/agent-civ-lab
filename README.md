@@ -9,6 +9,8 @@ dollars on the Anthropic API and resumes from cache if interrupted.
 
 **Project status, goals, and next steps: [`ROADMAP.md`](ROADMAP.md).**
 
+**Full audited lab record and paper draft: [`docs/lab_record.md`](docs/lab_record.md) · [`docs/paper_draft.md`](docs/paper_draft.md).**
+
 The headline practical result — **single prompt phrases that causally flip agents into
 collusion or early defection** — is in [`REPORT.md`](REPORT.md) and the figure below.
 
@@ -64,6 +66,7 @@ python -m experiments.run_invasion    # one-defector invasion / ESS         (~$1
 python -m experiments.run_reputation  # reputation / indirect reciprocity   (~$1)
 python -m experiments.run_stealth     # stealth trust-then-betray defector   (~$1.2)
 python -m experiments.run_recency     # recency-weighted reputation vs stealth (~$1.8)
+python -m experiments.run_noisy       # noisy & forgeable reputation           (~$1.6)
 python -m experiments.run_replicator  # replicator/imitation dynamics (real ESS test) (~$1.2)
 python -m experiments.run_practical2  # practical transfer demo, honest v2    (~$1.6)
 python -m experiments.run_govsim run --model haiku --cond A,C --seeds 1,2,3 --think 1  # thinking-ON factorial
@@ -77,9 +80,10 @@ experiments you run and how many seeds.
 ## Headline findings (Claude Haiku 4.5)
 
 - **Collusion is one phrase away.** Two seller-agents price near-competitive by default
-  (collusion index 0.22 of 1.0), but adding *"avoid destructive price wars"* drives **full
-  monopoly collusion (index 1.00, every seed)**; *"think about long-run profits"* pushes it
-  to 0.33. Explicit anti-collusion phrasings barely move an already-competitive baseline.
+  (collusion index 0.24 of 1.0, 8 seeds), but adding *"avoid destructive price wars"* drives
+  **joint-monopoly pricing (index 0.96; 7 of 8 seeds lock onto exactly the monopoly price)**,
+  which survives Holm correction. *"Think about long-run profits"* reaches 0.41 but is not
+  significant. Anti-collusion phrasings barely move an already-competitive baseline.
 - **Defection is one phrase away too.** In a 15-round Prisoner's Dilemma agents cooperate
   **100%** by default and never defect — but *"protect yourself, trust no one"* or *"only
   this round matters, no future"* collapse cooperation to ~5–10% with defection on **round 1**.

@@ -104,8 +104,9 @@ reproducible clustered-bootstrap CIs and Holm correction (the pricing collusion 
 correction at 8 seeds; the practical demo's no-reasoning conditions are not distinguishable
 from each other); a `--think` factorial confirming the extended-thinking confound (the
 no-enforcement commons collapses 0/3 with thinking off but survived with it on); and the
-"ESS" claim is now backed by a replicator dynamic (§9). Still open: powered thinking-on
-factorial, noisy/forgeable reputation, longer horizons, and the cross-model arms.
+"ESS" claim is now backed by a replicator dynamic (§9), and the reputation defense is
+characterised under noise and forgery (§11). Still open: powered thinking-on factorial,
+longer horizons, and the cross-model arms.
 
 ## Background
 
@@ -226,3 +227,24 @@ Recency-weighting collapses the exploit for early and mid betrayal (the previous
 goes from +13.6 to ≈0 / negative — the invader now earns *less* than its victims); only an
 irreducible last-round betrayal still pays. Indirect reciprocity, given a sensible recency
 weighting, disarms both the visible and the patient cheat.
+
+## 11. Noisy & forgeable reputation (what actually protects it) — Haiku 4.5
+
+§10 used a truthful, perfectly-observed signal. Degrading it (recency window, stealth invader
+at K=6, the betrayal a clean recency signal neutralised):
+
+| reputation signal | invasion fitness | post-betrayal coop toward invader |
+|---|---|---|
+| clean recency (ε=0) | −0.6 | 0.39 |
+| observation noise ε=0.15 | −1.4 | 0.39 |
+| observation noise ε=0.30 | +3.3 | 0.44 |
+| observation noise ε=0.50 | −2.0 | 0.28 |
+| **forgeable (spoofed clean record)** | **+14.6** | **1.00** |
+
+The recency defense is **robust to symmetric observation noise** — even at a 50% flip rate the
+exploit stays shut (noise degrades everyone's reputation equally, giving the invader no edge)
+— but **collapses under forgery**: a spoofed clean record restores fitness to the
+lifetime-gameable +14.6 with 100% cooperation post-betrayal. The vulnerability is an
+unauthenticated channel, not imperfect observation. Practical implication for agent systems:
+reputation must be **tamper-evident** (computed by the environment from logged behaviour, not
+self-reported); moderate observation noise is fine.
