@@ -163,6 +163,10 @@ class ProviderLLM:
             headers["HTTP-Referer"] = "https://github.com/ApriCuz54/agent-civ-lab"; headers["X-Title"] = "agent-civ-lab"
         async with httpx.AsyncClient(timeout=httpx.Timeout(60, connect=15)) as c:
             r = await c.post(f"{self.base}/chat/completions", headers=headers, json=payload)
+        if r.status_code == 429 and re.search(r"per day|\(TPD\)|\(RPD\)|daily|exceeded your current quota|quota exceeded", r.text, re.I):
+            # A DAILY/quota limit, not a burst limit: waiting minutes will not help. Park this model until tomorrow.
+            _log_error(self.e["provider"], self.model_id, f"daily quota reached -> park: {r.text[:200]}")
+            raise QuotaExhausted(f"{self.e['provider']} {self.model_id}: daily quota reached")
         if r.status_code == 429 or r.status_code >= 500:
             ra = r.headers.get("retry-after")
             err = RuntimeError(f"HTTP {r.status_code}: {r.text[:200]}"); err.retry_after = float(ra) if ra and ra.replace('.', '', 1).isdigit() else None
@@ -192,6 +196,8 @@ class ProviderLLM:
                 t = time.time()
                 try:
                     d = await self._post(payload)
+                except QuotaExhausted:
+                    raise
                 except Exception as e:
                     last = e; _log_error(self.e["provider"], self.model_id, f"attempt {attempt + 1}: {type(e).__name__}: {e}")
                     if getattr(e, "fatal", False): raise

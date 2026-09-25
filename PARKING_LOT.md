@@ -7,3 +7,4 @@ result would change the scorecard. Parked, not deleted. Revisit only after the D
 |---|---|---|
 | 2026-09-24 | Human-counterpart negotiation study | Valuable for a main-track venue, out of scope for a free, 3-week program (Red-Team Review §3.5) |
 | 2026-09-24 | Real tool-use tasks (email, calendar, browser) | Same; future work |
+| 2026-09-25 | Throughput: Groq gpt-oss-120b TPD 200k + Gemini daily quota stretch the run over days. Option: serve gptoss_20b via NVIDIA NIM (same weights) | Would need a DEVIATIONS.md entry + served-model check update; not adopted |
