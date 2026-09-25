@@ -10,6 +10,7 @@ import os
 import yaml
 from civlab.envload import load_env
 from civlab.providers import ProviderLLM
+from civlab.free_tier import check_entry
 
 class Router:
     def __init__(self, roster_path="roster.yaml", log_dir="results/_router", transports=None, env_path=".env"):
@@ -28,7 +29,8 @@ class Router:
 
     def client(self, key):
         if key not in self._clients:
-            e = self.entry(key); log = os.path.join(self.log_dir, f"{key}.calls.jsonl")
+            e = self.entry(key); check_entry(key, e)   # $0 guardrail: raises before any call
+            log = os.path.join(self.log_dir, f"{key}.calls.jsonl")
             if e["provider"] == "claude_sdk":
                 from civlab.llm import LLM
                 self._clients[key] = ("claude", LLM(log, concurrency=e.get("conc", 5)), e)

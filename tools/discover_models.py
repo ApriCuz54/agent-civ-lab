@@ -49,6 +49,11 @@ def main():
             msg = re.sub(r"(Bearer\s+)\S+", r"\1***", str(e))[:120]
             status.append({"provider": p, "status": "unreachable", "n_models": 0, "detail": msg})
     print("\nProviders:"); print_table(status, ["provider", "status", "n_models", "detail"])
+    for st_ in status:
+        if "401" in st_.get("detail", ""):
+            print(f"  -> {st_['provider']}: key rejected (401). Re-create the key and re-run tools\\set_keys.ps1, then open a NEW PowerShell.")
+        if st_["provider"] == "ollama" and st_["status"] == "ok" and st_["n_models"] == 0:
+            print("  -> ollama: running but no models pulled. Run the four `ollama pull ...` commands, then re-run this.")
     draft, rows = {"defaults": cand.get("defaults", {}), "models": {}}, []
     for key, c in cand["candidates"].items():
         chosen = None

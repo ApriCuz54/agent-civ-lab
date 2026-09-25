@@ -101,6 +101,12 @@ class _DayCounter:
     def used(self):
         return self._load()["n"]
 
+_SHARED = {}
+def _shared(kind, name, factory):
+    k = (kind, name)
+    if k not in _SHARED: _SHARED[k] = factory()
+    return _SHARED[k]
+
 class ProviderLLM:
     """ask() for one roster entry. Construct via civlab.router.Router, not directly."""
     def __init__(self, roster_key, entry, log_path, quota_dir="results/_quota", transport=None):
@@ -114,10 +120,12 @@ class ProviderLLM:
         self.temperature = entry.get("temperature", 0.7)
         self.extra = entry.get("extra", {}) or {}
         self.aliases = entry.get("served_aliases", []) or []
-        self.limiter = _Limiter(entry.get("rpm", p["rpm"]), entry.get("tpm", p["tpm"]))
-        self.day = _DayCounter(quota_dir, f"{entry['provider']}__{self.model_id}", entry.get("rpd", p["rpd"]))
+        name = f"{entry['provider']}__{self.model_id}"
+        self.limiter = _shared("lim", name, lambda: _Limiter(entry.get("rpm", p["rpm"]), entry.get("tpm", p["tpm"])))
+        self.day = _shared("day", name + "@" + quota_dir, lambda: _DayCounter(quota_dir, name, entry.get("rpd", p["rpd"])))
         self.sem = asyncio.Semaphore(entry.get("conc", p["conc"]))
         self.transport = transport  # tests inject a mock async callable(payload)->dict
+        self.max_attempts = int(entry.get("max_attempts", 8))
         self.log_path = log_path
         os.makedirs(os.path.dirname(log_path) or ".", exist_ok=True)
         self.cache_path = os.path.splitext(log_path)[0] + ".cache.jsonl"
@@ -167,7 +175,7 @@ class ProviderLLM:
         est = (len(sys_txt) + len(prompt)) // 3 + max_tokens
         last = None
         async with self.sem:
-            for attempt in range(8):
+            for attempt in range(self.max_attempts):
                 await self.limiter.wait(est)
                 self.day.check_and_inc()
                 t = time.time()

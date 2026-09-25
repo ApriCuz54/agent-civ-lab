@@ -8,6 +8,8 @@ def write_csv(path, rows):
     with open(path, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=keys); w.writeheader(); w.writerows(rows)
 def print_table(rows, cols):
+    if not rows:
+        print("  (no rows)"); return
     widths = {c: max(len(c), *(len(str(r.get(c, ""))) for r in rows)) for c in cols}
     print("  ".join(c.ljust(widths[c]) for c in cols))
     for r in rows: print("  ".join(str(r.get(c, "")).ljust(widths[c]) for c in cols))

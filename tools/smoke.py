@@ -5,7 +5,7 @@ scored with the strict v2 parsers. Writes results/_phase0/smoke.csv.
     python -m tools.smoke --models a,b    # a subset
 
 G0 pass per model: valid_rate >= 0.90, no served-model mismatch reaching the data.
-Claude models are smoke-tested from Claude's cloud workspace, where the SDK login lives.
+Claude models: run with --include-claude from Claude's cloud workspace, where the SDK login lives.
 """
 import argparse, asyncio, os, random, statistics as st, sys, time
 import yaml
@@ -61,11 +61,11 @@ async def main_async(keys):
     return [r for g in groups for r in g]
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--models", default="")
+    ap = argparse.ArgumentParser(); ap.add_argument("--models", default=""); ap.add_argument("--include-claude", action="store_true")
     a = ap.parse_args()
     draft = yaml.safe_load(open("roster_draft.yaml", encoding="utf-8"))["models"]
     keys = [k for k in (a.models.split(",") if a.models else draft) if k in draft
-            and draft[k]["provider"] != "claude_sdk" and draft[k].get("local_ok", True)]
+            and (a.include_claude or draft[k]["provider"] != "claude_sdk") and draft[k].get("local_ok", True)]
     rows = asyncio.run(main_async(keys))
     out = ensure(); path = os.path.join(out, "smoke.csv")
     if a.models and os.path.exists(path):   # merge with earlier rows

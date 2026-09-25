@@ -27,6 +27,11 @@ def main():
     local = sorted(((k, v) for k, v in draft["models"].items() if v["provider"] == "ollama"),
                    key=lambda kv: kv[1].get("priority", 99))
     rows = []
+    if not local:
+        print("No local models resolved. Is Ollama running, and did you pull the models?\n"
+              "  ollama list            (should show llama2:7b-chat, llama3:8b, qwen2.5:7b, llama3.2:3b)\n"
+              "  ollama pull llama3.2:3b   (etc.)\nThen re-run: python -m tools.discover_models ; python -m tools.bench_local")
+        return 0
     for k, v in local:
         try:
             tps, wall = bench(v["model_id"]); rows.append({"key": k, "model_id": v["model_id"], "tok_per_s": tps, "wall_s": wall})
