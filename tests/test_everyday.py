@@ -13,7 +13,7 @@ def router_with(tmp_path, policy):
     _SHARED.clear(); _N[0] += 1
     tmp_path = tmp_path / f"r{_N[0]}"; tmp_path.mkdir()
     p = tmp_path / "roster.yaml"
-    yaml.safe_dump({"models": {"m": {"provider": "groq", "model_id": "mock-model", "rpm": None, "tpm": None, "max_attempts": 2}}}, open(p, "w"))
+    yaml.safe_dump({"models": {"m": {"provider": "groq", "model_id": "mock-model", "rpm": None, "tpm": None, "rpd": None, "max_attempts": 2}}}, open(p, "w"))
     return Router(str(p), log_dir=str(tmp_path / "calls"), transports={"m": MockTransport(policy)}, env_path="none.env")
 
 def run(mod, r, cfg, filt=lambda c: True):
@@ -23,9 +23,10 @@ def run(mod, r, cfg, filt=lambda c: True):
 
 # ---------------- T1 ----------------
 def test_t1_bots():
-    s = T1.Seller("fair", 700); assert s.respond(("OFFER", 600))[0].endswith("$840.")
-    h = T1.Seller("hardball", 700); h.respond(("OFFER", 600)); assert h.ask == 980
-    h.respond(("OFFER", 700)); assert h.ask == 980          # agent conceded 100 > seller's 20 -> seller holds
+    s = T1.Seller("fair", 700); assert s.respond(("OFFER", 600))[0].endswith("$780.")   # 1000 - 0.55*400
+    h = T1.Seller("hardball", 700); h.respond(("OFFER", 600)); assert h.ask == 960
+    h.respond(("OFFER", 700)); assert h.ask == 960          # agent conceded 100 > seller's 40 -> seller holds
+    h.respond(("OFFER", 700)); assert h.ask == 920          # agent holds (0 <= seller's last 0) -> seller concedes 40
     f = T1.Seller("fake_final", 700); f.respond(("OFFER", 600)); assert f.ask == 880
     f.respond(("OFFER", 650)); assert f.ask == 730           # counter after "final" -> floor + 30
     assert T1.surplus(700, 700) == 1.0 and T1.surplus(950, 700) == 0.0

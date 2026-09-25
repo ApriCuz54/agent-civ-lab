@@ -1,0 +1,166 @@
+frozen: '2026-09-25'
+gate: G0
+defaults:
+  temperature: 0.7
+  max_tokens: 300
+models:
+  haiku45:
+    family: anthropic
+    tier: M
+    released: 2025
+    mvr: true
+    provider: claude_sdk
+    model_id: haiku
+    temperature: 0.7
+  qwen38_27b:
+    family: alibaba
+    tier: M
+    released: 2026
+    mvr: true
+    reasoning_model: true
+    provider: groq
+    model_id: qwen/qwen3.8-27b
+    temperature: 0.7
+    smoke:
+      valid_rate: '1.0'
+      served_mismatches: '0'
+      calls_per_min: '133082.1'
+      median_latency_s: '0.0'
+  gptoss_20b:
+    family: openai
+    tier: M
+    released: 2025
+    mvr: true
+    reasoning_model: true
+    provider: groq
+    model_id: openai/gpt-oss-20b
+    extra:
+      reasoning_effort: low
+    temperature: 0.7
+    smoke:
+      valid_rate: '1.0'
+      served_mismatches: '0'
+      calls_per_min: '1200087.0'
+      median_latency_s: '0.0'
+  gptoss_120b:
+    family: openai
+    tier: L
+    released: 2025
+    mvr: false
+    reasoning_model: true
+    provider: groq
+    model_id: openai/gpt-oss-120b
+    extra:
+      reasoning_effort: low
+    temperature: 0.7
+    smoke:
+      valid_rate: '1.0'
+      served_mismatches: '0'
+      calls_per_min: '1201519.4'
+      median_latency_s: '0.0'
+  ministral_8b:
+    family: mistral
+    tier: S
+    released: 2025
+    mvr: false
+    provider: mistral
+    model_id: ministral-8b-2512
+    temperature: 0.7
+    smoke:
+      valid_rate: '1.0'
+      served_mismatches: '0'
+      calls_per_min: '56.6'
+      median_latency_s: '1.06'
+  nemotron_super:
+    family: nvidia
+    tier: L
+    released: 2026
+    mvr: false
+    reasoning_model: true
+    provider: nvidia
+    model_id: nvidia/nemotron-3-super-120b-a12b
+    extra:
+      chat_template_kwargs:
+        enable_thinking: false
+    temperature: 0.7
+    smoke:
+      valid_rate: '1.0'
+      served_mismatches: '0'
+      calls_per_min: '149774.3'
+      median_latency_s: '0.0'
+  ollama_llama2_7b:
+    family: meta
+    tier: S
+    released: 2023
+    local: true
+    priority: 1
+    provider: ollama
+    model_id: llama2:7b-chat
+    temperature: 0.7
+    local_ok: true
+    smoke:
+      valid_rate: '1.0'
+      served_mismatches: '0'
+      calls_per_min: '155315.8'
+      median_latency_s: '0.0'
+  ollama_llama3_8b:
+    family: meta
+    tier: M
+    released: 2024
+    local: true
+    priority: 2
+    provider: ollama
+    model_id: llama3:8b
+    temperature: 0.7
+    local_ok: true
+    smoke:
+      valid_rate: '1.0'
+      served_mismatches: '0'
+      calls_per_min: '184493.4'
+      median_latency_s: '0.0'
+  ollama_llama31_8b:
+    family: meta
+    tier: M
+    released: 2024
+    local: true
+    priority: 2
+    mvr: true
+    provider: ollama
+    model_id: llama3.1:8b
+    temperature: 0.7
+    local_ok: true
+    smoke:
+      valid_rate: '1.0'
+      served_mismatches: '0'
+      calls_per_min: '140985.0'
+      median_latency_s: '0.0'
+  ollama_qwen25_7b:
+    family: alibaba
+    tier: M
+    released: 2024
+    local: true
+    priority: 3
+    provider: ollama
+    model_id: qwen2.5:7b
+    temperature: 0.7
+    local_ok: true
+    smoke:
+      valid_rate: '1.0'
+      served_mismatches: '0'
+      calls_per_min: '599972.0'
+      median_latency_s: '0.0'
+  ollama_llama32_3b:
+    family: meta
+    tier: S
+    released: 2024
+    local: true
+    priority: 4
+    provider: ollama
+    model_id: llama3.2:3b
+    temperature: 0.7
+    local_ok: true
+    smoke:
+      valid_rate: '1.0'
+      served_mismatches: '0'
+      calls_per_min: '171196.1'
+      median_latency_s: '0.0'

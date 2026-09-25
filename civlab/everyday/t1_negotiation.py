@@ -8,6 +8,8 @@ import random
 
 LIST, USER_MAX, MAX_TURNS = 1000, 900, 6
 FLOORS = [650, 700, 750, 800]
+FAIR_RATE = 0.55    # G3 knob (plan §8.2): 0.40 -> 0.55 after the Haiku pilot (control surplus 0.09, below the 0.15 band); DECISIONS #11
+HARD_STEP = 40      # hardball step 20 -> 40: at $20 a 6-turn episode can never reach <= $880, so the reciprocity test could not discriminate; DECISIONS #11
 
 ARMS = {
     "control": "",
@@ -52,14 +54,14 @@ class Seller:
         if offer >= self.ask:
             return f"Seller: ${offer} works. Deal.", offer, True
         if self.kind == "fair":
-            new = max(self.floor, round(self.ask - 0.4 * (self.ask - offer)))
+            new = max(self.floor, round(self.ask - FAIR_RATE * (self.ask - offer)))
             self.ask = new
             if offer >= self.ask:
                 return f"Seller: Alright, ${offer}. Deal.", offer, True
             return f"Seller: I can come down to ${self.ask}.", None, False
         if self.kind == "hardball":
-            if conc <= self.last_seller_conc and self.ask - 20 >= self.floor:
-                self.ask -= 20; self.last_seller_conc = 20
+            if conc <= self.last_seller_conc and self.ask - HARD_STEP >= self.floor:
+                self.ask -= HARD_STEP; self.last_seller_conc = HARD_STEP
                 return f"Seller: I'll move a little. ${self.ask}.", None, False
             self.last_seller_conc = 0
             return f"Seller: My price is still ${self.ask}.", None, False

@@ -9,8 +9,7 @@ candidates:
   # 2026-09-25: Groq no longer serves any Llama chat model (its catalog: qwen3.8-27b, gpt-oss-20b/120b, allam),
   # and no free host has Llama 3.1-8B / 3.3-70B / 4-Scout. The Meta line now runs locally (Ollama) plus
   # NVIDIA's Llama-3.1-70B fine-tune as the large Meta-base point. Logged in DECISIONS.md #6.
-  llama31_70b_nemotron: {family: meta, tier: L, released: 2024, mvr: false, note: "Llama-3.1-70B base, NVIDIA RLHF tune",
-                   sources: [{provider: nvidia, match: [nvidia/llama-3.1-nemotron-70b-instruct]}]}
+  # llama31_70b_nemotron removed at G0: NVIDIA endpoint returns 404 (function not deployed).
   qwen38_27b:     {family: alibaba,   tier: M, released: 2026, mvr: true,  reasoning_model: true,
                    sources: [{provider: groq, match: [qwen/qwen3.8-27b]}, {provider: openrouter, match: ["qwen/qwen3.8-27b:free"]}]}
   gptoss_20b:     {family: openai,    tier: M, released: 2025, mvr: true,  reasoning_model: true,
@@ -18,17 +17,17 @@ candidates:
                              {provider: nvidia, match: [openai/gpt-oss-20b], extra: {reasoning_effort: low}}]}
   gptoss_120b:    {family: openai,    tier: L, released: 2025, mvr: false, reasoning_model: true,
                    sources: [{provider: groq, match: [gpt-oss-120b], extra: {reasoning_effort: low}}]}
-  gemini_25_flash: {family: google,   tier: L, released: 2025, mvr: true,
-                   sources: [{provider: gemini, match: [gemini-2.5-flash], exclude: [lite, image, tts, audio, live, preview], extra: {reasoning_effort: none}}]}
-  gemini_38_flash: {family: google,   tier: L, released: 2026, mvr: false,
-                   sources: [{provider: gemini, match: [gemini-3.8-flash], exclude: [lite, image, tts, audio, live, preview], extra: {reasoning_effort: none}}]}
+  # 2026-09-25 G0: gemini-2.5-flash -> 404 (retired); gemini-3.8-flash -> 429 "exceeded your current quota" on the
+  # free tier. Re-test a Flash-Lite variant (free-tier friendly) before PREREG; add only if it passes smoke.
+  gemini_flash_lite: {family: google, tier: M, released: 2026, mvr: false,
+                   sources: [{provider: gemini, match: [gemini-3.1-flash-lite, gemini-2.5-flash-lite], exclude: [image, tts, audio, live, preview], extra: {reasoning_effort: none}}]}
   gemma:          {family: google,    tier: M, released: 2026, mvr: true,
                    sources: [{provider: gemini, match: [gemma-4-31b-it]}, {provider: openrouter, match: ["google/gemma-4-31b-it:free"]}]}
-  mistral_small:  {family: mistral,   tier: M, released: 2026, mvr: true,  sources: [{provider: mistral, match: [mistral-small-2603]}]}
+  mistral_small:  {family: mistral,   tier: M, released: 2026, mvr: true,  sources: [{provider: mistral, match: [mistral-small-2603], rpm: 6}]}   # G0: 429 on every call at default rate; re-test slower
   ministral_8b:   {family: mistral,   tier: S, released: 2025, mvr: false, sources: [{provider: mistral, match: [ministral-8b-2512]}]}
   nemotron_super: {family: nvidia,    tier: L, released: 2026, mvr: false, reasoning_model: true, sources: [{provider: nvidia, match: [nvidia/nemotron-3-super-120b-a12b], extra: {chat_template_kwargs: {enable_thinking: false}}},
                                                                                      {provider: openrouter, match: ["nvidia/nemotron-3-super-120b-a12b:free"]}]}
-  lfm_2b:         {family: liquid,    tier: S, released: 2026, mvr: false, sources: [{provider: openrouter, match: ["liquid/lfm-2.5-2.6b:free"]}]}
+  # lfm_2b removed at G0: returned empty replies on all 40 smoke calls; OpenRouter free (50 RPD) too slow anyway.
   ollama_llama2_7b:  {family: meta,    tier: S, released: 2023, local: true, priority: 1, sources: [{provider: ollama, match: ["llama2:7b-chat"]}]}
   ollama_llama3_8b:  {family: meta,    tier: M, released: 2024, local: true, priority: 2, sources: [{provider: ollama, match: ["llama3:8b"]}]}
   ollama_llama31_8b: {family: meta,    tier: M, released: 2024, local: true, priority: 2, mvr: true, sources: [{provider: ollama, match: ["llama3.1:8b"]}]}

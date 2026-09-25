@@ -10,15 +10,6 @@ models:
     provider: claude_sdk
     model_id: haiku
     temperature: 0.7
-  llama31_70b_nemotron:
-    family: meta
-    tier: L
-    released: 2024
-    mvr: false
-    note: Llama-3.1-70B base, NVIDIA RLHF tune
-    provider: nvidia
-    model_id: nvidia/llama-3.1-nemotron-70b-instruct
-    temperature: 0.7
   qwen38_27b:
     family: alibaba
     tier: M
@@ -50,23 +41,13 @@ models:
     extra:
       reasoning_effort: low
     temperature: 0.7
-  gemini_25_flash:
+  gemini_flash_lite:
     family: google
-    tier: L
-    released: 2025
-    mvr: true
-    provider: gemini
-    model_id: gemini-2.5-flash
-    extra:
-      reasoning_effort: none
-    temperature: 0.7
-  gemini_38_flash:
-    family: google
-    tier: L
+    tier: M
     released: 2026
     mvr: false
     provider: gemini
-    model_id: gemini-3.8-flash
+    model_id: gemini-3.1-flash-lite
     extra:
       reasoning_effort: none
     temperature: 0.7
@@ -85,6 +66,7 @@ models:
     mvr: true
     provider: mistral
     model_id: mistral-small-2603
+    rpm: 6
     temperature: 0.7
   ministral_8b:
     family: mistral
@@ -105,14 +87,6 @@ models:
     extra:
       chat_template_kwargs:
         enable_thinking: false
-    temperature: 0.7
-  lfm_2b:
-    family: liquid
-    tier: S
-    released: 2026
-    mvr: false
-    provider: openrouter
-    model_id: liquid/lfm-2.5-2.6b:free
     temperature: 0.7
   ollama_llama2_7b:
     family: meta

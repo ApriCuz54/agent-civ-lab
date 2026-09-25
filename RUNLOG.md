@@ -8,18 +8,15 @@
 
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
-CURRENT PHASE: 0 → shared pilot · LAST GATE PASSED: none (G0 pending smoke)
+CURRENT PHASE: shared pilot · LAST GATE PASSED: G0 (2026-09-25, 11 models, free-tier audit PASS)
 NEXT ACTION:
-  1. [agent] When results/_phase0/smoke.csv exists (REQUEST_PHASE0 set 2026-09-25 06:23 UTC; runner now has
-     timeouts + results/_runner/provider_errors.log): read it; fix failures (mistral + llama31_70b_nemotron had
-     0 successful calls and gemini_38_flash stalled in the first attempt — check provider_errors.log); then
-     python -m tools.freeze_roster --extra haiku45 ; python -m tools.check_free_tier ; record G0 below.
-     Freezing roster.yaml unblocks the pilot jobs already in queue.yaml (runner picks them up within 15 min).
-  2. [agent] Haiku pilot is running in Claude's cloud workspace (started 06:23 UTC, 452 cells); copy
-     results/v2/*/haiku45/*.json into the repo when done.
-  3. [agent] After the pilot: check G1 (harness, invalid rate < 10%, P6 positive control direction) and G3
-     (calibration bands, docs/v2/records/*.md §2); turn knobs if needed; then write prereg/PREREG_A.md + PREREG_B.md
-     and source the T5 phrase panel (prereg/phrase_sources.md).
+  1. [runner, automatic] REQUEST_PHASE0 re-tests gemma / mistral_small / gemini_flash_lite, then runs the pilot jobs in
+     queue.yaml on ollama_llama31_8b (~4,100 local calls, est. 2–3 h).
+  2. [agent] Haiku pilot runs in Claude's cloud workspace (/home/claude/wk; restarted 07:21 UTC after the T1 fix);
+     when done copy results/v2/*/haiku45/*.json into the repo.
+  3. [agent] When both pilots finish: python -m analysis.pilot_check  → decide G1/G3; turn knobs (≤ 3 rounds per task);
+     amend the roster if gemma / mistral_small / gemini_flash_lite passed smoke; then write PREREG_A/B and
+     prereg/phrase_sources.md; wait for the prereg commit; queue the full run (Handbook §6).
 BLOCKERS: none.
 NEEDS ADI: none.
 SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. control) – · L1 – · L2 –
@@ -63,3 +60,12 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Problems:** the first REQUEST_PHASE0 smoke stalled after ~10 min (06:09 UTC) with mistral/nvidia-70b/gemini-3.8 unfinished, and the service instance ended without writing smoke.csv. Fixes: provider attempts log to results/_runner/provider_errors.log; httpx timeout 60 s; Retry-After capped at 90 s; smoke uses 3 attempts and a 480 s per-model budget; runner_service runs Phase 0 tools under hard wall-clock timeouts; run_queue caps each cell at 45 min. REQUEST_PHASE0 re-set.
 - **Early observation (not a finding):** Haiku T5 benign-phrase arms: 20/20 correct (entitled refunded, manipulative given store credit) — T5 may be at ceiling for Haiku; G3 needs only 1 of 2 pilot models in band.
 - **Gate:** none. **Next action:** top block.
+
+### 2026-09-25 · Session 6 · Claude (Cowork, scheduled check-in) · Gate G0 + pilot start
+- **Goal:** read the Phase 0 smoke, freeze the roster, start the pilot (L1–L4 prerequisites).
+- **Runner status seen:** REQUEST_PHASE0 completed 23:51 local with the new timeouts; smoke.csv written.
+- **Findings (smoke, valid rate after one re-ask):** pass: qwen38_27b 1.0, gptoss_20b 1.0, gptoss_120b 1.0, ministral_8b 1.0, nemotron_super 1.0 (thinking disabled), llama2 7B 1.0 (raw 0.8), llama3 8B 1.0 (raw 0.9), llama3.1 8B 1.0, qwen2.5 7B 1.0, llama3.2 3B 1.0; haiku45 1.0 (cloud). Fail: llama31_70b_nemotron (NVIDIA 404), gemini-2.5-flash (404 retired), gemini-3.8-flash (free-tier quota 429; 3/20), gemma (AI Studio 500/503 — transient), mistral_small (429 on every call), lfm_2b (empty replies).
+- **Done:** G0 PASS — `python -m tools.freeze_roster --extra haiku45` → roster.yaml (11 models, 6 families); `check_free_tier` PASS; dry-run shows 452 pilot cells for ollama_llama31_8b. Candidates revised for a pre-PREREG re-test (gemma, mistral_small at rpm 6, gemini_flash_lite); REQUEST_PHASE0 set. analysis/pilot_check.py written (G1/G3 automated).
+- **Problems:** (1) Haiku pilot process in the cloud died while the session idled (cloud workspace reclaims idle processes); restarted — it resumes from cache. (2) Haiku T1 pilot showed a design problem: control surplus 0.09 (below band) and the $20 hardball step made ≤ $880 unreachable in 6 turns → fair concession 0.40 → 0.55 (plan knob) and hardball step $40; old Haiku T1 cells deleted; tests updated (23 pass). DECISIONS #9–#11. (3) Test suite polluted a local quota counter (default RPD for the mock "groq" entry) → tests now set rpd None.
+- **Early observations (not findings):** Haiku T5 control and benign arms 100% correct (likely ceiling); Haiku T1 answer_only beat control on surplus under the old bots (positive control may not hold for negotiation — re-check after the fix).
+- **Gate:** G0 PASS. **Next action:** top block.

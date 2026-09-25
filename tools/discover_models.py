@@ -63,7 +63,7 @@ def main():
             mid = resolve(s, avail.get(s["provider"], []))
             if mid:
                 chosen = {"provider": s["provider"], "model_id": mid}
-                for f in ("extra", "served_aliases"):
+                for f in ("extra", "served_aliases", "rpm", "tpm", "rpd"):
                     if f in s: chosen[f] = s[f]
                 break
         meta = {k: v for k, v in c.items() if k != "sources"}
