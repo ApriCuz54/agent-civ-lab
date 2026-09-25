@@ -150,3 +150,17 @@ def test_t5_manipulative_still_invalid_by_policy():
         m = T5.customer_messages("manipulative", t)[0]
         day = int(re.search(r"(\d+) days ago", m).group(1))
         assert day > 30 and "lost the receipt" in m
+
+def test_c1_counterpart_runs(tmp_path):
+    from experiments.v2 import c1_counterpart
+    _SHARED.clear(); import yaml as _y
+    d = tmp_path / "c1"; d.mkdir(); p = d / "roster.yaml"
+    _y.safe_dump({"models": {"m": {"provider": "groq", "model_id": "mock-a", "rpm": None, "tpm": None, "rpd": None, "max_attempts": 2},
+                             "cp": {"provider": "groq", "model_id": "mock-b", "rpm": None, "tpm": None, "rpd": None, "max_attempts": 2}}}, open(p, "w"))
+    agent = MockTransport(lambda s, u: "Hmm.\nOFFER: 700" if "OFFER" in u else "Policy says store credit.\nDECISION: STORE_CREDIT")
+    cp = MockTransport(lambda s, u: "Okay.\nDEAL" if "selling" in s else "I want my money back.")
+    r = Router(str(p), log_dir=str(d / "calls"), transports={"m": agent, "cp": cp}, env_path="none.env")
+    cells = [c for c in c1_counterpart.cells({}, "m") if c["cell_id"] in ("t1__control__s1", "t5__H1__manipulative__t0")]
+    res = asyncio.run(asyncio.gather(*[c1_counterpart.run_cell(r, "m", c, {"counterpart": "cp"}) for c in cells])) if False else \
+          [asyncio.run(c1_counterpart.run_cell(r, "m", c, {"counterpart": "cp"})) for c in cells]
+    assert res[0]["price"] == 700 and res[0]["surplus"] == 1.0 and res[1]["correct"]

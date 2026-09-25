@@ -57,7 +57,8 @@ def build_tasks(queue, roster, a):
         if a.phase and str(job.get("phase")) not in a.phase.split(","): continue
         mod = importlib.import_module(f"experiments.v2.{job['experiment']}")
         cfg = job.get("config", {}) or {}
-        models = list(roster) if job.get("models", "all") == "all" else job["models"]
+        models = ([k for k, v in roster.items() if not v.get("robustness_only")]
+                  if job.get("models", "all") == "all" else job["models"])
         for m in models:
             if m not in roster: log(f"WARN job {mod.NAME}: model {m} not in roster; skipped"); continue
             if a.models and m not in a.models.split(","): continue

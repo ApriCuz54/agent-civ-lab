@@ -1,20 +1,19 @@
-# Program v2 work queue. The runner (tools/run_queue.py) executes jobs in priority order;
-# Phase B (the answer to Q0) before Phase A (plan v2.1 §2). Agents add a job only after its module exists
-# in experiments/v2/ and passes the offline tests; FULL runs only after the pre-registration commit (plan §6).
-# models: all -> every model in the frozen roster.yaml (claude_sdk models only run with --include-claude)
-#
-# CURRENT STAGE: shared pilot (gates G1 + G3) on the local pilot model. Pilot data is reused in the full run
-# only for tasks whose calibration knobs do not change (declared in PREREG).
+# FULL RUN queue (Program v2) — ACTIVATED 2026-09-25 after prereg commit de3f42b. Originally: activate ONLY after prereg/PREREG_A.md + PREREG_B.md are in a pushed commit
+# (check: git --no-optional-locks log -1 --format=%H -- prereg/PREREG_B.md). To activate: copy this file over
+# queue.yaml and create results/_runner/RESTART. Phase B (the answer to Q0) is priority 1; Phase A priority 2.
+# Pilot cells of ollama_llama31_8b / haiku45 are reused automatically where the code is unchanged (PREREG_B §7).
 jobs:
-  - {experiment: t5_refund,      phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: t2_trust,       phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: t1_negotiation, phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: t3_budget,      phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: t4_ensembles,   phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: t4b_answer_only, phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: a1_ipd,         phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: a2_pricing,     phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: a3_panel,       phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: a4_reputation,  phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: a5_naming,      phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
-  - {experiment: a6_commons,     phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: t5_refund,       phase: B, priority: 1, models: all, config: {}}
+  - {experiment: t2_trust,        phase: B, priority: 1, models: all, config: {}}
+  - {experiment: t1_negotiation,  phase: B, priority: 1, models: all, config: {}}
+  - {experiment: t3_budget,       phase: B, priority: 1, models: all, config: {}}
+  - {experiment: t4_ensembles,    phase: B, priority: 1, models: all, config: {}}
+  - {experiment: t4b_answer_only, phase: B, priority: 1, models: all, config: {}}
+  - {experiment: a1_ipd,          phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a2_pricing,      phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a3_panel,        phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a4_reputation,   phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a5_naming,       phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a6_commons,      phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a1_ipd, phase: A-robust, priority: 3, models: [ollama_llama31_8b_t03, ollama_llama31_8b_t10, qwen38_27b_t03, qwen38_27b_t10], config: {arms: [control, selfish], seeds: 3}}
+  - {experiment: c1_counterpart, phase: robustness, priority: 3, models: [ollama_llama31_8b, qwen38_27b, gemini_flash_lite, gptoss_20b], config: {counterpart: nemotron_super}}

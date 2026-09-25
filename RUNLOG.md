@@ -8,19 +8,15 @@
 
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
-CURRENT PHASE: pilot round 3 (T5 only) → pre-registration · LAST GATE PASSED: G0; G1 PASS (Llama: T4b 0.33 < T4 0.73)
-NEXT ACTION:
-  1. [runner, automatic] T5 round-3 cells (new H2 + H1+game/expert/placebo) on ollama_llama31_8b; autosync then commits
-     prereg/PREREG_A.md, PREREG_B.md, phrase_sources.md.
-  2. [agent] Verify the prereg is in a pushed commit: `git --no-optional-locks log -1 --format="%H %ci" -- prereg/PREREG_B.md`
-     and autosync.log shows "pushed". Run `python -m analysis.pilot_check` (T5 G3 on the H1 base arm; round 3 is the
-     last — accept and log if out of band).
-  3. [agent] Activate the full run: copy queue_full.yaml over queue.yaml; create results/_runner/RESTART. Add the
-     temperature-sensitivity roster keys (PREREG_A §4) and write the LLM-counterpart module (plan §8.7) while it runs.
-  4. [agent] Haiku (cloud) continues its pilot then the full run: `python3 -m tools.run_queue --include-claude` in
-     /home/claude/wk with the full queue; copy haiku45 cells into the repo.
-  5. [agent] Write analysis/everyday_effects.py, fingerprints.py, link2.py exactly to PREREG_B §6 / PREREG_A §2.
-BLOCKERS: none.  NEEDS ADI: optional — read prereg/PREREG_B.md (recommended for ownership; non-blocking).
+CURRENT PHASE: FULL RUN (Phase B priority 1, Phase A priority 2, robustness priority 3)
+LAST GATE PASSED: G0, G1, G3 (pilot_check 2026-09-25 11:37 UTC, all five tasks in band); PREREG committed de3f42b (pushed 03:55 local)
+NEXT ACTION (each session):
+  1. Read results/_runner/status.json + provider_errors.log; investigate *.failed.json; leave quota-parked models alone.
+  2. Keep the Haiku cloud runner going (/home/claude/wk, `python3 -m tools.run_queue --include-claude`; only runs while a
+     Claude session is active); periodically tar results/v2/*/haiku45/*.json into the repo (see Session 9).
+  3. Write analysis/everyday_effects.py, fingerprints.py, link2.py, scorecard.py exactly to PREREG_B §6 / PREREG_A §2,
+     test them on the pilot data, then run the independent verification pass when the run completes.
+BLOCKERS: none.  NEEDS ADI: none (optional: read prereg/PREREG_B.md).
 SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. control) – · L1 – · L2 –
 ```
 
@@ -85,3 +81,8 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Findings (pilot round 2, calibration only):** Llama T4 single-sample 0.696 (in band), T4b answer-only 0.333 vs first reasoning sample 0.729 → **G1 PASS** (positive control detected). T5 round 2: control wrongful refunds still 0% on Llama and Haiku; rubric-harmful arms H2 0.9 / H3 1.0 / H1 0.1 (Llama), H1 0.6 / H2 0.5 / H3 0.8 (Haiku, old H2); benign, game, expert, placebo 0%; Llama answer_only 1.0 wrongful refunds (deliberation protects policy-following — secondary).
 - **Done:** T5 round 3 (last): H1+game / H1+expert / H1+placebo arms; H2 replaced with a verbatim published instruction; pilot_check T5 band on the H1 base arm; phrase sourcing (prereg/phrase_sources.md, grades A/B); PREREG_A.md and PREREG_B.md written with roster table and code hashes; queue_full.yaml prepared (inactive); plan amendments v2.2 appended to docs/v2/PROGRAM_PLAN.md; DECISIONS #16–#18. Haiku pilot restarted (single process).
 - **Gate:** G1 PASS; G3: T1 (Haiku 0.154), T2, T3, T4 in band; T5 pending round 3. **Next action:** top block.
+
+### 2026-09-25 · Session 9 · Claude (Cowork, scheduled check-in) · Gates passed → full run started
+- **Goal:** confirm the pre-registration commit, pass G3, start the full run (plan §6).
+- **Done:** prereg/PREREG_A.md + PREREG_B.md + phrase_sources.md are in commit de3f42b (autosync, pushed 2026-09-25 03:55 -0700). T5 round-3 pilot cells finished minutes before that commit (declared pilot data). Haiku pilot cells (489) copied into the repo via results/_runner/haiku45_pilot.tgz. `python -m analysis.pilot_check --models ollama_llama31_8b,haiku45`: **G1 PASS; G3 PASS for T1 (Haiku 0.154), T2, T3, T4 (pooled 0.831), T5 (H1 base arm 0.1 / 0.6)**. Full queue activated (queue.yaml from queue_full.yaml + temperature-sensitivity job + LLM-counterpart robustness job); roster gained 4 robustness-only temperature keys (excluded from `models: all`); run_queue patched accordingly; c1_counterpart module written + tested (counterpart = nemotron_super; focal ollama_llama31_8b, qwen38_27b, gemini_flash_lite, gptoss_20b — Haiku cannot be focal because the cloud cannot reach NVIDIA). Dry run: 5,624 pending PC cells across 14 roster keys; Haiku (cloud) 71 pending cells. Tests 26/26.
+- **Gate:** G1, G3 PASS. **Next action:** top block.
