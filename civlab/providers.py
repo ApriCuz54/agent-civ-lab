@@ -40,6 +40,17 @@ class Reply:
     cached: bool = False
     wrong_model: bool = False
 
+ERROR_LOG = os.path.join("results", "_runner", "provider_errors.log")
+def _log_error(provider, model_id, msg):
+    """Append one line per failed attempt (no secrets: messages are scrubbed of bearer tokens)."""
+    try:
+        os.makedirs(os.path.dirname(ERROR_LOG), exist_ok=True)
+        msg = re.sub(r"(Bearer\s+)\S+", r"\1***", str(msg)).replace("\n", " ")[:400]
+        with open(ERROR_LOG, "a", encoding="utf-8") as f:
+            f.write(f"{dt.datetime.now().isoformat(timespec='seconds')} {provider} {model_id} {msg}\n")
+    except Exception:
+        pass
+
 class QuotaExhausted(RuntimeError):
     """Raised when a model's requests-per-day budget is used up; the queue runner parks it until tomorrow."""
 
@@ -150,7 +161,7 @@ class ProviderLLM:
         if self.api_key: headers["Authorization"] = f"Bearer {self.api_key}"
         if self.e["provider"] == "openrouter":
             headers["HTTP-Referer"] = "https://github.com/ApriCuz54/agent-civ-lab"; headers["X-Title"] = "agent-civ-lab"
-        async with httpx.AsyncClient(timeout=120) as c:
+        async with httpx.AsyncClient(timeout=httpx.Timeout(60, connect=15)) as c:
             r = await c.post(f"{self.base}/chat/completions", headers=headers, json=payload)
         if r.status_code == 429 or r.status_code >= 500:
             ra = r.headers.get("retry-after")
@@ -182,9 +193,9 @@ class ProviderLLM:
                 try:
                     d = await self._post(payload)
                 except Exception as e:
-                    last = e
+                    last = e; _log_error(self.e["provider"], self.model_id, f"attempt {attempt + 1}: {type(e).__name__}: {e}")
                     if getattr(e, "fatal", False): raise
-                    await asyncio.sleep((getattr(e, "retry_after", None) or 2 ** min(attempt, 5)) + random.random())
+                    await asyncio.sleep(min(90, getattr(e, "retry_after", None) or 2 ** min(attempt, 5)) + random.random())
                     continue
                 served = d.get("model", "")
                 msg = (d.get("choices") or [{}])[0].get("message", {}) or {}
@@ -194,6 +205,7 @@ class ProviderLLM:
                 self.limiter.record_tokens(inp + out or est)
                 if strict and not served_matches(self.model_id, served, self.aliases):
                     self.mismatches += 1; last = RuntimeError(f"served {served!r} != {self.model_id!r}")
+                    _log_error(self.e["provider"], self.model_id, f"served-model mismatch: got {served!r}")
                     await asyncio.sleep(1 + random.random()); continue
                 rec = dict(k=k, ts=time.time(), model=self.key_name, model_id=served or self.model_id,
                            provider=self.e["provider"], temperature=self.temperature, cost=0.0,

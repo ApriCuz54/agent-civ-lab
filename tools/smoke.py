@@ -15,6 +15,8 @@ from civlab import parse
 from civlab.games import pd_panel, pricing
 from tools._common import ensure, write_csv, print_table
 
+MODEL_BUDGET_S = 480   # per-model wall-clock budget
+
 def probes(seed=0):
     rng = random.Random(seed); out = []
     for i in range(10):
@@ -60,10 +62,18 @@ async def smoke_one(router, key):
 
 async def main_async(keys):
     router = Router("roster_draft.yaml", log_dir=os.path.join("results", "_phase0", "smoke"))
+    for k in keys: router.roster[k]["max_attempts"] = 3      # smoke should diagnose, not wait out long outages
     by_provider = {}
     for k in keys: by_provider.setdefault(router.entry(k)["provider"], []).append(k)
+    async def guarded(k):
+        try:
+            return await asyncio.wait_for(smoke_one(router, k), timeout=MODEL_BUDGET_S)
+        except asyncio.TimeoutError:
+            e = router.entry(k)
+            return {"key": k, "provider": e["provider"], "model_id": e["model_id"], "valid_rate": 0, "errors": 1,
+                    "first_error": f"timeout: no result within {MODEL_BUDGET_S}s (see results/_runner/provider_errors.log)", "g0_pass": False}
     async def run_provider(ks):
-        return [await smoke_one(router, k) for k in ks]   # sequential within a provider, parallel across
+        return [await guarded(k) for k in ks]   # sequential within a provider, parallel across
     groups = await asyncio.gather(*[run_provider(ks) for ks in by_provider.values()])
     return [r for g in groups for r in g]
 

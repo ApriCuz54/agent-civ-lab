@@ -25,6 +25,7 @@ from civlab.providers import QuotaExhausted
 RUN_DIR = os.path.join("results", "_runner")
 OUT_ROOT = os.path.join("results", "v2")
 MAX_ATTEMPTS = 3
+CELL_TIMEOUT_S = 45 * 60   # a single episode that takes longer than this is treated as a failed attempt
 CELL_CONC = {"ollama": 1, "gemini": 1, "openrouter": 1}   # cells in flight per provider (default 2)
 
 def now(): return dt.datetime.now().isoformat(timespec="seconds")
@@ -78,7 +79,8 @@ async def worker(provider, tasks, routers, st, today):
         os.makedirs(os.path.dirname(t["out"]), exist_ok=True)
         st.current[provider] = f"{t['key']}/{t['cell']['cell_id']}"; st.save()
         try:
-            row = await t["mod"].run_cell(routers[t["mod"].NAME], t["model"], t["cell"], t["cfg"])
+            row = await asyncio.wait_for(t["mod"].run_cell(routers[t["mod"].NAME], t["model"], t["cell"], t["cfg"]),
+                                         timeout=CELL_TIMEOUT_S)
             row = {"experiment": t["mod"].NAME, "model": t["model"], "cell_id": t["cell"]["cell_id"],
                    "finished": now(), **{k: v for k, v in t["cell"].items() if k != "cell_id"}, **row}
             tmp = t["out"] + ".tmp"; json.dump(row, open(tmp, "w", encoding="utf-8"), indent=1, ensure_ascii=False)

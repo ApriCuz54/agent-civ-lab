@@ -1,6 +1,19 @@
 # Program v2 work queue. The runner (tools/run_queue.py) executes jobs in priority order;
-# Phase B (the answer to Q0) is priority 1, Phase A priority 2 (plan v2.1 §2).
-# Agents add a job here only after its experiment module exists in experiments/v2/, passes the
-# offline tests, and (for full runs) after the pre-registration commit (plan §6).
-# models: all  -> every model in the frozen roster.yaml (claude_sdk only with --include-claude)
-jobs: []
+# Phase B (the answer to Q0) before Phase A (plan v2.1 §2). Agents add a job only after its module exists
+# in experiments/v2/ and passes the offline tests; FULL runs only after the pre-registration commit (plan §6).
+# models: all -> every model in the frozen roster.yaml (claude_sdk models only run with --include-claude)
+#
+# CURRENT STAGE: shared pilot (gates G1 + G3) on the local pilot model. Pilot data is reused in the full run
+# only for tasks whose calibration knobs do not change (declared in PREREG).
+jobs:
+  - {experiment: t5_refund,      phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: t2_trust,       phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: t1_negotiation, phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: t3_budget,      phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: t4_ensembles,   phase: pilot, priority: 1, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: a1_ipd,         phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: a2_pricing,     phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: a3_panel,       phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: a4_reputation,  phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: a5_naming,      phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
+  - {experiment: a6_commons,     phase: pilot, priority: 2, models: [ollama_llama31_8b, haiku45], config: {}}
