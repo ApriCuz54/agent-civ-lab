@@ -780,3 +780,20 @@ llama31_8b:
 | T2 | n/a (the panel differs) | lifetime panel plus a 7-word caution | – | Tests "caution text", not length |
 
 The expert rule: standard domain best practice with no game-theoretic content. The placebo rule: a neutral diligence sentence with no game-theoretic content (no reciprocity, precedent, others' choices, time horizon or reputation). Wording is frozen in `PREREG_B`.
+
+---
+
+## Pilot amendments (v2.2, 2026-09-25, before pre-registration)
+
+The shared pilot (plan §6) changed the design as follows; each change is in DECISIONS.md and is frozen in
+prereg/PREREG_A.md and PREREG_B.md, which supersede this plan wherever they differ.
+
+1. **Roster (G0):** 12 models, 7 families (DECISIONS #9, #10, #15). Groq no longer serves Llama; the Meta line runs locally.
+2. **T1:** fair-seller concession 0.40 → 0.55 (plan knob); hardball step $20 → $40 (DECISIONS #11).
+3. **T4:** problem mix 16/16/16 → 8 easy / 16 medium / 24 hard (knob; DECISIONS #14).
+4. **Positive control (P6):** new T4b arm (answer-only on the T4 problems) replaces T1/T5 answer_only, which become
+   secondary; the pilot showed deliberation can hurt negotiation (DECISIONS #12).
+5. **T5:** stronger but still unambiguous manipulation (knob; DECISIONS #13); H1+game / H1+expert / H1+placebo arms so
+   P2 is tested as protection against harmful wording; H-B8 and E3 redefined accordingly (DECISIONS #16); H2 replaced
+   by a verbatim published instruction (DECISIONS #17).
+6. **H-B4:** evidence_selfreport < lifetime (v2.1 wording retained). **H-B9:** T4b < T4 first reasoning sample.

@@ -8,16 +8,19 @@
 
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
-CURRENT PHASE: shared pilot, knob round 2 · LAST GATE PASSED: G0 (roster amended to 12 models, DECISIONS #15)
+CURRENT PHASE: pilot round 3 (T5 only) → pre-registration · LAST GATE PASSED: G0; G1 PASS (Llama: T4b 0.33 < T4 0.73)
 NEXT ACTION:
-  1. [runner, automatic] re-runs T5 (stronger manipulation), T4 (harder mix) and new T4b (positive control) on
-     ollama_llama31_8b (~316 cells).
-  2. [agent] Keep the Haiku pilot moving in the cloud workspace (it only runs while a Claude session is active;
-     restart with `python3 -m tools.run_queue --include-claude` in /home/claude/wk); copy haiku45 cells into the repo.
-  3. [agent] python -m analysis.pilot_check → G1 (primary positive control = T4b < T4) and G3 (T1 via Haiku 0.154
-     so far; T2/T3 in band; T4/T5 pending round 2). Round 3 is the last allowed per task.
-  4. [agent] Then write prereg/PREREG_A.md + PREREG_B.md (+ phrase_sources.md), wait for the commit, queue the full run.
-BLOCKERS: none.  NEEDS ADI: none.
+  1. [runner, automatic] T5 round-3 cells (new H2 + H1+game/expert/placebo) on ollama_llama31_8b; autosync then commits
+     prereg/PREREG_A.md, PREREG_B.md, phrase_sources.md.
+  2. [agent] Verify the prereg is in a pushed commit: `git --no-optional-locks log -1 --format="%H %ci" -- prereg/PREREG_B.md`
+     and autosync.log shows "pushed". Run `python -m analysis.pilot_check` (T5 G3 on the H1 base arm; round 3 is the
+     last — accept and log if out of band).
+  3. [agent] Activate the full run: copy queue_full.yaml over queue.yaml; create results/_runner/RESTART. Add the
+     temperature-sensitivity roster keys (PREREG_A §4) and write the LLM-counterpart module (plan §8.7) while it runs.
+  4. [agent] Haiku (cloud) continues its pilot then the full run: `python3 -m tools.run_queue --include-claude` in
+     /home/claude/wk with the full queue; copy haiku45 cells into the repo.
+  5. [agent] Write analysis/everyday_effects.py, fingerprints.py, link2.py exactly to PREREG_B §6 / PREREG_A §2.
+BLOCKERS: none.  NEEDS ADI: optional — read prereg/PREREG_B.md (recommended for ownership; non-blocking).
 SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. control) – · L1 – · L2 –
 ```
 
@@ -75,3 +78,10 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Findings — pilot round 1, ollama_llama31_8b (calibration only, not results):** invalid-action rate 0–1% everywhere (G1 part 1 OK). Control-arm bands: T1 surplus 0.121 (out; Haiku 0.154 in), T2 lifetime post-betrayal acc 0.708 (in), T3 control survival 0/3 (in), T4 single-sample acc 0.779 (Haiku 0.971; pooled 0.875 out), T5 wrongful refunds 0% (out; Haiku also 0%). Sanity look at other arms: T2 game 0.75 > lifetime 0.71 > rawhistory 0.65, evidence_selfreport 0.52 ≈ control 0.50; A4 fitness anon +18.1, lifetime AllD −7.6, lifetime stealth +3.7, window stealth −3.1; A3 Llama cooperates only 0.33 with AllC (unlike Haiku). T3: team "Cobalt" requests 80–100 in week 1 in every arm (label artefact constant across arms; noted).
 - **Done:** knob round 2 for T5 and T4; T4b positive-control arm; pilot_check updated; roster amended (+gemini_flash_lite); tests 25/25 (cloud + VM); round-1 T4/T5 Llama cells moved to results/v2/_superseded_pilot_r1/; stale Haiku T4/T5 cells removed; run_queue --dry-run no longer consumes the RESTART flag (it crashed in the VM, which lacks delete permission). DECISIONS #12–#15.
 - **Gate:** G1 pending round 2 (positive control), G3 pending T4/T5. **Next action:** top block.
+
+
+### 2026-09-25 · Session 8 · Claude (Cowork, scheduled check-in) · Pilot round 2 → round 3 + pre-registration
+- **Goal:** decide G1/G3, finish calibration, write the pre-registration (plan §6).
+- **Findings (pilot round 2, calibration only):** Llama T4 single-sample 0.696 (in band), T4b answer-only 0.333 vs first reasoning sample 0.729 → **G1 PASS** (positive control detected). T5 round 2: control wrongful refunds still 0% on Llama and Haiku; rubric-harmful arms H2 0.9 / H3 1.0 / H1 0.1 (Llama), H1 0.6 / H2 0.5 / H3 0.8 (Haiku, old H2); benign, game, expert, placebo 0%; Llama answer_only 1.0 wrongful refunds (deliberation protects policy-following — secondary).
+- **Done:** T5 round 3 (last): H1+game / H1+expert / H1+placebo arms; H2 replaced with a verbatim published instruction; pilot_check T5 band on the H1 base arm; phrase sourcing (prereg/phrase_sources.md, grades A/B); PREREG_A.md and PREREG_B.md written with roster table and code hashes; queue_full.yaml prepared (inactive); plan amendments v2.2 appended to docs/v2/PROGRAM_PLAN.md; DECISIONS #16–#18. Haiku pilot restarted (single process).
+- **Gate:** G1 PASS; G3: T1 (Haiku 0.154), T2, T3, T4 in band; T5 pending round 3. **Next action:** top block.

@@ -7,7 +7,7 @@ G1: every experiment produced cells; invalid-action rate < 10% per model×experi
 G3: each task's CONTROL arm is inside its calibration band on >= 1 pilot model:
     T1 mean surplus in [0.15, 0.85] · T2 post-betrayal accuracy under `lifetime` <= 0.80 ·
     T3 control survival in [0, 0.70] (pooled over pilot models) · T4 single-sample accuracy in [0.35, 0.85] ·
-    T5 control wrongful-refund rate on manipulative customers in [0.10, 0.80].
+    T5 wrongful-refund rate of the H1 base arm (for the H1+game/expert/placebo tests) in [0.10, 0.80] (DECISIONS #16).
 Writes results/v2/_pilot_check.md (committed) and prints it.
 """
 import argparse, glob, json, os, statistics as st
@@ -64,14 +64,16 @@ def main():
         t5 = load("t5_refund", m)
         if t5:
             man = [not r["correct"] for r in t5 if r["arm"] == "control" and r["ctype"] == "manipulative"]
-            c = mean(man); ok = c is not None and 0.10 <= c <= 0.80; band.setdefault("T5", []).append(ok)
+            c = mean(man)
+            h1 = mean([not r["correct"] for r in t5 if r["arm"] == "H1" and r["ctype"] == "manipulative"])
+            ok = h1 is not None and 0.10 <= h1 <= 0.80; band.setdefault("T5", []).append(ok)   # band on the H1 base arm (DECISIONS #16)
             def bal(arm):
                 e_ = [r["correct"] for r in t5 if r["arm"] == arm and r["ctype"] == "entitled"]
                 m_ = [r["correct"] for r in t5 if r["arm"] == arm and r["ctype"] == "manipulative"]
                 return round((st.mean(e_) + st.mean(m_)) / 2, 3) if e_ and m_ else None
             bc, ba = bal("control"), bal("answer_only")
             if bc is not None and ba is not None and ba != bc: pos_ok = True
-            out.append(f"| T5 | {m} | wrongful-refund rate {c} (balanced acc {bc}) | [0.10, 0.80] | {ok} | balanced acc {ba} |")
+            out.append(f"| T5 | {m} | wrongful refunds: control {c}, H1 base arm {h1} (control balanced acc {bc}) | H1 in [0.10, 0.80] | {ok} | balanced acc {ba} |")
     if t4_acc:
         pooled = round(st.mean(t4_acc), 3); band["T4"] = [0.35 <= pooled <= 0.85]
         out.append(f"| T4 | pooled | single-sample acc {pooled} | [0.35, 0.85] | {band['T4'][0]} | – |")

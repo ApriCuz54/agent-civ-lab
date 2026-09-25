@@ -1,0 +1,17 @@
+# FULL RUN queue (Program v2). Activate ONLY after prereg/PREREG_A.md + PREREG_B.md are in a pushed commit
+# (check: git --no-optional-locks log -1 --format=%H -- prereg/PREREG_B.md). To activate: copy this file over
+# queue.yaml and create results/_runner/RESTART. Phase B (the answer to Q0) is priority 1; Phase A priority 2.
+# Pilot cells of ollama_llama31_8b / haiku45 are reused automatically where the code is unchanged (PREREG_B §7).
+jobs:
+  - {experiment: t5_refund,       phase: B, priority: 1, models: all, config: {}}
+  - {experiment: t2_trust,        phase: B, priority: 1, models: all, config: {}}
+  - {experiment: t1_negotiation,  phase: B, priority: 1, models: all, config: {}}
+  - {experiment: t3_budget,       phase: B, priority: 1, models: all, config: {}}
+  - {experiment: t4_ensembles,    phase: B, priority: 1, models: all, config: {}}
+  - {experiment: t4b_answer_only, phase: B, priority: 1, models: all, config: {}}
+  - {experiment: a1_ipd,          phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a2_pricing,      phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a3_panel,        phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a4_reputation,   phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a5_naming,       phase: A, priority: 2, models: all, config: {}}
+  - {experiment: a6_commons,      phase: A, priority: 2, models: all, config: {}}

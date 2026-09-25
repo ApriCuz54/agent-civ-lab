@@ -112,7 +112,7 @@ def test_arm_counts_match_plan():
     assert len(t2_trust.cells({}, "m")) == 6 * 4                     # 24 streams x 24 items = 576 calls
     assert len(t3_budget.cells({}, "m")) == 5 * 3                    # 15 runs x <= 32 calls = 480
     assert len(t4_ensembles.cells({}, "m")) == 48                    # x 5 samples = 240 calls
-    assert len(t5_refund.cells({}, "m")) == 11 * 2 * 10              # 220 episodes, <= 660 calls
+    assert len(t5_refund.cells({}, "m")) == 14 * 2 * 10              # 280 episodes, <= 840 calls (H1 x game/expert/placebo added)
 
 # ---------------- Phase A modules: end-to-end with a trivial always-cooperate / fair-share policy ----------------
 from experiments.v2 import a1_ipd, a2_pricing, a3_panel, a4_reputation, a5_naming, a6_commons
