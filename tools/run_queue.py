@@ -104,8 +104,11 @@ async def worker(provider, tasks, routers, st, today):
 async def main_async(a):
     os.makedirs(RUN_DIR, exist_ok=True)
     if flag("PAUSE"): log("PAUSE flag present; not running"); return 3
-    for f in ("RESTART",):
-        if flag(f): os.remove(os.path.join(RUN_DIR, f))   # consumed: we are the fresh process
+    if not a.dry_run:
+        for f in ("RESTART",):
+            if flag(f):
+                try: os.remove(os.path.join(RUN_DIR, f))   # consumed: we are the fresh process
+                except OSError as e: log(f"WARN could not remove {f}: {e}")
     roster_path = "roster.yaml"
     if not os.path.exists(roster_path) or not os.path.exists("queue.yaml"):
         log("roster.yaml or queue.yaml missing (roster is frozen at gate G0)"); return 1

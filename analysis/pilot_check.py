@@ -3,7 +3,7 @@
     python -m analysis.pilot_check [--models ollama_llama31_8b,haiku45]
 
 G1: every experiment produced cells; invalid-action rate < 10% per model×experiment; the P6 positive
-    control (answer_only vs control in T1 and T5) points in the expected direction on >= 1 task.
+    control points in the expected direction (primary: T4b answer-only < T4 reasoning; T1/T5 answer_only reported).
 G3: each task's CONTROL arm is inside its calibration band on >= 1 pilot model:
     T1 mean surplus in [0.15, 0.85] · T2 post-betrayal accuracy under `lifetime` <= 0.80 ·
     T3 control survival in [0, 0.70] (pooled over pilot models) · T4 single-sample accuracy in [0.35, 0.85] ·
@@ -41,7 +41,7 @@ def main():
     band = {}
     out += ["", "## Control-arm calibration (G3) and positive control (P6)", "",
             "| task | model | control metric | band | in band | answer_only vs control |", "|---|---|---|---|---|---|"]
-    pos_ok = False; t3_surv = []
+    pos_ok = False; t3_surv = []; t4_acc = []
     for m in models:
         t1 = load("t1_negotiation", m)
         if t1:
@@ -60,7 +60,7 @@ def main():
         t4 = load("t4_ensembles", m)
         if t4:
             c = mean(r["acc"] for r in t4); ok = c is not None and 0.35 <= c <= 0.85
-            band.setdefault("T4", []).append(ok); out.append(f"| T4 | {m} | single-sample acc {c} | [0.35, 0.85] | {ok} | – |")
+            band.setdefault("T4", []).append(ok); t4_acc.append(c); out.append(f"| T4 | {m} | single-sample acc {c} | [0.35, 0.85] | {ok} | – |")
         t5 = load("t5_refund", m)
         if t5:
             man = [not r["correct"] for r in t5 if r["arm"] == "control" and r["ctype"] == "manipulative"]
@@ -72,6 +72,9 @@ def main():
             bc, ba = bal("control"), bal("answer_only")
             if bc is not None and ba is not None and ba != bc: pos_ok = True
             out.append(f"| T5 | {m} | wrongful-refund rate {c} (balanced acc {bc}) | [0.10, 0.80] | {ok} | balanced acc {ba} |")
+    if t4_acc:
+        pooled = round(st.mean(t4_acc), 3); band["T4"] = [0.35 <= pooled <= 0.85]
+        out.append(f"| T4 | pooled | single-sample acc {pooled} | [0.35, 0.85] | {band['T4'][0]} | – |")
     if t3_surv:
         ok = mean(t3_surv) <= 0.70; band["T3"] = [ok]
         out.append(f"| T3 | pooled | control survival {mean(t3_surv)} | [0, 0.70] | {ok} | – |")

@@ -8,17 +8,16 @@
 
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
-CURRENT PHASE: shared pilot · LAST GATE PASSED: G0 (2026-09-25, 11 models, free-tier audit PASS)
+CURRENT PHASE: shared pilot, knob round 2 · LAST GATE PASSED: G0 (roster amended to 12 models, DECISIONS #15)
 NEXT ACTION:
-  1. [runner, automatic] REQUEST_PHASE0 re-tests gemma / mistral_small / gemini_flash_lite, then runs the pilot jobs in
-     queue.yaml on ollama_llama31_8b (~4,100 local calls, est. 2–3 h).
-  2. [agent] Haiku pilot runs in Claude's cloud workspace (/home/claude/wk; restarted 07:21 UTC after the T1 fix);
-     when done copy results/v2/*/haiku45/*.json into the repo.
-  3. [agent] When both pilots finish: python -m analysis.pilot_check  → decide G1/G3; turn knobs (≤ 3 rounds per task);
-     amend the roster if gemma / mistral_small / gemini_flash_lite passed smoke; then write PREREG_A/B and
-     prereg/phrase_sources.md; wait for the prereg commit; queue the full run (Handbook §6).
-BLOCKERS: none.
-NEEDS ADI: none.
+  1. [runner, automatic] re-runs T5 (stronger manipulation), T4 (harder mix) and new T4b (positive control) on
+     ollama_llama31_8b (~316 cells).
+  2. [agent] Keep the Haiku pilot moving in the cloud workspace (it only runs while a Claude session is active;
+     restart with `python3 -m tools.run_queue --include-claude` in /home/claude/wk); copy haiku45 cells into the repo.
+  3. [agent] python -m analysis.pilot_check → G1 (primary positive control = T4b < T4) and G3 (T1 via Haiku 0.154
+     so far; T2/T3 in band; T4/T5 pending round 2). Round 3 is the last allowed per task.
+  4. [agent] Then write prereg/PREREG_A.md + PREREG_B.md (+ phrase_sources.md), wait for the commit, queue the full run.
+BLOCKERS: none.  NEEDS ADI: none.
 SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. control) – · L1 – · L2 –
 ```
 
@@ -69,3 +68,10 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Problems:** (1) Haiku pilot process in the cloud died while the session idled (cloud workspace reclaims idle processes); restarted — it resumes from cache. (2) Haiku T1 pilot showed a design problem: control surplus 0.09 (below band) and the $20 hardball step made ≤ $880 unreachable in 6 turns → fair concession 0.40 → 0.55 (plan knob) and hardball step $40; old Haiku T1 cells deleted; tests updated (23 pass). DECISIONS #9–#11. (3) Test suite polluted a local quota counter (default RPD for the mock "groq" entry) → tests now set rpd None.
 - **Early observations (not findings):** Haiku T5 control and benign arms 100% correct (likely ceiling); Haiku T1 answer_only beat control on surplus under the old bots (positive control may not hold for negotiation — re-check after the fix).
 - **Gate:** G0 PASS. **Next action:** top block.
+
+### 2026-09-25 · Session 7 · Claude (Cowork, scheduled check-in) · Pilot round 1 results + knob round 2
+- **Goal:** G1/G3 on the pilot (plan §6).
+- **Runner status seen:** Llama 3.1 8B pilot finished (all 452 cells, 0 failed; runner idle since 02:07 local). Haiku pilot in the cloud had died when the session idled; restarted.
+- **Findings — pilot round 1, ollama_llama31_8b (calibration only, not results):** invalid-action rate 0–1% everywhere (G1 part 1 OK). Control-arm bands: T1 surplus 0.121 (out; Haiku 0.154 in), T2 lifetime post-betrayal acc 0.708 (in), T3 control survival 0/3 (in), T4 single-sample acc 0.779 (Haiku 0.971; pooled 0.875 out), T5 wrongful refunds 0% (out; Haiku also 0%). Sanity look at other arms: T2 game 0.75 > lifetime 0.71 > rawhistory 0.65, evidence_selfreport 0.52 ≈ control 0.50; A4 fitness anon +18.1, lifetime AllD −7.6, lifetime stealth +3.7, window stealth −3.1; A3 Llama cooperates only 0.33 with AllC (unlike Haiku). T3: team "Cobalt" requests 80–100 in week 1 in every arm (label artefact constant across arms; noted).
+- **Done:** knob round 2 for T5 and T4; T4b positive-control arm; pilot_check updated; roster amended (+gemini_flash_lite); tests 25/25 (cloud + VM); round-1 T4/T5 Llama cells moved to results/v2/_superseded_pilot_r1/; stale Haiku T4/T5 cells removed; run_queue --dry-run no longer consumes the RESTART flag (it crashed in the VM, which lacks delete permission). DECISIONS #12–#15.
+- **Gate:** G1 pending round 2 (positive control), G3 pending T4/T5. **Next action:** top block.

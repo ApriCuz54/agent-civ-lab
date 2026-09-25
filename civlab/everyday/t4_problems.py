@@ -1,5 +1,5 @@
 """T4 · Answer ensembles (plan v2.1 §8.5). 48 generated multi-step problems with computed integer answers:
-16 easy, 16 medium, 16 hard. Deterministic (seed "t4-v1"); none reuse the v1 demo items.
+8 easy, 16 medium, 24 hard (knob round 2; originally 16/16/16). Deterministic (seed "t4-v1"); none reuse the v1 demo items.
 Each template returns (question, answer) and only emits instances with an integer answer."""
 import math, random
 
@@ -76,11 +76,14 @@ TEMPLATES = {"easy": [e_shop, e_discount, e_rate, e_share, e_age],
              "medium": [m_work, m_mix, m_tax, m_speed, m_percent_chain, m_legs],
              "hard": [h_crt, h_comb, h_age2, h_stairs, h_digits]}
 
-def problems(seed="t4-v1", per_level=16):
+MIX = {"easy": 8, "medium": 16, "hard": 24}   # G3 knob round 2 (2026-09-25): was 16/16/16; pooled pilot accuracy 0.875 > 0.85
+
+def problems(seed="t4-v1", mix=None):
+    mix = mix or MIX
     r = random.Random(seed); out = []; seen = set()
     for level, tmpls in TEMPLATES.items():
         k = 0; i = 0
-        while k < per_level:
+        while k < mix[level]:
             got = tmpls[i % len(tmpls)](r); i += 1
             if not got or got[0] in seen: continue
             seen.add(got[0]); k += 1
@@ -90,3 +93,7 @@ def problems(seed="t4-v1", per_level=16):
 SYSTEM = "You solve short quantitative word problems. Show brief working, then give the answer."
 def build_prompt(q):
     return q + "\n\nShow brief working (a few lines at most). End with a line in exactly this format:\nANSWER: <a single integer>"
+
+ANSWER_ONLY_SYSTEM = "You answer short quantitative word problems."
+def build_answer_only_prompt(q):
+    return q + "\n\nReply with ONLY the final answer, immediately, as a single line: ANSWER: <a single integer>"

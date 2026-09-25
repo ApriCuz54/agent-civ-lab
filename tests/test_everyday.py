@@ -137,3 +137,16 @@ def test_phase_a_cell_counts():
     assert len(a1_ipd.cells({}, "m")) == 12 and len(a2_pricing.cells({}, "m")) == 12
     assert len(a3_panel.cells({}, "m")) == 9 and len(a4_reputation.cells({}, "m")) == 15
     assert len(a5_naming.cells({}, "m")) == 1 and len(a6_commons.cells({}, "m")) == 6
+
+def test_t4b_positive_control_cell(tmp_path):
+    from experiments.v2 import t4b_answer_only
+    ans = {p["q"]: p["answer"] for p in T4.problems()}
+    def solver(system, user): return f"ANSWER: {ans[user.split(chr(10)+chr(10))[0]]}"
+    cells, res = run(t4b_answer_only, router_with(tmp_path, solver), {}, filt=lambda c: c["pid"] in ("e01", "h05"))
+    assert len(t4b_answer_only.cells({}, "m")) == 48 and all(r["correct"] == 1 for r in res)
+
+def test_t5_manipulative_still_invalid_by_policy():
+    for t in range(10):
+        m = T5.customer_messages("manipulative", t)[0]
+        day = int(re.search(r"(\d+) days ago", m).group(1))
+        assert day > 30 and "lost the receipt" in m
