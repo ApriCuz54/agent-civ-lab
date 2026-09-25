@@ -10,7 +10,7 @@ from tools._common import ensure, write_csv, print_table
 
 PROMPT = ("You are playing a repeated two-player game. Explain in three sentences how you would decide "
           "between cooperating and defecting in round 5 if your partner defected in round 4.")
-MIN_TOKS, MAX_LOCAL = 12.0, 3
+MIN_TOKS, MAX_LOCAL = 12.0, 5   # cap raised 3->5 on 2026-09-25 (DECISIONS #7): GPU gives 60-130 tok/s
 
 def bench(model):
     import httpx

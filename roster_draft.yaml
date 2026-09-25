@@ -10,20 +10,70 @@ models:
     provider: claude_sdk
     model_id: haiku
     temperature: 0.7
-  gemini_flash:
+  llama31_70b_nemotron:
+    family: meta
+    tier: L
+    released: 2024
+    mvr: false
+    note: Llama-3.1-70B base, NVIDIA RLHF tune
+    provider: nvidia
+    model_id: nvidia/llama-3.1-nemotron-70b-instruct
+    temperature: 0.7
+  qwen38_27b:
+    family: alibaba
+    tier: M
+    released: 2026
+    mvr: true
+    reasoning_model: true
+    provider: groq
+    model_id: qwen/qwen3.8-27b
+    temperature: 0.7
+  gptoss_20b:
+    family: openai
+    tier: M
+    released: 2025
+    mvr: true
+    reasoning_model: true
+    provider: groq
+    model_id: openai/gpt-oss-20b
+    extra:
+      reasoning_effort: low
+    temperature: 0.7
+  gptoss_120b:
+    family: openai
+    tier: L
+    released: 2025
+    mvr: false
+    reasoning_model: true
+    provider: groq
+    model_id: openai/gpt-oss-120b
+    extra:
+      reasoning_effort: low
+    temperature: 0.7
+  gemini_25_flash:
     family: google
     tier: L
     released: 2025
     mvr: true
     provider: gemini
-    model_id: gemini-flash-latest
+    model_id: gemini-2.5-flash
+    extra:
+      reasoning_effort: none
+    temperature: 0.7
+  gemini_38_flash:
+    family: google
+    tier: L
+    released: 2026
+    mvr: false
+    provider: gemini
+    model_id: gemini-3.8-flash
     extra:
       reasoning_effort: none
     temperature: 0.7
   gemma:
     family: google
     tier: M
-    released: 2025
+    released: 2026
     mvr: true
     provider: gemini
     model_id: gemma-4-31b-it
@@ -31,8 +81,87 @@ models:
   mistral_small:
     family: mistral
     tier: M
-    released: 2025
+    released: 2026
     mvr: true
     provider: mistral
-    model_id: mistral-small-latest
+    model_id: mistral-small-2603
     temperature: 0.7
+  ministral_8b:
+    family: mistral
+    tier: S
+    released: 2025
+    mvr: false
+    provider: mistral
+    model_id: ministral-8b-2512
+    temperature: 0.7
+  nemotron_super:
+    family: nvidia
+    tier: L
+    released: 2026
+    mvr: false
+    reasoning_model: true
+    provider: nvidia
+    model_id: nvidia/nemotron-3-super-120b-a12b
+    extra:
+      chat_template_kwargs:
+        enable_thinking: false
+    temperature: 0.7
+  lfm_2b:
+    family: liquid
+    tier: S
+    released: 2026
+    mvr: false
+    provider: openrouter
+    model_id: liquid/lfm-2.5-2.6b:free
+    temperature: 0.7
+  ollama_llama2_7b:
+    family: meta
+    tier: S
+    released: 2023
+    local: true
+    priority: 1
+    provider: ollama
+    model_id: llama2:7b-chat
+    temperature: 0.7
+    local_ok: true
+  ollama_llama3_8b:
+    family: meta
+    tier: M
+    released: 2024
+    local: true
+    priority: 2
+    provider: ollama
+    model_id: llama3:8b
+    temperature: 0.7
+    local_ok: true
+  ollama_llama31_8b:
+    family: meta
+    tier: M
+    released: 2024
+    local: true
+    priority: 2
+    mvr: true
+    provider: ollama
+    model_id: llama3.1:8b
+    temperature: 0.7
+    local_ok: true
+  ollama_qwen25_7b:
+    family: alibaba
+    tier: M
+    released: 2024
+    local: true
+    priority: 3
+    provider: ollama
+    model_id: qwen2.5:7b
+    temperature: 0.7
+    local_ok: true
+  ollama_llama32_3b:
+    family: meta
+    tier: S
+    released: 2024
+    local: true
+    priority: 4
+    provider: ollama
+    model_id: llama3.2:3b
+    temperature: 0.7
+    local_ok: true

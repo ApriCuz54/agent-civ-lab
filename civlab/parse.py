@@ -47,3 +47,10 @@ FORMAT_REMINDERS = {
     "price": "Your reply must end with a line exactly like: PRICE: <integer 10-30>",
     "answer": "Your reply must end with a line exactly like: ANSWER: <integer>",
 }
+
+FORMAT_REMINDERS.update({
+    "offer": "Your reply must end with exactly one line: OFFER: <whole dollar amount>   or   ACCEPT   or   WALK",
+    "pick": "Your reply must end with a line exactly like: PICK: A   (or B, or C)",
+    "request": "Your reply must end with a line exactly like: REQUEST: <whole number of credits>",
+    "decision": "Your reply must end with a line exactly like: DECISION: REFUND   (or STORE_CREDIT, or DENY)",
+})
