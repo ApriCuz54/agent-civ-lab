@@ -12,8 +12,7 @@ CURRENT PHASE: FULL RUN (Phase B priority 1, Phase A priority 2, robustness prio
 LAST GATE PASSED: G0, G1, G3 (pilot_check 2026-09-25 11:37 UTC, all five tasks in band); PREREG committed de3f42b (pushed 03:55 local)
 NEXT ACTION (each session):
   1. Read results/_runner/status.json + provider_errors.log; investigate *.failed.json; leave quota-parked models alone.
-  2. Keep the Haiku cloud runner going (/home/claude/wk, `python3 -m tools.run_queue --include-claude`; only runs while a
-     Claude session is active); periodically tar results/v2/*/haiku45/*.json into the repo (see Session 9).
+  2. Haiku (cloud) is COMPLETE: 560/560 cells in the repo (Session 11). Nothing to do unless a Haiku cell is found missing.
   3. Analysis code is written and tested (Session 10, DECISIONS #19). Optionally run `python3 -m analysis.scorecard --interim`
      (writes only to results/_runner/interim/). When every cell is done: `python3 -m analysis.scorecard` (confirmatory),
      then the independent verification pass (a fresh agent re-derives 3+ headline numbers from raw cells).
@@ -100,6 +99,6 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 ### 2026-09-25 · Session 11 · Claude (Cowork, scheduled check-in) · Quota parking works; Groq OTPM pacing
 - **Goal:** confirm the Session 10 patch took effect; keep both runners moving.
 - **Observed:** the runner exited on RESTART at 07:40 (exit 3 = stopped by flag) and a new one started 07:52 (pid 27196). Daily-quota parking works: gemini_flash_lite, gptoss_120b and gptoss_20b are parked until tomorrow instead of burning attempts. PC progress 4,680 / 6,460 (09:00 local); no *.failed.json; 17 *.attempts.json (normal retry bookkeeping). Remaining errors: nemotron_super 429/503 (≈250–500 per hour even at rpm 15) and a new one — Groq qwen/qwen3.8-27b "output tokens per minute (OTPM): Limit 1000" (a reasoning model, so a few calls a minute exhaust it).
-- **Done:** roster.yaml pacing only (no model, prompt or analysis change): qwen38_27b rpm 4 / conc 1; its robustness-only copies _t03/_t10 rpm 2 / conc 1 (same Groq model, separate limiters); nemotron_super rpm 15 → 10. Tests 33/33. RESTART flag set so the next service tick picks this up. Haiku cloud runner was dead (session idle) → restarted; 545 of its cells done, 15 A-battery cells pending.
+- **Done:** roster.yaml pacing only (no model, prompt or analysis change): qwen38_27b rpm 4 / conc 1; its robustness-only copies _t03/_t10 rpm 2 / conc 1 (same Groq model, separate limiters); nemotron_super rpm 15 → 10. Tests 33/33. RESTART flag set so the next service tick picks this up. Haiku cloud runner was dead (session idle) → restarted; 545 of its cells done, 15 A-battery cells pending → finished 16:09 UTC: **haiku45 complete, 560/560 cells, synced into the repo** (no failed cells). Lesson: re-committing a staged file under the *same* name delivered the stale earlier copy; use a new filename per transfer (here results/_runner/haiku45_cells_final.tgz) and verify the file count after extracting.
 - **Interim scorecard** (`analysis.scorecard --interim`, not findings): runs end to end on live data. H-B6 became computable for five near-ceiling models (reasoning models + Haiku, a_m 0.93–1.00) but on only 3 shared problems, so its 0.000 is an artefact of incomplete data. Design note for the final analysis: the only matched cluster may be the near-ceiling one, where heterogeneous and homogeneous votes both score ≈ 1, so H-B6 is likely to be ≈ 0 for ceiling reasons — report that caveat with the result.
 - **Next action:** top block.
