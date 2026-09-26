@@ -109,3 +109,8 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Minor:** the test suite (mock models) writes to the real results/_runner/provider_errors.log and results/_quota/ (entries for llama-3.1-8b-instant / mock-*). Harmless (mock names, no real calls); ignore those lines when reading the error log.
 - **Interim scorecard** (not findings): unchanged from Session 11.
 - **Next action:** top block.
+
+### 2026-09-25 · Session 12b · Claude (Cowork, user-requested overview) · NVIDIA 404 for nemotron_super
+- **Observed (17:30 local):** 4,992 / 6,460 cells. Since 14:00 NVIDIA has answered some nemotron_super calls with an empty HTTP 404; from ~17:00 every call. The runner parked nemotron_super as a "config error" at 17:29 and exited with code 2 (every remaining model is parked; daily quotas reset tomorrow). 5 nemotron cells hit the failure cap (*.failed.json: 4 after 503s, 1 after 404). The c1_counterpart robustness job also depends on nemotron_super as the counterpart.
+- **Likely causes (unverified):** the model was withdrawn/renamed on NVIDIA's free endpoint, or the free-tier allowance on the NVIDIA account is used up. The empty 404 differs from the earlier "Function … Not found" 404 seen for llama-3.1-nemotron-70b.
+- **Next action for the next agent:** once more (after the date rolls over) try one nemotron call via REQUEST_PHASE0 (discover_models shows whether the model is still listed). If it is gone: pick a replacement counterpart/roster slot only via a DEVIATIONS.md entry — nemotron's completed cells stay, and its missing cells count against the >20% exclusion rule. Never add billing. NEEDS ADI (optional): check the NVIDIA account's free-credit status at build.nvidia.com.
