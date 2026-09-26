@@ -120,3 +120,9 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Done:** 14 nemotron_super *.failed.json (all transient provider errors: 7× empty 404 during the outage, 4× 429, 3× 503; no code or parse errors) moved to results/_runner/cleared_failed/ (same sub-paths) and nemotron's *.attempts.json moved to results/_runner/cleared_attempts/ (suffix .2), so the runner retries those cells. No result files touched. Session 12b's NVIDIA-credit concern is withdrawn for now.
 - **Estimate:** unchanged, ≈ 2026-09-30.
 - **Next action:** top block.
+
+### 2026-09-26 · Session 14 · Claude (Cowork, scheduled check-in) · Day 2 of quota-paced running
+- **Observed (02:18 local):** 5,298 / 6,460. After local midnight the runner (pid 24548, 00:07) resumed all parked models; gptoss_20b, gptoss_120b and gemini_flash_lite are parked again for today, qwen38_27b is running (464/1,000 requests). No *.failed.json. nemotron_super is **complete**, including the 14 re-queued cells, and the c1_counterpart cells for ollama_llama31_8b are done.
+- **Note on Groq TPD:** Groq's 200k tokens-per-day cap is a rolling window, not a midnight reset (gptoss_20b re-hit it after 13 requests at 00:23). No change needed: parking lives only in a runner process's memory, and every new runner (each 15-min tick after the previous one exits with code 2) tries parked models again, so capacity is picked up as the window frees.
+- **Remaining ≈ calls:** gemini_flash_lite ~2,900 (≈ 500 requests/day on the free tier → ~6 days, the long pole) · gptoss_20b ~2,800 (~4–5 days) · qwen38_27b ~2,600 plus 240 temperature-copy calls (~3 days) · gptoss_120b ~2,500 (~3 days). **Revised completion estimate ≈ 2026-10-02** (was 09-30). All free tier.
+- **Next action:** top block.
