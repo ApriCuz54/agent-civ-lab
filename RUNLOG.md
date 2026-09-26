@@ -126,3 +126,8 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Note on Groq TPD:** Groq's 200k tokens-per-day cap is a rolling window, not a midnight reset (gptoss_20b re-hit it after 13 requests at 00:23). No change needed: parking lives only in a runner process's memory, and every new runner (each 15-min tick after the previous one exits with code 2) tries parked models again, so capacity is picked up as the window frees.
 - **Remaining ≈ calls:** gemini_flash_lite ~2,900 (≈ 500 requests/day on the free tier → ~6 days, the long pole) · gptoss_20b ~2,800 (~4–5 days) · qwen38_27b ~2,600 plus 240 temperature-copy calls (~3 days) · gptoss_120b ~2,500 (~3 days). **Revised completion estimate ≈ 2026-10-02** (was 09-30). All free tier.
 - **Next action:** top block.
+
+### 2026-09-26 · Session 15 · Claude (Cowork, scheduled check-in) · Steady
+- **Observed (10:22 local):** 5,437 / 6,460 (+139 since Session 14). No *.failed.json. qwen38_27b running (887/1,000 requests today); gptoss_20b (311 requests), gptoss_120b (527) and gemini_flash_lite (547) parked on their daily caps. Gemini hits its free quota at ≈ 500 requests/day (reset at local midnight); each 15-min runner re-tries it once, costing one request, which is harmless. Gemini also returns occasional 503 "model overloaded" (retried successfully).
+- **Remaining cells:** gemini_flash_lite 326 (incl. all Phase A and 69 c1_counterpart cells) · gptoss_20b 254 · qwen38_27b 221 (+12 temperature cells) · gptoss_120b 210. Estimate unchanged: **≈ 2026-10-02**, gemini last.
+- **Next action:** top block.
