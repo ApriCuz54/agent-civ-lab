@@ -131,3 +131,8 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Observed (10:22 local):** 5,437 / 6,460 (+139 since Session 14). No *.failed.json. qwen38_27b running (887/1,000 requests today); gptoss_20b (311 requests), gptoss_120b (527) and gemini_flash_lite (547) parked on their daily caps. Gemini hits its free quota at ≈ 500 requests/day (reset at local midnight); each 15-min runner re-tries it once, costing one request, which is harmless. Gemini also returns occasional 503 "model overloaded" (retried successfully).
 - **Remaining cells:** gemini_flash_lite 326 (incl. all Phase A and 69 c1_counterpart cells) · gptoss_20b 254 · qwen38_27b 221 (+12 temperature cells) · gptoss_120b 210. Estimate unchanged: **≈ 2026-10-02**, gemini last.
 - **Next action:** top block.
+
+### 2026-09-26 · Session 16 · Claude (Cowork, scheduled check-in) · Day 2 closed
+- **Observed (19:22 local):** 5,514 / 6,460 (+77 since Session 15, +501 over local 26 Sep). All four remaining models parked for the rest of the day on their free caps (requests today: qwen 1,000/1,000, gptoss_120b 812, gptoss_20b 593, gemini 592); they resume after local midnight. No *.failed.json; runner exits cleanly with code 2 each tick.
+- **Remaining cells:** gemini_flash_lite 323 · qwen38_27b 220 (+12 temperature) · gptoss_20b 218 · gptoss_120b 173. Gemini's remaining work is mostly call-heavy Phase A and c1 cells (~2,900 calls at ~500/day). **Estimate ≈ 2026-10-02/03**, gemini last; the others ≈ 09-29/30.
+- **Next action:** top block.
