@@ -141,3 +141,8 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Observed (05:24 local):** 5,824 / 6,460 (+310 since Session 16). All four remaining models already parked for local 27 Sep (requests today: gemini 519, qwen 640, gptoss_120b 189, gptoss_20b 168 — Groq's rolling token windows had only partly refilled). No *.failed.json; runner exits cleanly (code 2).
 - **Remaining cells:** gemini_flash_lite 241 · gptoss_20b 146 · qwen38_27b 119 (+12 temperature) · gptoss_120b 118. Pace ≈ 300 cells/day → **estimate ≈ 2026-09-30 to 10-01**, gemini last (improved from 10-02/03).
 - **Next action:** top block.
+
+### 2026-09-27 · Session 18 · Claude (Cowork, scheduled check-in) · Steady
+- **Observed (15:24 local):** 5,906 / 6,460 (+82 since Session 17; Groq's rolling token windows refill slowly through the day). All four remaining models parked; no *.failed.json; runner exits cleanly (code 2) each tick; autosync current.
+- **Remaining cells:** gemini_flash_lite 237 · gptoss_20b 122 · qwen38_27b 109 (+12 temperature) · gptoss_120b 74. **Estimate ≈ 2026-09-30 to 10-01**, gemini last.
+- **Next action:** top block.
