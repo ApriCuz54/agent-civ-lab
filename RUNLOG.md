@@ -167,3 +167,22 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Code:** civlab/everyday/c_commons.py, experiments/v2/c_dark_commons.py, analysis/phase_c.py (tested on pilot-derived synthetic data), tests/test_phase_c.py (9 tests); full suite 42/42. queue_phase_c.yaml holds the full job, to be activated after PREREG_C is pushed.
 - **Next action:** top block (activate Phase C once PREREG_C is on origin/main).
 - **Addendum (activation):** PREREG_C.md is in commit 611852f (2026-09-27 20:09 -0700), an ancestor of origin/main; code files unchanged since that commit. Phase C job appended to queue.yaml (priority 4, models all) and RESTART set; Haiku Phase C started in the cloud workspace.
+
+### 2026-09-28 · Session 20 · Claude (Cowork, scheduled) · Phase C running: Haiku complete
+- **Haiku:** the Phase C cloud runner had died when the session idled (8/64 cells); restarted. It finished 07:09 UTC with 64/64 cells, no failures. Synced via results/_runner/haiku45_phasec_0711.tgz (64 files verified in the repo). Haiku's 28 pilot cells were synced too, for the record only (haiku45_phasec_pilot_0712.tgz; never analysed).
+- **PC (00:15 local):** Phase C complete for ministral_8b, ollama_llama2_7b, ollama_llama31_8b, ollama_llama32_3b. In progress: nemotron_super 30/64, ollama_llama3_8b 33/64. Not started (behind Phase A/B on their daily caps): gemini_flash_lite, gptoss_20b/120b, qwen38_27b, ollama_qwen25_7b. No *.failed.json.
+- **Interim** (`analysis.phase_c --interim`, 7 models, not findings):
+  - Only H-C6 (knowing overreach, ≈ 0.6–0.7 at C3–C4) passes Holm so far. H-C2 and H-C3 point the predicted way (Holm p ≈ 0.055).
+  - Black box C0: mean stock ≈ 91. Once the source level is visible (C1): ≈ 18.
+  - H-C7 is not testable yet: no known_end or C4 group reaches round 10 with ≥ 48 units.
+- **Next action:** top block. Run `analysis.phase_c` (confirmatory) only when all 12 models have finished Phase C.
+
+### 2026-09-28 · Session 21 · Claude (Cowork, scheduled check-in) · Runner bug: parked models never resumed inside a long process
+- **Observed (01:28 local):** Phase A/B at 5,932 / 6,460 (+26 since Session 18). The runner started at 21:07 was still running at 01:28, kept alive by slow nemotron Phase C cells. Its parked list still said "2026-09-27", so gemini_flash_lite, gptoss_20b/120b and qwen38_27b did not resume after midnight. Cause: run_queue computed `today` once at process start, and a worker never revisits cells it skipped earlier in the same process.
+- **Fix (tools/run_queue.py; harness only, no experiment or analysis change):**
+  - `today` is re-read before every cell.
+  - A process now stops taking new cells after 2 h (MAX_RUNTIME_S), so the 15-minute service restarts it with fresh quotas and retries skipped cells.
+  - tests/test_runner.py 5/5. RESTART set so the fix takes effect now.
+- **Phase C:** done for ministral_8b, ollama_llama2_7b/llama3_8b/llama31_8b/llama32_3b/qwen25_7b and haiku45 (7 models). nemotron_super 38/64. The four quota-paced cloud models haven't started (priority 4, after their Phase A/B). No *.failed.json.
+- **Remaining Phase A/B cells:** gemini 235 · gptoss_20b 117 · qwen38_27b 109 (+12) · gptoss_120b 55. Roughly a day lost to the bug. **Estimate ≈ 2026-10-01/02** for Phase A/B; Phase C cloud models follow (≈ 2–4 more days, gemini last).
+- **Next action:** top block.

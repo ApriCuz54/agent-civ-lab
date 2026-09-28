@@ -25,6 +25,8 @@ from civlab.providers import QuotaExhausted
 RUN_DIR = os.path.join("results", "_runner")
 OUT_ROOT = os.path.join("results", "v2")
 MAX_ATTEMPTS = 3
+MAX_RUNTIME_S = 2 * 3600  # one process runs at most ~2 h; parked models and skipped cells get retried by the next one
+START = time.time()
 CELL_TIMEOUT_S = 45 * 60   # a single episode that takes longer than this is treated as a failed attempt
 CELL_CONC = {"ollama": 1, "gemini": 1, "openrouter": 1}   # cells in flight per provider (default 2)
 
@@ -72,6 +74,9 @@ def build_tasks(queue, roster, a):
 
 async def worker(provider, tasks, routers, st, today):
     for t in tasks:
+        today = dt.date.today().isoformat()   # re-read each cell: a long-running process must un-park models after midnight
+        if time.time() - START > MAX_RUNTIME_S and not st.stop:
+            st.stop = True; log("max runtime reached; exiting after current cells so the service restarts with fresh quotas")
         if st.stop: return
         if flag("STOP") or flag("RESTART"):
             st.stop = True; log(f"flag seen ({'STOP' if flag('STOP') else 'RESTART'}); exiting after current cells"); return
