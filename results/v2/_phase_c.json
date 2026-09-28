@@ -1,0 +1,1221 @@
+{
+ "interim": false,
+ "B": 5000,
+ "validity": {
+  "haiku45": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 64,
+   "expected": 64,
+   "invalid_rate": 0.0
+  },
+  "ministral_8b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 64,
+   "expected": 64,
+   "invalid_rate": 0.0
+  },
+  "nemotron_super": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 64,
+   "expected": 64,
+   "invalid_rate": 0.0016
+  },
+  "ollama_llama2_7b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 64,
+   "expected": 64,
+   "invalid_rate": 0.0042
+  },
+  "ollama_llama31_8b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 64,
+   "expected": 64,
+   "invalid_rate": 0.0
+  },
+  "ollama_llama32_3b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 64,
+   "expected": 64,
+   "invalid_rate": 0.0
+  },
+  "ollama_llama3_8b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 64,
+   "expected": 64,
+   "invalid_rate": 0.0
+  },
+  "ollama_qwen25_7b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 64,
+   "expected": 64,
+   "invalid_rate": 0.0
+  }
+ },
+ "valid": [
+  "haiku45",
+  "ministral_8b",
+  "nemotron_super",
+  "ollama_llama2_7b",
+  "ollama_llama31_8b",
+  "ollama_llama32_3b",
+  "ollama_llama3_8b",
+  "ollama_qwen25_7b"
+ ],
+ "model_set": "confirmatory",
+ "requested_but_invalid": [],
+ "primary": {
+  "H-C1": {
+   "n_models": 8,
+   "estimate": 0.1765000000000002,
+   "ci": [
+    -0.847573125,
+    2.61386625
+   ],
+   "p": 0.9844,
+   "sign_consistency": 0.125,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": -0.8152,
+    "ministral_8b": -0.7922,
+    "nemotron_super": -0.9962,
+    "ollama_llama2_7b": -0.5462,
+    "ollama_llama31_8b": 6.8422,
+    "ollama_llama32_3b": -0.8614,
+    "ollama_llama3_8b": -0.7306,
+    "ollama_qwen25_7b": -0.6884
+   },
+   "desc": "Black box: round-1 take differs from the sustainable share (r1_overharvest vs 1; two-sided)",
+   "sign": 0,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "H-C2": {
+   "n_models": 8,
+   "estimate": 2.91725,
+   "ci": [
+    0.73400625,
+    4.4547262499999984
+   ],
+   "p": 0.018,
+   "sign_consistency": 0.875,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": 3.5614,
+    "ministral_8b": 2.919,
+    "nemotron_super": 2.123,
+    "ollama_llama2_7b": 2.9692,
+    "ollama_llama31_8b": -1.9228,
+    "ollama_llama32_3b": 2.2652,
+    "ollama_llama3_8b": 6.0998,
+    "ollama_qwen25_7b": 5.3232
+   },
+   "desc": "Rules without knowing others (C2) raises the round-1 take vs black box (C0)",
+   "sign": 1,
+   "p_holm": 0.072,
+   "survives": false
+  },
+  "H-C3": {
+   "n_models": 8,
+   "estimate": -1.3304000000000002,
+   "ci": [
+    -2.150598125,
+    -0.40968812500000035
+   ],
+   "p": 0.0056,
+   "sign_consistency": 0.875,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": -2.3656,
+    "ministral_8b": -1.1038,
+    "nemotron_super": -1.1308,
+    "ollama_llama2_7b": 1.25,
+    "ollama_llama31_8b": -2.4926,
+    "ollama_llama32_3b": -0.7502,
+    "ollama_llama3_8b": -2.7808,
+    "ollama_qwen25_7b": -1.2694
+   },
+   "desc": "Learning others exist (C3) lowers the round-1 take vs C2",
+   "sign": -1,
+   "p_holm": 0.028,
+   "survives": true
+  },
+  "H-C4": {
+   "n_models": 8,
+   "estimate": 1.4275000000000002,
+   "ci": [
+    -2.149999999999998,
+    7.774999999999999
+   ],
+   "p": 0.6972,
+   "sign_consistency": 0.5,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": -2.96,
+    "ministral_8b": 0.36,
+    "nemotron_super": 13.04,
+    "ollama_llama2_7b": 0.0,
+    "ollama_llama31_8b": 0.0,
+    "ollama_llama32_3b": 0.78,
+    "ollama_llama3_8b": 0.0,
+    "ollama_qwen25_7b": 0.2
+   },
+   "desc": "Transparency (C4) raises the mean stock vs C3",
+   "sign": 1,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "H-C5": {
+   "n_models": 8,
+   "estimate": 6.2825,
+   "ci": [
+    0.004437500000000514,
+    15.063062499999987
+   ],
+   "p": 0.05,
+   "sign_consistency": 0.625,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": 16.16,
+    "ministral_8b": 8.58,
+    "nemotron_super": 26.14,
+    "ollama_llama2_7b": 0.0,
+    "ollama_llama31_8b": 0.2,
+    "ollama_llama32_3b": -1.5,
+    "ollama_llama3_8b": 0.0,
+    "ollama_qwen25_7b": 0.68
+   },
+   "desc": "Talk (C5) raises the mean stock vs C4",
+   "sign": 1,
+   "p_holm": 0.15000000000000002,
+   "survives": false
+  },
+  "H-C6": {
+   "n_models": 8,
+   "estimate": 0.6365000000000001,
+   "ci": [
+    0.504393125,
+    0.7572793749999999
+   ],
+   "p": 0.0002,
+   "sign_consistency": 1.0,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": 0.8181,
+    "ministral_8b": 0.4197,
+    "nemotron_super": 0.3419,
+    "ollama_llama2_7b": 0.5909,
+    "ollama_llama31_8b": 0.7362,
+    "ollama_llama32_3b": 0.5234,
+    "ollama_llama3_8b": 0.8446,
+    "ollama_qwen25_7b": 0.8172
+   },
+   "desc": "Knowing overreach at C3\u2013C4 exceeds 10% of decisions",
+   "sign": 1,
+   "p_holm": 0.0012000000000000001,
+   "survives": true
+  },
+  "H-C7": {
+   "n_models": 0,
+   "desc": "Known end raises the final-round request more than in C4 (endgame_ratio)",
+   "status": "not testable"
+  }
+ },
+ "secondary": {
+  "X1": {
+   "n_models": 8,
+   "estimate": 0.07037499999999985,
+   "ci": [
+    -1.38119140625,
+    1.4104593749999987
+   ],
+   "p": 0.8924,
+   "sign_consistency": 0.75,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": 0.1715,
+    "ministral_8b": -0.685,
+    "nemotron_super": -3.7167,
+    "ollama_llama2_7b": 1.05,
+    "ollama_llama31_8b": 0.7568,
+    "ollama_llama32_3b": 1.0515,
+    "ollama_llama3_8b": 1.47,
+    "ollama_qwen25_7b": 0.465
+   },
+   "desc": "One greedy agent: model agents' mean request vs C4 (\u2212 compensate, + retaliate/grab)",
+   "sign": 0,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "X2": {
+   "n_models": 8,
+   "estimate": 3.5343749999999994,
+   "ci": [
+    0.328046875,
+    10.432421874999982
+   ],
+   "p": 0.018,
+   "sign_consistency": 0.75,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": 2.0,
+    "ministral_8b": 3.2,
+    "nemotron_super": 17.975,
+    "ollama_llama2_7b": 0.2,
+    "ollama_llama31_8b": 0.3,
+    "ollama_llama32_3b": 4.6,
+    "ollama_llama3_8b": 0.0,
+    "ollama_qwen25_7b": 0.0
+   },
+   "desc": "Two greedy agents vs one: mean stock (tipping)",
+   "sign": 0,
+   "p_holm": 0.10799999999999998,
+   "survives": false
+  },
+  "X3": {
+   "n_models": 8,
+   "estimate": 0.18840625,
+   "ci": [
+    0.1005890625,
+    0.30259453124999997
+   ],
+   "p": 0.0002,
+   "sign_consistency": 1.0,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": 0.1095,
+    "ministral_8b": 0.2127,
+    "nemotron_super": 0.0872,
+    "ollama_llama2_7b": 0.5435,
+    "ollama_llama31_8b": 0.245,
+    "ollama_llama32_3b": 0.057,
+    "ollama_llama3_8b": 0.1382,
+    "ollama_qwen25_7b": 0.114
+   },
+   "desc": "Needy agent's share of points above 25%",
+   "sign": 1,
+   "p_holm": 0.0014,
+   "survives": true
+  },
+  "X4": {
+   "n_models": 8,
+   "estimate": 0.050643749999999974,
+   "ci": [
+    -0.4117096875,
+    0.45292421874999994
+   ],
+   "p": 0.7952,
+   "sign_consistency": 0.75,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": -0.1488,
+    "ministral_8b": 0.4974,
+    "nemotron_super": 0.1228,
+    "ollama_llama2_7b": 0.2691,
+    "ollama_llama31_8b": 0.0332,
+    "ollama_llama32_3b": 0.5786,
+    "ollama_llama3_8b": 0.0718,
+    "ollama_qwen25_7b": -1.019
+   },
+   "desc": "Others framed as copies of you vs C4: round-1 take",
+   "sign": 0,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "X5": {
+   "n_models": 8,
+   "estimate": -0.05998125,
+   "ci": [
+    -0.4114285937499999,
+    0.2600568749999999
+   ],
+   "p": 0.7456,
+   "sign_consistency": 0.25,
+   "direction_ok": false,
+   "per_model": {
+    "haiku45": -0.048,
+    "ministral_8b": 0.0741,
+    "nemotron_super": -0.0887,
+    "ollama_llama2_7b": -0.0914,
+    "ollama_llama31_8b": -0.3806,
+    "ollama_llama32_3b": -0.1517,
+    "ollama_llama3_8b": 0.2401,
+    "ollama_qwen25_7b": -0.0337
+   },
+   "desc": "Others framed as humans vs C4: round-1 take",
+   "sign": 0,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "X6": {
+   "n_models": 8,
+   "estimate": -0.3711500000000002,
+   "ci": [
+    -3.0471612500000007,
+    1.9711712499999987
+   ],
+   "p": 0.918,
+   "sign_consistency": 0.375,
+   "direction_ok": false,
+   "per_model": {
+    "haiku45": 0.2002,
+    "ministral_8b": 0.2962,
+    "nemotron_super": 3.9886,
+    "ollama_llama2_7b": -0.046,
+    "ollama_llama31_8b": -7.15,
+    "ollama_llama32_3b": -0.0002,
+    "ollama_llama3_8b": -0.0694,
+    "ollama_qwen25_7b": -0.1886
+   },
+   "desc": "Probe control: C0 without the SAFE_TOTAL question vs C0 (round-1 take)",
+   "sign": 0,
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "X7": {
+   "n_models": 8,
+   "estimate": 0.348525,
+   "ci": [
+    -0.1059231249999999,
+    0.7879631249999993
+   ],
+   "p": 0.1244,
+   "sign_consistency": 0.625,
+   "direction_ok": true,
+   "per_model": {
+    "haiku45": 0.3654,
+    "ministral_8b": 0.7308,
+    "nemotron_super": 0.796,
+    "ollama_llama2_7b": -0.1154,
+    "ollama_llama31_8b": 1.2964,
+    "ollama_llama32_3b": 0.0116,
+    "ollama_llama3_8b": -0.1618,
+    "ollama_qwen25_7b": -0.1348
+   },
+   "desc": "Probe control: C4 without the SAFE_TOTAL question vs C4 (round-1 take)",
+   "sign": 0,
+   "p_holm": 0.622,
+   "survives": false
+  }
+ },
+ "descriptives": {
+  "C0": {
+   "mean_stock": 92.35,
+   "overharvest_rate": 0.128,
+   "crash_rounds": 0.9,
+   "never_crashed": 0.85,
+   "llm_points_mean": 46.7,
+   "r1_overharvest": 1.177,
+   "safe_rate": 0.526,
+   "safe_unknown_rate": 0.453,
+   "safe_abs_err": 45.825,
+   "knowing_overreach": 0.03,
+   "endgame_ratio": 1.687,
+   "gini": 0.32,
+   "recovered": 0.0,
+   "lex_others": 0.008,
+   "lex_future": 0.496,
+   "lex_scarcity": 0.389,
+   "n_models": 8
+  },
+  "C0_noprobe": {
+   "mean_stock": 85.188,
+   "overharvest_rate": 0.218,
+   "crash_rounds": 1.75,
+   "never_crashed": 0.65,
+   "llm_points_mean": 53.844,
+   "r1_overharvest": 0.805,
+   "safe_rate": 0.0,
+   "safe_unknown_rate": 0.0,
+   "endgame_ratio": 1.409,
+   "gini": 0.277,
+   "recovered": 0.0,
+   "lex_others": 0.006,
+   "lex_future": 0.087,
+   "lex_scarcity": 0.054,
+   "n_models": 8
+  },
+  "C1": {
+   "mean_stock": 17.317,
+   "overharvest_rate": 0.982,
+   "crash_rounds": 9.65,
+   "never_crashed": 0.0,
+   "recovered": 0.0,
+   "llm_points_mean": 38.581,
+   "r1_overharvest": 3.329,
+   "safe_rate": 0.759,
+   "safe_unknown_rate": 0.214,
+   "safe_abs_err": 13.708,
+   "knowing_overreach": 0.039,
+   "gini": 0.375,
+   "lex_others": 0.016,
+   "lex_future": 0.59,
+   "lex_scarcity": 0.448,
+   "n_models": 8
+  },
+  "C2": {
+   "mean_stock": 16.115,
+   "overharvest_rate": 0.978,
+   "crash_rounds": 9.8,
+   "never_crashed": 0.0,
+   "recovered": 0.0,
+   "llm_points_mean": 37.869,
+   "r1_overharvest": 4.094,
+   "safe_rate": 0.919,
+   "safe_unknown_rate": 0.066,
+   "safe_abs_err": 16.677,
+   "knowing_overreach": 0.022,
+   "gini": 0.376,
+   "lex_others": 0.007,
+   "lex_future": 0.861,
+   "lex_scarcity": 0.358,
+   "n_models": 8
+  },
+  "C3": {
+   "mean_stock": 19.847,
+   "overharvest_rate": 0.963,
+   "crash_rounds": 9.125,
+   "never_crashed": 0.0,
+   "recovered": 0.0,
+   "llm_points_mean": 40.106,
+   "r1_overharvest": 2.763,
+   "safe_rate": 0.888,
+   "safe_unknown_rate": 0.084,
+   "safe_abs_err": 16.787,
+   "knowing_overreach": 0.75,
+   "gini": 0.293,
+   "endgame_ratio": 0.469,
+   "lex_others": 0.255,
+   "lex_future": 0.857,
+   "lex_scarcity": 0.479,
+   "n_models": 8
+  },
+  "C4": {
+   "mean_stock": 21.275,
+   "overharvest_rate": 0.93,
+   "crash_rounds": 8.925,
+   "never_crashed": 0.025,
+   "recovered": 0.0,
+   "llm_points_mean": 40.775,
+   "r1_overharvest": 2.625,
+   "safe_rate": 0.88,
+   "safe_unknown_rate": 0.094,
+   "safe_abs_err": 16.178,
+   "knowing_overreach": 0.723,
+   "gini": 0.252,
+   "endgame_ratio": 0.948,
+   "lex_others": 0.294,
+   "lex_future": 0.817,
+   "lex_scarcity": 0.488,
+   "n_models": 8
+  },
+  "C4_noprobe": {
+   "mean_stock": 16.157,
+   "overharvest_rate": 0.992,
+   "crash_rounds": 9.7,
+   "never_crashed": 0.0,
+   "recovered": 0.0,
+   "llm_points_mean": 37.938,
+   "r1_overharvest": 2.974,
+   "safe_rate": 0.0,
+   "safe_unknown_rate": 0.0,
+   "gini": 0.274,
+   "lex_others": 0.334,
+   "lex_future": 0.531,
+   "lex_scarcity": 0.419,
+   "n_models": 8
+  },
+  "C5": {
+   "mean_stock": 27.558,
+   "overharvest_rate": 0.912,
+   "crash_rounds": 7.775,
+   "never_crashed": 0.075,
+   "recovered": 0.1,
+   "llm_points_mean": 45.537,
+   "r1_overharvest": 2.699,
+   "safe_rate": 0.949,
+   "safe_unknown_rate": 0.031,
+   "safe_abs_err": 16.77,
+   "knowing_overreach": 0.593,
+   "endgame_ratio": 0.553,
+   "gini": 0.249,
+   "lex_others": 0.467,
+   "lex_future": 0.796,
+   "lex_scarcity": 0.438,
+   "n_models": 8
+  },
+  "greedy1": {
+   "mean_stock": 16.128,
+   "overharvest_rate": 0.997,
+   "crash_rounds": 9.75,
+   "never_crashed": 0.0,
+   "recovered": 0.0,
+   "llm_points_mean": 37.49,
+   "r1_overharvest": 2.586,
+   "safe_rate": 0.881,
+   "safe_unknown_rate": 0.102,
+   "safe_abs_err": 15.756,
+   "knowing_overreach": 0.665,
+   "gini": 0.261,
+   "lex_others": 0.269,
+   "lex_future": 0.803,
+   "lex_scarcity": 0.523,
+   "n_models": 8
+  },
+  "greedy2": {
+   "mean_stock": 19.663,
+   "overharvest_rate": 0.969,
+   "crash_rounds": 9.25,
+   "never_crashed": 0.0,
+   "recovered": 0.0,
+   "llm_points_mean": 44.422,
+   "r1_overharvest": 2.59,
+   "safe_rate": 0.853,
+   "safe_unknown_rate": 0.122,
+   "safe_abs_err": 17.697,
+   "knowing_overreach": 0.61,
+   "gini": 0.26,
+   "lex_others": 0.289,
+   "lex_future": 0.786,
+   "lex_scarcity": 0.539,
+   "n_models": 8
+  },
+  "id_copies": {
+   "mean_stock": 22.809,
+   "overharvest_rate": 0.947,
+   "crash_rounds": 8.531,
+   "never_crashed": 0.031,
+   "recovered": 0.031,
+   "llm_points_mean": 39.656,
+   "r1_overharvest": 2.676,
+   "safe_rate": 0.895,
+   "safe_unknown_rate": 0.082,
+   "safe_abs_err": 17.634,
+   "knowing_overreach": 0.688,
+   "gini": 0.272,
+   "endgame_ratio": 0.53,
+   "lex_others": 0.348,
+   "lex_future": 0.819,
+   "lex_scarcity": 0.494,
+   "n_models": 8
+  },
+  "id_humans": {
+   "mean_stock": 23.547,
+   "overharvest_rate": 0.938,
+   "crash_rounds": 8.781,
+   "never_crashed": 0.0,
+   "recovered": 0.031,
+   "llm_points_mean": 45.047,
+   "r1_overharvest": 2.565,
+   "safe_rate": 0.87,
+   "safe_unknown_rate": 0.093,
+   "safe_abs_err": 16.874,
+   "knowing_overreach": 0.712,
+   "gini": 0.254,
+   "endgame_ratio": 1.515,
+   "lex_others": 0.349,
+   "lex_future": 0.805,
+   "lex_scarcity": 0.484,
+   "n_models": 8
+  },
+  "known_end": {
+   "mean_stock": 19.475,
+   "overharvest_rate": 0.972,
+   "crash_rounds": 9.188,
+   "never_crashed": 0.0,
+   "recovered": 0.0,
+   "llm_points_mean": 41.477,
+   "r1_overharvest": 2.634,
+   "safe_rate": 0.889,
+   "safe_unknown_rate": 0.088,
+   "safe_abs_err": 15.209,
+   "knowing_overreach": 0.756,
+   "gini": 0.282,
+   "lex_others": 0.26,
+   "lex_future": 0.81,
+   "lex_scarcity": 0.447,
+   "n_models": 8
+  },
+  "need": {
+   "mean_stock": 22.028,
+   "overharvest_rate": 0.925,
+   "crash_rounds": 8.781,
+   "never_crashed": 0.0,
+   "recovered": 0.094,
+   "llm_points_mean": 42.008,
+   "r1_overharvest": 2.785,
+   "safe_rate": 0.86,
+   "safe_unknown_rate": 0.121,
+   "safe_abs_err": 23.031,
+   "knowing_overreach": 0.687,
+   "needy_share": 0.438,
+   "gini": 0.28,
+   "endgame_ratio": 0.69,
+   "lex_others": 0.522,
+   "lex_future": 0.701,
+   "lex_scarcity": 0.455,
+   "n_models": 8
+  }
+ },
+ "robustness": {
+  "no_pilot_models": {
+   "H-C1": {
+    "n_models": 6,
+    "estimate": -0.7691666666666666,
+    "ci": [
+     -0.8839008333333334,
+     -0.6460658333333333
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C2": {
+    "n_models": 6,
+    "estimate": 3.616566666666667,
+    "ci": [
+     2.4498825,
+     4.8909658333333335
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C3": {
+    "n_models": 6,
+    "estimate": -0.9641666666666672,
+    "ci": [
+     -1.9122025000000002,
+     0.0423466666666664
+    ],
+    "p_holm": 0.1716,
+    "survives": false
+   },
+   "H-C4": {
+    "n_models": 6,
+    "estimate": 2.396666666666667,
+    "ci": [
+     -2.1902500000000007,
+     10.450166666666666
+    ],
+    "p_holm": 0.4188,
+    "survives": false
+   },
+   "H-C5": {
+    "n_models": 6,
+    "estimate": 5.6499999999999995,
+    "ci": [
+     -1.0066666666666662,
+     16.813749999999995
+    ],
+    "p_holm": 0.3296,
+    "survives": false
+   },
+   "H-C6": {
+    "n_models": 6,
+    "estimate": 0.5896166666666668,
+    "ci": [
+     0.4416970833333333,
+     0.7422912499999998
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C7": {
+    "n_models": 0,
+    "estimate": null,
+    "ci": null,
+    "p_holm": null,
+    "survives": null
+   }
+  },
+  "no_haiku": {
+   "H-C1": {
+    "n_models": 7,
+    "estimate": 0.3181714285714288,
+    "ci": [
+     -0.8515442857142858,
+     3.1034228571428564
+    ],
+    "p_holm": 0.9556,
+    "survives": false
+   },
+   "H-C2": {
+    "n_models": 7,
+    "estimate": 2.825228571428571,
+    "ci": [
+     0.3642599999999998,
+     4.530184999999999
+    ],
+    "p_holm": 0.1296,
+    "survives": false
+   },
+   "H-C3": {
+    "n_models": 7,
+    "estimate": -1.1825142857142859,
+    "ci": [
+     -2.0907750000000003,
+     -0.1863007142857144
+    ],
+    "p_holm": 0.112,
+    "survives": false
+   },
+   "H-C4": {
+    "n_models": 7,
+    "estimate": 2.0542857142857147,
+    "ci": [
+     -1.888571428571429,
+     9.274928571428564
+    ],
+    "p_holm": 0.912,
+    "survives": false
+   },
+   "H-C5": {
+    "n_models": 7,
+    "estimate": 4.871428571428572,
+    "ci": [
+     -0.7457857142857142,
+     15.080357142857137
+    ],
+    "p_holm": 0.4428,
+    "survives": false
+   },
+   "H-C6": {
+    "n_models": 7,
+    "estimate": 0.6105571428571429,
+    "ci": [
+     0.4752257142857143,
+     0.7442175
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C7": {
+    "n_models": 0,
+    "estimate": null,
+    "ci": null,
+    "p_holm": null,
+    "survives": null
+   }
+  },
+  "no_reasoning_models": {
+   "H-C1": {
+    "n_models": 7,
+    "estimate": 0.3440285714285717,
+    "ci": [
+     -0.8048571428571428,
+     3.073086428571428
+    ],
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "H-C2": {
+    "n_models": 7,
+    "estimate": 3.0307142857142857,
+    "ci": [
+     0.4725335714285715,
+     4.70593
+    ],
+    "p_holm": 0.104,
+    "survives": false
+   },
+   "H-C3": {
+    "n_models": 7,
+    "estimate": -1.358914285714286,
+    "ci": [
+     -2.250645,
+     -0.2741650000000001
+    ],
+    "p_holm": 0.072,
+    "survives": false
+   },
+   "H-C4": {
+    "n_models": 7,
+    "estimate": -0.23142857142857107,
+    "ci": [
+     -1.6287142857142844,
+     1.3087857142857118
+    ],
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "H-C5": {
+    "n_models": 7,
+    "estimate": 3.4457142857142853,
+    "ci": [
+     -0.6457142857142857,
+     8.76585714285714
+    ],
+    "p_holm": 0.396,
+    "survives": false
+   },
+   "H-C6": {
+    "n_models": 7,
+    "estimate": 0.6785857142857142,
+    "ci": [
+     0.5592675,
+     0.7871021428571428
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C7": {
+    "n_models": 0,
+    "estimate": null,
+    "ci": null,
+    "p_holm": null,
+    "survives": null
+   }
+  },
+  "leave_out_alibaba": {
+   "H-C1": {
+    "n_models": 7,
+    "estimate": 0.3000571428571431,
+    "ci": [
+     -0.8697157142857144,
+     3.0406971428571428
+    ],
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "H-C2": {
+    "n_models": 7,
+    "estimate": 2.5735428571428574,
+    "ci": [
+     0.09011714285714235,
+     4.254229285714286
+    ],
+    "p_holm": 0.1808,
+    "survives": false
+   },
+   "H-C3": {
+    "n_models": 7,
+    "estimate": -1.339114285714286,
+    "ci": [
+     -2.2627842857142855,
+     -0.2274471428571439
+    ],
+    "p_holm": 0.08,
+    "survives": false
+   },
+   "H-C4": {
+    "n_models": 7,
+    "estimate": 1.6028571428571432,
+    "ci": [
+     -2.371642857142857,
+     8.523571428571419
+    ],
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "H-C5": {
+    "n_models": 7,
+    "estimate": 7.082857142857143,
+    "ci": [
+     -0.0029285714285715893,
+     17.24349999999999
+    ],
+    "p_holm": 0.1808,
+    "survives": false
+   },
+   "H-C6": {
+    "n_models": 7,
+    "estimate": 0.6106857142857144,
+    "ci": [
+     0.4752107142857143,
+     0.7441582142857143
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C7": {
+    "n_models": 0,
+    "estimate": null,
+    "ci": null,
+    "p_holm": null,
+    "survives": null
+   }
+  },
+  "leave_out_anthropic": {
+   "H-C1": {
+    "n_models": 7,
+    "estimate": 0.3181714285714288,
+    "ci": [
+     -0.8499735714285713,
+     3.5046307142857103
+    ],
+    "p_holm": 0.9544,
+    "survives": false
+   },
+   "H-C2": {
+    "n_models": 7,
+    "estimate": 2.825228571428571,
+    "ci": [
+     0.295531428571428,
+     4.560591428571428
+    ],
+    "p_holm": 0.1296,
+    "survives": false
+   },
+   "H-C3": {
+    "n_models": 7,
+    "estimate": -1.1825142857142859,
+    "ci": [
+     -2.0962300000000007,
+     -0.17864071428571454
+    ],
+    "p_holm": 0.12200000000000001,
+    "survives": false
+   },
+   "H-C4": {
+    "n_models": 7,
+    "estimate": 2.0542857142857147,
+    "ci": [
+     -1.7658571428571428,
+     8.897285714285712
+    ],
+    "p_holm": 0.9144,
+    "survives": false
+   },
+   "H-C5": {
+    "n_models": 7,
+    "estimate": 4.871428571428572,
+    "ci": [
+     -0.7116428571428581,
+     14.665785714285715
+    ],
+    "p_holm": 0.45480000000000004,
+    "survives": false
+   },
+   "H-C6": {
+    "n_models": 7,
+    "estimate": 0.6105571428571429,
+    "ci": [
+     0.4739407142857143,
+     0.7465860714285715
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C7": {
+    "n_models": 0,
+    "estimate": null,
+    "ci": null,
+    "p_holm": null,
+    "survives": null
+   }
+  },
+  "leave_out_meta": {
+   "H-C1": {
+    "n_models": 4,
+    "estimate": -0.823,
+    "ci": [
+     -0.94425,
+     -0.71534875
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C2": {
+    "n_models": 4,
+    "estimate": 3.48165,
+    "ci": [
+     2.3872550000000006,
+     4.753021249999999
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C3": {
+    "n_models": 4,
+    "estimate": -1.4674000000000005,
+    "ci": [
+     -2.1183537500000003,
+     -0.8567462500000002
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C4": {
+    "n_models": 4,
+    "estimate": 2.66,
+    "ci": [
+     -4.215250000000003,
+     14.470999999999982
+    ],
+    "p_holm": 0.7624,
+    "survives": false
+   },
+   "H-C5": {
+    "n_models": 4,
+    "estimate": 12.889999999999999,
+    "ci": [
+     2.779624999999997,
+     26.74075
+    ],
+    "p_holm": 0.0104,
+    "survives": true
+   },
+   "H-C6": {
+    "n_models": 4,
+    "estimate": 0.5992250000000001,
+    "ci": [
+     0.37509875,
+     0.8211512499999999
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C7": {
+    "n_models": 0,
+    "estimate": null,
+    "ci": null,
+    "p_holm": null,
+    "survives": null
+   }
+  },
+  "leave_out_mistral": {
+   "H-C1": {
+    "n_models": 7,
+    "estimate": 0.31488571428571455,
+    "ci": [
+     -0.8571000000000002,
+     3.063727142857142
+    ],
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "H-C2": {
+    "n_models": 7,
+    "estimate": 2.9170000000000003,
+    "ci": [
+     0.3879457142857138,
+     4.6421335714285705
+    ],
+    "p_holm": 0.1136,
+    "survives": false
+   },
+   "H-C3": {
+    "n_models": 7,
+    "estimate": -1.3627714285714287,
+    "ci": [
+     -2.29027,
+     -0.29232857142857227
+    ],
+    "p_holm": 0.064,
+    "survives": false
+   },
+   "H-C4": {
+    "n_models": 7,
+    "estimate": 1.5799999999999998,
+    "ci": [
+     -2.4772857142857134,
+     8.905785714285713
+    ],
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "H-C5": {
+    "n_models": 7,
+    "estimate": 5.954285714285715,
+    "ci": [
+     -0.629071428571429,
+     15.845857142857136
+    ],
+    "p_holm": 0.3384,
+    "survives": false
+   },
+   "H-C6": {
+    "n_models": 7,
+    "estimate": 0.6674714285714286,
+    "ci": [
+     0.5331557142857142,
+     0.7869739285714286
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C7": {
+    "n_models": 0,
+    "estimate": null,
+    "ci": null,
+    "p_holm": null,
+    "survives": null
+   }
+  },
+  "leave_out_nvidia": {
+   "H-C1": {
+    "n_models": 7,
+    "estimate": 0.3440285714285717,
+    "ci": [
+     -0.8015150000000001,
+     3.116582857142856
+    ],
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "H-C2": {
+    "n_models": 7,
+    "estimate": 3.0307142857142857,
+    "ci": [
+     0.4823314285714285,
+     4.681952142857144
+    ],
+    "p_holm": 0.1024,
+    "survives": false
+   },
+   "H-C3": {
+    "n_models": 7,
+    "estimate": -1.358914285714286,
+    "ci": [
+     -2.267157857142857,
+     -0.3263878571428587
+    ],
+    "p_holm": 0.046,
+    "survives": true
+   },
+   "H-C4": {
+    "n_models": 7,
+    "estimate": -0.23142857142857107,
+    "ci": [
+     -1.6199999999999999,
+     1.326071428571423
+    ],
+    "p_holm": 1.0,
+    "survives": false
+   },
+   "H-C5": {
+    "n_models": 7,
+    "estimate": 3.4457142857142853,
+    "ci": [
+     -0.7202857142857139,
+     8.848642857142856
+    ],
+    "p_holm": 0.4008,
+    "survives": false
+   },
+   "H-C6": {
+    "n_models": 7,
+    "estimate": 0.6785857142857142,
+    "ci": [
+     0.5572410714285714,
+     0.7861899999999998
+    ],
+    "p_holm": 0.0012000000000000001,
+    "survives": true
+   },
+   "H-C7": {
+    "n_models": 0,
+    "estimate": null,
+    "ci": null,
+    "p_holm": null,
+    "survives": null
+   }
+  }
+ }
+}

@@ -17,6 +17,7 @@ NEXT ACTION (each session):
      (writes only to results/_runner/interim/). When every cell is done: `python3 -m analysis.scorecard` (confirmatory),
      then the independent verification pass (a fresh agent re-derives 3+ headline numbers from raw cells).
 PHASE C: ACTIVE since PREREG_C commit 611852f (pushed 2026-09-27 20:09 -0700); job at priority 4 in queue.yaml; Haiku from the cloud workspace.
+PHASE C CONFIRMATORY (8 models, DEVIATIONS #1): done 2026-09-28 → results/v2/_phase_c.md; verified (analysis/verify_phase_c.py). Addendum with the 4 cloud models once they finish (≈ 10-08/09).
 BLOCKERS: none.  NEEDS ADI: none (optional: read prereg/PREREG_B.md).
 SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. control) – · L1 – · L2 –
 ```
@@ -202,3 +203,24 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Revised estimates:** Phase A/B complete ≈ 2026-10-02/03 (gemini and gpt-oss-20b last). Phase C for the four cloud models ≈ 2026-10-08/09. Earlier estimates (09-30 to 10-01) undercounted calls per remaining cell.
 - **Option for Adi (not adopted; changing Phase C's model set would be a deviation):** analyse Phase C confirmatorily on the 8 finished models and report the 4 cloud models as a later robustness addendum. Default is to wait for all 12 as registered.
 - **Next action:** top block.
+
+### 2026-09-28 · Session 23 · Claude (Cowork, owner request) · Phase C confirmatory analysis (8 models)
+- **Decision:** Adi approved analysing Phase C now on the 8 finished models, with the 4 cloud models as a later addendum. Logged as prereg/DEVIATIONS.md #1, including the disclosure that 7-model interim summaries had been seen.
+- **Bug found and fixed first:** the pilot filter missed "p2_" cells (DECISIONS #21).
+- **Confirmatory run:** `python3 -m analysis.phase_c --B 5000` → results/v2/_phase_c.md/.json. All 8 models valid (64/64 cells, invalid ≤ 0.4%). A rerun in the VM gives identical tables.
+- **Independent verification:** analysis/verify_phase_c.py (no shared code) re-derives C2−C0 +2.917, C3−C2 −1.330, C5−C4 +6.283, knowing overreach 0.736, needy share 0.438, mean stock C0 92.35 / C1 17.32. All match (results/v2/_phase_c_verification.txt).
+- **Results** (Holm across H-C1–H-C7; secondary X1–X7 Holm, exploratory):
+  - **H-C6 SUPPORTED.** At C3–C4, agents request more than their own stated safe share in 74% of decisions (+0.637 above the 10% threshold, CI [+0.50, +0.76]). Holds in all 8 models and every robustness variant.
+  - **H-C3 SUPPORTED.** Learning that others share the source cuts the round-1 take (−1.33 × sustainable share, Holm p = 0.028; 7/8 models). Not robust to every exclusion (it loses significance without the pilot models or without Haiku).
+  - **H-C2 not supported after Holm.** Knowing the rules while believing you're alone raises the round-1 take by +2.92 × (CI [+0.73, +4.46]; p = 0.018; Holm 0.072; 7/8 models).
+  - **H-C1 not supported.** The black-box round-1 take is not distinguishable from the sustainable share on average (+0.18). But 7 of 8 models asked 0–6 units, while Llama 3.1 8B asked ~100. Without Meta models or without the pilot models it becomes significantly below the sustainable share.
+  - **H-C4 not supported.** Transparency: +1.4 stock, CI spans 0.
+  - **H-C5 not supported after Holm.** Talk: +6.3 stock (p = 0.05, Holm 0.15). Driven by Haiku (+16), Nemotron (+26) and Ministral (+9); the small local models crash in round 1 whatever happens.
+  - **H-C7 not testable.** No group reached round 10 with ≥ 48 units.
+  - **Secondary:**
+    - X3 (needy agent's share 0.44 > 0.25) survives, but mostly because the needy agent asked for more (round 1: 57 vs 34 in C4); the others eased off only slightly (29 vs 34).
+    - X2 (two greedy agents vs one): +3.5 stock, not after Holm.
+    - Identity framing (X4/X5): no effect.
+    - Probe controls (X6/X7): no effect, so asking about limits did not measurably change behaviour.
+  - **Descriptive:** black-box mean stock 92 vs 17 once the level is visible (C1). Of 447 crashed groups, 9 recovered (2%). Spontaneous mentions of other agents in C0–C2 ≈ 1% of decisions (none were mentioned to them).
+- **Next action:** top block. Phase C addendum when the 4 cloud models finish.

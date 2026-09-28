@@ -2,7 +2,7 @@
 
     python -m analysis.phase_c [--B 5000] [--interim] [--out ...]
 
-Cells prefixed "p1_" are pilot cells and are never analysed. Per model: effect_m = mean(arm) − mean(comparison) over
+Cells prefixed "p1_" or "p2_" are pilot cells and are never analysed. Per model: effect_m = mean(arm) − mean(comparison) over
 cells; the two arms' cells are resampled independently (arms are separate groups; seed numbers are not paired across
 arms). One-sample tests (H-C1, H-C6) compare the model mean with a constant. Pooled effect = mean over valid models;
 95% CI + two-sided p by hierarchical bootstrap (models with replacement, then cells within model), p floored at 1/B.
@@ -18,6 +18,11 @@ from analysis import v2data as D
 from analysis.everyday_effects import Unit, summarize, holm, ALPHA
 
 EXP = "c_dark_commons"
+# prereg/DEVIATIONS.md #1 (owner decision 2026-09-28): the confirmatory model set is the 8 models that finished Phase C
+# first; the 4 free-tier cloud models are a later robustness addendum (run with --models all --out-name phase_c_addendum).
+CONFIRMATORY_SET = ["haiku45", "ministral_8b", "nemotron_super", "ollama_llama2_7b", "ollama_llama3_8b",
+                    "ollama_llama31_8b", "ollama_llama32_3b", "ollama_qwen25_7b"]
+PILOT_PREFIXES = ("p1_", "p2_")   # pilot cells (PREREG_C §7) are never analysed
 LADDER = ["C0", "C1", "C2", "C3", "C4", "C5"]
 
 PRIMARY = [
@@ -55,7 +60,7 @@ SECONDARY = [
 
 
 def cells(model):
-    return [c for c in D.load(EXP, model) if not c["cell_id"].startswith("p1_")]
+    return [c for c in D.load(EXP, model) if not c["cell_id"].startswith(PILOT_PREFIXES)]
 
 
 def validity():
@@ -151,7 +156,13 @@ def to_md(res):
     L = ["# Phase C — commons in the dark (PREREG_C)", ""]
     if res["interim"]:
         L += ["> **INTERIM — run incomplete. Not a confirmatory result.**", ""]
-    L += [f"Valid models: {', '.join(res['valid'])}", ""]
+    L += [f"Model set: {res.get('model_set')} (prereg/DEVIATIONS.md #1). Valid models analysed: {', '.join(res['valid'])}", ""]
+    if res.get("requested_but_invalid"):
+        L += [f"Requested but excluded (PREREG_C §7): {', '.join(res['requested_but_invalid'])}", ""]
+    L += ["| model | cells | invalid rate | valid | reason |", "|---|---:|---:|---|---|"]
+    for m, v in res["validity"].items():
+        L.append(f"| {m} | {v['cells']} / {v['expected']} | {v['invalid_rate']:.1%} | {v['valid']} | {v['reason']} |")
+    L.append("")
     for title, key in (("Primary (Holm across seven)", "primary"), ("Secondary (Holm across seven; exploratory)", "secondary")):
         L += [f"## {title}", "", "| test | hypothesis | n | estimate | 95% CI | p | p (Holm) | sign consistency | survives |",
               "|---|---|---:|---:|---|---:|---:|---:|---|"]
@@ -185,13 +196,17 @@ def main(argv=None):
     ap.add_argument("--interim", action="store_true")
     ap.add_argument("--skip-robustness", action="store_true")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--models", default="confirmatory", help="'confirmatory' (DEVIATIONS #1 set), 'all', or a comma list")
+    ap.add_argument("--out-name", default="phase_c")
     a = ap.parse_args(argv)
     D.ALLOW_INCOMPLETE = a.interim
-    out = a.out or D.out_path("phase_c", a.interim)
+    out = a.out or D.out_path(a.out_name, a.interim)
     rng = np.random.default_rng(a.seed)
     val = validity()
-    valid = [m for m, v in val.items() if v["valid"]]
-    res = {"interim": a.interim, "B": a.B, "validity": val, "valid": valid,
+    wanted = (CONFIRMATORY_SET if a.models == "confirmatory" else None if a.models == "all" else a.models.split(","))
+    valid = [m for m, v in val.items() if v["valid"] and (wanted is None or m in wanted)]
+    missing = [m for m in (wanted or []) if m not in valid]
+    res = {"interim": a.interim, "B": a.B, "validity": val, "valid": valid, "model_set": a.models, "requested_but_invalid": missing,
            "primary": run_family(PRIMARY, valid, a.B, rng), "secondary": run_family(SECONDARY, valid, a.B, rng),
            "descriptives": descriptives(valid)}
     res["robustness"] = {} if a.skip_robustness else robustness(a.B, rng, valid)
