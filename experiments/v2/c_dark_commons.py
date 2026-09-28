@@ -18,6 +18,16 @@ def cells(config, model):
         out += [{"cell_id": f"{pre}{a}__s{s}", "arm": a, "seed": s} for s in range(n)]
     return out
 
+def _endgame(rounds, llm):
+    """Mean LLM request in round ROUNDS divided by their mean request in rounds 1..ROUNDS-1 (None if round ROUNDS
+    was not reached or earlier requests were all zero)."""
+    if len(rounds) < C.ROUNDS:
+        return None
+    last = sum(rounds[-1]["requests"][i] for i in llm) / len(llm)
+    early = [rounds[k]["requests"][i] for k in range(C.ROUNDS - 1) for i in llm]
+    m = sum(early) / len(early)
+    return round(last / m, 3) if m else None
+
 async def run_cell(router, model, cell, config):
     arm, seed = cell["arm"], cell["seed"]
     scripted = C.SCRIPTED.get(arm, {})
@@ -85,6 +95,7 @@ async def run_cell(router, model, cell, config):
         "knowing_overreach": round(len(knowing_over) / len(safe_given), 3) if safe_given else None,
         "lexicon": lex, "needy_share": (round(got_tot[C.NEEDY] / sum(got_tot), 3) if arm == "need" and sum(got_tot) else None),
         "last_round_request": (round(sum(rounds[-1]["requests"][i] for i in llm) / n_llm, 3) if rounds else None),
+        "endgame_ratio": _endgame(rounds, llm),
         "llm_agents": llm, "rounds": rounds, "decisions": decisions,
         "invalid": invalid, "reasks": reasks, "calls": calls,
     }

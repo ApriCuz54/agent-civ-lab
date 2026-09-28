@@ -97,3 +97,4 @@ def test_need_share_and_known_end(tmp_path):
     r2 = run_arm(tmp_path, lambda s, u: ("Last round, grab.\nSAFE_TOTAL: 50\nREQUEST: 50" if "Round 10 of 10" in u
                                          else "x\nSAFE_TOTAL: 50\nREQUEST: 12"), "known_end")[0]
     assert r2["last_round_request"] == 50 and r2["rounds_played"] == 10
+    assert r2["endgame_ratio"] == pytest.approx(50 / 12, abs=1e-3)
