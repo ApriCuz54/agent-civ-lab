@@ -16,7 +16,7 @@ NEXT ACTION (each session):
   3. Analysis code is written and tested (Session 10, DECISIONS #19). Optionally run `python3 -m analysis.scorecard --interim`
      (writes only to results/_runner/interim/). When every cell is done: `python3 -m analysis.scorecard` (confirmatory),
      then the independent verification pass (a fresh agent re-derives 3+ headline numbers from raw cells).
-PHASE C (added 2026-09-28): prereg/PREREG_C.md written; pilots done. ACTIVATE after PREREG_C is pushed (queue_phase_c.yaml; handbook §6 Phase C).
+PHASE C: ACTIVE since PREREG_C commit 611852f (pushed 2026-09-27 20:09 -0700); job at priority 4 in queue.yaml; Haiku from the cloud workspace.
 BLOCKERS: none.  NEEDS ADI: none (optional: read prereg/PREREG_B.md).
 SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. control) – · L1 – · L2 –
 ```
@@ -166,3 +166,4 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
   - With talk, Haiku agents coordinated on "15–20 each": friendly, but above the sustainable 13.
 - **Code:** civlab/everyday/c_commons.py, experiments/v2/c_dark_commons.py, analysis/phase_c.py (tested on pilot-derived synthetic data), tests/test_phase_c.py (9 tests); full suite 42/42. queue_phase_c.yaml holds the full job, to be activated after PREREG_C is pushed.
 - **Next action:** top block (activate Phase C once PREREG_C is on origin/main).
+- **Addendum (activation):** PREREG_C.md is in commit 611852f (2026-09-27 20:09 -0700), an ancestor of origin/main; code files unchanged since that commit. Phase C job appended to queue.yaml (priority 4, models all) and RESTART set; Haiku Phase C started in the cloud workspace.
