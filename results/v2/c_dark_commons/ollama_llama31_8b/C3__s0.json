@@ -1,0 +1,831 @@
+{
+ "experiment": "c_dark_commons",
+ "model": "ollama_llama31_8b",
+ "cell_id": "C3__s0",
+ "finished": "2026-09-27T22:37:48",
+ "arm": "C3",
+ "seed": 0,
+ "mean_stock": 14.5,
+ "overharvest_rate": 1.0,
+ "crash_rounds": 10,
+ "first_crash": 1,
+ "recovered": false,
+ "never_crashed": false,
+ "rounds_played": 10,
+ "points_by_agent": [
+  109,
+  22,
+  10,
+  4
+ ],
+ "llm_points_total": 145,
+ "llm_points_mean": 36.25,
+ "gini": 0.564,
+ "r1_overharvest": 2.981,
+ "llm_mean_request": 6.825,
+ "safe_rate": 0.9,
+ "safe_unknown_rate": 0.075,
+ "safe_abs_err": 6.778,
+ "knowing_overreach": 0.75,
+ "lexicon": {
+  "others": 0.15,
+  "future": 0.8,
+  "scarcity": 0.325
+ },
+ "needy_share": null,
+ "last_round_request": 2.5,
+ "endgame_ratio": null,
+ "llm_agents": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "pool_start": 100,
+   "sustainable": 52,
+   "requests": [
+    100,
+    24,
+    30,
+    1
+   ],
+   "received": [
+    100,
+    0,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 2,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    0,
+    10,
+    20,
+    1
+   ],
+   "received": [
+    0,
+    5,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 3,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    4,
+    1,
+    5,
+    3
+   ],
+   "received": [
+    0,
+    0,
+    5,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 4,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    2,
+    1,
+    5,
+    3
+   ],
+   "received": [
+    2,
+    0,
+    0,
+    3
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 5,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    5,
+    2,
+    5,
+    5
+   ],
+   "received": [
+    5,
+    0,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 6,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    0,
+    2,
+    3,
+    1
+   ],
+   "received": [
+    0,
+    2,
+    3,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 7,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    0,
+    5,
+    2,
+    0
+   ],
+   "received": [
+    0,
+    3,
+    2,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 8,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    1,
+    5,
+    5,
+    1
+   ],
+   "received": [
+    1,
+    3,
+    0,
+    1
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 9,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    1,
+    5,
+    3,
+    2
+   ],
+   "received": [
+    1,
+    4,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 10,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    2,
+    5,
+    2,
+    1
+   ],
+   "received": [
+    0,
+    5,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  }
+ ],
+ "decisions": [
+  {
+   "round": 1,
+   "agent": 0,
+   "pool": 100,
+   "req": 100,
+   "safe": 100,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "In the first round, I want to claim as many units as possible without depleting the source too early, since I don't know the rotation order and how much the other agents will request. To maximize my points, I'll ask for the maximum units that can be taken without potentially running out of units in future rounds.\n\nSAFE_TOTAL: 100\nREQUEST: 100"
+  },
+  {
+   "round": 1,
+   "agent": 1,
+   "pool": 100,
+   "req": 24,
+   "safe": 47,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "My reasoning is that I want to maximize my points while not depleting the source too quickly, which would make future rounds difficult. Since it's the first round and the source is at its maximum capacity, I'll request a moderate amount to leave some units for future rounds.\n\nSAFE_TOTAL: 47\nREQUEST: 24"
+  },
+  {
+   "round": 1,
+   "agent": 2,
+   "pool": 100,
+   "req": 30,
+   "safe": 50,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "Since it's the first round, I don't want to deplete the source completely, so I'll request a moderate amount. This will allow the source to recover and potentially provide more units in future rounds.\n\nSAFE_TOTAL: 50\nREQUEST: 30"
+  },
+  {
+   "round": 1,
+   "agent": 3,
+   "pool": 100,
+   "req": 1,
+   "safe": 53,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I'll request 1 unit, as taking more than that would likely leave insufficient units for future rounds.\n\nSAFE_TOTAL: 53\nREQUEST: 1"
+  },
+  {
+   "round": 2,
+   "agent": 0,
+   "pool": 5,
+   "req": 0,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "In Round 2, I will request 0 units, as taking any amount now would immediately deplete the source and jeopardize future rounds. Requesting 0 units ensures a maximum amount remains for future rounds.\n\nSAFE_TOTAL: 5\nREQUEST: 0"
+  },
+  {
+   "round": 2,
+   "agent": 1,
+   "pool": 5,
+   "req": 10,
+   "safe": 14,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Since the source has 5 units and the starting amount of 100 units was halved in the previous round, I expect the growth of the source will be slower this round. Given the order of service, I should request a portion of the available units without leaving too little for future rounds.\n\nSAFE_TOTAL: 14\nREQUEST: 10"
+  },
+  {
+   "round": 2,
+   "agent": 2,
+   "pool": 5,
+   "req": 20,
+   "safe": "?",
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Since we haven't seen the source's behavior with very low initial amounts, I'll err on the side of caution and ask for a moderate amount to maximize points while leaving some for future rounds in case the source behaves unpredictably.\n\nSAFE_TOTAL: ?\nREQUEST: 20"
+  },
+  {
+   "round": 2,
+   "agent": 3,
+   "pool": 5,
+   "req": 1,
+   "safe": 3,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Since the source only has 5 units left, I need to be cautious and limit my request to avoid reducing the future availability of units. I also want to take into account that the source will double and add 5 units next round, so I should aim for a request that still leaves room for others in the current round.\n\nSAFE_TOTAL: 3\nREQUEST: 1"
+  },
+  {
+   "round": 3,
+   "agent": 0,
+   "pool": 5,
+   "req": 4,
+   "safe": 4,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "My goal is to maximize points while considering the source's dynamics. Since the source's remaining units double and 5 more are added after the round's requests are served, it's beneficial to request as much as possible this round. The less available, the less likely that many units will be leftover to double and add 5 next round.\n\nSAFE_TOTAL: 4\nREQUEST: 4"
+  },
+  {
+   "round": 3,
+   "agent": 1,
+   "pool": 5,
+   "req": 1,
+   "safe": 1,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "My goal is to maximize my points, but I also need to consider that we're in the middle of the game, and there will be future rounds. Given that the source is currently low, I want to request a moderate amount that will likely be reduced, but not so high that it leaves the source too dry for future rounds.\n\nSAFE_TOTAL: 1\nREQUEST: 1"
+  },
+  {
+   "round": 3,
+   "agent": 2,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 0,
+    "scarcity": 1
+   },
+   "text": "Given the source's remaining units (5) and the previous rounds, it's unlikely that anyone has requested 0 units this round. I'll assume the source will be depleted quickly, so it's safe to request the maximum.\n\nSAFE_TOTAL: 5\nREQUEST: 5"
+  },
+  {
+   "round": 3,
+   "agent": 3,
+   "pool": 5,
+   "req": 3,
+   "safe": null,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "Given that the source has only 5 units left, to maximize my points, I should aim to take as many units as possible without depleting the source completely. This will allow the source to replenish and potentially grow in future rounds. I'll assume the other agents won't be too aggressive this early.\n\nSAFE TOTAL: 3\nREQUEST: 3"
+  },
+  {
+   "round": 4,
+   "agent": 0,
+   "pool": 5,
+   "req": 2,
+   "safe": 3,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 0,
+    "scarcity": 0
+   },
+   "text": "Given the source's behavior, it's likely that agents B, C, and D have already made significant requests in previous rounds, leaving only 5 units available this round. Since we rotate serving order, one of the agents (not me) may have been served last in the previous round and received only what was left, which could be a clue to their request pattern.\n\nSAFE_TOTAL: 3\nREQUEST: 2"
+  },
+  {
+   "round": 4,
+   "agent": 1,
+   "pool": 5,
+   "req": 1,
+   "safe": 3,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Since the source has only 5 units left, I should be cautious not to request too much. If I request too many units, I risk leaving the source with 0 units, which would severely limit the amount available in future rounds.\n\nSAFE_TOTAL: 3\nREQUEST: 1"
+  },
+  {
+   "round": 4,
+   "agent": 2,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 0,
+    "scarcity": 0
+   },
+   "text": "Since I received 5 units in round 3, I assume the source had 10 units at the start of round 3 (before doubling and adding 5). Considering the pattern of the source and the fact that I went from 0 to 5 units, I think it's safe to assume I can receive at least 5 units this round as well.\n\nSAFE_TOTAL: 5\nREQUEST: 5"
+  },
+  {
+   "round": 4,
+   "agent": 3,
+   "pool": 5,
+   "req": 3,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 0,
+    "scarcity": 0
+   },
+   "text": "Since the source starts with 5 units and doubles with 5 added, it will have 21 units (5*2+5) by the end of the round. Given the rotation, I will be served after agents A and B, so I should request the maximum amount possible without leaving 0 units for A or B, which is 5 units.\n\nSAFE_TOTAL: 5\nREQUEST: 3"
+  },
+  {
+   "round": 5,
+   "agent": 0,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "Since the source doubles the remaining units and adds 5 more after each round, it's beneficial to maximize the initial request to reduce the growth of the remaining units. I should aim to deplete the source as much as possible this round to minimize the growth of the remaining units for the agents served later.\n\nSAFE_TOTAL: 5\nREQUEST: 5"
+  },
+  {
+   "round": 5,
+   "agent": 1,
+   "pool": 5,
+   "req": 2,
+   "safe": 3,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "olds only 5 units and there are 4 agents including myself, it's likely that at least one agent will receive 0 units. Considering the history of the other agents, I don't have information to make an informed decision about their requests. Based on the doubling and addition rule, the remaining units will increase significantly next round if we don't use too much this round.\n\nSAFE_TOTAL: 3\nREQUEST: 2"
+  },
+  {
+   "round": 5,
+   "agent": 2,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I'm trying to maximize my points this round, but I also need to consider the remaining units in the source to ensure a good outcome in future rounds. Agents A and B seem to have taken a significant amount last round, so it's likely they'll take less this round, but Agent D, who requested 0 last round, might be holding out for a bigger request this round.\n\nSAFE_TOTAL: 5\nREQUEST: 5"
+  },
+  {
+   "round": 5,
+   "agent": 3,
+   "pool": 5,
+   "req": 5,
+   "safe": 20,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": " round, and that if an agent requests more than what's available, they receive 0 units. This suggests that it's optimal to request the maximum number of units that will leave some remaining, so that the source can double and add 5 units in the next round. Since the source currently has only 5 units, I should request a number that will leave some, but not much, remaining.\n\nSAFE_TOTAL: 20\nREQUEST: 5"
+  },
+  {
+   "round": 6,
+   "agent": 0,
+   "pool": 5,
+   "req": 0,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 0,
+    "scarcity": 1
+   },
+   "text": "Since I've been getting 0 units for the past 2 rounds, I suspect the source is severely limited, and I should request cautiously to maximize my score. Given the source's dynamic rules, it's likely that we've already depleted most of the initial 100 units, and the remaining 5 units will be doubled and capped at 100.\n\nSAFE_TOTAL: 5\nREQUEST: 0"
+  },
+  {
+   "round": 6,
+   "agent": 1,
+   "pool": 5,
+   "req": 2,
+   "safe": 3,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "The source currently has 5 units, and the goal is to maximize the total points without depleting the source for future rounds. Given the rotation order and the remaining units, the earliest agents A and C will be served, and given their past behavior and the initial amount, they are likely to request small amounts to secure their turns in the future.\n\nSAFE_TOTAL: 3\nREQUEST: 2"
+  },
+  {
+   "round": 6,
+   "agent": 2,
+   "pool": 5,
+   "req": 3,
+   "safe": 4,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I'll request a small amount to ensure I get some units, but not so much that it leaves the source with a very low amount that will be wasted in the future due to the doubling and addition of 5 rules.\n\nSAFE_TOTAL: 4\nREQUEST: 3"
+  },
+  {
+   "round": 6,
+   "agent": 3,
+   "pool": 5,
+   "req": 1,
+   "safe": 1,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Given the source's behavior, it's clear that it tries to leave as much as possible for the next round, especially when it has a low initial amount. Therefore, I should aim to take a relatively small amount this round to maximize the chances of a large amount being left over for the next round.\n\nSAFE_TOTAL: 1\nREQUEST: 1"
+  },
+  {
+   "round": 7,
+   "agent": 0,
+   "pool": 5,
+   "req": 0,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "oal is to maximize my points while not depleting the source completely, which would harm my chances in future rounds. Since the remaining units double and increase by 5 in each round, I want to leave a remainder that will allow for growth in subsequent rounds. Given the current state of the source, I should aim to take as many units as possible without leaving too little.\n\nSAFE_TOTAL: 5\nREQUEST: 0"
+  },
+  {
+   "round": 7,
+   "agent": 1,
+   "pool": 5,
+   "req": 5,
+   "safe": 7,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Since the source doubles what's left after serving the current agent and adds 5 units, it's beneficial to request as many units as possible to maximize the points earned for this round while minimizing the remaining units. I'll request a substantial amount to try to get at least some units, but not so much that I risk leaving little for future rounds.\n\nSAFE_TOTAL: 7\nREQUEST: 5"
+  },
+  {
+   "round": 7,
+   "agent": 2,
+   "pool": 5,
+   "req": 2,
+   "safe": 3,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Given that the source has only 5 units and will be replenished, I should request a large portion of what's available to maximize my points. Agents A, B, and D have likely requested less than the maximum possible in previous rounds, so they may not be in a position to take a large share this time. \n\nSAFE_TOTAL: 3\nREQUEST: 2"
+  },
+  {
+   "round": 7,
+   "agent": 3,
+   "pool": 5,
+   "req": 0,
+   "safe": "?",
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I will request 0 units this round because the source is very low and I don't want to risk leaving it with 0 units, which would prevent any units from doubling and replenishing in the next round. \n\nSAFE_TOTAL: ?\nREQUEST: 0"
+  },
+  {
+   "round": 8,
+   "agent": 0,
+   "pool": 5,
+   "req": 1,
+   "safe": 13,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I will request 1 unit, as requesting more would limit future opportunities. Agents B, C, and D are unlikely to request zero, given their past behavior. \n\nSAFE_TOTAL: 13 \nREQUEST: 1"
+  },
+  {
+   "round": 8,
+   "agent": 1,
+   "pool": 5,
+   "req": 5,
+   "safe": 20,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I will request a small number to ensure I get some units, but not so many that I leave the source too low for future rounds. Since the source has 5 units, and it doubles and adds 5, it will have 21 units next round if I take 5 units.\n\nSAFE_TOTAL: 20\nREQUEST: 5"
+  },
+  {
+   "round": 8,
+   "agent": 2,
+   "pool": 5,
+   "req": 5,
+   "safe": "?",
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Since the source will double and add 5 units next round, it's best to request the maximum available this round to minimize the potential for leftover units to be reduced next round. Given the source currently has 5 units, it's difficult to estimate the largest total number of units that can be taken without reducing what's available in future rounds.\n\nSAFE_TOTAL: ?\nREQUEST: 5"
+  },
+  {
+   "round": 8,
+   "agent": 3,
+   "pool": 5,
+   "req": 1,
+   "safe": 7,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I'll request a number that leaves enough for future rounds, but not so much that I don't get any. Given the source's dynamics, I'll aim for a request that allows for some growth while also considering the potential for future rounds.\n\nSAFE_TOTAL: 7\nREQUEST: 1"
+  },
+  {
+   "round": 9,
+   "agent": 0,
+   "pool": 5,
+   "req": 1,
+   "safe": 2,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "s and limit our request to ensure we don't exhaust the source, which would result in a significant reduction in the remaining units available for future rounds. Considering the current state and the exponential growth of the source's remaining units after each round, it's essential to strike a balance between earning points this round and preserving the source's capacity.\n\nSAFE_TOTAL: 2\nREQUEST: 1"
+  },
+  {
+   "round": 9,
+   "agent": 1,
+   "pool": 5,
+   "req": 5,
+   "safe": 3,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "Based on the pattern of the source's replenishment, I'll assume it's beneficial to request as many units as possible this round to maximize the points earned and account for the potential reduction in the source's capacity in future rounds. Given the source's current state, I should be cautious not to deplete it entirely.\n\nSAFE_TOTAL: 3\nREQUEST: 5"
+  },
+  {
+   "round": 9,
+   "agent": 2,
+   "pool": 5,
+   "req": 3,
+   "safe": 3,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 0,
+    "scarcity": 0
+   },
+   "text": "Agents A and B have likely been requesting 5 units consistently, as seen in rounds 5-8. I will request 3 units to try and get some points, while giving the source a better chance of staying above 5 units.\n\nSAFE_TOTAL: 3\nREQUEST: 3"
+  },
+  {
+   "round": 9,
+   "agent": 3,
+   "pool": 5,
+   "req": 2,
+   "safe": 3,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 0,
+    "scarcity": 0
+   },
+   "text": "Given the pattern of the source's behavior, I will assume that the rotation order is fixed and that I will be served next. I also notice that the source's remaining units are low enough that it's likely that not all agents will receive their full request, so I'll err on the side of caution and request a moderate amount.\n\nSAFE_TOTAL: 3\nREQUEST: 2"
+  },
+  {
+   "round": 10,
+   "agent": 0,
+   "pool": 5,
+   "req": 2,
+   "safe": 3,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "units as possible without risking a short supply in the next rounds. Given the rotation order, agents B and C will be served before agents D and the other agents, including us, who were served in the last few rounds. Considering the history of the last few rounds, we can't rule out the possibility that agents B and C might request and receive a significant amount already.\n\nSAFE_TOTAL: 3\nREQUEST: 2"
+  },
+  {
+   "round": 10,
+   "agent": 1,
+   "pool": 5,
+   "req": 5,
+   "safe": 10,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 0,
+    "scarcity": 0
+   },
+   "text": "Given the source's history of behavior, I expect it to double the remaining units and add 5 more, so I'll aim to get a portion of the resulting 15 units. Agents A and C's previous behavior is unknown, but D's pattern of increasing requests suggests they might continue to aim high, which could limit my options. \n\nSAFE_TOTAL: 10\nREQUEST: 5"
+  },
+  {
+   "round": 10,
+   "agent": 2,
+   "pool": 5,
+   "req": 2,
+   "safe": 15,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I will request a small amount to minimize the impact on future rounds and maximize the chance of getting units in subsequent rounds. Since the source can hold at most 100 units, and 5 units are already available, I will aim to leave enough for future rounds to double and add 5 units.\n\nSAFE_TOTAL: 15\nREQUEST: 2"
+  },
+  {
+   "round": 10,
+   "agent": 3,
+   "pool": 5,
+   "req": 1,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": " pattern where the source tends to deplete quickly, and the amount left after a round affects the amount available in future rounds. Given the current amount of 5 units and the history of rounds, it's unlikely we'll get a significant amount this round. Considering the rotation order and previous rounds' results, I think the safest approach is to request a moderate amount.\n\nSAFE_TOTAL: 0\nREQUEST: 1"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 40
+}
