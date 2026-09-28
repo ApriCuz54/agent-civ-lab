@@ -187,3 +187,18 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Remaining Phase A/B cells:** gemini 235 · gptoss_20b 117 · qwen38_27b 109 (+12) · gptoss_120b 55. Roughly a day lost to the bug. **Estimate ≈ 2026-10-01/02** for Phase A/B; Phase C cloud models follow (≈ 2–4 more days, gemini last).
 - **Next action:** top block.
 - **Session 21 addendum (03:31 local):** the fix works. A new runner (pid 13160, started 01:52) resumed the quota models on the new date: gemini_flash_lite 235 → 142 remaining (then parked for 28 Sep at 02:42); gptoss_20b/120b re-parked on Groq's rolling token window; qwen38_27b is running. Phase A/B 6,041 / 6,460. Phase C: nemotron_super 52/64; the four quota models haven't started. No *.failed.json. No "max runtime" exit yet (the process was < 2 h old).
+
+### 2026-09-28 · Session 22 · Claude (Cowork, scheduled check-in) · Revised timeline: call-heavy tail
+- **Observed (13:25 local):** Phase A/B 6,069 / 6,460. All four quota models parked for 28 Sep (Groq TPD 200k reached for qwen at 911 requests, gpt-oss-120b 426, gpt-oss-20b 409; gemini 546). Runner recycling works (one "max runtime" exit; clean code-2 exits otherwise). No *.failed.json. **Phase C complete for 8 models** (nemotron_super finished) · the 4 quota models 0/64 each.
+- **Why the tail is slow:** the remaining cells are the call-heavy ones: Phase A (a4 reputation ≈ 50 calls/cell, a2 ≈ 25, a1 ≈ 20), c1_counterpart, and then Phase C (≈ 2,400 calls per model). Remaining calls, estimated from completed models:
+
+  | Model | Phase A/B | Phase C | Pace |
+  |---|---|---|---|
+  | gemini | ≈ 1,930 | ≈ 2,400 | ≈ 550 req/day |
+  | gpt-oss-20b | ≈ 1,600 | ≈ 2,400 | ≈ 400/day (token cap) |
+  | gpt-oss-120b | ≈ 1,300 | ≈ 2,400 | ≈ 420/day |
+  | qwen | ≈ 990 (+200 temperature) | ≈ 2,400 | ≈ 900/day |
+
+- **Revised estimates:** Phase A/B complete ≈ 2026-10-02/03 (gemini and gpt-oss-20b last). Phase C for the four cloud models ≈ 2026-10-08/09. Earlier estimates (09-30 to 10-01) undercounted calls per remaining cell.
+- **Option for Adi (not adopted; changing Phase C's model set would be a deviation):** analyse Phase C confirmatorily on the 8 finished models and report the 4 cloud models as a later robustness addendum. Default is to wait for all 12 as registered.
+- **Next action:** top block.
