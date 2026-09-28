@@ -1,0 +1,6 @@
+# Phase C full-run job (prereg/PREREG_C.md). ACTIVATE ONLY after PREREG_C.md is in a pushed commit on origin/main
+# (check: git --no-optional-locks log -1 --format=%H%x20%cd -- prereg/PREREG_C.md). To activate: append the job line
+# below to queue.yaml and create results/_runner/RESTART. Priority 4 = after all Phase A/B/robustness work; the local
+# Ollama models are idle, so they start at once; cloud models follow as their daily quotas allow. Haiku runs from the
+# cloud workspace (python3 -m tools.run_queue --models haiku45 --include-claude).
+  - {experiment: c_dark_commons, phase: C, priority: 4, models: all, config: {}}

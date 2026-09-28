@@ -16,6 +16,7 @@ NEXT ACTION (each session):
   3. Analysis code is written and tested (Session 10, DECISIONS #19). Optionally run `python3 -m analysis.scorecard --interim`
      (writes only to results/_runner/interim/). When every cell is done: `python3 -m analysis.scorecard` (confirmatory),
      then the independent verification pass (a fresh agent re-derives 3+ headline numbers from raw cells).
+PHASE C (added 2026-09-28): prereg/PREREG_C.md written; pilots done. ACTIVATE after PREREG_C is pushed (queue_phase_c.yaml; handbook §6 Phase C).
 BLOCKERS: none.  NEEDS ADI: none (optional: read prereg/PREREG_B.md).
 SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. control) – · L1 – · L2 –
 ```
@@ -146,3 +147,22 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Observed (15:24 local):** 5,906 / 6,460 (+82 since Session 17; Groq's rolling token windows refill slowly through the day). All four remaining models parked; no *.failed.json; runner exits cleanly (code 2) each tick; autosync current.
 - **Remaining cells:** gemini_flash_lite 237 · gptoss_20b 122 · qwen38_27b 109 (+12 temperature) · gptoss_120b 74. **Estimate ≈ 2026-09-30 to 10-01**, gemini last.
 - **Next action:** top block.
+
+### 2026-09-28 · Session 19 · Claude (Cowork, owner request) · Phase C "commons in the dark" designed, piloted, pre-registered
+- **Goal:** the owner asked for a new experiment. Keep agents in a black box and watch whether they act selfishly, understand the resource's limits, and save for others; then reveal information step by step. (T3 collapsed under every instruction, so it could not say why agents drain a commons.)
+- **Design (DECISIONS #20; prereg/PREREG_C.md):**
+  - Same 4-agent regenerating source in every arm; only the agents' information differs.
+  - Ladder C0 black box → C1 source visible → C2 rules → C3 others exist → C4 transparency → C5 talk.
+  - Four extensions on C4: greedy1/greedy2 (scripted grabbers), need (agent A needs 2×), id_copies / id_humans (who the others are), known_end.
+  - Probe controls C0_noprobe / C4_noprobe.
+  - Each decision also states SAFE_TOTAL, the agent's own estimate of the sustainable take; this measures "knowing overreach".
+  - 64 cells per model (≤ 2,400 calls); all 12 models; priority 4 (after Phase A/B).
+- **Pilots** (1 seed per arm, ollama_llama31_8b + haiku45; p1_/p2_ cells, never analysed): invalid rate 0%.
+  - Pilot 1 (permanent exhaustion): Llama emptied the source in round 1 in 10 of 14 arms. Regrowth changed to doubling + 5 with no permanent end.
+  - Pilot 2: every crashed group (24 of 28 cells) stayed trapped near 5 units and none recovered. Primary metrics therefore became round-1 take (r1_overharvest) and mean source level (mean_stock).
+- **Leads from the pilots** (not findings, one seed):
+  - In the black box both models took very little (Haiku 1–5 units, well under a fair share). Once they saw the rules but believed they were alone, they took 4–8× the sustainable amount in round 1.
+  - Agents often state a safe limit and then exceed their share of it (knowing overreach 0.68–0.95 at C3–C4).
+  - With talk, Haiku agents coordinated on "15–20 each": friendly, but above the sustainable 13.
+- **Code:** civlab/everyday/c_commons.py, experiments/v2/c_dark_commons.py, analysis/phase_c.py (tested on pilot-derived synthetic data), tests/test_phase_c.py (9 tests); full suite 42/42. queue_phase_c.yaml holds the full job, to be activated after PREREG_C is pushed.
+- **Next action:** top block (activate Phase C once PREREG_C is on origin/main).

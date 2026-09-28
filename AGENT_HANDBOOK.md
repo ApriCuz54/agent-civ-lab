@@ -242,6 +242,20 @@ For each task T1–T5 (plan §8), then the A1–A6 battery (plan §7):
    - leave quota-parked models alone; they resume tomorrow.
 3. Run the Haiku cells from the cloud workspace when convenient.
 
+### Phase C: commons in the dark (added 2026-09-28; prereg/PREREG_C.md)
+
+A separate study at the owner's request: why do agents drain a shared resource? Is it ignorance of the limits,
+ignorance of other users, or taking anyway? Code: civlab/everyday/c_commons.py, experiments/v2/c_dark_commons.py,
+analysis/phase_c.py, tests/test_phase_c.py.
+
+1. **Activation (once).** When `git --no-optional-locks log -1 -- prereg/PREREG_C.md` shows a pushed commit, append
+   the job line from `queue_phase_c.yaml` to `queue.yaml` and create `results/_runner/RESTART`. Run Haiku from the
+   cloud workspace. Log it in RUNLOG.
+2. **Pilot cells.** Cells prefixed `p1_`/`p2_` are pilot cells. Never analyse or delete them.
+3. **Monitoring.** Same as the full run. Priority 4 means Phase C never takes quota from Phase A/B.
+4. **Analysis.** When done, run `python3 -m analysis.phase_c` (confirmatory; `--interim` while running writes only to
+   `results/_runner/interim/`). Report Phase C separately from the Q0 scorecard.
+
 ### Analysis and write-up
 
 1. Build `analysis/everyday_effects.py`, `fingerprints.py`, `link2.py` and `scorecard.py` exactly as plan §9 specifies (hierarchical bootstrap, Holm families, partial Spearman, positive-control rule).

@@ -23,34 +23,34 @@ LADDER = ["C0", "C1", "C2", "C3", "C4", "C5"]
 PRIMARY = [
     dict(id="H-C1", kind="one", arm=["C0"], metric="r1_overharvest", const=1.0, sign=0,
          desc="Black box: round-1 take differs from the sustainable share (r1_overharvest vs 1; two-sided)"),
-    dict(id="H-C2", kind="two", arm=["C2"], comp=["C0"], metric="overharvest_rate", sign=+1,
-         desc="Rules without knowing others (C2) raises the overharvest rate vs black box (C0)"),
-    dict(id="H-C3", kind="two", arm=["C3"], comp=["C2"], metric="overharvest_rate", sign=-1,
-         desc="Learning others exist (C3) lowers the overharvest rate vs C2"),
-    dict(id="H-C4", kind="two", arm=["C4"], comp=["C3"], metric="overharvest_rate", sign=-1,
-         desc="Transparency (C4) lowers the overharvest rate vs C3"),
-    dict(id="H-C5", kind="two", arm=["C5"], comp=["C4"], metric="overharvest_rate", sign=-1,
-         desc="Talk (C5) lowers the overharvest rate vs C4"),
+    dict(id="H-C2", kind="two", arm=["C2"], comp=["C0"], metric="r1_overharvest", sign=+1,
+         desc="Rules without knowing others (C2) raises the round-1 take vs black box (C0)"),
+    dict(id="H-C3", kind="two", arm=["C3"], comp=["C2"], metric="r1_overharvest", sign=-1,
+         desc="Learning others exist (C3) lowers the round-1 take vs C2"),
+    dict(id="H-C4", kind="two", arm=["C4"], comp=["C3"], metric="mean_stock", sign=+1,
+         desc="Transparency (C4) raises the mean stock vs C3"),
+    dict(id="H-C5", kind="two", arm=["C5"], comp=["C4"], metric="mean_stock", sign=+1,
+         desc="Talk (C5) raises the mean stock vs C4"),
     dict(id="H-C6", kind="one", arm=["C3", "C4"], metric="knowing_overreach", const=0.10, sign=+1,
          desc="Knowing overreach at C3–C4 exceeds 10% of decisions"),
-    dict(id="H-C7", kind="two", arm=["known_end"], comp=["C4"], metric="endgame_ratio", sign=+1,
+    dict(id="H-C7", kind="two", arm=["known_end"], comp=["C4"], metric="endgame_ratio", sign=+1, min_models=5,
          desc="Known end raises the final-round request more than in C4 (endgame_ratio)"),
 ]
 SECONDARY = [
     dict(id="X1", kind="two", arm=["greedy1"], comp=["C4"], metric="llm_mean_request", sign=0,
          desc="One greedy agent: model agents' mean request vs C4 (− compensate, + retaliate/grab)"),
-    dict(id="X2", kind="two", arm=["greedy2"], comp=["greedy1"], metric="overharvest_rate", sign=0,
-         desc="Two greedy agents vs one: overharvest rate (tipping)"),
+    dict(id="X2", kind="two", arm=["greedy2"], comp=["greedy1"], metric="mean_stock", sign=0,
+         desc="Two greedy agents vs one: mean stock (tipping)"),
     dict(id="X3", kind="one", arm=["need"], metric="needy_share", const=0.25, sign=+1,
          desc="Needy agent's share of points above 25%"),
-    dict(id="X4", kind="two", arm=["id_copies"], comp=["C4"], metric="overharvest_rate", sign=0,
-         desc="Others framed as copies of you vs C4: overharvest rate"),
-    dict(id="X5", kind="two", arm=["id_humans"], comp=["C4"], metric="overharvest_rate", sign=0,
-         desc="Others framed as humans vs C4: overharvest rate"),
-    dict(id="X6", kind="two", arm=["C0_noprobe"], comp=["C0"], metric="overharvest_rate", sign=0,
-         desc="Probe control: C0 without the SAFE_TOTAL question vs C0"),
-    dict(id="X7", kind="two", arm=["C4_noprobe"], comp=["C4"], metric="overharvest_rate", sign=0,
-         desc="Probe control: C4 without the SAFE_TOTAL question vs C4"),
+    dict(id="X4", kind="two", arm=["id_copies"], comp=["C4"], metric="r1_overharvest", sign=0,
+         desc="Others framed as copies of you vs C4: round-1 take"),
+    dict(id="X5", kind="two", arm=["id_humans"], comp=["C4"], metric="r1_overharvest", sign=0,
+         desc="Others framed as humans vs C4: round-1 take"),
+    dict(id="X6", kind="two", arm=["C0_noprobe"], comp=["C0"], metric="r1_overharvest", sign=0,
+         desc="Probe control: C0 without the SAFE_TOTAL question vs C0 (round-1 take)"),
+    dict(id="X7", kind="two", arm=["C4_noprobe"], comp=["C4"], metric="r1_overharvest", sign=0,
+         desc="Probe control: C4 without the SAFE_TOTAL question vs C4 (round-1 take)"),
 ]
 
 
@@ -111,7 +111,7 @@ def run_family(tests, valid, B, rng):
 def descriptives(valid):
     """By arm, pooled over valid models (model means averaged): survival, points, SAFE accuracy, lexicon."""
     rows = {}
-    keys = ["overharvest_rate", "crash_rounds", "never_crashed", "recovered", "llm_points_mean", "r1_overharvest", "safe_rate", "safe_unknown_rate",
+    keys = ["mean_stock", "overharvest_rate", "crash_rounds", "never_crashed", "recovered", "llm_points_mean", "r1_overharvest", "safe_rate", "safe_unknown_rate",
             "safe_abs_err", "knowing_overreach", "needy_share", "endgame_ratio", "gini"]
     arms = sorted({c["arm"] for m in valid for c in cells(m)})
     for arm in arms:
@@ -161,7 +161,7 @@ def to_md(res):
             L.append(f"| {k} | {r['desc']} | {r['n_models']} | {r['estimate']:+.3f} | [{r['ci'][0]:+.3f}, {r['ci'][1]:+.3f}] | "
                      f"{r['p']:.4f} | {r['p_holm']:.4f} | {r['sign_consistency'] if r['sign'] else '–'} | {r['survives']} |")
         L.append("")
-    cols = ["n_models", "overharvest_rate", "crash_rounds", "never_crashed", "recovered", "llm_points_mean", "r1_overharvest", "safe_rate", "safe_unknown_rate",
+    cols = ["n_models", "mean_stock", "overharvest_rate", "crash_rounds", "never_crashed", "recovered", "llm_points_mean", "r1_overharvest", "safe_rate", "safe_unknown_rate",
             "safe_abs_err", "knowing_overreach", "lex_others", "lex_future", "lex_scarcity"]
     L += ["## Descriptives by arm (mean of model means)", "", "| arm | " + " | ".join(cols) + " |", "|---|" + "---:|" * len(cols)]
     order = LADDER + ["C0_noprobe", "C4_noprobe", "greedy1", "greedy2", "need", "id_copies", "id_humans", "known_end"]

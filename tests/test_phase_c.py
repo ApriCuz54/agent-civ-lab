@@ -107,3 +107,4 @@ def test_recovery_after_crash(tmp_path):
     r = run_arm(tmp_path, pol, "C3")[0]
     assert r["first_crash"] == 1 and r["recovered"] is True          # 5 -> 15 -> 35 -> 75 -> 100
     assert [rd["pool_start"] for rd in r["rounds"]][:6] == [100, 5, 15, 35, 75, 100]
+    assert r["mean_stock"] == pytest.approx((100 + 5 + 15 + 35 + 75 + 100 * 5) / 10)
