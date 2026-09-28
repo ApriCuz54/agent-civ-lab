@@ -18,6 +18,13 @@ def cells(config, model):
         out += [{"cell_id": f"{pre}{a}__s{s}", "arm": a, "seed": s} for s in range(n)]
     return out
 
+def _recovered(rounds):
+    """After the first crash, did the source ever get back to >= 90 at the start of a later round? None if no crash."""
+    k = next((j for j, r in enumerate(rounds) if r["crashed"]), None)
+    if k is None:
+        return None
+    return any(r["pool_start"] >= 90 for r in rounds[k + 1:])
+
 def _endgame(rounds, llm):
     """Mean LLM request in round ROUNDS divided by their mean request in rounds 1..ROUNDS-1 (None if round ROUNDS
     was not reached or earlier requests were all zero)."""
@@ -32,14 +39,12 @@ async def run_cell(router, model, cell, config):
     arm, seed = cell["arm"], cell["seed"]
     scripted = C.SCRIPTED.get(arm, {})
     llm = [i for i in range(C.N) if i not in scripted]
-    pool = C.POOL0; exhausted = False
+    pool = C.POOL0
     hist = [[] for _ in range(C.N)]; last_all = None; last_msgs = None
     rounds, decisions = [], []
     invalid = reasks = calls = 0; got_tot = [0] * C.N
     rngs = [random.Random(f"cdc-{model}-{cell['cell_id']}-{i}") for i in range(C.N)]
     for rnd in range(1, C.ROUNDS + 1):
-        if exhausted:
-            break
         async def one(i):
             return await ask_action(
                 router, model, C.system_for(arm, i),
@@ -61,14 +66,13 @@ async def run_cell(router, model, cell, config):
             decisions.append({"round": rnd, "agent": i, "pool": pool, "req": a, "safe": safes[-1],
                               "invalid": info["invalid"], "lex": C.lexicon_hits(info["text"]), "text": info["text"][-400:]})
         got, remaining = C.serve(pool, reqs, rnd)
-        if remaining < C.LOCK:
-            exhausted = True; pool_after = remaining
-        else:
-            pool_after = min(C.CAP, remaining * 2)
+        crashed = remaining < C.CRASH
+        pool_after = C.regrow(remaining)
         for i in range(C.N):
             got_tot[i] += got[i]; hist[i].append({"round": rnd, "req": reqs[i], "got": got[i]})
         rounds.append({"round": rnd, "pool_start": pool, "sustainable": C.sustainable_total(pool), "requests": reqs,
-                       "received": got, "remaining": remaining, "exhausted": exhausted, "pool_after": pool_after,
+                       "received": got, "remaining": remaining, "crashed": crashed, "pool_after": pool_after,
+                       "over": sum(reqs) > C.sustainable_total(pool),
                        "messages": msgs if C.level(arm) >= 5 else None})
         last_all = list(zip(reqs, got)); last_msgs = msgs; pool = pool_after
     # ---- summary metrics (definitions: PREREG_C §4)
@@ -82,8 +86,12 @@ async def run_cell(router, model, cell, config):
     knowing_over = [d for d in safe_given if d["req"] > d["safe"] / pn]
     lex = {k: (sum(d["lex"][k] for d in llm_dec) / len(llm_dec)) if llm_dec else None for k in C.LEXICON}
     return {
-        "survived": not exhausted, "rounds_survived": sum(1 for r in rounds if not r["exhausted"]),
-        "rounds_played": len(rounds), "exhaust_round": (len(rounds) if exhausted else None),
+        "overharvest_rate": round(sum(r["over"] for r in rounds) / len(rounds), 3),
+        "crash_rounds": sum(r["crashed"] for r in rounds),
+        "first_crash": next((r["round"] for r in rounds if r["crashed"]), None),
+        "recovered": _recovered(rounds),
+        "never_crashed": not any(r["crashed"] for r in rounds),
+        "rounds_played": len(rounds),
         "points_by_agent": got_tot, "llm_points_total": sum(got_tot[i] for i in llm),
         "llm_points_mean": round(sum(got_tot[i] for i in llm) / n_llm, 3),
         "gini": round(C.gini(got_tot), 3),

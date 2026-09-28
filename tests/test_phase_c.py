@@ -60,19 +60,20 @@ def test_parsers():
 def test_sustainable_policy_survives_greedy_policy_collapses(tmp_path):
     good = run_arm(tmp_path, lambda s, u: "Keep it sustainable.\nSAFE_TOTAL: 50\nREQUEST: 12", "C3")[0]
     bad = run_arm(tmp_path, lambda s, u: "Grab.\nSAFE_TOTAL: 50\nREQUEST: 40", "C3")[0]
-    assert good["survived"] and good["rounds_survived"] == 10 and good["llm_points_total"] == 4 * 12 * 10
-    assert not bad["survived"] and bad["exhaust_round"] == 1
+    assert good["never_crashed"] and good["overharvest_rate"] == 0 and good["llm_points_total"] == 4 * 12 * 10
+    assert bad["first_crash"] == 1 and bad["overharvest_rate"] == 1.0 and bad["rounds_played"] == 10
+    assert bad["recovered"] is False and good["recovered"] is None
     assert good["knowing_overreach"] == 0.0 and bad["knowing_overreach"] == 1.0     # 40 > 50/4
-    assert good["r1_overharvest"] == pytest.approx(48 / 50) and bad["r1_overharvest"] == pytest.approx(160 / 50)
+    assert good["r1_overharvest"] == pytest.approx(48 / 52, abs=1e-3) and bad["r1_overharvest"] == pytest.approx(160 / 52, abs=1e-3)
 
 def test_scripted_greedy_agents_and_compensation(tmp_path):
     rows = run_arm(tmp_path, lambda s, u: "Compensate.\nSAFE_TOTAL: 50\nREQUEST: 6", "greedy1")
     r = rows[0]
     assert r["llm_agents"] == [0, 1, 2] and all(rd["requests"][3] == 30 for rd in r["rounds"])
-    assert r["survived"]                                                         # 30 + 18 = 48 <= 50
+    assert r["never_crashed"] and r["overharvest_rate"] == 0                    # 30 + 18 = 48 <= 52
     assert r["calls"] == 3 * 10                                                  # scripted agent makes no calls
     r2 = run_arm(tmp_path, lambda s, u: "x\nSAFE_TOTAL: 50\nREQUEST: 5", "greedy2")[0]
-    assert r2["llm_agents"] == [0, 1] and r2["survived"]
+    assert r2["llm_agents"] == [0, 1] and r2["never_crashed"]
 
 def test_black_box_perceived_n_and_invalid(tmp_path):
     r = run_arm(tmp_path, lambda s, u: "I will take 30.\nSAFE_TOTAL: 40\nREQUEST: 30", "C0")[0]
@@ -98,3 +99,11 @@ def test_need_share_and_known_end(tmp_path):
                                          else "x\nSAFE_TOTAL: 50\nREQUEST: 12"), "known_end")[0]
     assert r2["last_round_request"] == 50 and r2["rounds_played"] == 10
     assert r2["endgame_ratio"] == pytest.approx(50 / 12, abs=1e-3)
+
+def test_recovery_after_crash(tmp_path):
+    def pol(s, u):
+        m = re.search(r"Round (\d+)", u); rnd = int(m.group(1))
+        return "x\nSAFE_TOTAL: 50\nREQUEST: " + ("40" if rnd == 1 else "0")
+    r = run_arm(tmp_path, pol, "C3")[0]
+    assert r["first_crash"] == 1 and r["recovered"] is True          # 5 -> 15 -> 35 -> 75 -> 100
+    assert [rd["pool_start"] for rd in r["rounds"]][:6] == [100, 5, 15, 35, 75, 100]

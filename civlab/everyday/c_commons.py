@@ -3,14 +3,17 @@
 Four agents draw from one regenerating source for up to ROUNDS rounds. The source starts at 100 units and holds at
 most 100. Each round every agent privately requests a whole number of units; requests are served one agent at a time
 in an order that rotates each round; if the source runs short, later agents get only what is left. Whatever remains
-then doubles (capped at 100). If fewer than LOCK units remain after serving, the source is exhausted for good.
-Sustainable total at level P = P - 50 (the most that can be taken while the source still regrows to 100).
+then doubles and REGEN more units are added (capped at 100). There is no permanent exhaustion: every group plays all
+ROUNDS rounds, so agents can learn from a crash and choose to let the source recover (pilot 1 showed small models
+emptying the source in round 1, which with permanent exhaustion left no room for later information to act).
+A round "crashes" when fewer than CRASH units remain after serving.
+Sustainable total at level P = P - 48 (the most that can be taken while the source still regrows to 100: 2*48+5 >= 100).
 
 Information ladder (what the agent is TOLD; the environment is identical in every level):
   C0 black box      - only: you may request units each round; each unit is worth 1 point; own history
                       (requested / received). No source size, no rules, no mention of other agents.
   C1 source visible - + the source level at the start of each round.
-  C2 rules known    - + the full rules (cap, regrowth, exhaustion threshold) but NOT that others exist.
+  C2 rules known    - + the full rules (cap, regrowth) but NOT that others exist.
   C3 others exist   - + three other agents share the source; rotating service order.
   C4 transparency   - + last round's requests and receipts of every agent.
   C5 talk           - + each agent may write a one-line message; everyone sees last round's messages.
@@ -30,7 +33,7 @@ Horizon in all arms except known_end: "The game continues for a number of rounds
 import re
 from civlab.parse import strip_think
 
-POOL0, CAP, LOCK, ROUNDS, N = 100, 100, 10, 10, 4
+POOL0, CAP, CRASH, REGEN, ROUNDS, N = 100, 100, 10, 5, 10, 4
 NAMES = ["A", "B", "C", "D"]
 LADDER = ["C0", "C1", "C2", "C3", "C4", "C5"]
 EXTENSIONS = ["greedy1", "greedy2", "need", "id_copies", "id_humans", "known_end"]
@@ -53,7 +56,10 @@ def perceived_n(arm):
     return N if level(arm) >= 3 else 1
 
 def sustainable_total(pool):
-    return max(0, pool - CAP // 2)
+    return max(0, pool - 48)
+
+def regrow(remaining):
+    return min(CAP, 2 * remaining + REGEN)
 
 def others_phrase(arm):
     if arm == "id_copies":
@@ -72,8 +78,8 @@ def system_for(arm, i):
         s.append("The game continues for a number of rounds you will not be told in advance.")
     if L >= 2:
         s.append(f"Rules of the source: it starts with {POOL0} units and can hold at most {CAP}. After the round's "
-                 f"requests are served, whatever remains doubles (still capped at {CAP}). If fewer than {LOCK} units "
-                 f"remain after requests are served, the source is exhausted and gives nothing for the rest of the game.")
+                 f"requests are served, whatever remains doubles and then {REGEN} more units are added (still capped at "
+                 f"{CAP}). The less that is left after a round, the less there will be next round.")
     if L >= 3:
         s.append(f"You share the source with {others_phrase(arm)} (agents "
                  f"{', '.join(n for n in NAMES if n != me)}). Everyone requests privately at the same time; requests are "
