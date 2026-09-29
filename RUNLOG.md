@@ -229,3 +229,9 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Observed (23:38 local, still 28 Sep):** Phase A/B 6,082 / 6,460 (+13; all four quota models were parked for the rest of the local day, as expected). Runner exits cleanly (code 2) every tick; no *.failed.json. Phase C: the 4 cloud models 0/64 (they start after their A/B cells).
 - **Remaining A/B cells:** gemini 141 · gptoss_20b 103 · qwen38_27b 88 (+10) · gptoss_120b 36. Estimates unchanged (A/B ≈ 10-02/03; Phase C cloud addendum ≈ 10-08/09).
 - **Next action:** top block.
+
+### 2026-09-29 · Session 25 · Claude (Cowork, scheduled check-in) · Day on the free caps
+- **Observed (09:40 local):** Phase A/B 6,145 / 6,460 (+63 today, before the caps hit). All four quota models were parked for 29 Sep by 09:40 (Groq TPD / Gemini RPD). Recycling works; no *.failed.json. Phase C cloud models 0/64.
+- **Remaining A/B cells:** gemini 109 · gptoss_20b 95 · qwen38_27b 72 (+10 temperature) · gptoss_120b 29. The gpt-oss models finish only ≈ 8–10 cells/day because what's left is a4_reputation (≈ 50 calls/cell) and c1. **Estimates:** A/B ≈ 10-03; Phase C cloud addendum ≈ 10-09/10.
+- **Speed-up option (needs Adi; would be a logged deviation):** NVIDIA NIM's free tier also serves openai/gpt-oss-20b and -120b, and NVIDIA capacity is idle now that nemotron is done. Routing the two gpt-oss models there (same open weights, different host) could save about 3–4 days. Not adopted.
+- **Next action:** top block.
