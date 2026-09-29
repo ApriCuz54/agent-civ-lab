@@ -224,3 +224,8 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
     - Probe controls (X6/X7): no effect, so asking about limits did not measurably change behaviour.
   - **Descriptive:** black-box mean stock 92 vs 17 once the level is visible (C1). Of 447 crashed groups, 9 recovered (2%). Spontaneous mentions of other agents in C0–C2 ≈ 1% of decisions (none were mentioned to them).
 - **Next action:** top block. Phase C addendum when the 4 cloud models finish.
+
+### 2026-09-28 · Session 24 · Claude (Cowork, scheduled check-in) · Quiet evening
+- **Observed (23:38 local, still 28 Sep):** Phase A/B 6,082 / 6,460 (+13; all four quota models were parked for the rest of the local day, as expected). Runner exits cleanly (code 2) every tick; no *.failed.json. Phase C: the 4 cloud models 0/64 (they start after their A/B cells).
+- **Remaining A/B cells:** gemini 141 · gptoss_20b 103 · qwen38_27b 88 (+10) · gptoss_120b 36. Estimates unchanged (A/B ≈ 10-02/03; Phase C cloud addendum ≈ 10-08/09).
+- **Next action:** top block.
