@@ -245,3 +245,14 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Expected effect:** gptoss_20b is no longer bound by the 200k tokens/day cap; ≈ 1,300 A/B calls + ≈ 2,400 Phase C calls could finish in about 1–2 days. The long poles are now gemini (≈ 500 req/day) and gptoss_120b (Groq only) for A/B around 10-02/03; Phase C cloud addendum for gemini/120b ≈ 10-08/09 (qwen and gpt-oss-20b sooner).
 - **Write-up note:** gpt-oss-20b results need the robustness check "cells with any NVIDIA-served call excluded" (DEVIATIONS #2).
 - **Next action:** top block.
+
+### 2026-09-29 · Session 27 · Claude (Cowork, scheduled check-in) · gpt-oss-20b done via NVIDIA fallback
+- **Observed (19:38 local):** Phase A/B 6,252 / 6,460 (+107 since Session 25). **gptoss_20b finished everything**, Phase A/B and Phase C 64/64, within about 4 hours of the fallback going live. NVIDIA errors were minor: 5 ReadTimeouts, all retried. Runner recycling works (2 "max runtime" exits). No *.failed.json.
+- **Host mix for gptoss_20b (for the DEVIATIONS #2 robustness check):**
+  - All Phase B everyday tasks (T1–T5, T4b) are 100% Groq.
+  - a2_pricing, a3_panel and a6_commons are Groq-only (a2: 5 NVIDIA calls).
+  - a1_ipd 63%, a4_reputation 77%, a5_naming 95% and c1_counterpart 96% of calls came from NVIDIA.
+  - Phase C: 2,541 NVIDIA vs 30 Groq calls.
+- **Remaining A/B:** gemini 109 · qwen38_27b 67 (+10 temperature) · gptoss_120b 22 (Groq only). Phase C: gemini, qwen and gptoss_120b 0/64.
+- **Estimates:** A/B ≈ 10-02/03 (gemini last). Phase C cloud addendum ≈ 10-08 (gemini ≈ 5 days of quota after A/B; qwen and 120b sooner).
+- **Next action:** top block.
