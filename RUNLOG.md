@@ -264,3 +264,8 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
   - Manipulative-customer refunds under H3 are 0–0.1 for all four reasoning models vs 0.6–1.0 for the other eight.
   - In T2, all 12 models pick the betraying worker more often with the self-report panel than with the lifetime panel. The recent-window panel (game) lowers betrayer picks in all 12, but the accuracy gain stays small.
   - Phase C, gptoss_20b (mostly NVIDIA-served): cautious in the black box (0.7 units in round 1). Once the level is visible it takes ≈ 40–70 units in round 1 and crashes the source in round 1 in every arm, talk included.
+
+### 2026-09-30 · Session 29 · Claude (Cowork, scheduled check-in) · Qwen done with A/B
+- **Observed (05:40 local):** Phase A/B 6,352 / 6,460 (+100 since Session 27). **qwen38_27b and its temperature copies have finished Phase A/B**; qwen started Phase C (4/64). Remaining A/B: gemini 91 · gptoss_120b 17 (Groq only). All three quota models are parked for 30 Sep. No *.failed.json.
+- **Estimates:** A/B complete ≈ 10-02 (gemini last), then the Phase B/A confirmatory analysis and the verification pass. Phase C cloud addendum: qwen ≈ 10-03, gemini ≈ 10-07, gptoss_120b ≈ 10-08.
+- **Next action:** top block.
