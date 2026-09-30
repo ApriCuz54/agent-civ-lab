@@ -256,3 +256,11 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Remaining A/B:** gemini 109 · qwen38_27b 67 (+10 temperature) · gptoss_120b 22 (Groq only). Phase C: gemini, qwen and gptoss_120b 0/64.
 - **Estimates:** A/B ≈ 10-02/03 (gemini last). Phase C cloud addendum ≈ 10-08 (gemini ≈ 5 days of quota after A/B; qwen and 120b sooner).
 - **Next action:** top block.
+
+### 2026-09-29 · Session 28 · Claude (Cowork, owner question) · Interim look (not findings)
+- **Progress (21:22 local):** A/B 6,253 / 6,460. Interim everyday_effects (12 models where available): H-B4, H-B7, H-B9 and H-B10 still survive Holm. H-B3 (recent reputation) at p = 0.052 (unadjusted), up from 0.10.
+- **New exclusions from reasoning models on T4b answer-only:** gptoss_20b, gptoss_120b and qwen38_27b each have ≈ 28% invalid actions (> 10%), so they are excluded from H-B9 per PREREG_B §7. They likely spend the max_tokens budget reasoning before answering. Caveat for the write-up: the answer-only control does not apply cleanly to reasoning models.
+- **Descriptive:**
+  - Manipulative-customer refunds under H3 are 0–0.1 for all four reasoning models vs 0.6–1.0 for the other eight.
+  - In T2, all 12 models pick the betraying worker more often with the self-report panel than with the lifetime panel. The recent-window panel (game) lowers betrayer picks in all 12, but the accuracy gain stays small.
+  - Phase C, gptoss_20b (mostly NVIDIA-served): cautious in the black box (0.7 units in round 1). Once the level is visible it takes ≈ 40–70 units in round 1 and crashes the source in round 1 in every arm, talk included.
