@@ -1,0 +1,831 @@
+{
+ "experiment": "c_dark_commons",
+ "model": "gptoss_20b",
+ "cell_id": "C2__s3",
+ "finished": "2026-09-29T17:02:59",
+ "arm": "C2",
+ "seed": 3,
+ "mean_stock": 14.5,
+ "overharvest_rate": 1.0,
+ "crash_rounds": 10,
+ "first_crash": 1,
+ "recovered": false,
+ "never_crashed": false,
+ "rounds_played": 10,
+ "points_by_agent": [
+  82,
+  48,
+  15,
+  0
+ ],
+ "llm_points_total": 145,
+ "llm_points_mean": 36.25,
+ "gini": 0.481,
+ "r1_overharvest": 3.962,
+ "llm_mean_request": 7.275,
+ "safe_rate": 0.975,
+ "safe_unknown_rate": 0.025,
+ "safe_abs_err": 1.974,
+ "knowing_overreach": 0.026,
+ "lexicon": {
+  "others": 0.0,
+  "future": 1.0,
+  "scarcity": 0.025
+ },
+ "needy_share": null,
+ "last_round_request": 1.25,
+ "endgame_ratio": null,
+ "llm_agents": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "pool_start": 100,
+   "sustainable": 52,
+   "requests": [
+    52,
+    50,
+    52,
+    52
+   ],
+   "received": [
+    52,
+    48,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 2,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    5,
+    0,
+    0,
+    0
+   ],
+   "received": [
+    5,
+    0,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 3,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    0,
+    0,
+    5,
+    5
+   ],
+   "received": [
+    0,
+    0,
+    5,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 4,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    5,
+    0,
+    5,
+    0
+   ],
+   "received": [
+    5,
+    0,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 5,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    0,
+    0,
+    5,
+    5
+   ],
+   "received": [
+    0,
+    0,
+    5,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 6,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    5,
+    0,
+    0,
+    0
+   ],
+   "received": [
+    5,
+    0,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 7,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    5,
+    5,
+    5,
+    5
+   ],
+   "received": [
+    0,
+    0,
+    5,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 8,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    5,
+    0,
+    5,
+    0
+   ],
+   "received": [
+    5,
+    0,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 9,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    5,
+    5,
+    0,
+    0
+   ],
+   "received": [
+    5,
+    0,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 10,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    5,
+    0,
+    0,
+    0
+   ],
+   "received": [
+    5,
+    0,
+    0,
+    0
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  }
+ ],
+ "decisions": [
+  {
+   "round": 1,
+   "agent": 0,
+   "pool": 100,
+   "req": 52,
+   "safe": 52,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The goal is to keep the source replenishing to 100 each round.  \nLeaving at least 48 units means the next round will be at 100 (since 2×48+5=101, capped at 100).  \nTherefore we should take the remaining 52 units now.\n\nSAFE_TOTAL: 52  \nREQUEST: 52"
+  },
+  {
+   "round": 1,
+   "agent": 1,
+   "pool": 100,
+   "req": 50,
+   "safe": 50,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Taking 50 units leaves 50 behind. After the round that 50 doubles to 100 (plus 5 is capped), so the source resets to 100 for the next round. This means we can repeat the same 50‑unit pull each round, yielding the maximum cumulative gain over time.  \nSAFE_TOTAL: 50  \nREQUEST: 50"
+  },
+  {
+   "round": 1,
+   "agent": 2,
+   "pool": 100,
+   "req": 52,
+   "safe": 52,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source starts at 100. After we take \\(x\\) units, the remaining \\((100-x)\\) doubles and +5, capped at 100.  \nTo keep the next round at the maximum 100, we need \\((100-x)\\times2+5 \\ge 100\\).  \nSolving gives \\(x \\le 52.5\\). Since we must request an integer, the largest safe request is 52.  \n\nSAFE_TOTAL: 52  \nREQUEST: 52"
+  },
+  {
+   "round": 1,
+   "agent": 3,
+   "pool": 100,
+   "req": 52,
+   "safe": 52,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source has 100 units. After we take \\(x\\) units, the remaining \\(100-x\\) units double, then 5 are added (capped at 100).  \nWe want the next round to start with 100 units again, so we need  \n\\(2(100-x)+5 \\ge 100 \\Rightarrow 200-2x+5 \\ge 100 \\Rightarrow 2x \\le 105\\).  \nThus \\(x \\le 52.5\\), so the largest whole number we can safely take is 52.\n\nSAFE_TOTAL: 52  \nREQUEST: 52"
+  },
+  {
+   "round": 2,
+   "agent": 0,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize future availability I’ll take all the units now; taking fewer would leave some for the next round but would reduce my total this round.  \nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 2,
+   "agent": 1,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Taking any units will reduce the reserve for the next round, since the remaining units are doubled and then increased by five.  \nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 2,
+   "agent": 2,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "Taking all 5 units would deplete the source and leave only 5 units next round (after doubling and adding 5).  \nTo preserve the future stock, I must leave the entire 5 units untouched.  \n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 2,
+   "agent": 3,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I want to keep the source's future stock as high as possible, so I’ll take nothing now; taking any units would reduce the next round’s supply.  \nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 3,
+   "agent": 0,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I’ll request nothing, leaving the source unchanged so future rounds can rebuild.  \nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 3,
+   "agent": 1,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "By taking any units this round, the remaining stock is reduced, so the next round’s stock (which is 2 × remaining + 5) will be lower.  \nIf I request 0 units, the source keeps 5 units, which double to 10 plus 5 gives 15 for the next round – the maximum possible future supply.  \nThus the largest amount I can take now without harming future rounds is none.\n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 3,
+   "agent": 2,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I’ll take all 5 units now.  \nThe source will then be empty, so after the round it will double to 0 and add 5, leaving 5 units for the next round—exactly what it had before, so nothing is lost for future play.\n\nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 3,
+   "agent": 3,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "If I take all 5 units now, I earn 5 points. The source will then have 0 left, so after the doubling and +5 it will have 5 units next round. If I take fewer, I leave more for the future. Thus taking all 5 maximizes this round without harming future potential.\n\nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 4,
+   "agent": 0,
+   "pool": 5,
+   "req": 5,
+   "safe": "?",
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source has only 5 units left. If I take all 5, the next round will start with 5 units (since 0 * 2 + 5 = 5). Taking fewer units keeps more units for the next round, but I am not told how many rounds remain, so I cannot guarantee that taking 5 won’t hurt future gains.\n\nSAFE_TOTAL: ?\nREQUEST: 5"
+  },
+  {
+   "round": 4,
+   "agent": 1,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source will double whatever is left after this round, so taking any positive amount now reduces the base for the next round.  \nTo keep future rounds as generous as possible, I should request nothing.  \n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 4,
+   "agent": 2,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I’ll take all the units now because the source will replenish to the same amount next round if I empty it.  \nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 4,
+   "agent": 3,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Taking all 5 units would leave the source empty, so after the round the amount would become 5 instead of 15 (if we had taken nothing).  \nThus any positive request would reduce the future stock.  \nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 5,
+   "agent": 0,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "You should take nothing.  \nTaking any units reduces the remaining amount, which then doubles and gains only 5, so the next round’s supply will be lower.  \nThe optimal strategy is to leave the source at 5 units so that after the next round it can grow to its maximum (100).  \n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 5,
+   "agent": 1,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I’ll keep the source at 5 units, then after the round it will double to 10 and add 5, giving 15 next round. If I take any units now, the remaining will be less than 5, so the next round will start with fewer than 15 units, reducing future potential.  \n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 5,
+   "agent": 2,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source has 5 units and will become 5 again after this round if we take all of them, so taking them all does not reduce future availability.  \nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 5,
+   "agent": 3,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I’ll take all the units now because leaving any would only increase the amount that can be taken later, but I can’t be sure how many rounds remain.  \nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 6,
+   "agent": 0,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source currently has only 5 units. Taking all of them leaves 0, which doubles to 0 and then +5, so the next round will again have 5 units. Thus we can safely take all 5 now without harming future harvests.  \n\nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 6,
+   "agent": 1,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I’ll let the source grow first. By taking nothing now, the 5 units double to 10 and then add 5, giving 15 units next round, which is more than the 5 I could take now.\n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 6,
+   "agent": 2,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To not reduce what the source will have next round, you must leave enough so that after the round’s request, the remaining units are not lower than they would be if you had taken fewer.  \nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 6,
+   "agent": 3,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Taking any units this round will reduce the amount the source can supply in future rounds because the remaining units double and then 5 more units are added (capped at 100).  \nSince the source currently holds only 5 units, the only request that does not diminish future availability is to request 0 units.  \n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 7,
+   "agent": 0,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source currently has 5 units. If I take all 5, I earn 5 points and leave 0, which doubles to 0 and then +5 gives 5 units next round—exactly the same as if I had left some. Thus taking all 5 does not reduce future availability.\n\nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 7,
+   "agent": 1,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source currently has 5 units.  \nIf I take all 5, the remaining 0 doubles to 0, then 5 are added, returning the source to 5 units for the next round.  \nTaking fewer than 5 would leave more than 5 for the next round, but taking more would reduce future supply.  \n\nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 7,
+   "agent": 2,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I’ll take all 5 units now, leaving the source empty. This guarantees the next round will start with 5 units (0 doubled +5), which is the maximum that can be achieved after a zero remainder. Taking fewer would waste potential now, and taking more isn’t possible.\n\nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 7,
+   "agent": 3,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source has 5 units now. If I take all 5, the remaining 0 doubles to 0 and then 5 are added, so the source will again have 5 units next round. This keeps the future supply unchanged, so taking all 5 now is safe.  \n\nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 8,
+   "agent": 0,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I’ll take all the units now, because the source’s next‑round stock will be 15 regardless, and I can still harvest those 15 later.  \nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 8,
+   "agent": 1,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Taking all 5 units would leave nothing for the next round, so the future supply would be reduced. By taking 0, the source will double 5 to 10 and add 5, leaving 15 for the next round, preserving future potential.  \n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 8,
+   "agent": 2,
+   "pool": 5,
+   "req": 5,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I can only take the 5 units that are available without making the next round worse, because any take will leave less for the next round.  \nSAFE_TOTAL: 0  \nREQUEST: 5"
+  },
+  {
+   "round": 8,
+   "agent": 3,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source has only 5 units left, and taking any of them will reduce the amount available in the next round (since the remaining will double and add 5, but starting from 0 gives a smaller base).  \nThus, in order not to reduce future availability, we must request none.  \n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 9,
+   "agent": 0,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Requesting all available units (5) will give you the maximum points this round while leaving 0 in the source, which then doubles to 0 and receives +5, ensuring 5 units for the next round. This keeps future rounds unaffected, as the source will be replenished to 5.\n\nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 9,
+   "agent": 1,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I’ll take all the units that are available, because the next round’s supply will be at least 5 units regardless of how many I take now.  \nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 9,
+   "agent": 2,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "We want to keep tomorrow’s supply as high as possible.  \nIf we take 0, the next round will have \\((5-0)*2+5=15\\) units.  \nTaking any positive amount would make the next round’s supply \\(15-2x\\), which is strictly less than 15 for \\(x>0\\).  \nThus the largest safe request is 0.\n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 9,
+   "agent": 3,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I’ll take nothing because taking any units would lower the amount that remains, which would reduce the next round’s supply after the doubling and +5 addition.  \nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 10,
+   "agent": 0,
+   "pool": 5,
+   "req": 5,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source will double its remaining units and add five (capped at 100).  \nIf we take all 5 units, the source will be left with 0, double to 0, add 5 → 5 units next round—exactly the same amount it has now.  \nTaking fewer units would only increase the next‑round supply, so we can safely take all 5.\n\nSAFE_TOTAL: 5  \nREQUEST: 5"
+  },
+  {
+   "round": 10,
+   "agent": 1,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "I can only take units if the remaining amount after this round is enough to keep the future supply the same as if I took nothing.  \nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 10,
+   "agent": 2,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Since the source contains only 5 units, taking any of them will leave a remainder that, after doubling and adding 5, will be lower than if we took nothing. Thus, to avoid reducing future availability, we must not take any units this round.  \n\nSAFE_TOTAL: 0  \nREQUEST: 0"
+  },
+  {
+   "round": 10,
+   "agent": 3,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The safest way to keep the source full for future rounds is to ask nothing now, because taking any units reduces what will be available next round.  \nSAFE_TOTAL: 0  \nREQUEST: 0"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 7,
+ "calls": 47
+}

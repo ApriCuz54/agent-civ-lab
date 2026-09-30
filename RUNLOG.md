@@ -235,3 +235,13 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Remaining A/B cells:** gemini 109 · gptoss_20b 95 · qwen38_27b 72 (+10 temperature) · gptoss_120b 29. The gpt-oss models finish only ≈ 8–10 cells/day because what's left is a4_reputation (≈ 50 calls/cell) and c1. **Estimates:** A/B ≈ 10-03; Phase C cloud addendum ≈ 10-09/10.
 - **Speed-up option (needs Adi; would be a logged deviation):** NVIDIA NIM's free tier also serves openai/gpt-oss-20b and -120b, and NVIDIA capacity is idle now that nemotron is done. Routing the two gpt-oss models there (same open weights, different host) could save about 3–4 days. Not adopted.
 - **Next action:** top block.
+
+### 2026-09-29 · Session 26 · Claude (Cowork, owner request) · gpt-oss fallback to NVIDIA
+- **Decision:** Adi approved serving gpt-oss through NVIDIA's free tier as well (prereg/DEVIATIONS.md #2).
+- **Built:** a router fallback. Groq stays primary; once its daily cap is hit, the same weights on NVIDIA are used for the rest of the local day. Same model id, temperature, reasoning_effort=low and prompts, with the strict served-model check. Every call record carries its `provider`. DECISIONS #22; tests/test_fallback.py; suite 45/45. RESTART set.
+- **First run (15:37 local):**
+  - **gptoss_20b:** works. Groq was capped, so the next 40 calls were served by nvidia/openai/gpt-oss-20b with no errors.
+  - **gptoss_120b:** NVIDIA answered HTTP 410 ("reached its end of life on 2026-09-03"). Its fallback was removed and it stays Groq-only (DEVIATIONS #2a). The two cells that hit the 410 left no results; their retry counters were moved to results/_runner/cleared_attempts/ (*.410.json).
+- **Expected effect:** gptoss_20b is no longer bound by the 200k tokens/day cap; ≈ 1,300 A/B calls + ≈ 2,400 Phase C calls could finish in about 1–2 days. The long poles are now gemini (≈ 500 req/day) and gptoss_120b (Groq only) for A/B around 10-02/03; Phase C cloud addendum for gemini/120b ≈ 10-08/09 (qwen and gpt-oss-20b sooner).
+- **Write-up note:** gpt-oss-20b results need the robustness check "cells with any NVIDIA-served call excluded" (DEVIATIONS #2).
+- **Next action:** top block.
