@@ -274,3 +274,9 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Observed (15:39 local):** Phase A/B 6,359 / 6,460. gptoss_120b has 10 A/B cells left (Groq). Gemini has 91: a1 8, a2 1, a4 12, a5 1 and 69 c1_counterpart cells, ≈ 1,100 calls at ≈ 550–600 requests/day, with 503 retries counted. Phase C: qwen 12/64 (its Groq token cap binds on the longer Phase C prompts); gemini and 120b 0/64. All three parked for 30 Sep; no *.failed.json.
 - **Revised estimates:** A/B complete ≈ 10-03 (gemini c1 cells last), then the confirmatory analysis and the verification pass. Phase C addendum: qwen ≈ 10-04, gptoss_120b ≈ 10-08, gemini ≈ 10-08/09.
 - **Next action:** top block.
+
+### 2026-10-01 · Session 31 · Claude (Cowork, scheduled check-in 21) · Quota-bound, no faults
+- **Observed (01:51 local):** Phase A/B 6,377 / 6,460 (+18 since Session 30). Remaining A/B: gemini 82 (a1 8, a4 4, a5 1, c1_counterpart 69) · gptoss_120b 1 (a4). Phase C: qwen 18/64; gemini and 120b 0/64. All three hit their daily caps shortly after local midnight (Groq TPD 200k for qwen and 120b; Gemini daily requests); runner exits with code 2 every 15 min, as designed. No *.failed.json; provider_errors.log shows only daily-quota 429s.
+- **Speed-up options reviewed with Adi (chat, 10-01):** extra keys don't raise per-account/project quotas, and extra accounts would breach provider terms; Cerebras' free gpt-oss-120b needs a payment method on file (excluded by the free-tier rule); NVIDIA retired gpt-oss-120b; Gemini Flash Lite has no second free host. Decision: let the queue run.
+- **Estimates:** A/B complete ≈ 10-03 (gemini c1 cells last), then the confirmatory analysis and the verification pass. Phase C addendum: qwen ≈ 10-06 (≈ 6 cells/day under the token cap), gptoss_120b ≈ 10-08, gemini ≈ 10-09.
+- **Next action:** top block.
