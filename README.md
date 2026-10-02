@@ -1,5 +1,8 @@
 # agent-civ-lab
 
+> **Program v2 (cross-model, 12 models) is complete for Phases A/B — goals, execution, findings and next steps: [`docs/v2/STUDY_SUMMARY.md`](docs/v2/STUDY_SUMMARY.md).** Scorecard: `P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 T · L1 2/6 general · L2 no`. The v1 (Haiku-only) material below is kept as the starting point.
+
+
 **Behavioral experiments on LLM-agent societies (Claude Haiku 4.5)** — small, cheap, fully reproducible. Cross-model replication is stated future work; see [`LIMITATIONS.md`](LIMITATIONS.md).
 
 When you put many language-model agents in the same game, do they cooperate, form

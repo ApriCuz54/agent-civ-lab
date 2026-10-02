@@ -1,5 +1,8 @@
 # Project roadmap & status — agent-civ-lab
 
+> **Current status (2026-10-02): Program v2.** Phases A/B complete and analysed; Phase C addendum running. The up-to-date summary is [`docs/v2/STUDY_SUMMARY.md`](docs/v2/STUDY_SUMMARY.md); live status is `RUNLOG.md`. The sections below describe v1 and are kept for history.
+
+
 # Project Status and Roadmap
 
 **The single handoff doc: goals, what's done, what's next, and how any new chat/agent continues the work.** Complements Agent Civilizations Plan (the original phased plan) with the current *state*. Mirror of `ROADMAP.md` in the published repo.
