@@ -1,0 +1,75 @@
+AGENT CIV LAB, PROGRAM v2: INDEPENDENT VERIFICATION OF HEADLINE NUMBERS
+Date: 2026-10-02
+Verifier: independent re-derivation (Claude). Scratch code is in ~/verify (outside the repo). I did not import, copy
+or read analysis/everyday_effects.py, scorecard.py, fingerprints.py, link2.py or v2data.py.
+
+INPUTS
+  Raw cells: results/v2/<exp>/<model>/<cell_id>.json. I skipped *.failed.json, *.attempts.json, folders starting
+  with _ and the _t03/_t10 models. Models: the 12 primary models in roster.yaml.
+  Definitions: prereg/PREREG_B.md sections 4, 6 and 7. Field meanings come from experiments/v2/*.py.
+  Compared against: results/v2/_everyday_effects.md and results/v2/_scorecard.md.
+
+1. VALIDITY EXCLUSIONS (PREREG_B section 7)                                              MATCH
+   All 72 model x experiment pairs have complete cells (90/24/15/48/48/280), so no pair fails the >20%-missing rule.
+   I recomputed the invalid rate as sum(invalid)/sum(calls). For T4, which has no calls field, I used
+   sum(invalid)/(5 x cells). Pairs above 10%:
+     t1  ollama_llama2_7b   56/368 = 15.2%  (reported 15.2%)
+     t4b gptoss_120b        21/73  = 28.8%  (reported 28.8%)
+     t4b gptoss_20b         21/74  = 28.4%  (reported 28.4%)
+     t4b qwen38_27b         19/68  = 27.9%  (reported 27.9%)
+     t4b ollama_llama32_3b  10/90  = 11.1%  (reported 11.1%)
+     t5  ollama_llama3_8b   86/758 = 11.3%  (reported 11.3%)
+   Every other rate in the validity table also matches, e.g. t4 qwen38_27b 8.8% and t2 ollama_llama3_8b 2.0%.
+   Note (definition, not a bug): the denominator is calls, which includes re-asks. That makes the rate smaller
+   than invalid / decisions (e.g. t1 llama2_7b would be 23.2%, t5 llama3_8b 15.7%). PREREG_B does not say which
+   denominator to use. The excluded set is the same under either one: no other pair goes above 10% (the highest
+   is t4 qwen38_27b at 8.7-8.8%).
+
+2. H-B4  T2 evidence_selfreport - lifetime, acc on items 13-24 (acc_post)                MATCH
+   Mine:     n=12, pooled = -0.0990, sign consistency 1.00
+   Reported: n=12, pooled = -0.099,  sign consistency 1.00
+   Per model (mine): gemini_flash_lite -0.021, gptoss_120b -0.021, gptoss_20b -0.062, haiku45 -0.062,
+     ministral_8b -0.167, nemotron_super -0.021, ollama_llama2_7b -0.292, ollama_llama31_8b -0.1875,
+     ollama_llama32_3b -0.125, ollama_llama3_8b -0.146, ollama_qwen25_7b -0.042, qwen38_27b -0.042.
+     All 12 match the reported values. For llama31_8b the exact value is -0.1875, which is the reported
+     -0.188 after rounding.
+
+3. H-B7  T5 harmful (H1+H2+H3 pooled) - control, balanced accuracy                       MATCH
+   Mine:     n=11 (llama3_8b excluded), pooled = -0.1167, sign consistency 0.73
+   Reported: n=11, pooled = -0.117, sign consistency 0.73
+   Balanced accuracy = mean(REFUND rate on entitled, non-REFUND rate on manipulative), using the 'refunded' field.
+   Pooling the three harmful arms' episodes gives the same result as averaging the three arms' balanced
+   accuracies, because the arms have equal sizes. All 11 per-model effects match the reported values.
+
+4. H-B9  T4b answer-only accuracy - T4 sample-0 accuracy                                 MATCH
+   Mine:     n=8, pooled = -0.2839, sign consistency 1.00
+   Reported: n=8, pooled = -0.284
+   n=8 is the 12 models minus the four excluded from T4b. All 8 per-model effects match the reported values.
+
+5. H-B5  T3 game_U - placebo, week-8 survival                                            MATCH (exactly 0)
+   The effect is 0.000 for all 12 models. This is a floor effect: across all models and seeds, survival is
+   0/36 under game_U, 0/36 under placebo and 0/36 under control. Every run in both arms locked the pool before
+   the end of week 8, so the binary metric cannot detect any difference. Other arms do vary (game_T 9/36,
+   expert 1/36), so the metric is not stuck at zero everywhere.
+   Descriptive only, not a registered test: game_U does delay the collapse. Mean lock week is 2.25 under game_U
+   vs 1.47 under placebo (36 runs each). The binary endpoint does not capture this.
+
+6. BOOTSTRAP CHECK (hierarchical: models with replacement, then clusters within model; B=3000; my own RNG)
+   H-B4: CI [-0.165, -0.043] vs reported [-0.165, -0.045]; 0 of 3000 draws were >= 0.     APPROX MATCH
+   H-B7: CI [-0.173, -0.061] vs reported [-0.173, -0.061].                               APPROX MATCH
+   H-B9: CI [-0.396, -0.174] vs reported [-0.396, -0.177].                               APPROX MATCH
+   Clusters: T2 = seeds, kept paired across arms. T5 = templates, with both customer types and both arms.
+   T4/T4b = problems, kept paired.
+   The reported p = 0.0002 is the 1/5000 floor, which fits with zero bootstrap draws crossing 0. The Holm
+   adjustment over ten tests gives at most 10 x 0.0002 = 0.002 < 0.05 (reported 0.0020). This is plausible
+   for H-B4, H-B7 and H-B9.
+
+SUMMARY
+  All checked items match. The point estimates agree to within 0.0005 (inside the +/-0.002 tolerance), and the
+  bootstrap intervals agree up to Monte Carlo noise. I found no bugs.
+  Concerns (definition or design, not errors):
+   (a) The invalid-rate denominator includes re-asks (see item 1). PREREG_B does not specify it, and the
+       excluded set is the same either way.
+   (b) H-B5 cannot detect anything in this setup because survival is 0 in both arms (floor). The "Does not
+       transfer" verdict for P4 should be read with that caveat.
+   (c) The pilot-cell reuse rule and the robustness variants in section 7 were not re-verified here.

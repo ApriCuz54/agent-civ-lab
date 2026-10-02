@@ -8,7 +8,7 @@
 
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
-CURRENT PHASE: FULL RUN (Phase B priority 1, Phase A priority 2, robustness priority 3)
+CURRENT PHASE: PHASE A/B COMPLETE (6,460/6,460, 2026-10-02); confirmatory analysis done + verified; Phase C cloud addendum running
 LAST GATE PASSED: G0, G1, G3 (pilot_check 2026-09-25 11:37 UTC, all five tasks in band); PREREG committed de3f42b (pushed 03:55 local)
 NEXT ACTION (each session):
   1. Read results/_runner/status.json + provider_errors.log; investigate *.failed.json; leave quota-parked models alone.
@@ -19,7 +19,8 @@ NEXT ACTION (each session):
 PHASE C: ACTIVE since PREREG_C commit 611852f (pushed 2026-09-27 20:09 -0700); job at priority 4 in queue.yaml; Haiku from the cloud workspace.
 PHASE C CONFIRMATORY (8 models, DEVIATIONS #1): done 2026-09-28 → results/v2/_phase_c.md; verified (analysis/verify_phase_c.py). Addendum with the 4 cloud models once they finish (≈ 10-08; gemini last).
 BLOCKERS: none.  NEEDS ADI: none (optional: read prereg/PREREG_B.md).
-SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. control) – · L1 – · L2 –
+SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 (pos. control) T · L1 2/6 general · L2 no
+  → results/v2/_scorecard.md; verified (results/v2/_verification.txt); DEVIATIONS #2 robustness unchanged (results/v2/_robust_nvidia_*).
 ```
 
 ## Sessions (oldest first)
@@ -292,3 +293,10 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Remaining Gemini A/B cost:** c1 ≈ 2 Gemini calls/cell (≈ 150), a1 ≈ 20/cell (≈ 140), a4 ≈ 50/cell (≈ 150), a5 ≈ 40 → ≈ 480 calls ≈ one daily quota (resets 00:00 PT).
 - **Revised estimates:** A/B complete ≈ 10-02 (local), then confirmatory analysis + verification pass at the next check-in. Phase C addendum: qwen ≈ 10-05/06, gptoss_120b ≈ 10-06/07, gemini ≈ 10-08 (≈ 2,500 calls at ≈ 500/day after A/B) → addendum ≈ 10-08.
 - **Next action:** top block.
+
+### 2026-10-02 · Session 34 · Claude (Cowork, scheduled check-in 24) · PHASE A/B COMPLETE — confirmatory scorecard
+- **Observed (07:51 local):** Phase A/B **6,460 / 6,460** (Gemini finished its last 80 cells in today's quota). Phase C: qwen 33/64, gptoss_120b 16/64, gemini 0/64 (starts now). No *.failed.json.
+- **Confirmatory analysis** (`python3 -m analysis.scorecard`, 75 s): `P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 (pos. control) T · L1 2/6 general · L2 no`. Surviving primary tests (Holm): H-B4 (self-reported reputation hurts T2 post-betrayal accuracy, −0.099, 12/12 models), H-B7 (harmful rubric phrasing hurts T5, −0.117), H-B10 (harmful vs benign rubric, −0.109), H-B9 (positive control: no reasoning −0.284). H-B3 (game reputation > lifetime) +0.031, Holm 0.36. Game fixes beat neither placebo nor expert anywhere (E1–E3 null); L4 thresholds met nowhere. L1: H-A2 (10/12) and H-A5 (12/12) general.
+- **Independent verification** (fresh subagent, raw cells, no project analysis code): exclusions, H-B4, H-B7, H-B9, H-B5 all MATCH (±0.0005); H-B4 bootstrap CI matches. Notes: H-B5 is a floor (0/36 survive in game_U and placebo; game_U delays lock 2.25 vs 1.47 weeks, descriptive); invalid-rate denominator is calls (incl. re-asks), same exclusions either way. → results/v2/_verification.txt.
+- **DEVIATIONS #2 robustness** (analysis/robust_nvidia.py, DECISIONS #23): all verdicts, L1 and L2 unchanged.
+- **Next:** Phase C cloud addendum (qwen ≈ 10-04/05, 120b ≈ 10-06/07, gemini ≈ 10-08); then lab record v2, paper v2, article update with final numbers (drafts only; publishing NEEDS ADI).
