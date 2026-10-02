@@ -17,7 +17,7 @@ NEXT ACTION (each session):
      (writes only to results/_runner/interim/). When every cell is done: `python3 -m analysis.scorecard` (confirmatory),
      then the independent verification pass (a fresh agent re-derives 3+ headline numbers from raw cells).
 PHASE C: ACTIVE since PREREG_C commit 611852f (pushed 2026-09-27 20:09 -0700); job at priority 4 in queue.yaml; Haiku from the cloud workspace.
-PHASE C CONFIRMATORY (8 models, DEVIATIONS #1): done 2026-09-28 → results/v2/_phase_c.md; verified (analysis/verify_phase_c.py). Addendum with the 4 cloud models once they finish (≈ 10-12/13; gptoss_120b last).
+PHASE C CONFIRMATORY (8 models, DEVIATIONS #1): done 2026-09-28 → results/v2/_phase_c.md; verified (analysis/verify_phase_c.py). Addendum with the 4 cloud models once they finish (≈ 10-08; gemini last).
 BLOCKERS: none.  NEEDS ADI: none (optional: read prereg/PREREG_B.md).
 SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. control) – · L1 – · L2 –
 ```
@@ -285,4 +285,10 @@ SCORECARD DRAFT: P1 – · P2 – · P3 – · P4 – · P5 – · P6 (pos. cont
 - **Observed (11:52 local):** Phase A/B 6,379 / 6,460. **gptoss_120b has finished Phase A/B** (a4 15/15). Remaining A/B is Gemini only: 81 cells (a1 8, a4 3, a5 1, c1_counterpart 69). Phase C: qwen 23/64 (+5), gptoss_120b 5/64, gemini 0/64. All three parked for 1 Oct (Gemini 578 requests counted today, ≈ 450 of them a4 calls → 9 a4 cells; Groq TPD 200k for qwen/120b). provider_errors.log: daily-quota 429s plus occasional Gemini 503 "high demand" retries (all recovered). No *.failed.json.
 - **Throughput under the caps:** Phase C cells cost ≈ 35–40k tokens on Groq → qwen ≈ 5–6 cells/day, gptoss_120b ≈ 5 cells/day. Gemini ≈ 450–550 useful requests/day.
 - **Revised estimates:** A/B complete ≈ 10-03 (Gemini c1 cells last), then confirmatory analysis + verification pass. Phase C addendum: qwen ≈ 10-08, gemini ≈ 10-09/10, **gptoss_120b ≈ 10-12/13** (now the last model). No free-tier way to speed 120b (NVIDIA EOL; Cerebras needs a payment method; OpenRouter :free ≈ 50 req/day).
+- **Next action:** top block.
+
+### 2026-10-02 · Session 33 · Claude (Cowork, scheduled check-in 23) · One Gemini quota-day from A/B complete
+- **Observed (21:52 local, 1 Oct):** Phase A/B 6,380 / 6,460. Remaining A/B is Gemini only: 80 cells (a1 7, a4 3, a5 1, c1_counterpart 69). Phase C: qwen 28/64 (+5), gptoss_120b 11/64 (+6), gemini 0/64. Groq TPD is a rolling window, so qwen/120b keep finishing cells through the day (≈ 10 cells/day each, better than Session 32's estimate). All parked at check time; no *.failed.json; only quota 429s, Gemini 503 retries and a brief ConnectTimeout burst at 00:43 local (recovered).
+- **Remaining Gemini A/B cost:** c1 ≈ 2 Gemini calls/cell (≈ 150), a1 ≈ 20/cell (≈ 140), a4 ≈ 50/cell (≈ 150), a5 ≈ 40 → ≈ 480 calls ≈ one daily quota (resets 00:00 PT).
+- **Revised estimates:** A/B complete ≈ 10-02 (local), then confirmatory analysis + verification pass at the next check-in. Phase C addendum: qwen ≈ 10-05/06, gptoss_120b ≈ 10-06/07, gemini ≈ 10-08 (≈ 2,500 calls at ≈ 500/day after A/B) → addendum ≈ 10-08.
 - **Next action:** top block.
