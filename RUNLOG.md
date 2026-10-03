@@ -306,3 +306,8 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - Also since Session 34: docs/v2/STUDY_SUMMARY.md (goals, execution, findings, next steps) added and linked from README/ROADMAP (owner request); lab record v2 skeleton assembled from the confirmatory outputs in git-ignored results/_runner/drafts/lab_record_v2_draft.md.
 - **Estimates:** qwen ≈ 10-06, gptoss_120b ≈ 10-07/08, gemini ≈ 10-08 (≈ 2,500 calls at ≈ 500/day) → addendum ≈ 10-08.
 - **Next action:** top block.
+
+### 2026-10-03 · Session 36 · Claude (Cowork, scheduled check-in 26) · Phase C addendum on track
+- **Observed (03:51 local):** Phase C: qwen 39/64 (+3), gptoss_120b 24/64 (+4), gemini 13/64 (+12 in its first quota-day). All three parked for 3 Oct; no *.failed.json; a one-off ConnectTimeout burst at 02:22 local hit all three hosts at once (local network blip; retried fine). Repo clean and pushed (83fb23d, 0 unpushed).
+- **Estimates:** qwen ≈ 10-06/07 (≈ 6–8 cells/day), gemini ≈ 10-07/08 (≈ 12 cells/day), gptoss_120b ≈ 10-08 (≈ 8/day) → addendum ≈ 10-08.
+- **Next action:** top block.
