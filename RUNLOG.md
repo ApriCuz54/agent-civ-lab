@@ -300,3 +300,9 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - **Independent verification** (fresh subagent, raw cells, no project analysis code): exclusions, H-B4, H-B7, H-B9, H-B5 all MATCH (±0.0005); H-B4 bootstrap CI matches. Notes: H-B5 is a floor (0/36 survive in game_U and placebo; game_U delays lock 2.25 vs 1.47 weeks, descriptive); invalid-rate denominator is calls (incl. re-asks), same exclusions either way. → results/v2/_verification.txt.
 - **DEVIATIONS #2 robustness** (analysis/robust_nvidia.py, DECISIONS #23): all verdicts, L1 and L2 unchanged.
 - **Next:** Phase C cloud addendum (qwen ≈ 10-04/05, 120b ≈ 10-06/07, gemini ≈ 10-08); then lab record v2, paper v2, article update with final numbers (drafts only; publishing NEEDS ADI).
+
+### 2026-10-03 · Session 35 · Claude (Cowork, scheduled check-in 25) · Phase C cloud addendum in progress
+- **Observed (17:52 local, 2 Oct):** Phase C: qwen 36/64 (+3), gptoss_120b 20/64 (+4), gemini 1/64 (started after finishing A/B earlier today). All three parked for 2 Oct; no *.failed.json; only quota 429s / Gemini 503 retries. Repo clean and pushed (autosync da36093, 0 unpushed).
+- Also since Session 34: docs/v2/STUDY_SUMMARY.md (goals, execution, findings, next steps) added and linked from README/ROADMAP (owner request); lab record v2 skeleton assembled from the confirmatory outputs in git-ignored results/_runner/drafts/lab_record_v2_draft.md.
+- **Estimates:** qwen ≈ 10-06, gptoss_120b ≈ 10-07/08, gemini ≈ 10-08 (≈ 2,500 calls at ≈ 500/day) → addendum ≈ 10-08.
+- **Next action:** top block.
