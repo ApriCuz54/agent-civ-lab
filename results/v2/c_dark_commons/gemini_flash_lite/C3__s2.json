@@ -1,0 +1,831 @@
+{
+ "experiment": "c_dark_commons",
+ "model": "gemini_flash_lite",
+ "cell_id": "C3__s2",
+ "finished": "2026-10-06T22:43:38",
+ "arm": "C3",
+ "seed": 2,
+ "mean_stock": 46.3,
+ "overharvest_rate": 0.7,
+ "crash_rounds": 4,
+ "first_crash": 5,
+ "recovered": false,
+ "never_crashed": false,
+ "rounds_played": 10,
+ "points_by_agent": [
+  53,
+  65,
+  103,
+  79
+ ],
+ "llm_points_total": 300,
+ "llm_points_mean": 75.0,
+ "gini": 0.137,
+ "r1_overharvest": 1.212,
+ "llm_mean_request": 7.75,
+ "safe_rate": 1.0,
+ "safe_unknown_rate": 0.0,
+ "safe_abs_err": 2.925,
+ "knowing_overreach": 0.325,
+ "lexicon": {
+  "others": 0.125,
+  "future": 0.925,
+  "scarcity": 0.25
+ },
+ "needy_share": null,
+ "last_round_request": 0.25,
+ "endgame_ratio": null,
+ "llm_agents": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "pool_start": 100,
+   "sustainable": 52,
+   "requests": [
+    13,
+    13,
+    25,
+    12
+   ],
+   "received": [
+    13,
+    13,
+    25,
+    12
+   ],
+   "remaining": 37,
+   "crashed": false,
+   "pool_after": 79,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 2,
+   "pool_start": 79,
+   "sustainable": 31,
+   "requests": [
+    15,
+    25,
+    20,
+    7
+   ],
+   "received": [
+    15,
+    25,
+    20,
+    7
+   ],
+   "remaining": 12,
+   "crashed": false,
+   "pool_after": 29,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 3,
+   "pool_start": 29,
+   "sustainable": 0,
+   "requests": [
+    0,
+    0,
+    4,
+    5
+   ],
+   "received": [
+    0,
+    0,
+    4,
+    5
+   ],
+   "remaining": 20,
+   "crashed": false,
+   "pool_after": 45,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 4,
+   "pool_start": 45,
+   "sustainable": 0,
+   "requests": [
+    0,
+    0,
+    0,
+    10
+   ],
+   "received": [
+    0,
+    0,
+    0,
+    10
+   ],
+   "remaining": 35,
+   "crashed": false,
+   "pool_after": 75,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 5,
+   "pool_start": 75,
+   "sustainable": 27,
+   "requests": [
+    0,
+    27,
+    27,
+    27
+   ],
+   "received": [
+    0,
+    27,
+    27,
+    21
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 6,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "received": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "remaining": 5,
+   "crashed": true,
+   "pool_after": 15,
+   "over": false,
+   "messages": null
+  },
+  {
+   "round": 7,
+   "pool_start": 15,
+   "sustainable": 0,
+   "requests": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "received": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "remaining": 15,
+   "crashed": false,
+   "pool_after": 35,
+   "over": false,
+   "messages": null
+  },
+  {
+   "round": 8,
+   "pool_start": 35,
+   "sustainable": 0,
+   "requests": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "received": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "remaining": 35,
+   "crashed": false,
+   "pool_after": 75,
+   "over": false,
+   "messages": null
+  },
+  {
+   "round": 9,
+   "pool_start": 75,
+   "sustainable": 27,
+   "requests": [
+    25,
+    0,
+    27,
+    27
+   ],
+   "received": [
+    25,
+    0,
+    27,
+    23
+   ],
+   "remaining": 0,
+   "crashed": true,
+   "pool_after": 5,
+   "over": true,
+   "messages": null
+  },
+  {
+   "round": 10,
+   "pool_start": 5,
+   "sustainable": 0,
+   "requests": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "received": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "remaining": 4,
+   "crashed": true,
+   "pool_after": 13,
+   "over": true,
+   "messages": null
+  }
+ ],
+ "decisions": [
+  {
+   "round": 1,
+   "agent": 0,
+   "pool": 100,
+   "req": 13,
+   "safe": 52,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize long-term points, the source must stay at its 100-unit capacity. Since the replenishment rule ($2 \\times (\\text{remaining}) + 5$) equals 100 only when the remaining amount is 47.5, keeping the source near 47 or 48 units will prevent it from shrinking. Given four agents, requesting a quarter of the buffer is the most sustainable approach.\n\nSAFE_TOTAL: 52\nREQUEST: 13"
+  },
+  {
+   "round": 1,
+   "agent": 1,
+   "pool": 100,
+   "req": 13,
+   "safe": 52,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "s in the maximum cap (100) after the doubling and replenishment phase. Since the replenishment formula is $f(x) = \\min(100, 2x + 5)$, the source will reach the cap if $2x + 5 \\ge 100$, meaning at least 48 units must remain after all requests are processed. Therefore, the total amount that can be extracted by all four agents without impacting future capacity is 52 units.\n\nSAFE_TOTAL: 52\nREQUEST: 13"
+  },
+  {
+   "round": 1,
+   "agent": 2,
+   "pool": 100,
+   "req": 25,
+   "safe": 52,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "To maximize long-term gains, I should avoid depleting the source below the level where the replenishment formula (doubling plus 5, capped at 100) is maximized. Since the capacity is 100, leaving 48 units results in (48 * 2) + 5 = 101, which caps at 100, meaning 47.5 (or 48) is the equilibrium threshold to keep the source full.\n\nSAFE_TOTAL: 52\nREQUEST: 25"
+  },
+  {
+   "round": 1,
+   "agent": 3,
+   "pool": 100,
+   "req": 12,
+   "safe": 12,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize long-term yield, the source must remain above 47.5 units so that the doubling process reaches the 100-unit cap. Since there are four agents and the source is currently at 100, taking 12 units (48 total) leaves 52, which is sufficient to replenish the source to 100.\n\nSAFE_TOTAL: 12\nREQUEST: 12"
+  },
+  {
+   "round": 2,
+   "agent": 0,
+   "pool": 79,
+   "req": 15,
+   "safe": 31,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "To maximize long-term gains, the source must remain above 48 units so that doubling it plus 5 reaches the 100-unit cap. Since there are 79 units and three other agents, I must request a moderate amount to avoid depleting the source below this threshold while still securing my share.\n\nSAFE_TOTAL: 31\nREQUEST: 15"
+  },
+  {
+   "round": 2,
+   "agent": 1,
+   "pool": 79,
+   "req": 25,
+   "safe": 32,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 0,
+    "scarcity": 1
+   },
+   "text": " capacity of 100, the remaining units after requests must be 47.5, which is not possible, so I will aim for a balance that keeps the source growth stable while accounting for the other agents' likely behavior. Given the current 79 units and potential high demand from others, I will request a moderate amount to ensure I receive a fair share before the source is depleted.\n\nSAFE_TOTAL: 32\nREQUEST: 25"
+  },
+  {
+   "round": 2,
+   "agent": 2,
+   "pool": 79,
+   "req": 20,
+   "safe": 31,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "ize long-term yield, the source should ideally be kept at 100 units after the replenishment phase, meaning it should be at 47.5 units before doubling (since (47.5 * 2) + 5 = 100). As there are four agents and the pool is currently 79, requesting a modest amount helps maintain the growth potential while ensuring I secure a fair share before others potentially deplete it.\n\nSAFE_TOTAL: 31\nREQUEST: 20"
+  },
+  {
+   "round": 2,
+   "agent": 3,
+   "pool": 79,
+   "req": 7,
+   "safe": 31,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 0,
+    "scarcity": 0
+   },
+   "text": "To maintain the source's growth, the remaining amount after all requests must be at least 48, because $(48 \\times 2) + 5 = 101$, which caps at 100. With 79 units currently available, a total of 31 units can be safely withdrawn by all four agents combined to ensure the source reaches its maximum capacity again.\n\nSAFE_TOTAL: 31\nREQUEST: 7"
+  },
+  {
+   "round": 3,
+   "agent": 0,
+   "pool": 29,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize long-term yield, the source needs to be left with at least 48 units so that (48 * 2) + 5 = 101, which caps at 100. Since the current amount is only 29, any withdrawal will significantly reduce the source's growth potential; therefore, I will request 0 to allow the source to recover.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 3,
+   "agent": 1,
+   "pool": 29,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maintain the source at a sustainable level, I should aim to leave enough that the doubling and +5 rule reaches the 100-unit cap (i.e., leaving at least 47.5, or 48 units). Since the current pool of 29 is already below this threshold, I will request 0 to allow the source to recover.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 3,
+   "agent": 2,
+   "pool": 29,
+   "req": 4,
+   "safe": 17,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To sustain the source at its current level of 29, the amount remaining after requests must satisfy the equation (Remaining * 2) + 5 = 29, which means 12 units must remain. Since 29 units are available, 17 units can be safely withdrawn in total by all agents combined.\n\nSAFE_TOTAL: 17\nREQUEST: 4"
+  },
+  {
+   "round": 3,
+   "agent": 3,
+   "pool": 29,
+   "req": 5,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "To maintain the source at a sustainable level, I should aim to keep the post-request balance near 47.5, where the next round's growth reaches the 100-unit cap. Given the current 29 units and the potential for other agents to deplete it, I will request a moderate amount to balance my points with the source's longevity.\n\nSAFE_TOTAL: 0\nREQUEST: 5"
+  },
+  {
+   "round": 4,
+   "agent": 0,
+   "pool": 45,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize the source's growth, I should ensure the remaining balance is at least 47.5 units, as (47.5 * 2) + 5 = 100, meaning any remainder above 47.5 is wasted due to the cap. Since the current balance is 45, any request will reduce the next round's starting amount, so I will request 0 to allow the source to recover toward the 100-unit capacity.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 4,
+   "agent": 1,
+   "pool": 45,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize long-term gains, the source must be kept at a level where it hits the 100-unit cap after the doubling and addition phase. With 45 units currently available, requesting a smaller amount allows the source to grow toward that capacity, ensuring higher future yields for all agents.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 4,
+   "agent": 2,
+   "pool": 45,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize future returns, the source must be kept at its maximum capacity of 100 units after the doubling and addition phase. With 45 units currently available, the source will reach 100 units next round only if approximately 47.5 units remain after this round's withdrawals, meaning total requests should not exceed 0.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 4,
+   "agent": 3,
+   "pool": 45,
+   "req": 10,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "To keep the source at its maximum capacity of 100 units, the amount remaining after requests must be at least 47.5, which rounds up to 48 units. Given the current 45 units, any request will reduce the future capacity, so I will request a moderate amount to balance immediate gain with resource depletion.\n\nSAFE_TOTAL: 0\nREQUEST: 10"
+  },
+  {
+   "round": 5,
+   "agent": 0,
+   "pool": 75,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize long-term gains, I should aim to keep the source near its capacity of 100, as the replenishment formula (double the remainder plus 5, capped at 100) is highly sensitive to the remaining balance. With 75 units currently available, taking too much will cause the source to shrink significantly in the next round.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 5,
+   "agent": 1,
+   "pool": 75,
+   "req": 27,
+   "safe": 27,
+   "invalid": 0,
+   "lex": {
+    "others": 1,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "rm gains, the source should ideally be kept at a level where the doubling effect results in the 100-unit cap, which occurs when the remainder is at least 47.5 (requiring at least 48 units after withdrawals). Since there are 75 units and four agents, requesting a moderate amount ensures I get a share without depleting the source below the optimal replenishment threshold.\n\nSAFE_TOTAL: 27\nREQUEST: 27"
+  },
+  {
+   "round": 5,
+   "agent": 2,
+   "pool": 75,
+   "req": 27,
+   "safe": 27,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize the source's growth, the remaining amount should ideally reach the cap of 100 units after the replenishment phase. Since the current 75 units will double and add 5, they will hit the 100-unit cap regardless of whether I take a small amount or nothing, provided the remaining balance is at least 47.5 (since 47.5 * 2 + 5 = 100).\n\nSAFE_TOTAL: 27\nREQUEST: 27"
+  },
+  {
+   "round": 5,
+   "agent": 3,
+   "pool": 75,
+   "req": 27,
+   "safe": 27,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize the source's growth, the remaining amount after requests must be at least 48, as (48 * 2) + 5 = 101, which caps at 100. With 75 units available, I can safely take 27 units to keep the source at 48 for the next round.\n\nSAFE_TOTAL: 27\nREQUEST: 27"
+  },
+  {
+   "round": 6,
+   "agent": 0,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source currently holds 5 units, which will double to 10 and increase to 15 next round if left untouched. To maximize long-term growth, I will refrain from taking units until the source has replenished to a higher level.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 6,
+   "agent": 1,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source is currently at 5 units, meaning the maximum possible replenishment is (5 * 2) + 5 = 15 units. To avoid reducing the long-term potential of the source, I should not take more than the amount that would prevent the source from reaching its maximum capacity of 100 in the future.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 6,
+   "agent": 2,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "ource sustainable, the amount left in the source must be at least 48 so that it doubles and adds 5 to reach the 100-unit cap. Since the source currently holds 5 units, it will grow to only 15 units next round, meaning the source is already depleted and cannot support any sustainable withdrawals. I will request 0 units to allow the source to recover as quickly as possible.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 6,
+   "agent": 3,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source currently has 5 units, meaning it will double to 10 and add 5 for a total of 15 in the next round if nothing is taken. Taking any amount will reduce the future replenishment, so to sustain the source, I should request 0 units.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 7,
+   "agent": 0,
+   "pool": 15,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "Since the replenishment formula is (current_remaining * 2) + 5, a remaining amount of 47.5 would be required to reach the 100-unit cap. Taking any units from the current 15 will reduce the potential growth of the source, so I will request 0 to allow it to replenish.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 7,
+   "agent": 1,
+   "pool": 15,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "With 15 units currently in the source, taking any amount will reduce the base for the doubling effect, which is inefficient for long-term growth. I will request 0 to allow the source to recover toward its 100-unit capacity.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 7,
+   "agent": 2,
+   "pool": 15,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize future growth, the source needs to retain enough units so that the doubling effect reaches the 100-unit capacity. Since the source currently has 15 units, taking any amount will reduce the potential growth for the next round, so I will request 0 to allow the pool to recover.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 7,
+   "agent": 3,
+   "pool": 15,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source currently has 15 units. To maximize future growth, the remaining balance after requests should ideally be close to 47.5, as (47.5 * 2) + 5 = 100, but since the source only has 15, any withdrawal will significantly stunt the growth for the next round. I will request 0 to allow the source to recover as much as possible.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 8,
+   "agent": 0,
+   "pool": 35,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize long-term yield, the source needs to be kept at or above 47.5 units, as the growth formula ($2x + 5$) reaches the 100-unit cap only if the remainder is at least 47.5. Since the source currently holds only 35 units, any withdrawal will further reduce the potential for future replenishment.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 8,
+   "agent": 1,
+   "pool": 35,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize the source's growth, it is optimal to keep the remaining balance at 47.5 or higher (since $(47.5 \\times 2) + 5 = 100$), but given the 100-unit cap, keeping 47.5 is the threshold for sustainability. With 35 units available, any request will reduce the source below the growth-sustaining level, so I will request 0 to allow the source to recover.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 8,
+   "agent": 2,
+   "pool": 35,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize long-term yield, the source needs to remain at or above 47.5 units, as $(47.5 \\times 2) + 5 = 100$. Since the current balance is 35, taking any units will prevent the source from reaching its maximum capacity of 100 in the next round.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 8,
+   "agent": 3,
+   "pool": 35,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source has 35 units; doubling this and adding 5 equals 75, which is the amount that will be available next round if I take 0. If I take more than 0, the next round's starting amount will be less than 75, so any request reduces future potential.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 9,
+   "agent": 0,
+   "pool": 75,
+   "req": 25,
+   "safe": 27,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To keep the source at its maximum capacity of 100 units for future rounds, the remaining amount after requests must be 47.5 (since (47.5 * 2) + 5 = 100), meaning 27.5 units can be safely withdrawn from the current 75. Given the rotation and the need to maintain the source, I will request a conservative amount to ensure the resource remains sustainable.\n\nSAFE_TOTAL: 27\nREQUEST: 25"
+  },
+  {
+   "round": 9,
+   "agent": 1,
+   "pool": 75,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 0,
+    "scarcity": 0
+   },
+   "text": "To maximize the source's growth, I should allow it to reach the 100-unit cap before requesting. Since it currently holds 75, it will reach 100 after one more round of growth (75 * 2 + 5 = 155, capped at 100). Therefore, I will request 0 this round to ensure the source hits the maximum capacity.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 9,
+   "agent": 2,
+   "pool": 75,
+   "req": 27,
+   "safe": 27,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize the long-term pool, the remaining balance after requests should be 47.5 (since (47.5 * 2) + 5 = 100), but since we must deal in whole numbers, leaving 48 units keeps the source at 100 next round. Given the current 75 units, I can safely take 27 units.\n\nSAFE_TOTAL: 27\nREQUEST: 27"
+  },
+  {
+   "round": 9,
+   "agent": 3,
+   "pool": 75,
+   "req": 27,
+   "safe": 27,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize future growth, the source needs to remain at 47.5 units before the doubling effect (47.5 * 2 + 5 = 100). Since current units (75) exceed this threshold, I can safely take the surplus while keeping the remainder at a level that allows the source to hit the 100-unit cap next round.\n\nSAFE_TOTAL: 27\nREQUEST: 27"
+  },
+  {
+   "round": 10,
+   "agent": 0,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "To maximize growth, the source needs to be at or above 48 units so that the doubling rule reaches the 100-unit cap ($48 \\times 2 + 5 = 101 \\rightarrow 100$). Since the source only has 5 units, any request will further deplete the potential for future growth; therefore, I will request 0 to allow the source to replenish.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 10,
+   "agent": 1,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 1
+   },
+   "text": "To maximize the long-term yield, the source must remain at or above a threshold where the doubling mechanism effectively reaches the 100-unit cap. Since the source currently holds 5 units, requesting anything will deplete it further, reducing the future growth potential. I will request 0 to allow the source to recover toward the cap.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 10,
+   "agent": 2,
+   "pool": 5,
+   "req": 0,
+   "safe": 0,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "To maximize long-term yield, the source needs to remain at or above 48 units so that doubling it plus 5 reaches the 100-unit cap. Since the source currently holds only 5 units, I will request 0 to allow it to regenerate toward the optimal capacity.\n\nSAFE_TOTAL: 0\nREQUEST: 0"
+  },
+  {
+   "round": 10,
+   "agent": 3,
+   "pool": 5,
+   "req": 1,
+   "safe": 5,
+   "invalid": 0,
+   "lex": {
+    "others": 0,
+    "future": 1,
+    "scarcity": 0
+   },
+   "text": "The source follows the formula $S_{next} = \\min(100, (S_{current} - \\text{Total Requested}) \\times 2 + 5)$. To maintain the current level of 5 units for next round, the total units removed must satisfy $(5 - \\text{Total Requested}) \\times 2 + 5 = 5$, which implies Total Requested must be 5.\n\nSAFE_TOTAL: 5\nREQUEST: 1"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 40
+}
