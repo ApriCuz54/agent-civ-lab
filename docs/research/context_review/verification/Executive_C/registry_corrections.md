@@ -1,0 +1,20 @@
+# Registry reconciliation assessment — 2026-10-09
+
+Read registry README, source/claim headers and relevant rows; no shared registry mutation. This file specifies corrections for coordinator review. It does not certify a unique-study, full-text or independently-verified count.
+
+| Record | Required disposition | Evidence / limit |
+|---|---|---|
+| R2:S7 and R9:R9-S07 | Link to one work identity arxiv:2406.12045 and version identity arxiv:2406.12045v1; retain two lane/review records | Both source rows explicitly use identical v1 URL. Two readings are not two studies, independent experiments or automatic independent verification. Their claim locators remain distinct. |
+| R4:S4 and R4:S8 | Flag potential lecture/published-adaptation lineage; retain edition/version distinction pending exact document collation | S4 is Beyond Markets and States2010 university PDF; S8 is Nobel lecture2009 inaccessible URL, with author note that published mirror was inspected as S4. URL difference does not prove independence, and author alias note alone does not prove byte/text identity. Do not count both as distinct independent empirical evidence; do not mark S8's inaccessible artifact independently read. |
+| extra:R9-C02 / E12 | Append access-resolution verification event referencing Executive_C; preserve original unresolved event | Warwick version-of-record full text retrieved this pass. Exact nuisance/Freedman–Lane locator is published pp384–385; prior proposed pp386–387 should be corrected for this passage. Actual local calibration is still unresolved. |
+| All lane sources and claims | Preserve authored labels separately from verifier events | A key_claim_verified author label is reading status, not independent_verification. Original record_json preserves disparate fields but does not normalize them. |
+
+Canonical_candidate groups unversioned arXiv IDs provisionally but URL identities leave DOI, publisher, institution mirror and lecture/adaptation relationships unresolved. Add separate work_id, version_id/edition, artifact_id (URL/retrieval/hash when available), review_record_id and provenance. Preserve original registry_id as lane identity. Stable work identity should resolve DOI/arXiv/publication aliases without collapsing materially different versions or adaptations.
+
+Normalize reading status with explicit scope: unavailable, metadata-only, abstract-only, selected full-text passages, complete full-text read, artifact/code inspected, independently reproduced. Current heterogeneous fields evidence_status/review_depth/access_status/reading_status cannot be treated as one quality scale. A quoted section locator is not a complete-paper or executable audit. Missing values must remain missing rather than interpreted as pass/fail.
+
+Claims need explicit canonical source-version links, original source_id/stream, proposed wording, exact locator, construct/control/metric scope, local implementation locator, and verification event IDs. Existing claim rows place these heterogeneous attributes inside record_json and set independent_verification pending; reviewer events must not be inferred by counting lanes.
+
+Independence needs at least two separate fields: reviewer independence (prior outcome/source exposure, shared ledger reuse) and evidence lineage (authors/data/models/tasks/benchmark version). R10/Constructive/Rival agreement uses largely shared material, so is cross-examination rather than independent empirical corroboration. tau-bench duplicate lanes illustrate document overlap; related editions or reused benchmark samples require additional lineage checks before independence claims.
+
+Source counts should separately report lane records, canonical works, retained versions, passages checked and independently checked claims. A deduplicated URL/arXiv count is at most a candidate inventory, not certified unique studies. Literature search logs do not establish saturation, priority or absence of prior work. Any recommendation to report/archive should stay separate from novelty certification.

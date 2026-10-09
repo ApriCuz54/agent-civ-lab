@@ -1,0 +1,12 @@
+# Constructive options — initial, no selected winner
+
+Input: frozen wave3 plus uniformly supplied VERIFIED_CORRECTIONS.md. Choices below are prospective directions, not authorized experiments or final decisions.
+
+| Direction | Claim the current package can support | Distinct contribution still needed | Disconfirmation / stop condition |
+|---|---|---|---|
+| Narrow interface report | Checked evidence plus added misleading notes can harm local selection; selected system wording changes rubric-relative decisions; failed repairs retained | Verified nearest-work comparison and per-configuration/class/invalid decomposition; exact channel and authority map | If TrustFork/Overreliance already subsume distinctive contrasts, present as educational replication/boundary case or stop rather than novelty paper |
+| Objective/environment correspondence program | Several task analogies alter objective, authority, payoff or endpoint; specific transfer nulls remain informative | Prospectively specify operational objective, disambiguate policy discretion and SAFE target, separate information from constraints/institutions | If realistic objectives or unambiguous wording remove effects, report specification dependence; do not relabel it reliability |
+| Resource/prior program | Naming preference concentration differs from emergence; local selected mixed ensembles show no superiority at nominal equal calls | Holdout capability matching, explicit deployed ensemble selection/resource budgets, family handling; prior/null controls before social emergence claims | If independent samples explain conventions or resource-aware baseline matches ensembles, reject strong social/diversity narrative |
+| Narrow report and stop | Reproducible selected-task observations, transparent failures, audit corrections | Finish source/numeric verification and archive exact snapshot with scoped descriptive claims | Appropriate if no distinctive mechanism or user-value question survives; no obligation to continue merely because package is large |
+
+All paths preserve original hypotheses/results. No absent significance, all-zero resampling interval or lack of qualified L2 pair supplies equivalence/absence proof. No path inherits confidence from agreement among reviewers. Methods validation is a prerequisite to expanded inferential claims, not a mechanism substitute. Scope can remain engineering rather than human-like social simulation, but then task utility and deployment resource constraints need direct definition.

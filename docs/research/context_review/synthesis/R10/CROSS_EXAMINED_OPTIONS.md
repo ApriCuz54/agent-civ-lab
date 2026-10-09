@@ -1,0 +1,79 @@
+# R10 cross-examined contribution options
+
+9 October 2026. Second pass explicitly reads Constructive/INITIAL_SYNTHESIS.md, options.md, verification_targets.md and Rival/INITIAL_RIVALS.md, disagreement_register.md, verification_targets.md. Original R10 files remain unchanged. Shared input remains frozen wave3 plus uniform October9 verified addendum; peer arguments are challenges, not new empirical evidence. No experiment, rerun, raw reconstruction, shared edit or Git operation.
+
+**Revised assessment:** a narrow engineering evaluation and transparent transfer-boundaries report survives. A worker-interface case study remains a conditional extension. The attractive claim that evidence interfaces dominate behavioral advice does not survive as a comparative or common-mechanism finding. Objective/environment correspondence is a useful organizing audit, not yet a newly established theory. Engineering and résumé value can survive independently of publication novelty.
+
+## Explicit challenge record
+
+| Peer claim locator | Strongest challenge and disposition | Change from R10 initial |
+|---|---|---|
+| Constructive INITIAL_SYNTHESIS, Interpretation A: evidence interfaces can dominate behavioral advice | Cross-task contrast mixes information, arithmetic, authority, history and objectives; no shared scale or channel-isolation design identifies dominance. Rival RV1/RV4 explains how misleading annotations and numeric assistance can have ordinary, different causes. | Tighten C1/C3: retain separate local comparisons. Reject dominance as present finding; permit it only as prospective question. |
+| Constructive Interpretation A: distinctive added annotation while checked evidence stays visible | TrustFork and Overreliance overlap authority/reliability channels but are not certified matches for checked temporal panel plus drift. Rival central conclusion/RV1 correctly rejects both broad novelty and automatic subsumption. | C1 extension becomes **conditional extension**, novelty pending exact methods comparison; no downgrade merely because related titles exist. |
+| Constructive Interpretation B: objective/environment correspondence is central | Strong local audit: same-SYSTEM discretion, incompatible SAFE targets, mechanical seller channels and posted-index limitations. But selecting this theme after outcomes is retrospective synthesis; several issues are measurement ambiguities, not experiments showing objective mismatch caused behavior. | C9 protocol assembly / C2,C3,C4 clarification remain; promote correspondence as report structure, not scientific causal result. |
+| Constructive Interpretation B: publishably informative reusable before/after construct map | Reusable only if a stranger can trace prompts, estimands, failure boundaries and corrected interpretation. A catalogue of defects is not automatically a general methods contribution. Rival V18 asks for executable/schema/provenance checks. | C9 artifact classification stays provisional engineering; C option must deliver a concrete auditable artifact before calling it reusable. |
+| Constructive Interpretation C: allocation/prior structure explains apparent social intelligence | Empty-history A5 directly corrects its label; simple priors/null dynamics do not causally explain v1 trajectory. Rival RV7/D09 retains reply and local absence of pruning. | C6 first-round benchmark classification unchanged; strengthen explicit boundary against concluding v1 has been explained or refuted. |
+| Rival RV8/D11: overlap is potential dependence, not automatic invalidity | Accepted. The finite selected-suite contrast has a target; calibration/generalization needs covariance/selection reasoning. No direction or size of error inferred. | C7 unchanged; reject blanket invalidation as firmly as universal diversity conclusions. |
+| Rival RV9: SDK exception weakens uniform truncation story too | Accepted: equal default cap in Claude code path is a boundary condition, not measured per-model evidence that a format effect alone caused the pooled loss. Actual outputs unverified. | C8 clarify that neither uniform truncation nor isolated hidden reasoning explains the current contrast. |
+| Rival RV10/D14: no L2 qualification is not absence | Accepted. Reliability, small related roster and conditional-null argument remain unresolved. Access failure for source passage is neither exoneration nor a proof of invalidity. | C9 unchanged; keep historical failed-qualification wording rather than reinterpret result as positive or universal negative. |
+| Rival contribution section/D18: instructed agents can be valid engineering targets | Accepted; PIMMUR human-proxy scope cannot erase engineered operational contrasts. Conversely engineered simulations do not imply deployed task value. | Clarify engineering vs publication/user-value boundaries below. |
+
+Agreement here does not pass any gate. These dispositions follow design/estimand differences and explicit primary-source targets, not reviewer votes.
+
+## Revised classifications
+
+| R10 candidate | Classification after cross-examination | Allowed contribution wording |
+|---|---|---|
+| C1 checked history plus worker notes | Conditional task extension; mechanism unresolved | Whole selected note bundle harmed this scripted post-shift selection contrast with checked history retained. Exact temporal-control novelty awaits verification. |
+| C2 refund wording | Bounded benchmark/engineering extension; policy-semantics clarification unresolved | Selected same-SYSTEM wording changes categorical rubric-relative decisions under fixed pressure. No injection/hierarchy discovery. |
+| C3 commons disclosure/advice | Conceptual replication attempt/extension with floor and treatment mismatch; mechanism unresolved | Specific repairs failed historical superiority rule; bundled exploratory assistance had survivors. Neither information nor institutions were generally disproved. |
+| C4 pricing and bargaining | Conceptual pricing replication/scope extension; bargaining engineering benchmark | Wording sensitivity in posted prices; scripted negotiation transfer contrast. Collusion/welfare/real bargaining value unestablished. |
+| C5 cooperation/reputation | Conceptual replication/scope extension | Local prompt/opponent/forgery-channel payoff patterns; no ESS, autonomous betrayal or secure authentication discovery. |
+| C6 naming | First-round preference benchmark; v1 conceptual replication unresolved | Independent lexical concentration; v1 interaction amplification remains causally unexplained. |
+| C7 mixed plurality | Selected-suite benchmark extension | Fixed-bank approximately matched mixed rosters failed the positive transfer rule at nominal equal votes. No universal diversity law. |
+| C8 arithmetic configuration | Known-effect benchmark extension | Tested format/instruction/resource configurations differ; causal internal reasoning and uniform cap story unresolved. |
+| C9 game-to-task mapping/protocol | Integrative question unresolved; assembled engineering artifact conditional | Prespecified transfer attempts with negative outcomes and auditable protocol. No verified novel transfer theory or held-out predictor. |
+
+No exact replication is certified. Novelty cannot be inferred from missing search hits, roster size or zero-dollar endpoints. Classification of a result as known/conceptual replication does not imply it lacks practical documentation value.
+
+## Strongest credible options, including stopping
+
+1. **Narrow report plus measurement appendix.** Organize around tested transfer attempts, implemented task/authority/action/metric channels, positive local contrasts, failed repairs, and corrected construct labels. Use finite-roster descriptive language; keep historical thresholds, intervals and adjusted tail scores with limitations. This combines initial A/C and is currently strongest because it does not require a latent mechanism. Publication novelty remains unpassed; an internal technical report is possible without claiming it.
+2. **T2-focused comparison report, conditional.** Promote only if verified closest methods show the checked temporal evidence plus misleading annotation contrast adds a useful controlled boundary. If exact comparators substantially subsume it, retain educational/conceptual replication value rather than inventing a new trust mechanism. T5 may be a second specification case, but H3 ambiguity prevents using it as corroborating evidence of the same mechanism.
+3. **Prospective research directions, parked.** Channel isolation, unambiguous objectives, held-out matching/prediction and actual resource accounting define different future questions. They are alternatives, not required extensions of a single favored narrative. No work is authorized by this card, and no current data create a retrospective holdout.
+4. **Narrow archive/report and stop.** Finish a truthful boundary summary and preserve provenance. Stop further experiments and novelty hunting if verified comparisons leave only task assembly, if essential controls require an unattractive new program, or if user value cannot be concretely defined. Stop is a valid decision, not an absence theorem or confession that the infrastructure lacks value.
+
+Completion of source verification may move option2 toward option1 or stop; it cannot retroactively isolate cues, protect an answer channel or change the task sample.
+
+## Engineering / résumé value versus publication novelty
+
+| Value claim | What could substantiate it | What it does not establish |
+|---|---|---|
+| Built a controlled multi-provider research harness | Task modules, strict parsers/reask/fallback policy, cached cells, queue/free-tier guard, prereg hashes and independently inspected reproducibility/provenance | Novel agent theory, production security or resource optimality |
+| Completed and audited prespecified transfer comparisons | Verified exact completion/eligibility counts, script-derived estimates, preserved unsuccessful interventions, transparent deviations | Independent model-population sampling, held-out task transport or calibrated universal conclusions |
+| Identified interpretation/measurement boundaries | Traceable policy-priority, first-round naming, posted-price, SAFE and requested-cap corrections | That each ambiguity causally produced an effect or invalidates all historical descriptive results |
+| Strong technical portfolio / résumé project | Precise role attribution, code/artifact links and reproducible scoped accomplishments; draft only until owner approval for public sharing | Peer-reviewed publication, first discovery, monetary/user benefit or independently validated production benchmark |
+| Publication contribution | Verified nearest-primary comparison, defined audience/problem, useful comparative evidence or reusable artifact with demonstrated adequacy | Guaranteed publishability merely because preregistration, many cells, multiple providers or negative results exist |
+
+Suggested factual draft direction: designed and implemented a reproducible multi-provider evaluation of game-derived agent instructions, documented unsuccessful transfers and audited measurement boundaries. Attach only verified counts and accurately attributed contributions. Avoid first, proved, production-ready or published unless separately evidenced. No public résumé/post sharing is authorized here.
+
+## Precise remaining novelty/source targets
+
+| Priority | Proposition and exact source/local locator | Acceptance and consequence |
+|---|---|---|
+| P0 N1 | TrustFork2609.32635v1 §§3.1–4,5.2–5.6/App.F; Overreliance2609.05587v2 §§3–5/reproducibility; T2 panel/answer_lines/run_cell | Independently map temporal checked history, drift, note/content/identity manipulation, clean utility, executable authority and denominator conditioning. Record what design excludes. Supports conditional extension only if a meaningful contrast remains; neither related topic nor no exact match proves priority. |
+| P0 N2 | Overreliance v2 reliability intervention methods and reproducibility wording | Preserve instructed labels versus passive metadata and promised future artifacts. No released-code comparison until released artifact actually inspected. |
+| P0 N3 | t5_refund.py POLICY/PHRASES/system_for, R2 comparison; IHEval proceedings425 §3 and §§4.3–4.5; tau-bench2406.12045v1 §§3–4 | Independently adjudicate H3 exact composite prompt, categorical scoring and role/control difference. If discretion can reasonably qualify the policy, report rubric-relative sensitivity rather than unambiguous policy breach. |
+| P0 N4 | c_commons.py sustainable_total/regrow/build_prompt; PREREG_C; GovSim2404.16698v3 §§2.2–2.4,3.4–3.7/App.D.3;2609.22600v1 §§3.1,4.2–4.3,6 | Separate restoration/no-decline target, numerics, history, horizon, lock/recovery, other-user visibility and discussion. Determines transfer correspondence; does not produce a corrected estimate or motive finding. |
+| P1 N5 | Fish2404.00806v2 §§2–5/App.B,D,E vs pricing.py/a2 driver; bargaining2402.15813v2 §§3–4/App.H and2608.07538v1 §§3–4/App.D vs t1 seller/score | Verify economic benchmark, action channel and payoff/control differences. Scope pricing as conceptual wording replication and negotiation as script benchmark; no collusion/field-value novelty by index. |
+| P1 N6 | Ashery2410.08948v2 pp6–8/S7–S10, critique2505.23796v1 and reply2506.18600v1; a5_naming.py, naming.py/run_tipping.py | Verify initial versus conditional-history construct; reconcile critique version/date; local pruning absence and imposed minority. No initial-preference measurement can certify culture. |
+| P1 N7 | Beyond Symmetric Agents2609.35875v1 §§3.1–3.2,5.1–5.5/App.B,G,H; Self-Consistency2203.11171v4 §§2–3; everyday_effects.py161–203 | Pin independent-sampling control, roster/matching, generations vs tokens, wrong-answer identities, selected/held-out target. Distinguishes an informative benchmark extension from an already-known aggregation lesson. |
+| P1 N8 | Lanham2307.13702v1 §§2.1,2.3–2.6,3.2,5; s12501.19393v1 §3.1/App.D; router.py55–71 and llm.py constructor/_raw/ask | Verify answer-channel and actual forwarding differences. Current config effect remains descriptive; uniform truncation or reasoning-isolation claims require evidence absent from present comparisons. |
+| P1 N9 | AI Agents That Matter2407.01502v1 §§2–5/App.C; Scaling Agent Systems2512.08296v1 §§4.1–4.4; PIMMUR2509.18052v4 §3/§§4.2–4.4; local prereg/protocol | Test precise assembled-protocol novelty and claimed engineering scope. Do not certify no earlier game-to-task framework without targeted citation tracing and exact control/metric comparison. |
+| P0 G | Original executive/local numerical rows, baseline G0; verification sample_manifest payloads; R9-C02/Winkler2014 pp386–387; everyday_effects.py243/261/link2.py109 | Finish claim-level numerical/source status and distinguish pairing, dependence and conditional-null concerns. Six sampled support rows do not propagate to entire registry. No newly calibrated inference is provided by this cross-exam. |
+
+Registry normalization must reconcile DOI/arXiv version aliases, reading-depth vocabulary, repeated datasets/authors, source-to-claim locators, budgets and independent statuses. Unavailable reproduction/contrary/supplementary texts stay explicit. Targets above prioritize contribution consequences; they do not prescribe experiments or infer numerical outcomes from papers.
+
+## Readiness and boundaries
+
+Cross-examination complete at the argument/classification level. The strongest report framing has become more precise, not more novel. Initial files are preserved; this appended document records changed and unchanged judgments. G0 and G2 remain partial. No executive numerical claim, publication-novelty gate, artifact reproducibility gate or public sharing action is passed by reviewer agreement.

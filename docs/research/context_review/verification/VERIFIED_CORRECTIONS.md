@@ -7,3 +7,5 @@ Supplement to immutable ledgers/2026-10-09-wave3; all initial synthesis roles re
 - R9-C02 nuisance-permutation primary-passage verification remains independently unresolved owing to access, despite code check and author's initial extraction. Do not equate lack of source access with exoneration or proven invalidity.
 
 These are source/interpretation corrections, not changed experiment results. Originals retained for provenance; next registry normalization should attach these independent statuses to the exact original row identifiers/payloads.
+
+Executive-C update (October9): independent primary-method source access resolved. Winkler nuisance/Freedman–Lane locator corrected to published pp384–385. Actual local conditional-null calibration remains unresolved. Executive_B corrects governance comparator to executable voted institutions and initial-bias measurement precedent; exact allowed wording and passages retained in Executive_A/B/C. Prior historical access failures retained as provenance, superseded for final interpretation.

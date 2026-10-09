@@ -8,10 +8,10 @@
 
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
-CURRENT REVIEW FOCUS: context review ACTIVE; all nine specialist packets saved; frozen wave3 synthesis ledger and partial independent verification saved; R10/constructive/rival initial synthesis active. Six-hour scheduled follow-ups through October 11. Owner authorized commits/pushes and Vault synchronization on October 8.
+CURRENT REVIEW FOCUS: context review ACTIVE; all nine specialist packets saved; frozen wave3 synthesis ledger and partial independent verification saved; independent synthesis and explicit cross-examination complete; final executive-source verification active. Six-hour scheduled follow-ups through October 11. Owner authorized commits/pushes and Vault synchronization on October 8.
 CURRENT PHASE: PHASE A/B COMPLETE (6,460/6,460, 2026-10-02); confirmatory analysis done + verified; Phase C cloud addendum running
 LAST GATE PASSED: G0, G1, G3 (pilot_check 2026-09-25 11:37 UTC, all five tasks in band); PREREG committed de3f42b (pushed 03:55 local)
-CURRENT REVIEW NEXT ACTION: collect initial independent syntheses, then explicit cross-examination and final source/novelty verification before decision brief; see docs/research/context_review/STATUS.md.
+CURRENT REVIEW NEXT ACTION: reconcile final E01–E12 verification and canonical source metadata, then complete decision brief/options with coverage gaps; see docs/research/context_review/STATUS.md.
 HISTORICAL EXPERIMENT ACTIONS (not automatic during context review):
   1. Read results/_runner/status.json + provider_errors.log; investigate *.failed.json; leave quota-parked models alone.
   2. Haiku (cloud) is COMPLETE: 560/560 cells in the repo (Session 11). Nothing to do unless a Haiku cell is found missing.
@@ -361,3 +361,12 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - Draft report corrected naming measurement and appended independently checked pricing/SAFE/router/policy qualifiers. Markdown rendered to HTML only; no analysis rerun or raw/prereg edits. Vault relevant notes/mirrors updated.
 - Registry83 source/91 claim/88 search records is provisional, not unique full-text or saturated coverage. G0/G2 partial; final novelty/claim checks and synthesis gates remain open.
 - Next: cross-examine independent outputs and complete verified decision dossier. Owner git-write/push authorization retained; scope documentation only.
+
+
+### 2026-10-09 · Codex · Third six-hour review checkpoint
+- Saved three independent initial syntheses and explicitly cross-examined peers. Coordinator reconciliation narrows overstrong headings and records governance/source/artifact qualifications; original first-pass files preserved.
+- Candidate current contribution is bounded engineering/transfer-boundary report; mechanism/novelty remain unresolved. Prospective distinct options and archive/stop retained.
+- Final executive-claim ledger E01–E12 created; independent reviewers A/B/C dispatched. Verify passages and exact local definitions; no new inference or raw reconstruction in this phase. Gates remain open until retained claims reconciled and readable decision brief delivered.
+- Vault research checkpoint and run-log mirrors updated; documentation-only commit/push authorized. No experiments/queue/raw/prereg changes.
+
+- Checkpoint completion update: all three executive verification packets now saved. Primary nuisance-method passage access resolved with corrected locator; achieved calibration unresolved. Confirmed duplicate tau-bench lanes; uncertain Ostrom adaptation not merged. Final claim wording/dossier reconciliation and delivery remain required.

@@ -1,0 +1,21 @@
+# Cross-examination reconciliation — October9 22:31 UTC checkpoint
+Initial constructive, rival and nearest-work outputs used identical frozen wave3 ledger plus verified addendum. Explicit peer followups completed; original first passes retained. This reconciliation is coordinator judgment pending final source verification, not three-agent consensus evidence.
+
+## Surviving interpretation
+The current output can be a bounded finite-roster evaluation of selected game-to-task interventions, failed repairs and measurement boundaries. Local descriptive contrasts and infrastructure/documentation value survive. A common psychological mechanism, general game-theory transfer law, emergent society, universal diversity result, or first discovery is unsupported by this design.
+
+## Concessions and corrections
+- 'Interfaces dominate advice' lacks a matched comparative estimand across tasks. Narrow to sensitivity to specified supplied information/instruction bundles. T2, T3 and reputation are separate contrasts with different outcomes, not a ranking of interfaces against advice.
+- 'Allocation and priors explain social intelligence' implies causal explanation beyond controls. Keep configuration effects and initial preference concentration as observations; social-intelligence mechanism untested.
+- Policy wording is same-role/system objective tension; discretion semantics unresolved. No generic customer injection or sycophancy diagnosis.
+- R10 governance comparator C3 source2 may be misclassified: R4 authored extraction describes GovSim-SelfGovern executable voted laws, harvest caps, sanctions/redistribution/membership. Final independent verifier B must adjudicate primary passage before corrected contribution map. This is not merely an information-setting precedent if those actions are confirmed.
+- 'Reproducible package' remains an artifact goal/partially inspected property. Existing code, raw data and earlier offline tests provide inspectability, not a completed independent execution/schema audit of every artifact. Avoid certified reproducibility claims.
+- Overlap implies possible dependence; neither all uncertainty estimators nor every target is invalid. Uncentered bootstrap alone does not establish invalidity. Numerical calibration and conditional-null inference remain unresolved; retain appropriate uncertainty wording.
+
+## Contribution dispositions
+A narrow report plus measurement appendix is feasible from present material and valuable as demonstrable experimental engineering, with publication novelty provisional. Optional T2 emphasis remains conditional on closest-method source checks and a specific unanswered question. Prospective objective/authority mechanism, commons governance, held-out resource-matched ensemble and naming-prior controls are separate options; none is authorized for implementation. Internal archive/stop remains legitimate.
+
+## Verification handoff
+E01–E12 in verification/EXECUTIVE_CLAIMS.csv define proposed final retained claims and precise source/definition targets. Independent A/B/C reviewers dispatched; B includes governance correction and closest ensemble comparator. C includes canonical/duplicate source assessment and unresolved nuisance-permutation passage. No external numerical result is needed in the decision brief unless its unit/control is independently checked. Do not mark G2/G4/G5 complete before reconciled checks and readable brief delivery. Next coordinator completes final matrix, nearest-work map/options, claim-to-source signoff and explicit coverage/access limitations.
+
+October9 executive-B adjudication: primary source check confirms GovSim-SelfGovern implements voted state-changing laws (caps, penalties, redistribution/account and membership). R10 initial C3/source2 information-settings characterization is corrected here; preserve first-pass provenance. Beyond Symmetric Agents comparison matches generation counts with temperature/resource qualifiers, not certified total compute. Ashery includes initial empty-memory bias measurement; A5 is a panel/design variation of an existing measurement class, not a first emergence method. See Executive_B exact passages. These qualifications apply to retained final contribution options.
