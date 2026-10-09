@@ -1,5 +1,13 @@
 # agent-civ-lab
 
+**Context review plan (2026-10-08): [Context before direction](docs/research/CONTEXT_REVIEW_PLAN.md).** A broad parallel literature review to explain the existing results before choosing further work. Review active; first research packets and progress are in [context_review](docs/research/context_review/STATUS.md).
+
+
+**New technical report (draft, 2026-10-08): [When Instructions Compete](docs/report/technical_report.md)** — a critical cross-model audit of wording, reputation, and agent reliability. [Short article](docs/report/article.md) · [Readable HTML](docs/report/technical_report.html) · [Evidence audit](docs/report/evidence_audit.md). The raw completed A/B inventory is 6,996 primary cells + 24 temperature-robustness cells = 7,020; the former 6,460 headline covered the PC queue and omitted 560 Haiku cells. The separate Phase C cloud addendum remains incomplete.
+
+
+**Main local checkout (consolidated 2026-10-08):** `C:\Users\adich\OneDrive\Documents\Repos\agent-civ-lab`. Older differing files and the former Documents Git metadata are preserved in the ignored `_consolidation/2026-10-08/older-files-and-git.zip` archive. Historical references to `C:\Repos` and the Desktop checkout refer to removed copies.
+
 > **Program v2 (cross-model, 12 models) is complete for Phases A/B — goals, execution, findings and next steps: [`docs/v2/STUDY_SUMMARY.md`](docs/v2/STUDY_SUMMARY.md).** Scorecard: `P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 T · L1 2/6 general · L2 no`. The v1 (Haiku-only) material below is kept as the starting point.
 
 

@@ -2,7 +2,7 @@
 
 **Read this whole file before doing anything.** It tells any agent (any model, any session, any environment) how to pick up this project, keep it moving without the owner, stay at $0, and leave a record good enough that a stranger could reproduce every result.
 
-- **Owner:** Adi. **Repo:** `C:\Repos\agent-civ-lab` = GitHub `ApriCuz54/agent-civ-lab`.
+- **Owner:** Adi. **Repo:** `C:\Users\adich\OneDrive\Documents\Repos\agent-civ-lab` = GitHub `ApriCuz54/agent-civ-lab`.
 - **Handbook version:** 2026-09-24.
 - **Source of truth for "where are we":** the top block of `RUNLOG.md`. It overrides the snapshot in §3.
 
@@ -83,7 +83,7 @@ Three environments exist. Only **Adi's Windows PC** can reach the model provider
 | Environment | How you get there | Can | Cannot |
 |---|---|---|---|
 | **Windows PC (the host)** | Only through the scheduled tasks below, or through Adi typing commands | Call every provider; read the keys (user env vars); run Ollama; `git push` (credentials cached) | Be driven directly by an agent |
-| **Cowork VM on the PC** | A Claude session with folder access to `C:\Repos\agent-civ-lab` (appears as `$HOME/mnt/agent-civ-lab`) | Read and write every repo file; run Python for offline tests and analysis (`pip install` works; pypi is reachable); create flag files | Reach providers; see keys; run Windows commands; use git for writing |
+| **Cowork VM on the PC** | A Claude session with folder access to `C:\Users\adich\OneDrive\Documents\Repos\agent-civ-lab` (appears as `$HOME/mnt/agent-civ-lab`) | Read and write every repo file; run Python for offline tests and analysis (`pip install` works; pypi is reachable); create flag files | Reach providers; see keys; run Windows commands; use git for writing |
 | **Claude cloud workspace** | Any Claude session | Run **Claude models (Haiku) via the subscription SDK**; heavy analysis and figures; publish artifacts | Reach providers; see the repo except by staging files through device tools |
 
 **The autonomy loop.** Agents never need to type on the Windows PC:

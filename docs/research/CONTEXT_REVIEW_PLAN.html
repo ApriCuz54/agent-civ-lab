@@ -1,0 +1,275 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Context before direction — Agent Civ Lab</title><style>body{margin:0;background:#f3f5f8;color:#202b3b;font:18px/1.65 Georgia,serif}main{max-width:980px;margin:35px auto;padding:44px 55px;background:white;border-top:6px solid #236d79}h1,h2,h3,th{font-family:system-ui,sans-serif;line-height:1.25}h1{font-size:39px;letter-spacing:-1px}h2{font-size:27px;margin-top:2em;border-top:1px solid #dce2ea;padding-top:.7em}h3{font-size:21px}p{max-width:78ch}a{color:#166674}blockquote{background:#ecf5f5;border-left:4px solid #237b82;padding:12px 18px;margin:20px 0}code{font:13px/1.4 Consolas,monospace;background:#edf1f5;padding:2px 5px;overflow-wrap:anywhere}pre{white-space:pre-wrap;background:#edf1f5;padding:18px}.table{overflow-x:auto;margin:20px 0}table{border-collapse:collapse;width:100%;font:13px/1.5 system-ui,sans-serif}th,td{border-bottom:1px solid #dce2ea;text-align:left;padding:9px;vertical-align:top}th{background:#edf3f5}img{max-width:100%;height:auto}li{margin:8px 0}@media(max-width:700px){main{margin:0;padding:24px}h1{font-size:31px}}@media print{body{background:white;font-size:11pt}main{margin:0;padding:0;border:0;max-width:none}h2,h3{break-after:avoid}tr,img{break-inside:avoid}a{color:inherit}blockquote{background:white}}</style></head><body><main><h1>Context before direction: a parallel research plan</h1>
+<p><strong>Prepared 8 October 2026. Owner: Aditya. Status: Ready for a literature-review execution request.</strong></p>
+<p><strong>Purpose:</strong> Understand what our existing numbers mean in relation to prior experiments, behavioral theory, agent benchmarks, and evaluation practice before deciding where to take Agent Civ Lab. The review must remain open to a better explanation than the current reliability framing and to the possibility that some results add little new knowledge.</p>
+<p><strong>Authoritative execution copy:</strong> <code>C:\Users\adich\OneDrive\Documents\Repos\agent-civ-lab\docs\research\CONTEXT_REVIEW_PLAN.md</code>.</p>
+<p>This request authorizes the planning work and multiple planning scouts. Three scouts have helped design this plan and checked primary starting points. It does <strong>not</strong> mean the full review below has been completed. The next stage is literature and existing-data interpretation, not new model experiments or a predetermined mitigation project.</p>
+<h2>1. What we need to learn</h2>
+<p>The review should answer six questions:</p>
+<ol>
+<li><strong>Precedent:</strong> Which findings reproduce known effects, contradict prior results, or differ too much to compare?</li>
+<li><strong>Mechanism:</strong> Which explanations are actually identified by experiments, and which merely fit the observations?</li>
+<li><strong>Conditions:</strong> Which incentives, information displays, interaction structures, budgets, and model configurations explain apparent disagreement between studies?</li>
+<li><strong>Measurement:</strong> What population, behavior, and uncertainty do our metrics really describe?</li>
+<li><strong>Importance:</strong> Would a clearer result change how someone evaluates, selects, or deploys agents, or contribute to a meaningful scientific question?</li>
+<li><strong>Direction:</strong> After the evidence is assembled, which project options are defensible, feasible, and worth pursuing—and which should be dropped?</li>
+</ol>
+<p>The review is a structured scoping and evidence-mapping exercise. It must not call itself an exhaustive systematic review or meta-analysis unless its coverage and methods justify those terms.</p>
+<h2>2. Start from the evidence we actually have</h2>
+<p>The coordinator creates a frozen result-to-design register using the current technical report, generated evidence audit, preregistrations, scoring code, and raw-data paths. This is an inventory, not a new statistical analysis.</p>
+<div class="table"><table>
+<tr><th>Evidence anchor</th><th>Question the literature must help answer</th><th>Interpretations to challenge</th></tr>
+<tr><td>T2: adding worker confidence assertions reduces post-change accuracy</td><td>How do selectors combine checked performance, asserted confidence, and source cues?</td><td>Authority language, numeric confidence, information overload, presentation effects, or ordinary response to an imposed distribution shift</td></tr>
+<tr><td>T2: recent history has a modest uncertain improvement</td><td>When should a short window outperform lifetime history?</td><td>Better change-point tracking versus recency attention, reduced arithmetic burden, or a small-sample artifact</td></tr>
+<tr><td>T5: selected phrases reduce policy accuracy; individual phrases differ</td><td>Which instructions create an operationally important conflict?</td><td>Authorized discretion, customer appeasement, hierarchy failure, repeated pressure, or task-specific scoring</td></tr>
+<tr><td>Pricing: wording susceptibility in much of the roster</td><td>What is known about price-war aversion and supracompetitive pricing?</td><td>Replication versus extension; strategic response versus semantic instruction; index inflation versus economically useful collusion</td></tr>
+<tr><td>Reputation games: recent signals reduce stealth payoffs; forgery raises them</td><td>What assumptions make reputation useful, and what breaks it?</td><td>Scripted change point, identity persistence, truthful observations, costless forgery, finite-horizon effects</td></tr>
+<tr><td>PD and strategy profiles vary across models</td><td>Is behavior a stable trait or a policy induced by task representation?</td><td>Payoff maximization, preference training, language framing, opponent adaptation, inference configuration</td></tr>
+<tr><td>T3: universalization and placebo at a survival floor; calculated-share transparency has successes</td><td>What enables sustainable resource use?</td><td>State information, arithmetic assistance, observability, communication, enforcement, or environment severity</td></tr>
+<tr><td>Phase C: stated equal-share benchmark and requests disagree</td><td>What can verbal estimates tell us about understanding and action?</td><td>Inaccurate estimates, strategic allocation, unclear fairness rules, incentives, depleted-state artifacts—not assumed intent</td></tr>
+<tr><td>T4: mixed ensembles do not establish a gain under the chosen matching procedure</td><td>When does diversity help?</td><td>Error covariance, shared training, sample quality, selection leakage, aggregation rule, and task difficulty</td></tr>
+<tr><td>T4b: answer-only configuration performs worse</td><td>How does inference allocation affect outcomes?</td><td>Output allowance, visible working, hidden reasoning, truncation, invalid-format selection—not isolated deliberation</td></tr>
+<tr><td>Naming: convergence and preference effects</td><td>What evidence is needed to call something emergent or cultural?</td><td>Initial lexical/position priors, reinforcement dynamics, researcher-imposed minority behavior</td></tr>
+<tr><td>Game-to-task prediction does not meet the qualifying criterion</td><td>Are game fingerprints useful diagnostics?</td><td>Weak construct alignment, low model-level power, shared family dependence, restricted ranges, or a genuinely weak connection</td></tr>
+</table></div>
+<p>Do not silently upgrade an estimate into a mechanism, treat a failed significance threshold as equivalence, or infer that an agent understands a rule because it can repeat a formula.</p>
+<p>The corrected A/B inventory is 6,996 primary-configuration cells plus 24 temperature-robustness cells, or 7,020 completed cells. These are not independent datasets or API calls. Twelve primary configurations carry seven family labels. The separate commons addendum remains incomplete and must retain that status.</p>
+<h2>3. Reuse the Vault, but recheck consequential claims</h2>
+<p>The earlier Vault review contains substantial material on games, conventions, social simulation, and multi-agent systems. Reuse it as a discovery index; do not reread the entire Vault or assume a note marked <code>verified</code> establishes every interpretation in it.</p>
+<p>Each specialist receives only the relevant paper-note names and neutral task descriptions. They must:</p>
+<ul>
+<li>Identify which sources are already covered and which areas are missing or outdated.</li>
+<li>Deduplicate paper versions and companion notes before counting coverage.</li>
+<li>Reopen the primary source for every claim material to the final synthesis.</li>
+<li>Check whether the note&#x27;s interpretation is stronger than the paper&#x27;s measurement.</li>
+<li>Search forward from older papers through the review cutoff, while retaining foundational theory.</li>
+<li>Preserve historical notes and raw reports. Proposed corrections go in a new correction register first.</li>
+</ul>
+<p>Examples of statements to test rather than inherit: “reasoning strips away niceness,” “generosity and exploitability are the same trait,” “diversity beats replication,” and “institutions do not emerge.” Those may summarize a specific setup, not general agent behavior.</p>
+<h2>4. Team architecture</h2>
+<p>Use <strong>one coordinator, nine specialist assignments, one novelty/integration assignment, two synthesis roles, and an independent source-verification assignment</strong>. These are jobs, not simultaneous processes.</p>
+<p>The available capacity is four active agents including the coordinator, so run <strong>three workers at a time</strong>. Keep workers in separate contexts and separate output directories. The coordinator owns the shared register, deduplication, dependencies, and final synthesis; specialists never concurrently edit a shared ledger.</p>
+<h3>Specialist assignments</h3>
+<div class="table"><table>
+<tr><th>ID</th><th>Assignment</th><th>Main ownership</th><th>Questions that could change our interpretation</th></tr>
+<tr><td>R1</td><td>Evidence, confidence, and reliance</td><td>Worker assertions; calibration; source credibility; automation/advice-taking theory</td><td>Does “verified” differ from confidence? Are agents evaluating evidence, recognizing authority, or coping with complexity?</td></tr>
+<tr><td>R2</td><td>Instructions, objectives, and authority</td><td>Policy conflicts; instruction priority; discretion; sycophancy; indirect injection</td><td>Is an apparent violation ordinary compliance with conflicting authorized goals, or a failure across a trust boundary?</td></tr>
+<tr><td>R3</td><td>Repeated games and reputation</td><td>Reciprocity; PD; invasion; reputation noise, recency, forgery; evolutionary dynamics</td><td>Which equilibrium/learning assumptions are actually present? Does the repair remove invasion advantage or merely reduce it?</td></tr>
+<tr><td>R4</td><td>Commons, fairness, and institutions</td><td>Resource dynamics; sustainability; information; communication; sanctions; institutional design</td><td>Is failure caused by incentives, comprehension, missing coordination powers, or a severe environment?</td></tr>
+<tr><td>R5</td><td>Markets, negotiation, and objective specification</td><td>Pricing; bargaining; outside options; deadlines; profit versus welfare</td><td>Are pricing and buyer negotiation structurally comparable? When does an individually successful action harm the group?</td></tr>
+<tr><td>R6</td><td>Emergence, conventions, and behavioral persistence</td><td>Naming priors; conformity; cultural transmission; memory/drift; heterogeneity</td><td>Which population outcomes require interaction rather than shared priors or simple scripted updates?</td></tr>
+<tr><td>R7</td><td>Ensembles and agent-system coordination</td><td>Error covariance; voting; debate; topology; role specialization; compute matching</td><td>What does model diversity add after controlling sample quality and resource use?</td></tr>
+<tr><td>R8</td><td>Reasoning, training, and inference configuration</td><td>Visible working; hidden reasoning; effort; token allocation; model-family/generation differences</td><td>Which observed differences belong to reasoning, capacity, instruction tuning, truncation, or hosting?</td></tr>
+<tr><td>R9</td><td>Validity, statistics, and benchmark design</td><td>Estimands; dependence; nulls; holdouts; ecological validity; selection; uncertainty</td><td>What can our fixed roster and small task sets support, and which comparisons are not identified?</td></tr>
+<tr><td>R10</td><td>Closest precedents and contribution map</td><td>Integrate the nearest work from R1–R9; overlap; replication; artifacts; feasibility</td><td>What contribution remains once closely related papers and methodological limitations are accounted for?</td></tr>
+</table></div>
+<p>Overlap is intentional at boundaries, but one owner extracts a paper in depth. A second agent links to that extraction and independently verifies the relevant claim. Shared experiments or author groups are not independent replications merely because different specialists cite them.</p>
+<h3>Initial execution waves</h3>
+<div class="table"><table>
+<tr><th>Wave</th><th>Three active jobs</th><th>Coordinator work</th></tr>
+<tr><td>0</td><td>Existing-design inventory; prior-note index; neutral task-packet preparation</td><td>Freeze search protocol, output schema, and outcome-withholding rules</td></tr>
+<tr><td>1</td><td>R1 evidence/reliance; R3 repeated games; R9 methods</td><td>Merge candidate sources; identify missing constructs and broken comparisons</td></tr>
+<tr><td>2</td><td>R2 instruction conflicts; R4 commons; R7 ensembles</td><td>Route overlap; screen novelty claims; maintain contrary-evidence coverage</td></tr>
+<tr><td>3</td><td>R5 markets; R6 emergence; R8 reasoning</td><td>Complete result coverage and cross-domain boundary notes</td></tr>
+<tr><td>4</td><td>R10 nearest-work map; constructive synthesis; independent rival-explanation synthesis</td><td>Give all three the frozen merged ledger; keep their first interpretations separate</td></tr>
+<tr><td>4b</td><td>Follow-ups to the same three roles after their first outputs arrive</td><td>Cross-examine the proposed narratives and nearest-work map; record disagreements</td></tr>
+<tr><td>5</td><td>Independent source verification; targeted gap search; independent reconciliation check</td><td>Produce corrected interpretation register and decision dossier</td></tr>
+</table></div>
+<p>Waves are a default schedule, not a fixed dependency wall. Start a ready packet when a slot opens. Do not launch nine workers despite the concurrency limit. Do not use new user-owned chats as a substitute for subagents.</p>
+<h2>5. Specialist questions and boundaries</h2>
+<h3>R1 — evidence, confidence, and reliance</h3>
+<p>Review confidence calibration versus confidence presentation; self-assessment versus judging another agent; human automation misuse/disuse; advice-taking and credibility; nonstationary worker reliability; verification cost and abstention.</p>
+<p>Compare no confidence, calibrated confidence, misleading confidence, asserted verification, and authenticated checked records. Ask whether accuracy displays contain counts or percentages, which history is visible, whether independent checking is possible, and whether worker identities are randomized.</p>
+<p>Our worker task imposes deterioration in a scripted worker. Do not describe that as an LLM&#x27;s strategic betrayal without evidence. A shorter window changes variance and information volume as well as recency.</p>
+<p>Initial searches: <code>LLM advice taking confidence authority</code>; <code>agent worker selection nonstationary reliability</code>; <code>verbalized confidence calibration distribution shift</code>; <code>automation bias source reliability</code>; <code>trust calibration monitoring automation</code>.</p>
+<h3>R2 — instructions, objectives, and authority</h3>
+<p>Review same-priority objective conflict, instruction hierarchy, tool/user trust boundaries, policy adherence, legitimate delegated exceptions, sycophancy, persuasion, and customer pressure. Include benchmarks with ordinary task failures, not only successful attacks.</p>
+<p>Separate commands from factual claims; helpfulness from satisfaction maximization; tone from discretion; an explicit exception power from an unauthorized exception; low-priority injection from a conflicting system instruction. Determine whether the model is scored against the same objective it was actually given.</p>
+<p>Initial searches: <code>instruction hierarchy conflict policy adherence</code>; <code>LLM conflicting objectives discretion customer support</code>; <code>sycophancy truthful response user pressure</code>; <code>agent indirect prompt injection benign utility</code>; <code>refund policy benchmark tool agent user</code>.</p>
+<h3>R3 — repeated games and reputation</h3>
+<p>Review fixed versus indefinite horizons, partner persistence, payoff matrices, noisy observations, indirect reciprocity, second-order norms, reputation manipulation, identity reset, change-point detection, and evolutionary imitation.</p>
+<p>Record whether policies learn through weights, prompts, memory, or no learning at all. Distinguish a finite trajectory against a specified invader from an ESS proof. Compare recency estimators under stationary and changing behavior, including false accusations and welfare costs. Treat Bayesian filtering as a possible baseline theory, not an assumed account of model cognition.</p>
+<p>Initial searches: <code>LLM repeated games reputation cooperation</code>; <code>indirect reciprocity noisy reputation</code>; <code>strategic reputation manipulation trust then defect</code>; <code>nonstationary reputation change point detection</code>; <code>LLM evolutionary strategy selection</code>.</p>
+<h3>R4 — commons, fairness, and institutions</h3>
+<p>Review resource models, feasible sustainable policies, harvest order, information ladders, regeneration, communication, monitoring, exclusion, sanctions, collective choice, unequal needs, and incentives for restraint.</p>
+<p>Compare our budget transparency bundle with studies supplying only social history, only arithmetic/state information, or actual enforcement. Check whether a resource can recover after a crash and whether sustainable behavior is possible for an individual acting alone. Do not equate universalization with an institution or an equal-share threshold with a mandatory rule.</p>
+<p>Initial searches: <code>LLM commons universalization communication sanctions</code>; <code>common pool resource institutional design monitoring</code>; <code>agent resource allocation transparency incentives</code>; <code>LLM fairness scarce resources</code>; <code>understanding versus action social dilemma</code>.</p>
+<h3>R5 — markets, negotiation, and objective specification</h3>
+<p>Review repeated pricing, auction and bargaining studies; reservation values; outside options; deadlines; communication; memory; differentiated goods; adaptive counterpart behavior; and individual versus social objectives.</p>
+<p>Analyze whether an elevated price index has the same interpretation in different markets. Identify economic baselines and whether a high price actually increases profit. A scripted seller interacting with a buyer is not automatically equivalent to two pricing agents sharing a market. Verify the nearest papers&#x27; actual mechanisms rather than citing agent explanations as causal evidence.</p>
+<p>Initial searches: <code>LLM algorithmic collusion price war prompt</code>; <code>LLM bargaining negotiation outside option</code>; <code>language model repeated pricing differentiation</code>; <code>agent negotiation incentive compatibility</code>; <code>profit maximization welfare prompt framing</code>.</p>
+<h3>R6 — emergence, conventions, and persistence</h3>
+<p>Review lexical and option-position priors, naming games, network structure, conformity, minority tipping, shared training, cultural inheritance, long-horizon memory, and drift.</p>
+<p>Look for individual-prior controls, shuffled choices, random/scripted agents, simple reinforcement models, interaction ablations, and evidence of transmission between generations. Separate coordinated convention from rich culture or institutional emergence. Distinguish imposed commitment from spontaneously acquired norms.</p>
+<p>Initial searches: <code>LLM conventions collective bias initial preference</code>; <code>naming game committed minority null model</code>; <code>LLM cultural evolution transmission</code>; <code>agent memory long horizon drift</code>; <code>multi agent conformity shared priors</code>.</p>
+<h3>R7 — ensembles and coordination</h3>
+<p>Review homogeneous and heterogeneous voting, correlated errors, judge preference, communication format, topology, specialization, shared context, verifier quality, and task decomposition.</p>
+<p>Require distinctions among equal calls, equal allowed tokens, actual tokens, latency, cost, and estimated compute. Record whether matching and evaluation share data, whether ensemble membership is selected using the test set, and whether overlapping ensembles are treated as independent. Look for both gains and failures and identify the task properties conditioning them.</p>
+<p>Initial searches: <code>LLM ensemble diversity correlated errors</code>; <code>multi agent equal compute single agent</code>; <code>agent scaling coordination overhead task topology</code>; <code>multi agent debate negative results</code>; <code>test set ensemble selection bias</code>.</p>
+<h3>R8 — reasoning and inference configuration</h3>
+<p>Review deliberate reasoning, visible working, hidden inference budgets, output-format constraints, truncation, reasoning effort, temperature, instruction tuning, and model/provider effects. Include rational metareasoning and bounded-rationality theory as interpretive tools.</p>
+<p>Distinguish improving arithmetic accuracy from improving cooperation or policy adherence. Record actual allocation controls: the same weights with different effort, versus unrelated models marketed as reasoning models. Do not infer that one causes the other merely because they differ. Establish which current records could clarify a confound without new runs, and which questions require a future controlled experiment.</p>
+<p>Initial searches: <code>LLM reasoning cooperation incentive</code>; <code>test time compute scaling fixed budget</code>; <code>chain of thought output tokens confound</code>; <code>reasoning model truncation instruction following</code>; <code>bounded rationality metareasoning language models</code>.</p>
+<h3>R9 — methods and external validity</h3>
+<p>Map each implemented estimand and its target population. Audit model-family dependence, shared templates, paired conditions, sample exclusions, calibration pilots, conditioning on matching, floor/ceiling outcomes, missingness, and inferential calibration. Also examine selective outcome reporting, publication bias, benchmark/model availability selection, and repeated evidence across publications. Look for preregistrations, registered reports, replication attempts, and null results where discoverable; absence of accessible evidence is not evidence that no such study exists.</p>
+<p>Review social-simulation validation as well as operational agent benchmarks. Investigate whether bootstrap sign-tail scores are justified for the current resampling structure; whether uncertainty should jointly resample shared problems and families; and whether a non-significant result can exclude a practically important effect. Separate reliability, utility, fairness, cooperation, and safety metrics.</p>
+<p>Initial searches: <code>LLM agent evaluation reproducibility cost holdout</code>; <code>generative social simulation operational validity</code>; <code>hierarchical bootstrap crossed clusters models tasks</code>; <code>bootstrap hypothesis test null calibration</code>; <code>equivalence tests floor ceiling benchmark</code>.</p>
+<h3>R10 — contribution mapping</h3>
+<p>After specialist extraction, identify the nearest three to five substantive precedents for each plausible contribution. Compare task, intervention, control, metric, artifact, and claim—not title similarity or arXiv recency alone.</p>
+<p>Classify an option as known result, partial replication, scope extension, mechanism clarification, benchmark contribution, engineering artifact, or unresolved. Never turn “no paper found” into “first.” Document searched venues/terms and coverage gaps. Include the option of publishing the existing report with a narrower interpretation or ending the project.</p>
+<h2>6. Search and reading protocol</h2>
+<h3>Pass A — discovery without our outcome directions</h3>
+<p>Use fresh subagents with <code>fork_turns=&quot;none&quot;</code>. Give literature specialists neutral task designs and their assigned constructs, not our effect directions, numbers, or favored article. They should first state what the literature would predict and what alternative mechanisms could operate. Freeze that memo before revealing the results.</p>
+<p>This is limited outcome withholding, not technical blinding or independence from the chosen research topics. The coordinator and methods reviewer know the project. Fresh literature agents should not inspect result files, the report, or RUNLOG during this pass; if they need repo access, they must follow its instructions, which may expose outcomes. In that case mark the packet <strong>outcome-aware</strong> rather than pretending it was blind.</p>
+<p>Search the existing note index, primary repositories (arXiv, ACL Anthology, OpenReview, publisher pages), official benchmark/code projects, and seminal theory. Use surveys to discover experiments, not as substitutes for the original experimental sources.</p>
+<h3>Pass B — full-text extraction and citation tracing</h3>
+<p>For each consequential source, inspect methods, results, limitations, and relevant appendix/code. Trace references backward and newer citing studies forward. Search explicitly for failures, replications, alternative explanations, criticism, and corrected versions. Publication status and code availability are useful metadata, not quality certificates.</p>
+<p>Keep a search log: query, date, source searched, candidates screened, inclusion/exclusion reason, and whether the search added an interpretation-changing mechanism or comparator. Record search-engine, language, publication, and access biases; a large accessible-preprint collection is not necessarily a representative literature sample. A source with unavailable full text remains a discovery lead; it cannot support detailed numerical or procedural claims.</p>
+<h3>Pass C — reveal our outcomes and make structured comparisons</h3>
+<p>Provide the frozen result-to-design register after the initial literature memo. Specialists compare expected and observed behavior, including nulls, and explain which differences in design might account for agreement or disagreement.</p>
+<p>Do not pool incompatible effect sizes. If tasks, baselines, outcome units, or budgets differ, use qualitative comparisons and state exactly why direct comparison fails. Report both favorable and unfavorable precedents.</p>
+<h3>Coverage expectations and stopping rules</h3>
+<p>Plan for roughly 80–120 screened candidates and 40–60 unique consequential full-text sources across the program, reusing earlier work where appropriate. These are planning bands, not quotas or claims of completeness. Each specialist should initially screen approximately 10–20 candidates and extract 4–8 particularly useful sources; overlap is deduplicated.</p>
+<p>Stop an individual search lane after backward/forward tracing and explicit contrary-evidence searches are complete, and two successive search passes add no new interpretation-changing mechanism, comparator, or material validity concern. Do not claim global saturation. Expand only a documented gap; if an important lane is sparse, record that instead of padding it.</p>
+<p>There is no fixed wall-clock promise. Report actual coverage and blockers at each wave. Prefer deep inspection of the closest studies to collecting hundreds of abstracts.</p>
+<h2>7. Extraction schema and evidence standards</h2>
+<p>Every specialist uses the same structure. Store source metadata once and claim-level evidence separately.</p>
+<h3>Source record</h3>
+<ul>
+<li>Canonical ID, title, authors, year, DOI/arXiv ID, pinned version, publication status, retrieval date, primary URL, official code/data URL.</li>
+<li>Previous Vault note(s), if any; related versions; overlapping datasets/author groups; independence group.</li>
+<li>Reading status: <code>discovered</code>, <code>abstract_screened</code>, <code>full_text_read</code>, <code>key_claim_verified</code>, or <code>unavailable</code>.</li>
+<li>Inclusion reason, source owner, and uncertainty about identity or access.</li>
+</ul>
+<h3>Claim-level record</h3>
+<ul>
+<li>Claim ID and neutral research question; source ID; exact supporting page/section/table/figure or code permalink.</li>
+<li>Reviewer paraphrase of the observation; claimed mechanism; experimentally identified mechanism; important alternative explanation.</li>
+<li>Agents/population, model snapshots and families, task/environment, interaction and memory, rewards/objectives, permitted actions, and authority/trust arrangement.</li>
+<li>Intervention and comparator; relevant prompt paraphrase and location; task/template/seed counts and unit of randomization.</li>
+<li>Outcome definition and denominator, baseline, effect and unit, interval, statistical method, multiplicity family, exclusions, and holdout protocol.</li>
+<li>Resource accounting: calls, allowed and actual tokens, retries, verifiers/judges, hidden reasoning, latency/cost if reported.</li>
+<li>Support type: supportive, conflicting, null, mixed, or not comparable. Applicability: direct comparator, related mechanism, methods precedent, or background.</li>
+<li>Limitations; boundary conditions; implication for a particular lab claim; evidence needed to discriminate explanations.</li>
+<li>Independent verifier, verification status, and unresolved discrepancies.</li>
+</ul>
+<p>Prefer paraphrase and source locations over copied text. Quote only short necessary excerpts, respecting source quotation limits. Do not paste whole papers, source prompts, or inaccessible summaries as though they were primary evidence.</p>
+<h3>Comparability classification</h3>
+<div class="table"><table>
+<tr><th>Class</th><th>Requirements</th><th>Permitted use</th></tr>
+<tr><td>Direct comparator</td><td>Similar decision, information, incentive, intervention, comparator, and outcome definition</td><td>Discuss agreement/disagreement with explicit remaining differences</td></tr>
+<tr><td>Mechanism comparator</td><td>Tests a candidate process under a different task</td><td>Support a hypothesis or boundary condition; not a numerical replication claim</td></tr>
+<tr><td>Methods comparator</td><td>Supplies a relevant evaluation/identification principle</td><td>Diagnose validity or propose analysis requirements</td></tr>
+<tr><td>Background analogy</td><td>Related theory or behavior with substantial mismatches</td><td>Suggest questions; cannot establish LLM psychology or a causal explanation</td></tr>
+</table></div>
+<p>Human findings belong in an explicitly labeled comparison layer. Human trust, risk aversion, and norm theories can organize hypotheses; they do not prove that language models share the same internal processes.</p>
+<h2>8. Outputs and file ownership</h2>
+<p>The main repo holds the evidence registry and working artifacts; the Vault holds a readable synthesis and links. No second code repo or full duplicate dataset is created.</p>
+<pre><code>docs/research/CONTEXT_REVIEW_PLAN.md
+docs/research/context_review/
+  BASELINE_REGISTER.md
+  SEARCH_PROTOCOL.md
+  registry/sources.csv
+  registry/claims.csv
+  registry/search_log.csv
+  workstreams/R1/... through R10/...
+  verification/SOURCE_CHECKS.md
+  synthesis/INTERPRETATION_MATRIX.md
+  synthesis/DISAGREEMENTS.md
+  synthesis/RELATED_WORK_MAP.md
+  synthesis/RESEARCH_OPTIONS.md
+  synthesis/DECISION_BRIEF.md</code></pre>
+<p>Each specialist writes only inside its assigned directory: <code>memo.md</code>, <code>sources.csv</code>, <code>claims.csv</code>, <code>search_log.csv</code>, and <code>questions_for_other_streams.md</code>. The coordinator merges registries deterministically and maintains canonical IDs. Verification agents own their verification directory. Source corrections are append-only findings with reasons; original preregistration and raw results remain unchanged.</p>
+<p>A specialist memo should be approximately 1,500–2,500 words and contain:</p>
+<ol>
+<li>What the literature establishes within its actual scope.</li>
+<li>Closest comparisons and important design mismatches.</li>
+<li>Competing explanations for our relevant outcomes.</li>
+<li>Positive, contrary, null, and unavailable evidence.</li>
+<li>The smallest information or analysis that could resolve ambiguity.</li>
+<li>Cross-stream questions and priority full-text reading for the coordinator.</li>
+</ol>
+<p>Avoid a string of isolated paper summaries. The registries retain the detail; the memo explains what changes our understanding.</p>
+<h2>9. Cross-examination and independent verification</h2>
+<p>The constructive synthesis role proposes the strongest two or three coherent explanations supported by the evidence, including the existing reliability framing and alternatives such as ecological mismatch, objective specification, or inference allocation.</p>
+<p>The adversarial role first independently proposes rival explanations from the same frozen ledger, without waiting on another agent&#x27;s unfinished synthesis. After the constructive and R10 outputs arrive, explicitly dispatch a follow-up cross-examination. It attempts to defeat each explanation with the nearest prior work, a plausible alternative, a null/boundary case, and a confound. It must also identify criticisms that are irrelevant or unsupported; negativity is not rigor by itself.</p>
+<p>An independent source verifier checks every claim that would appear in the executive conclusion, every external numerical result used to justify a direction, and every novelty-critical comparison. It also checks a documented random sample of the remaining claim rows; the coordinator records the sampling procedure and coverage. This is source verification, not a majority vote among agents.</p>
+<p>Resolve disagreements by returning to the source passage, environment specification, or code. Record unresolved disputes. Do not increase confidence because three agents repeat the same source or wording. Same-model agents can share errors.</p>
+<h2>10. What the final synthesis must contain</h2>
+<h3>A. Interpretation matrix</h3>
+<p>For every anchor in section 2, provide the current observable claim, candidate explanations, closest precedents, mismatches, what remains unidentified, and a verdict:</p>
+<ul>
+<li><strong>Supported within scope:</strong> measurement and applicable evidence support the stated restricted interpretation.</li>
+<li><strong>Ambiguous:</strong> more than one materially different explanation fits.</li>
+<li><strong>Contradicted:</strong> a specific stronger interpretation is inconsistent with the evidence.</li>
+<li><strong>Unresolved:</strong> insufficient accessible or comparable evidence.</li>
+</ul>
+<p>These are contextual-review labels, not replacements for the original preregistered scorecard.</p>
+<h3>B. Related-work and contribution map</h3>
+<p>Show what is already well studied, where our work is a replication, which design changes might add knowledge, and where benchmark or engineering contributions would matter more than another behavioral effect.</p>
+<h3>C. Research-option cards</h3>
+<p>Prepare a small set of genuinely different options, not variations of a predetermined worker-trust project. Options may include a focused evidence/authority mechanism study; objective-conflict evaluation; resource-governance context; a compute/dependence-correct ensemble study; a narrower replication/technical report; or stopping further experiments.</p>
+<p>Each card must state:</p>
+<ul>
+<li>The unanswered question and the nearest competing work.</li>
+<li>The contribution that would remain if the result is null.</li>
+<li>What current data can and cannot answer.</li>
+<li>The smallest discriminating next study or analysis, without executing it.</li>
+<li>Suitable artifact: technical report, reproducibility package, benchmark, engineering component, or potential research submission.</li>
+<li>Expected value, feasibility under the existing no-paid-model constraint, uncertainty, and risks of weak novelty or trivial conclusions.</li>
+<li>Evidence that would make us reject the option.</li>
+</ul>
+<p>Use qualitative judgments with reasons rather than a fake precise numerical ranking. Publication potential is provisional until closest methods and artifacts are examined.</p>
+<h3>D. Decision brief for Aditya</h3>
+<p>Write a readable brief of approximately 3–5 pages: what we learned, what changed from the current article, which narratives survived, which numbers are less meaningful than they appeared, and the strongest remaining options. Include a short reading list and unresolved questions.</p>
+<p>The decision is made <strong>after</strong> this brief. The review may recommend an option with reasons, but no implementation or model batch follows automatically. Keep current drafts marked as drafts until source verification and any material corrections are complete.</p>
+<h2>11. Gates and completion criteria</h2>
+<div class="table"><table>
+<tr><th>Gate</th><th>Pass condition</th><th>If it fails</th></tr>
+<tr><td>G0: baseline integrity</td><td>Every anchor traces to implemented scoring and recorded data; study status is explicit</td><td>Resolve the discrepancy or narrow the anchor</td></tr>
+<tr><td>G1: balanced coverage</td><td>All nine specialist areas covered; consequential sources read; contrary/null searches logged</td><td>Target the missing lane; do not generalize from abstracts</td></tr>
+<tr><td>G2: source verification</td><td>Executive and novelty-critical claims independently checked against primary passages</td><td>Downgrade or remove unsupported claims</td></tr>
+<tr><td>G3: interpretation</td><td>Observations separated from mechanism, intent, and generalization; disagreements recorded</td><td>Preserve ambiguity instead of forcing a single story</td></tr>
+<tr><td>G4: contribution</td><td>Options compared with their nearest precedents and feasible discriminating work</td><td>Classify as replication/report or reject the option</td></tr>
+<tr><td>G5: delivery</td><td>Verified decision brief, options, reading list, and explicit coverage gaps handed to Aditya</td><td>Finish the missing deliverable; do not wait indefinitely for a project choice</td></tr>
+<tr><td>Subsequent human decision</td><td>Aditya chooses a direction, a narrower report, or no additional work</td><td>No implementation or new experiments automatically</td></tr>
+</table></div>
+<p>Done means all material existing result families have a contextual disposition, major external claims are verified, inaccessible evidence is labeled, contrary evidence is retained, and the owner can choose among concrete options. Review execution is complete at verified delivery; the owner&#x27;s later project choice is a separate step. It does not mean the team found a publishable novelty claim or read every paper on agents.</p>
+<h2>12. Primary starting points</h2>
+<p>These are discovery seeds checked during planning at metadata/abstract level or through primary search results, unless explicitly noted. They are <strong>not</strong> completed full-text extractions. Existing Vault notes do not remove the need for method and claim verification. Recheck versions during execution.</p>
+<div class="table"><table>
+<tr><th>Area</th><th>Primary starting point</th><th>What to inspect</th></tr>
+<tr><td>Human reliance</td><td><a href="https://journals.sagepub.com/doi/10.1518/001872097778543886">Parasuraman and Riley: Humans and Automation</a></td><td>Definitions, monitoring opportunities, and experiments behind misuse/disuse categories</td></tr>
+<tr><td>Human trust</td><td><a href="https://journals.sagepub.com/doi/10.1518/hfes.46.1.50_30392">Lee and See: Trust in Automation</a></td><td>Conceptual framework and original evidence; full-text access remains unresolved</td></tr>
+<tr><td>Confidence</td><td><a href="https://arxiv.org/abs/2207.05221">Language Models (Mostly) Know What They Know</a></td><td>Self-assessment versus worker assessment; probability versus verbal confidence; domain transfer</td></tr>
+<tr><td>Sycophancy</td><td><a href="https://arxiv.org/abs/2310.13548">Towards Understanding Sycophancy in Language Models</a></td><td>Operational definition, training evidence, and whether it applies to policy-pressure tasks</td></tr>
+<tr><td>Instruction priority</td><td><a href="https://arxiv.org/abs/2404.13208">The Instruction Hierarchy</a>, <a href="https://arxiv.org/abs/2502.08745">IHEval</a></td><td>Trust levels, conflict generation, comparison conditions</td></tr>
+<tr><td>External-content attacks</td><td><a href="https://arxiv.org/abs/2403.02691">InjecAgent</a>, <a href="https://arxiv.org/abs/2406.13352">AgentDojo</a></td><td>Attack objectives, ordinary utility, adaptive defenses, benchmark corrections</td></tr>
+<tr><td>Worker/tool reliance</td><td><a href="https://arxiv.org/abs/2609.05587">Agents&#x27; Overreliance on Unreliable Tools</a>, <a href="https://arxiv.org/abs/2609.32635">TrustFork</a></td><td>Evidence conflicts, identity/confidence cues, actual execution effects, mitigation controls</td></tr>
+<tr><td>Operational policy evaluation</td><td><a href="https://arxiv.org/abs/2406.12045">τ-bench</a></td><td>Interactive tasks, policy grounding, terminal-state scoring, consistency metrics</td></tr>
+<tr><td>Broad agent evaluation</td><td><a href="https://arxiv.org/abs/2308.03688">AgentBench</a>, <a href="https://arxiv.org/abs/2407.01502">AI Agents That Matter</a></td><td>Task diversity, cost/accuracy, holdouts, reproducibility, and actual failure taxonomies</td></tr>
+<tr><td>Repeated interaction</td><td><a href="https://arxiv.org/abs/2305.16867">Playing Repeated Games with Large Language Models</a></td><td>Opponents, horizon, information, coordination interventions, human comparison</td></tr>
+<tr><td>Reputation</td><td><a href="https://arxiv.org/abs/2608.04507">Emergence of Reputation-Based Cooperation in LLM Agents</a></td><td>Donation games, strategy inheritance, selection, discrimination and invasion definitions</td></tr>
+<tr><td>Commons</td><td><a href="https://arxiv.org/abs/2404.16698">GovSim</a></td><td>Regeneration, communication, universalization, available enforcement, survival definitions</td></tr>
+<tr><td>Markets</td><td><a href="https://arxiv.org/abs/2404.00806">Algorithmic Collusion by Large Language Models</a></td><td>Market structure, memory interventions, economic metrics, causal mechanism evidence</td></tr>
+<tr><td>Emergence</td><td><a href="https://arxiv.org/abs/2410.08948">Emergent Social Conventions and Collective Bias</a></td><td>Initial priors, updates, interaction ablations, minority thresholds</td></tr>
+<tr><td>Compute</td><td><a href="https://arxiv.org/abs/2408.03314">Scaling LLM Test-Time Compute Optimally</a>, <a href="https://arxiv.org/abs/2512.08296">Towards a Science of Scaling Agent Systems</a></td><td>Budget definitions, task difficulty, topology, single-agent baselines</td></tr>
+<tr><td>Simulation validity</td><td><a href="https://arxiv.org/abs/2509.18052">PIMMUR</a>, <a href="https://arxiv.org/abs/2504.03274">Critical Review of Generative Social Simulations</a></td><td>Construct and operational validity, designer-imposed behavior, limits of human analogies</td></tr>
+</table></div>
+<p>Also route the existing Vault notes on correlated errors, reasoning/cooperation, fairness, memory drift, personas, and team failure to the appropriate specialists. Add classical repeated-game, institutional-design, Bayesian filtering, bargaining, and resampling references through source tracing; verify their exact formulations before applying them to our tasks.</p>
+<h2>13. Dispatch instructions</h2>
+<p>Use this common preamble for a specialist:</p>
+<blockquote>You are specialist R_. Your job is to contextualize a defined set of agent tasks, not support a preferred narrative or choose the next project. Use primary sources, inspect methods for consequential claims, retain contrary and null evidence, distinguish observations from mechanisms, and state reading/access limits. In Pass A, do not inspect our numerical outcomes; record literature-based expectations first. Write only your assigned workstream files. Do not run models, edit raw results or preregistration, publish, contact authors, or change the existing experiment queue. Return a comparison memo, source/claim records, search log, and cross-stream questions.</blockquote>
+<p>Append the role&#x27;s questions from section 5, relevant existing note names, neutral task packet, output schema, cutoff, and owned directory. Use a fresh context. A numerical source claim needs a exact passage locator and eventual independent verification. Escalate ambiguous overlap to the coordinator rather than editing another agent&#x27;s files.</p>
+<p>For the constructive synthesis role:</p>
+<blockquote>Read the merged evidence, then propose the strongest coherent interpretations that survive it. Include alternatives to the current framing. Identify what is already known, what our work adds, and what cannot yet be inferred. Do not choose a direction before assessing the closest precedents.</blockquote>
+<p>For the adversarial role:</p>
+<blockquote>Attempt to falsify each proposed interpretation using the strongest applicable prior work, alternative explanation, null result, and design mismatch. Also identify invalid criticisms. Do not manufacture novelty or dismiss a result merely because it is small or synthetic. Maintain a disagreement register with exact sources.</blockquote>
+<p>For the source verifier:</p>
+<blockquote>Independently open primary sources and verify bibliographic identity, version, and the exact claim-to-passage link. Check effect units, denominators, controls, resource budgets, and whether the cited result really supports its use. Mark supported, overstated, incorrect, or unresolved. Do not treat another agent&#x27;s summary as evidence.</blockquote>
+<p>For the coordinator:</p>
+<blockquote>Preserve output ownership and the four-slot concurrency limit, merge canonical sources, enforce reading-status and comparability rules, route gaps, and adjudicate by evidence rather than agent agreement. Produce the interpretation matrix and decision dossier. Keep experiment results immutable and delay project-direction execution until the review decision.</blockquote>
+<h2>14. Boundaries for this phase</h2>
+<p>The user has explicitly requested broader context before choosing a direction. This takes precedence over the older rule that all work must immediately serve the original Q0 scorecard. The original experiment design remains historical evidence; the new review may examine alternative interpretations and contributions.</p>
+<p>The existing no-paid-model, secret-handling, result-integrity, and publication rules remain applicable. This phase needs web/library reading and existing-file inspection, not provider API calls. Offline reanalysis, new experiments, new keys, publication, and external messaging are outside the planned review unless separately authorized. Ordinary literature access and local review artifacts are within scope.</p>
+<p>The planning scouts&#x27; initial contributions should be treated as planning input, not final literature verdicts. Their key lesson is to organize evidence around <strong>implemented measurements, comparable precedents, and justified interpretation</strong> rather than accumulate agreeable summaries.</p>
+<p><a href="../report/technical_report.md">Current report</a> · <a href="../v2/PROGRAM_PLAN.md">Original program plan</a> · <a href="../../RUNLOG.md">Run log</a></p></main></body></html>

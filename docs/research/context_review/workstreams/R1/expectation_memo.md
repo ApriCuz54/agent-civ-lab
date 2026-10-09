@@ -1,0 +1,15 @@
+# R1 frozen expectations
+
+Frozen 2026-10-09T04:37:02Z, before reading any project repository, outcome report, or baseline. Only the parent's neutral design description and primary literature were consulted. This document must not be rewritten after outcomes are supplied; append comparison in a separate document.
+
+Design understood: an LLM selector chooses workers using checked historical accuracy; worker distributions may shift; lifetime and recent history are contrasted; workers may assert numeric confidence or verification language. Actual task, models, prompts, feedback visibility and shift schedule are unknown.
+
+1. Recent checked accuracy should react faster than lifetime accuracy after a sufficiently large sustained shift, provided recent samples are informative and available for every worker. Confidence: moderate. Lifetime estimates may win in stationary/noisy or short-window settings. This is a statistical expectation, not a demonstrated property of an LLM selector. Cao et al. §§3.3–5, Algorithms 1–2 supplies a formal analogy with explicit exploration and change detection, not proof for this design.
+2. Self-asserted confidence can influence selection independently of checked accuracy, but direction and magnitude are uncertain. Confidence: low to moderate. Human reliance studies motivate the possibility only; they do not establish an LLM cognitive bias.
+3. Numeric confidence need not be useless: calibrated and discriminative reports can supply item-specific information beyond aggregate accuracy. Confidence: moderate, conditional. Tian et al. Tables 1–4 show prompt/model dependence and favorable cases. A claim of universal confidence failure would conflict with this evidence.
+4. Verification language without externally checked verification is a cue, not new correctness evidence. Expect a possible cue effect; do not precommit to it. Confidence: low. No reviewed primary study directly identifies its effect on a worker-selecting LLM.
+5. Expect heterogeneous behavior across cue wording, task/model, history sample size, and shift severity. Confidence: moderate. Küppers et al. §5.4 and Kim et al. §§4–5 motivate sensitivity, with human results explicitly analogical.
+
+Competing/null possibilities: checked history fully dominates rhetoric; confidence helps because it tracks item difficulty; recent history loses because variance exceeds drift bias; both histories recover when feedback is complete; apparent persuasion is an order/length/identity cue; worker selection changes without reducing task accuracy. These remain live interpretations.
+
+Comparison must separate cue-to-choice sensitivity from performance impact; pre-shift from post-shift; tracking lag from permanent failure; calibration from discrimination; correct following from incorrect following. A selected-worker-only feedback process creates missing-data/exploration issues; complete counterfactual checks create a materially different problem. No numerical effect-size prediction or preregistered significance threshold is warranted from this literature.

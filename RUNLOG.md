@@ -8,6 +8,7 @@
 
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
+CURRENT REVIEW FOCUS: context review ACTIVE; first R1/R3 expectation passes and R9 methods packet saved in docs/research/context_review; outcome comparison and verification pending. Six-hour scheduled follow-ups through October 11. Owner authorized commits/pushes and Vault synchronization on October 8.
 CURRENT PHASE: PHASE A/B COMPLETE (6,460/6,460, 2026-10-02); confirmatory analysis done + verified; Phase C cloud addendum running
 LAST GATE PASSED: G0, G1, G3 (pilot_check 2026-09-25 11:37 UTC, all five tasks in band); PREREG committed de3f42b (pushed 03:55 local)
 NEXT ACTION (each session):
@@ -311,3 +312,35 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - **Observed (03:51 local):** Phase C: qwen 39/64 (+3), gptoss_120b 24/64 (+4), gemini 13/64 (+12 in its first quota-day). All three parked for 3 Oct; no *.failed.json; a one-off ConnectTimeout burst at 02:22 local hit all three hosts at once (local network blip; retried fine). Repo clean and pushed (83fb23d, 0 unpushed).
 - **Estimates:** qwen ≈ 10-06/07 (≈ 6–8 cells/day), gemini ≈ 10-07/08 (≈ 12 cells/day), gptoss_120b ≈ 10-08 (≈ 8/day) → addendum ≈ 10-08.
 - **Next action:** top block.
+
+### 2026-10-08 · Codex · Consolidate local repo copies
+- Owner requested one main checkout in Documents and removal of C:\Repos.
+- Main checkout is now C:\Users\adich\OneDrive\Documents\Repos\agent-civ-lab; preserved HEAD 262267940b9718dcfc880bdc032020bbd1540a9a, all 9,289 active files, and all 202 files from the older copies (identical files shared; differences and old Git metadata archived locally).
+- Removed the old Desktop and Vault code snapshots and C:\Repos after SHA-256 verification. No registered runner/autosync tasks or active Python queue runner were found during relocation.
+- Research data and preregistered designs unchanged. Older path references in historical records remain historical.
+- Next: use this Documents checkout for all further work; Phase C addendum remains pending.
+
+
+### 2026-10-08 · Codex · Critical technical report and article
+- Owner explicitly requested reframing beyond Q0 around the strongest defensible résumé project. No new experiments, models, hypotheses, or success criteria were added.
+- Wrote docs/report/technical_report.md, article.md, critical_assessment.md and self-contained HTML; analysis/report_audit.py generates raw inventory, central point checks, figures, and results/report_audit.json.
+- Separate read-only verifier independently reconstructed headline values and reviewed all contemporary numerical claims. Raw point checks MATCH; three report figures visually inspected.
+- Audit corrections: total completed A/B is 6,996 primary +24 temperature=7,020, not PC-only6,460 (separate Haiku560); T3 transparency9/36 succeeds, whereas control/universalization/placebo0/36; reasoning contrast bundles500-vs60 output cap; SAFE_TOTAL/4 mismatch is not knowing rule violation; SAFE-error P−50 vs P−48 documentation discrepancy disclosed.
+- Original results and preregistration preserved. Drafts unreviewed and unpublished; no original verdict rules rewritten. No paid or live model calls.
+- Next: owner review of the report and contribution claims; finish or explicitly omit the separate unfinished commons addendum before public use.
+
+- Additional roster audit: seven family labels (the former six-family summary was incorrect). Separate verifier review is saved at docs/report/independent_review.md.
+
+### 2026-10-08 · Codex · Context research plan
+- Owner requested an in-depth parallel review of similar studies and agent behavior before choosing a project direction.
+- Three fresh planning scouts proposed trust/instruction, game/social behavior, and methods workstreams and checked primary seed identities; these were planning scouts, not a completed literature review. A separate methods follow-up reviewed the final plan.
+- Prepared docs/research/CONTEXT_REVIEW_PLAN.md: nine specialists, nearest-work integration, independent constructive/rival interpretations followed by cross-examination, and source verification, using root+3 concurrency.
+- Broad coverage retains alternatives to the reliability framing: games, reputation, commons, markets, conventions, ensembles, reasoning, human-theory analogies, and validity. Primary passage extraction and contrary/null searches are required.
+- Full review, new model runs, queue changes, and project direction not executed. Next: follow the plan's review waves when execution is requested; deliver verified interpretation matrix and decision dossier before choosing experiments.
+
+
+### 2026-10-08 · Codex · Context review execution and synchronization
+- Owner requested execution of the context plan and six-hour checks for three days, then explicitly authorized updating, committing, and pushing the repo and keeping the Vault current. This authorization supersedes the handbook agent git-write restriction for this work.
+- Started R1 confidence/reliance, R3 repeated games/reputation, and R9 evaluation methods. Saved initial packets; R1/R3 expectations frozen before outcome access. Findings and citations remain pending coordinator/source verification.
+- Created heartbeat agent-civ-context-review-progress (ACTIVE, six-hour interval, twelve checks); updated its prompt to synchronize Vault/repo and commit/push relevant reviewed changes.
+- Copied packets and durable STATUS into docs/research/context_review. Next: baseline comparison, remaining lanes, independent synthesis/verification. No experiments or raw-result edits.
