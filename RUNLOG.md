@@ -8,10 +8,11 @@
 
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
-CURRENT REVIEW FOCUS: context review ACTIVE; initial R1/R3/R9 and wave-two R2/R4/R7 packets saved; baseline/protocol and provisional registry created; outcome comparisons/source verification pending. Six-hour scheduled follow-ups through October 11. Owner authorized commits/pushes and Vault synchronization on October 8.
+CURRENT REVIEW FOCUS: context review ACTIVE; all nine specialist packets saved; frozen wave3 synthesis ledger and partial independent verification saved; R10/constructive/rival initial synthesis active. Six-hour scheduled follow-ups through October 11. Owner authorized commits/pushes and Vault synchronization on October 8.
 CURRENT PHASE: PHASE A/B COMPLETE (6,460/6,460, 2026-10-02); confirmatory analysis done + verified; Phase C cloud addendum running
 LAST GATE PASSED: G0, G1, G3 (pilot_check 2026-09-25 11:37 UTC, all five tasks in band); PREREG committed de3f42b (pushed 03:55 local)
-NEXT ACTION (each session):
+CURRENT REVIEW NEXT ACTION: collect initial independent syntheses, then explicit cross-examination and final source/novelty verification before decision brief; see docs/research/context_review/STATUS.md.
+HISTORICAL EXPERIMENT ACTIONS (not automatic during context review):
   1. Read results/_runner/status.json + provider_errors.log; investigate *.failed.json; leave quota-parked models alone.
   2. Haiku (cloud) is COMPLETE: 560/560 cells in the repo (Session 11). Nothing to do unless a Haiku cell is found missing.
   3. Analysis code is written and tested (Session 10, DECISIONS #19). Optionally run `python3 -m analysis.scorecard --interim`
@@ -352,3 +353,11 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - Partial independent source/code checks recorded, with inaccessible methodological passage explicitly unresolved. No gate falsely passed; G0 partial, G2 pending.
 - Vault hub corrected stale nothing-run status, checkpoint added and durable mirrors synchronized. Documentation-only commit/push authorized; raw untracked Phase C cells excluded.
 - Next: remaining comparisons, R5/R6/R8, ledger reconciliation, nearest-work/rival synthesis and independent verification.
+
+
+### 2026-10-09 · Codex · Second six-hour research checkpoint
+- Completed R5/R6/R8 literature and outcome comparisons; all nine authored specialist packets saved. Frozen wave3 ledger/manifest created; nearest-work, constructive and rival initial synthesis dispatched independently with identical verified addendum.
+- Independent source check saved: six of eight sampled rows supported within scope, one overstated dependence claim, one unsourced inference unresolved. Closest worker/tool comparisons checked, with release-status and instructed/passive metadata corrections. L2 primary passage access still unresolved.
+- Draft report corrected naming measurement and appended independently checked pricing/SAFE/router/policy qualifiers. Markdown rendered to HTML only; no analysis rerun or raw/prereg edits. Vault relevant notes/mirrors updated.
+- Registry83 source/91 claim/88 search records is provisional, not unique full-text or saturated coverage. G0/G2 partial; final novelty/claim checks and synthesis gates remain open.
+- Next: cross-examine independent outputs and complete verified decision dossier. Owner git-write/push authorization retained; scope documentation only.

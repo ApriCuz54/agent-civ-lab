@@ -1,0 +1,12 @@
+# R7 expectation memo — frozen before baseline/outcome access
+Frozen 2026-10-09. Pass A. No repository, experiment outputs, or baseline results accessed; only neutral supplied design and external literature discovery.
+
+Expected result: independent repeated samples will often improve over one call when the correct normalized answer is modal. Mixed models can add a residual advantage at matched member accuracy if they reduce joint errors; the direction is plausible, not guaranteed. Majority vote can worsen accuracy when a shared wrong answer is modal. Average accuracy matching alone does not match itemwise skill, difficulty, token use, or cost.
+
+Primary estimand: paired held-out difference in majority-vote accuracy between heterogeneous and homogeneous ensembles, with identical ensemble size, answer normalization, tie handling and generation budget. Secondary estimands: joint wrong-answer collisions, pairwise error covariance conditional on difficulty, all-wrong probability and oracle coverage. Binary correctness covariance alone cannot identify multiclass vote performance.
+
+Predictions: gains diminish on ceiling tasks and on universally hard tasks; strongest gains should occur in intermediate-difficulty items with complementary correct answers. Model-family diversity may outperform temperature/persona diversity but model labels do not establish independence. Peer communication may erase initial diversity, consume extra inference and amplify mistakes; independent voting is the critical control.
+
+Required controls: preregister bank and split; choose accuracy matches only on calibration data and report held-out mismatch; use multiple seeds and paired item bootstrap; cluster uncertainty by problem/template and ensemble/member reuse; report call counts, input/output tokens, reasoning tokens if available, monetary cost and latency separately. Match calls and tokens where possible and show accuracy-budget frontiers where impossible. Freeze parsing and ties. Report single strongest member, single-call average, homogeneous self-consistency, mixed independent vote and communication variants separately.
+
+Disconfirmation: robust held-out mixed-model gain with equal itemwise capability and budget supports complementary errors; disappearance after matching or budget control undermines diversity attribution. A mixed ensemble below strongest-member accuracy may still exceed mean member accuracy and must not be described as universally beneficial.

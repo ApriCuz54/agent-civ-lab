@@ -103,7 +103,7 @@ The invader is scripted and the environment controls the evidence. This resemble
 
 ### 5.3 The other fingerprints do not justify a universal profile
 
-The strong PD phrase response appeared in six of twelve configurations; the nice-and-provocable strategy profile in three of twelve; and the collective naming-bias threshold in seven of eleven valid configurations. A game's output therefore depends materially on model and prompt configuration. Neither “LLMs are naturally cooperative” nor “LLMs are inherently exploitative” captures these data.
+The strong PD phrase response appeared in six of twelve configurations; the nice-and-provocable strategy profile in three of twelve; and the first-choice naming-concentration threshold in seven of eleven valid configurations. The naming result comes from forty independent empty-history choices with shuffled option order; it measures initial preference concentration, not population interaction or emergent collective bias. A game's output therefore depends materially on model and prompt configuration. Neither “LLMs are naturally cooperative” nor “LLMs are inherently exploitative” captures these data.
 
 No preregistered game-to-task correlation met the study's qualifying criterion. One partial correlation reached 0.592 but had permutation p=0.0674 and a wide interval. The others were small or uncertain; a commons pair was undefined because a variable was constant. With this small model roster and a capability proxy derived from the same arithmetic suite, this is insufficient evidence of predictive utility—not proof that no useful predictor could exist. [Source](../../results/v2/_link2.md).
 
@@ -198,3 +198,6 @@ python -B -m pytest -q -p no:cacheprovider tests
 ```
 
 The first command reconstructs headline point estimates, audits surviving CSV coverage, generates the figures, and renders local HTML. It reads the saved uncertainty estimates and does not silently replace the original inferential analysis. Full raw summaries and input hashes are in [report_audit.json](../../results/report_audit.json); original primary contrasts are in [_everyday_effects.md](../../results/v2/_everyday_effects.md). The exact model roster, pre-registration, exclusions, and deviations remain part of the evidence package.
+
+
+**Context-review design clarification (2026-10-09):** The refund phrase variants are appended to the same system message as the numeric policy. The arithmetic experiment requests 500 versus 60 output tokens, but Router.ask does not forward that allowance in its Claude SDK branch; uniform actual enforcement across the roster is unverified. Phase C's restore-to-cap SAFE comparator differs from a literal one-step no-decline reading in depleted states. The pricing index references cost10, although the implemented integer game also admits the symmetric one-shot equilibrium at11. These code/definition qualifiers do not change raw outcomes or the historical scorecard. See [baseline errata](../research/context_review/BASELINE_ERRATA.md).

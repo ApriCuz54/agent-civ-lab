@@ -1,0 +1,11 @@
+# R8 expectation memo — Pass A frozen before repository/outcomes
+
+Design supplied: arithmetic agents emit working plus final answer or final answer only, with different output allowances; a mixed roster varies provider, hidden reasoning and inference configuration; cooperation and policy adherence are proposed downstream constructs.
+
+Prior expectations: visible working can improve multi-step arithmetic, especially harder items, but its direction is task/model dependent. More allowed output is an opportunity for additional sequential computation and a reduction in missing-final-answer risk; it is not a direct measure of internal reasoning. Answer-only can involve hidden computation. Provider/model/temperature/reasoning effort and output-cap semantics are separate treatment dimensions. A bundled prompt-plus-cap comparison estimates a configuration effect, not reasoning in isolation. Truncated outputs, refusal, parsing failure, API failure and wrong arithmetic require distinct denominators and reporting.
+
+Predictions held provisionally: working-plus-answer may outperform answer-only on hard arithmetic if enough budget remains for the answer; a short cap may disproportionately penalize visible working. Nulls on simple arithmetic are plausible. More tokens can introduce errors or unproductive revision. Hidden reasoning and visible explanations need not agree. Arithmetic improvements alone provide no identified direction for cooperation or policy adherence: capability, strategic defection and instruction following are distinct outcomes.
+
+Causal interpretation requires identical model/version/provider settings and items, comparable effective budgets, prompt isolation, and failure handling. No new experiment or estimate is proposed here; these are interpretation constraints for the existing design. Literature anchors: Snell et al. 2408.03314v1 §§3–7; Muennighoff et al. 2501.19393v1 §§3,5; Lanham et al. 2307.13702v1 §§2–3; Turpin et al. 2305.04388v1 §§3–4; Huang et al. 2310.01798v1 §§3–5; Russell/Wefald metareasoning archival conference scan §§2–4 (not conflated with journal pagination).
+
+Freeze rule: this file will not be rewritten after repository exposure. Comparison records time and SHA256.
