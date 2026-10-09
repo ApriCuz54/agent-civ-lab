@@ -8,7 +8,7 @@
 
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
-CURRENT REVIEW FOCUS: context review ACTIVE; first R1/R3 expectation passes and R9 methods packet saved in docs/research/context_review; outcome comparison and verification pending. Six-hour scheduled follow-ups through October 11. Owner authorized commits/pushes and Vault synchronization on October 8.
+CURRENT REVIEW FOCUS: context review ACTIVE; initial R1/R3/R9 and wave-two R2/R4/R7 packets saved; baseline/protocol and provisional registry created; outcome comparisons/source verification pending. Six-hour scheduled follow-ups through October 11. Owner authorized commits/pushes and Vault synchronization on October 8.
 CURRENT PHASE: PHASE A/B COMPLETE (6,460/6,460, 2026-10-02); confirmatory analysis done + verified; Phase C cloud addendum running
 LAST GATE PASSED: G0, G1, G3 (pilot_check 2026-09-25 11:37 UTC, all five tasks in band); PREREG committed de3f42b (pushed 03:55 local)
 NEXT ACTION (each session):
@@ -344,3 +344,11 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - Started R1 confidence/reliance, R3 repeated games/reputation, and R9 evaluation methods. Saved initial packets; R1/R3 expectations frozen before outcome access. Findings and citations remain pending coordinator/source verification.
 - Created heartbeat agent-civ-context-review-progress (ACTIVE, six-hour interval, twelve checks); updated its prompt to synchronize Vault/repo and commit/push relevant reviewed changes.
 - Copied packets and durable STATUS into docs/research/context_review. Next: baseline comparison, remaining lanes, independent synthesis/verification. No experiments or raw-result edits.
+
+
+### 2026-10-09 · Codex · Six-hour context review check
+- Reconciled saved initial packets, froze report-snapshot baseline and search protocol; initial registry has 29 source/29 claim/33 search records, not deduplicated coverage.
+- Started R2/R4/R7 with neutral packets; R7 comparison complete, R2/R4 comparisons in progress at checkpoint. Coordinator R1/R3 provisional comparisons saved.
+- Partial independent source/code checks recorded, with inaccessible methodological passage explicitly unresolved. No gate falsely passed; G0 partial, G2 pending.
+- Vault hub corrected stale nothing-run status, checkpoint added and durable mirrors synchronized. Documentation-only commit/push authorized; raw untracked Phase C cells excluded.
+- Next: remaining comparisons, R5/R6/R8, ledger reconciliation, nearest-work/rival synthesis and independent verification.

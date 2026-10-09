@@ -1,0 +1,12 @@
+# Search protocol: execution checkpoint October 9 2026
+Authority: ../CONTEXT_REVIEW_PLAN.md; operationalized for current review. Not a preregistration of new experiments or an exhaustive systematic-review claim.
+
+Fresh literature workers get neutral designs only, freeze expectation_memo.md and its SHA256 before reading outcomes, then append comparison.md with baseline hash and first-read time. Methods R9 and coordinator are outcome-aware. Frozen files are never edited; corrections are separate append-only notes. Initial R1/R3 expectation hashes are recorded in their memos; R2/R4/R7 now dispatched with the same rule.
+
+Inspect primary methods, outcomes, limitations and relevant appendix/code. Record source version, retrieval date, precise claim locators, comparability (direct/mechanism/methods/background), actual budgets, exclusions and denominators. Human theory remains analogy. Maintain contrary/null and inaccessible evidence. Never infer missing full text from abstracts. Initial lanes target 4–8 consequential full texts and explicit contrary queries; two successive non-informative tracing/search passes may close a lane, with coverage limits recorded.
+
+Worker tables currently have heterogeneous schemas. Coordinator must preserve originals, normalize the merged registry with provenance and missing fields marked unknown, and deduplicate canonical DOI/arXiv identities plus versions. Local source IDs such as S1 must be prefixed by stream. Worker key_claim_verified means extraction by its author; independent verification remains pending. Counts must not inflate from duplicate studies, versions, datasets or author groups.
+
+Source verification checks every executive/novelty-critical/numerical external claim and a reproducible sample of remaining rows. Coordinator checks implemented designs separately. No major conclusion based only on worker agreement. Gate decisions and disagreements remain explicit. No experiments, inference reruns, queues, raw data or original hypotheses change in this review.
+
+Execution sequence: initial R1/R3/R9 -> R2/R4/R7 -> R5/R6/R8 -> nearest precedents, constructive and independent rival synthesis -> cross-examination -> independent source checks -> verified options/decision brief. Max three simultaneous workers. Failed redispatch due to agent-thread limit is a tooling constraint, not literature completion; queue comparison packets for a free slot or perform as labeled coordinator comparison.
