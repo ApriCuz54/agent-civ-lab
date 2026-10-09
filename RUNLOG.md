@@ -370,3 +370,10 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - Vault research checkpoint and run-log mirrors updated; documentation-only commit/push authorized. No experiments/queue/raw/prereg changes.
 
 - Checkpoint completion update: all three executive verification packets now saved. Primary nuisance-method passage access resolved with corrected locator; achieved calibration unresolved. Confirmed duplicate tau-bench lanes; uncertain Ostrom adaptation not merged. Final claim wording/dossier reconciliation and delivery remain required.
+
+
+### 2026-10-09 · Codex · Obsidian research dashboard and question intake
+- Owner requested an informative, visually organized, continually maintained Obsidian page with research questions and graph connections.
+- Created Vault Research Dashboard.md, Research Question Log.md, Dashboard Maintenance.md and nine Research Threads notes. Native callouts, frontmatter, linked summaries and deeper evidence trails;160 exact-case note links and stable inbox block target validated.
+- Preserved question-entry region via explicit owner markers; future check-ins record stable IDs/statuses and evidence-linked answers without rewriting owner text/checkboxes. Updated existing heartbeat prompt to read inbox before task selection, refresh page/topics and honor current finite review window.
+- Linked project hub to dashboard; repo maintenance contract saved in docs/research/DASHBOARD_MAINTENANCE.md. No new findings, model runs, original result edits or changed experimental scope.
