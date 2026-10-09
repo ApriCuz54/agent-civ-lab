@@ -34,3 +34,7 @@ Keep accepted research artifacts in the repo and relevant Vault notes. Commit an
 - No paid calls, queue/raw/prereg changes. Vault checkpoint/hub and baseline/protocol/registry mirrors updated. Raw Phase C untracked cells intentionally excluded from documentation commits.
 
 Checkpoint update: R4 comparison complete and copied. SAFE_TOTAL meaning ambiguity is a new candidate issue, pending independent code/source adjudication; do not incorporate as settled defect. R2 comparison remains in progress.
+
+Push confirmed: 88cd1cb to origin/main for October9 checkpoint. Next repo sync should include this Vault push receipt.
+
+Final checkpoint: R2 comparison complete and copied. Coordinator confirmed risky T5 phrases occupy the system message alongside policy; baseline erratum saved. Wave-two authored comparisons complete, independent source verification pending. Next substantive wave R5/R6/R8. No active workers need assumed persistence.
