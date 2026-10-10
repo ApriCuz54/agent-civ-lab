@@ -8,10 +8,10 @@
 
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
-CURRENT REVIEW FOCUS: context review ACTIVE; all nine specialist packets saved; frozen wave3 synthesis ledger and partial independent verification saved; independent synthesis and explicit cross-examination complete; final executive-source verification active. Six-hour scheduled follow-ups through October 11. Owner authorized commits/pushes and Vault synchronization on October 8.
+CURRENT REVIEW FOCUS: bounded context review DELIVERED October9; final decision brief/options/signoff and normalized registry saved; scientific gaps explicit; finite follow-ups conclude on delivery. Owner authorized commits/pushes and Vault synchronization on October 8.
 CURRENT PHASE: PHASE A/B COMPLETE (6,460/6,460, 2026-10-02); confirmatory analysis done + verified; Phase C cloud addendum running
 LAST GATE PASSED: G0, G1, G3 (pilot_check 2026-09-25 11:37 UTC, all five tasks in band); PREREG committed de3f42b (pushed 03:55 local)
-CURRENT REVIEW NEXT ACTION: reconcile final E01–E12 verification and canonical source metadata, then complete decision brief/options with coverage gaps; see docs/research/context_review/STATUS.md.
+CURRENT REVIEW NEXT ACTION: owner reads decision brief/options and chooses next scope; future project sessions read protected Vault dashboard question inbox first; see docs/research/context_review/STATUS.md.
 HISTORICAL EXPERIMENT ACTIONS (not automatic during context review):
   1. Read results/_runner/status.json + provider_errors.log; investigate *.failed.json; leave quota-parked models alone.
   2. Haiku (cloud) is COMPLETE: 560/560 cells in the repo (Session 11). Nothing to do unless a Haiku cell is found missing.
@@ -377,3 +377,10 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - Created Vault Research Dashboard.md, Research Question Log.md, Dashboard Maintenance.md and nine Research Threads notes. Native callouts, frontmatter, linked summaries and deeper evidence trails;160 exact-case note links and stable inbox block target validated.
 - Preserved question-entry region via explicit owner markers; future check-ins record stable IDs/statuses and evidence-linked answers without rewriting owner text/checkboxes. Updated existing heartbeat prompt to read inbox before task selection, refresh page/topics and honor current finite review window.
 - Linked project hub to dashboard; repo maintenance contract saved in docs/research/DASHBOARD_MAINTENANCE.md. No new findings, model runs, original result edits or changed experimental scope.
+
+
+### 2026-10-09 · Codex · Context review delivery
+- No dashboard question submitted; protected owner region preserved verbatim. Requested Research-folder AGENTS file missing after direct and recursive lookup; supplied router followed without unrelated folder reads.
+- Adopted narrowed E01–E12 verified wording, normalized source/claim companions with unknowns/lineage limits explicit, twelve-anchor dispositions, adjudicated related-work/options and decision brief. Independent documentary/link audit PASS; no statistical recalibration or artifact reproduction claimed.
+- Vault final dossier mirrors, dashboard/topic links, project entry points and run logs synchronized. Owner decision separate; no experiments/raw/prereg/queue/resume/evidence-bank changes.
+- Finite heartbeat concludes after successful push and final dashboard refresh; later project sessions preserve question intake. Completion scope docs/research/context_review/COMPLETION.md.

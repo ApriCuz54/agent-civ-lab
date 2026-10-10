@@ -1,6 +1,6 @@
 # agent-civ-lab
 
-**Context review plan (2026-10-08): [Context before direction](docs/research/CONTEXT_REVIEW_PLAN.md).** A broad parallel literature review to explain the existing results before choosing further work. Review active; first research packets and progress are in [context_review](docs/research/context_review/STATUS.md).
+**Context review plan (2026-10-08): [Context before direction](docs/research/CONTEXT_REVIEW_PLAN.md).** A broad parallel literature review to explain the existing results before choosing further work. Context review delivered: [decision brief](docs/research/context_review/synthesis/DECISION_BRIEF.md) · [options](docs/research/context_review/synthesis/RESEARCH_OPTIONS.md) · [coverage and limitations](docs/research/context_review/COMPLETION.md).
 
 
 **New technical report (draft, 2026-10-08): [When Instructions Compete](docs/report/technical_report.md)** — a critical cross-model audit of wording, reputation, and agent reliability. [Short article](docs/report/article.md) · [Readable HTML](docs/report/technical_report.html) · [Evidence audit](docs/report/evidence_audit.md). The raw completed A/B inventory is 6,996 primary cells + 24 temperature-robustness cells = 7,020; the former 6,460 headline covered the PC queue and omitted 560 Haiku cells. The separate Phase C cloud addendum remains incomplete.

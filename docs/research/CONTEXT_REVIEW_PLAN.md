@@ -1,6 +1,8 @@
 # Context before direction: a parallel research plan
 
-**Prepared 8 October 2026. Owner: Aditya. Status: Ready for a literature-review execution request.**
+**Prepared 8 October 2026. Owner: Aditya. Execution delivered 9 October 2026.**
+
+[Decision brief](context_review/synthesis/DECISION_BRIEF.md) · [Options](context_review/synthesis/RESEARCH_OPTIONS.md) · [Completion scope](context_review/COMPLETION.md). Planning text below preserves the original protocol and its historical starting state.
 
 **Purpose:** Understand what our existing numbers mean in relation to prior experiments, behavioral theory, agent benchmarks, and evaluation practice before deciding where to take Agent Civ Lab. The review must remain open to a better explanation than the current reliability framing and to the possibility that some results add little new knowledge.
 
