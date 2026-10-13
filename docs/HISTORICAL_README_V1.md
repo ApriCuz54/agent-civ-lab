@@ -1,4 +1,4 @@
-> Historical v1 README retained October 13, 2026. Earlier causal/generalization claims and cost estimates are not current guidance. Read the [current README](../README.md) and [context review decision brief](../research/context_review/synthesis/DECISION_BRIEF.md).
+> Historical v1 README retained October 13, 2026. Earlier causal/generalization claims and cost estimates are not current guidance. Read the [current README](../README.md) and [context review decision brief](research/context_review/synthesis/DECISION_BRIEF.md).
 
 # agent-civ-lab
 
