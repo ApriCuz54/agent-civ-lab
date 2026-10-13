@@ -9,16 +9,16 @@
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
 CURRENT REVIEW FOCUS: bounded context review DELIVERED October9; final decision brief/options/signoff and normalized registry saved; scientific gaps explicit; finite follow-ups conclude on delivery. Owner authorized commits/pushes and Vault synchronization on October 8.
-CURRENT PHASE: PHASE A/B COMPLETE (6,460/6,460, 2026-10-02); confirmatory analysis done + verified; Phase C cloud addendum running
+CURRENT PHASE: A/B complete: 6,996 primary + 24 temperature cells (PC queue 6,460); context review delivered. Offline reproducibility implementation active; no model runner inspected or restarted.
 LAST GATE PASSED: G0, G1, G3 (pilot_check 2026-09-25 11:37 UTC, all five tasks in band); PREREG committed de3f42b (pushed 03:55 local)
-CURRENT REVIEW NEXT ACTION: owner reads decision brief/options and chooses next scope; future project sessions read protected Vault dashboard question inbox first; see docs/research/context_review/STATUS.md.
+CURRENT REVIEW NEXT ACTION: October13 owner authorized offline reproducibility and Vault organization; worklog created first. Verify clean checkout with requirements-reproduce.txt and tools.reproduce; see docs/reproducibility/VALIDATION.md. Read protected question inbox before future work.
 HISTORICAL EXPERIMENT ACTIONS (not automatic during context review):
   1. Read results/_runner/status.json + provider_errors.log; investigate *.failed.json; leave quota-parked models alone.
   2. Haiku (cloud) is COMPLETE: 560/560 cells in the repo (Session 11). Nothing to do unless a Haiku cell is found missing.
   3. Analysis code is written and tested (Session 10, DECISIONS #19). Optionally run `python3 -m analysis.scorecard --interim`
      (writes only to results/_runner/interim/). When every cell is done: `python3 -m analysis.scorecard` (confirmatory),
      then the independent verification pass (a fresh agent re-derives 3+ headline numbers from raw cells).
-PHASE C: ACTIVE since PREREG_C commit 611852f (pushed 2026-09-27 20:09 -0700); job at priority 4 in queue.yaml; Haiku from the cloud workspace.
+PHASE C HISTORICAL RUN STATE (not verified active October13): ACTIVE since PREREG_C commit 611852f (pushed 2026-09-27 20:09 -0700); job at priority 4 in queue.yaml; Haiku from the cloud workspace.
 PHASE C CONFIRMATORY (8 models, DEVIATIONS #1): done 2026-09-28 → results/v2/_phase_c.md; verified (analysis/verify_phase_c.py). Addendum with the 4 cloud models once they finish (≈ 10-08; gemini last).
 BLOCKERS: none.  NEEDS ADI: none (optional: read prereg/PREREG_B.md).
 SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 (pos. control) T · L1 2/6 general · L2 no
@@ -384,3 +384,14 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - Adopted narrowed E01–E12 verified wording, normalized source/claim companions with unknowns/lineage limits explicit, twelve-anchor dispositions, adjudicated related-work/options and decision brief. Independent documentary/link audit PASS; no statistical recalibration or artifact reproduction claimed.
 - Vault final dossier mirrors, dashboard/topic links, project entry points and run logs synchronized. Owner decision separate; no experiments/raw/prereg/queue/resume/evidence-bank changes.
 - Finite heartbeat concludes after successful push and final dashboard refresh; later project sessions preserve question intake. Completion scope docs/research/context_review/COMPLETION.md.
+
+### 2026-10-13 · Codex · Offline reproducibility and Vault organization
+- **Goal this session:** verify the saved report from a clean checkout and organize historical/current Vault guidance, as explicitly requested.
+- **Done:** Vault worklog created before implementation; fresh baseline clone/venv; 45 existing tests passed; report contrasts matched; three local Gemini Phase C cells absent from Git identified and preserved unchanged. Added exact dependency lock, offline verifier with manifest/mismatch checks, isolated output, UTF-8 reads, three failure-path tests and current README/scope documentation. Reorganized 17 Vault notes; preserved raw reports, owner question region and typed evidence paths. One current run-log mirror retained; duplicate frozen in History.
+- **Runner status seen:** not inspected/restarted; no model calls, keys or quotas used.
+- **Findings:** packaging omission caused clean baseline Phase C Gemini 38 vs saved 41; no headline A/B numerical discrepancy. Implementation suite 48 passed; expanded manifest awaits final fresh-checkout validation.
+- **Problems:** initial test network guard blocked Windows internal socketpairs; corrected. One legacy ambiguous link in an immutable raw report preserved and documented.
+- **Gate:** final clean-checkout verification pending; no new scientific gate or hypothesis.
+- **Deviations / decisions:** raw values and confirmatory outputs unchanged; include the three original missing cells in version control. Full bootstrap regeneration and additional OS validation remain out of scope for this report-audit pass.
+- **Needs Adi:** none for this authorized implementation. Scientific extension choice remains owner-controlled.
+- **Next action:** clean-checkout verification, inspect changes/secrets, commit and push existing origin/main (owner authorization October8), then durable receipt and dashboard refresh.

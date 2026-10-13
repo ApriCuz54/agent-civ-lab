@@ -1,0 +1,148 @@
+> Historical v1 README retained October 13, 2026. Earlier causal/generalization claims and cost estimates are not current guidance. Read the [current README](../README.md) and [context review decision brief](../research/context_review/synthesis/DECISION_BRIEF.md).
+
+# agent-civ-lab
+
+**Context review plan (2026-10-08): [Context before direction](../docs/research/CONTEXT_REVIEW_PLAN.md).** A broad parallel literature review to explain the existing results before choosing further work. Context review delivered: [decision brief](../docs/research/context_review/synthesis/DECISION_BRIEF.md) · [options](../docs/research/context_review/synthesis/RESEARCH_OPTIONS.md) · [coverage and limitations](../docs/research/context_review/COMPLETION.md).
+
+
+**New technical report (draft, 2026-10-08): [When Instructions Compete](../docs/report/technical_report.md)** — a critical cross-model audit of wording, reputation, and agent reliability. [Short article](../docs/report/article.md) · [Readable HTML](../docs/report/technical_report.html) · [Evidence audit](../docs/report/evidence_audit.md). The raw completed A/B inventory is 6,996 primary cells + 24 temperature-robustness cells = 7,020; the former 6,460 headline covered the PC queue and omitted 560 Haiku cells. The separate Phase C cloud addendum remains incomplete.
+
+
+**Main local checkout (consolidated 2026-10-08):** `C:\Users\adich\OneDrive\Documents\Repos\agent-civ-lab`. Older differing files and the former Documents Git metadata are preserved in the ignored `_consolidation/2026-10-08/older-files-and-git.zip` archive. Historical references to `C:\Repos` and the Desktop checkout refer to removed copies.
+
+> **Program v2 (cross-model, 12 models) is complete for Phases A/B — goals, execution, findings and next steps: [`docs/v2/STUDY_SUMMARY.md`](../docs/v2/STUDY_SUMMARY.md).** Scorecard: `P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 T · L1 2/6 general · L2 no`. The v1 (Haiku-only) material below is kept as the starting point.
+
+
+**Behavioral experiments on LLM-agent societies (Claude Haiku 4.5)** — small, cheap, fully reproducible. Cross-model replication is stated future work; see [`LIMITATIONS.md`](../LIMITATIONS.md).
+
+When you put many language-model agents in the same game, do they cooperate, form
+conventions, punish free-riders, collude, or defect? This repo is a compact harness for
+*measuring* that, plus four ready-to-run studies. Every experiment is a handful of
+dollars on the Anthropic API and resumes from cache if interrupted.
+
+**Project status, goals, and next steps: [`ROADMAP.md`](../ROADMAP.md).**
+
+**Full audited lab record and paper draft: [`docs/lab_record.md`](../docs/lab_record.md) · [`docs/paper_draft.md`](../docs/paper_draft.md).**
+
+The headline practical result — **single prompt phrases that causally flip agents into
+collusion or early defection** — is in [`REPORT.md`](../REPORT.md) and the figure below.
+
+![collusion and defection by prompt phrase](../results/collusion_defection_figure.png)
+
+---
+
+## What's inside
+
+| Experiment | Question | Driver |
+|---|---|---|
+| **Pricing duopoly** | Which prompt phrases make two sellers collude vs compete? | `experiments/run_pricing.py` |
+| **Iterated Prisoner's Dilemma** | Which phrases make a cooperating agent defect early? | `experiments/run_ipd.py` |
+| **Naming game** | Do agents spontaneously form a shared convention? Can a committed minority flip it? | `experiments/run_tipping.py` |
+| **PD strategy panel (Axelrod)** | What is a model's PD disposition vs AllC/AllD/TFT/GRIM/Random? | `experiments/run_progression.py` |
+| **One-defector invasion** | Does one always-defector destabilise a cooperating population? Is cooperation an ESS? | `experiments/run_invasion.py` |
+| **Reputation-enabled invasion** | Does showing partners' reputation let cooperators punish the defector and restore an ESS? | `experiments/run_reputation.py` |
+| **Stealth defector** | Can a trust-then-betray invader game the reputation defense? When is the best time to betray? | `experiments/run_stealth.py` |
+| **Commons ("GovSim with teeth")** | Given fines/exclusion but no instruction to use them, do agents self-govern a shared resource? | `experiments/run_govsim.py` |
+
+Shared infrastructure lives in `civlab/`:
+
+- `civlab/llm.py` — the only thing that talks to a model. Async, rate-limited, retried,
+  **resumable** (each call cached by `(model, system, prompt, key)`), cost- and
+  token-logged to JSONL, with a `think` switch for extended reasoning.
+- `civlab/games/` — one module per game: pure state-transition logic + prompt builders,
+  no model calls, so the rules are easy to read and audit.
+
+## Install
+
+```bash
+git clone <this repo>
+cd agent-civ-lab
+python -m venv .venv && source .venv/bin/activate   # optional
+pip install -r requirements.txt
+export ANTHROPIC_API_KEY=sk-ant-...                 # your key
+```
+
+The study used **Claude Haiku 4.5**. Model ids are aliases in `civlab/llm.py` and can be
+overridden without touching code, e.g. `export CIVLAB_HAIKU=claude-haiku-4-5-20251001`.
+
+## Run
+
+From the repo root (each writes to `results/<experiment>/` and prints a live summary):
+
+```bash
+python -m experiments.run_pricing     # collusion keywords     (~$1.5, ~1000 calls)
+python -m experiments.run_ipd         # defection keywords     (~$0.3, ~1200 calls)
+python -m experiments.run_tipping     # naming game / tipping  (~$8,   ~3000 calls)
+python -m experiments.run_govsim run --model haiku --cond A,B,C,D --seeds 1,2,3   # commons (~$1)
+python -m experiments.run_progression # PD strategy panel (Axelrod)        (~$0.4)
+python -m experiments.run_invasion    # one-defector invasion / ESS         (~$1)
+python -m experiments.run_reputation  # reputation / indirect reciprocity   (~$1)
+python -m experiments.run_stealth     # stealth trust-then-betray defector   (~$1.2)
+python -m experiments.run_recency     # recency-weighted reputation vs stealth (~$1.8)
+python -m experiments.run_noisy       # noisy & forgeable reputation           (~$1.6)
+python -m experiments.run_replicator  # replicator/imitation dynamics (real ESS test) (~$1.2)
+python -m experiments.run_practical2  # practical transfer demo, honest v2    (~$1.6)
+python -m experiments.run_govsim run --model haiku --cond A,C --seeds 1,2,3 --think 1  # thinking-ON factorial
+python -m analysis.make_figures       # rebuild figures from the summaries
+```
+
+Interrupt any run and re-launch it — completed cells return instantly from the cache and
+only the missing calls are made. Full-study cost is roughly **$4–12** depending on which
+experiments you run and how many seeds.
+
+## Headline findings (Claude Haiku 4.5)
+
+- **Collusion is one phrase away.** Two seller-agents price near-competitive by default
+  (collusion index 0.24 of 1.0, 8 seeds), but adding *"avoid destructive price wars"* drives
+  **joint-monopoly pricing (index 0.96; 7 of 8 seeds lock onto exactly the monopoly price)**,
+  which survives Holm correction. *"Think about long-run profits"* reaches 0.41 but is not
+  significant. Anti-collusion phrasings barely move an already-competitive baseline.
+- **Defection is one phrase away too.** In a 15-round Prisoner's Dilemma agents cooperate
+  **100%** by default and never defect — but *"protect yourself, trust no one"* or *"only
+  this round matters, no future"* collapse cooperation to ~5–10% with defection on **round 1**.
+- **Prosocial nudges do nothing above a good baseline.** "Be the first to cooperate",
+  "reputation matters", "treat others well" left the 100% cooperation ceiling untouched.
+- **Reputation stops the loud cheater, not the patient one.** A lone always-defector
+  out-earns an anonymous cooperating population (invasion fitness +28) — cooperation is
+  robust but not an ESS. Showing each agent its partner's public record flips that (−16:
+  peers punish the known defector 0.92 of the time). But a **trust-then-betray** invader
+  that builds a clean record first still invades at *every* betrayal timing (fitness +7 to
+  +14, best mid-game) — a rate-based reputation decays too slowly to catch it.
+- **Conventions form; institutions don't.** All naming-game seeds converged on the same
+  word by round ~10, with a large pre-interaction **collective bias** (one word held by
+  ~45% of agents at round 1 vs 10% by chance). In the commons, agents given fines used them
+  only retaliatorily and still collapsed the resource; the single lever that ever averted
+  collapse was a "what if everyone did this?" (universalization) prompt.
+
+Numbers, tables, caveats and methodology are in [`REPORT.md`](../REPORT.md). Reference-run
+outputs ship in `results/*_summary.csv`.
+
+## Rigor / how the experiments are designed
+
+Each study varies **one sentence** in an otherwise identical prompt, includes a
+**control** and **validated probe** conditions (phrases meant to push the *wrong* way, to
+prove the measurement moves in both directions), uses **multiple seeds** with bootstrap
+confidence intervals, records the exact **model id and date** on every call, and never
+tells agents the hypothesis. This follows the PIMMUR principles for LLM social simulation
+(agents unaware, prompts non-determining, seeds, etc.).
+
+## Limitations
+
+**All results are Claude Haiku 4.5**; homogeneous same-model pairs; short horizons; mostly
+extended-thinking-off. **Cross-model replication (Sonnet+) is future work** — attempted but
+Sonnet is rationed on the subscription used. A 2026-09 rigor pass ([`LIMITATIONS.md`](../LIMITATIONS.md))
+addressed the reviewer-grade issues: reproducible seeding and CIs (Holm correction; the pricing
+collusion effect clears it at 8 seeds), a replicator dynamic that turns the "ESS" wording from
+assertion into measurement, a recency-weighted reputation that closes the stealth exploit, a
+`--think` factorial confirming the deliberation confound, and an honestly-rebuilt transfer demo.
+Treat results as **exploratory behavioral findings on one model**, not claims about "LLMs" in
+general.
+
+## Cite
+
+See [`CITATION.cff`](../CITATION.cff). Built as an independent research project; the
+background literature review that motivated it is summarized in `REPORT.md`.
+
+## License
+
+MIT — see [`LICENSE`](../LICENSE).

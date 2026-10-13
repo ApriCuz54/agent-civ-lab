@@ -1,6 +1,6 @@
 ---
 type: maintenance-contract
-updated: 2026-10-09
+updated: 2026-10-13
 tags:
   - research/agent-civ
 ---
@@ -17,4 +17,8 @@ Primary page: [[700 Research/Agent Civilizations/Research Dashboard]]. Queue: [[
 7. Keep research status/run-log mirrors and repo research records synchronized. Dashboard and question content live in the Vault; repo stores this maintenance contract. Record commit/push receipts in progress rather than inventing a successful push.
 8. Preserve existing automation interval, count, cutoff and notification policy. Scheduled refresh is limited to the authorized three-day review window; future project sessions also maintain the note. On review completion, publish final dossier links and outstanding question dispositions before stopping the finite review check-ins.
 
-Authoritative Obsidian dashboard: C:\Users\adich\OneDrive\Documents\AI-Vault\700 Research\Agent Civilizations\Research Dashboard.md. This file mirrors the maintenance contract; wiki links resolve in the Vault. Owner input stays in its protected Vault region. Link validation at creation: twelve new notes,160 exact-case wiki links and inbox block target; no missing targets. Existing heartbeat agent-civ-context-review-progress updated without changing interval/count/cutoff.
+## Subsequent project sessions
+
+Create/update [[700 Research/Agent Civilizations/Research Worklog]] before implementation; record commands, evidence, failures and next actions. Maintain only [[700 Research/Agent Civilizations/Program v2 Run Log]] as the current repo mirror. The previous duplicate mirror in History is frozen. [[700 Research/Agent Civilizations/Research Navigation]] maps the reorganized notes; typed Findings/Papers/Experiments paths remain fixed. The finite review automation has ended; a new implementation session does not restart it.
+
+Authoritative dashboard and question inbox remain in the Vault; this repo mirrors only the maintenance contract.
