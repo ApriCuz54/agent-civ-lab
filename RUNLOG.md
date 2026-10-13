@@ -9,9 +9,9 @@
 ```
 NORTH STAR: Q0 — can game-theoretic lessons from multi-agent systems measurably improve everyday agents, across models?
 CURRENT REVIEW FOCUS: bounded context review DELIVERED October9; final decision brief/options/signoff and normalized registry saved; scientific gaps explicit; finite follow-ups conclude on delivery. Owner authorized commits/pushes and Vault synchronization on October 8.
-CURRENT PHASE: A/B complete: 6,996 primary + 24 temperature cells (PC queue 6,460); context review delivered. Offline reproducibility implementation active; no model runner inspected or restarted.
+CURRENT PHASE: A/B complete: 6,996 primary + 24 temperature cells (PC queue 6,460); context review delivered. Offline report-audit reproduction verified on Windows/Python3.12.10 (48 tests); no model runner inspected or restarted.
 LAST GATE PASSED: G0, G1, G3 (pilot_check 2026-09-25 11:37 UTC, all five tasks in band); PREREG committed de3f42b (pushed 03:55 local)
-CURRENT REVIEW NEXT ACTION: October13 owner authorized offline reproducibility and Vault organization; worklog created first. Verify clean checkout with requirements-reproduce.txt and tools.reproduce; see docs/reproducibility/VALIDATION.md. Read protected question inbox before future work.
+CURRENT REVIEW NEXT ACTION: offline report-audit verification complete October13; see docs/reproducibility/VALIDATION.md. Owner chooses bounded report/controlled extension next; full inference regeneration and additional OS checks remain. Read protected question inbox and maintain worklog before future work.
 HISTORICAL EXPERIMENT ACTIONS (not automatic during context review):
   1. Read results/_runner/status.json + provider_errors.log; investigate *.failed.json; leave quota-parked models alone.
   2. Haiku (cloud) is COMPLETE: 560/560 cells in the repo (Session 11). Nothing to do unless a Haiku cell is found missing.
@@ -389,9 +389,9 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - **Goal this session:** verify the saved report from a clean checkout and organize historical/current Vault guidance, as explicitly requested.
 - **Done:** Vault worklog created before implementation; fresh baseline clone/venv; 45 existing tests passed; report contrasts matched; three local Gemini Phase C cells absent from Git identified and preserved unchanged. Added exact dependency lock, offline verifier with manifest/mismatch checks, isolated output, UTF-8 reads, three failure-path tests and current README/scope documentation. Reorganized 17 Vault notes; preserved raw reports, owner question region and typed evidence paths. One current run-log mirror retained; duplicate frozen in History.
 - **Runner status seen:** not inspected/restarted; no model calls, keys or quotas used.
-- **Findings:** packaging omission caused clean baseline Phase C Gemini 38 vs saved 41; no headline A/B numerical discrepancy. Implementation suite 48 passed; expanded manifest awaits final fresh-checkout validation.
+- **Findings:** packaging omission caused clean baseline Phase C Gemini 38 vs saved 41; no headline A/B numerical discrepancy. Final clean clone at b8a20d8 with a new pinned-dependency venv: 48 passed, all report audit fields matched, expanded evidence manifest matched, clean Git status after run.
 - **Problems:** initial test network guard blocked Windows internal socketpairs; corrected. One legacy ambiguous link in an immutable raw report preserved and documented.
-- **Gate:** final clean-checkout verification pending; no new scientific gate or hypothesis.
+- **Gate:** offline report-audit reproduction PASS; see docs/reproducibility/verification_receipt.json. No new scientific gate or hypothesis.
 - **Deviations / decisions:** raw values and confirmatory outputs unchanged; include the three original missing cells in version control. Full bootstrap regeneration and additional OS validation remain out of scope for this report-audit pass.
 - **Needs Adi:** none for this authorized implementation. Scientific extension choice remains owner-controlled.
-- **Next action:** clean-checkout verification, inspect changes/secrets, commit and push existing origin/main (owner authorization October8), then durable receipt and dashboard refresh.
+- **Next action:** commit verification receipt and push existing origin/main (owner authorization October8); record actual push in the Vault worklog. Future scientific extension/inference regeneration remains a separate scope.
