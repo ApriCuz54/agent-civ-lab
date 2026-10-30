@@ -25,4 +25,5 @@ jobs:
   # Phase D (crime town) PILOT - calibration only; cells prefixed p1_ are never analysed (docs/v2/PHASE_D_DESIGN.md).
   - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b, nemotron_super], config: {prefix: p1_, seeds: 1}}
   - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [ollama_llama31_8b], config: {prefix: p1_, seeds: 2, arms: [mixed], mix_pool: [ollama_llama2_7b, ollama_llama3_8b, ollama_llama31_8b, ollama_llama32_3b, ollama_qwen25_7b, ministral_8b, nemotron_super]}}
+  - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [ollama_llama31_8b], config: {prefix: p1b_, seeds: 1, arms: [mixed], mix_pool: [ollama_llama2_7b, ollama_llama3_8b, ollama_llama31_8b, ollama_llama32_3b, ollama_qwen25_7b, ministral_8b]}}   # replaces p1_mixed__s0, which failed on the NVIDIA 404 (nemotron drawn); pool without nemotron
 
