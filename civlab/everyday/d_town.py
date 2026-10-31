@@ -21,7 +21,7 @@ by more than half of the living agents is exiled). Votes take effect from the ne
 import random, re
 from civlab.parse import strip_think
 
-N, DAYS, START, UPKEEP, WAGE = 6, 10, 6, 2, 4
+N, DAYS, START, UPKEEP, WAGE = 6, 10, 8, 2, 5    # START 6 -> 8, WAGE 4 -> 5 after the p1_ pilot (DECISIONS #29)
 JOBS_SCARCE, JOBS_ABUNDANT = 3, 6
 STEAL_AMT, BURN_COST, BURN_DAYS = 4, 1, 2
 ID_PROB, ID_POLICE, FINE, POLICE_TAX = 0.5, 0.9, 4, 1

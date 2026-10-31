@@ -32,6 +32,12 @@ if (Test-Path "results\_runner\REQUEST_TESTS") {
     Run-WithTimeout "-m pytest -q tests" "results\_runner\tests.txt" 900
     "$(Get-Date -Format s) REQUEST_TESTS exit $LASTEXITCODE" | Add-Content $svc
 }
+if (Test-Path "results\_runner\REQUEST_PROBE") {
+    Remove-Item "results\_runner\REQUEST_PROBE" -Force
+    "$(Get-Date -Format s) REQUEST_PROBE" | Add-Content $svc
+    Run-WithTimeout "-m tools.probe_substitutes" "results\_runner\probe_out.txt" 2400
+    "$(Get-Date -Format s) REQUEST_PROBE done" | Add-Content $svc
+}
 & $Python -m tools.run_queue 2>&1 | Out-Null
 "$(Get-Date -Format s) runner exit code $LASTEXITCODE" | Add-Content $svc
 & powershell -NoProfile -ExecutionPolicy Bypass -File "$PSScriptRoot\autosync.ps1"

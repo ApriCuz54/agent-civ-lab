@@ -1,147 +1,122 @@
-# Phase E — The shadow of the future: repeated games for agent fleets (PLAN ONLY)
+# Phase E — Working with agents you will meet again (PLAN v1, nothing running)
 
-**Status:** plan, 2026-10-30. Nothing is queued or running (runner PAUSED at the owner's request; Phase D pilot done,
-its calibration fixes pending). Owner request: study how agents learn and interact when they *may meet again* versus
-when they are *one-off travellers*, building on Axelrod's tournaments, and aim every experiment at a conclusion an
-operator of an agent fleet can act on. Like Phases C/D, a separate study; nothing in PREREG_A/B/C/D changes.
+**Status:** plan v1, 2026-10-30 (v0, the game-centred draft, is kept as PHASE_E_PLAN_v0.md). Runner paused; nothing
+queued. Owner choices (2026-10-30): **broad principles first, then a deep dive** into one domain; task families
+**negotiating for me, sharing resources, delegating to agents, serving customers**; output = **rules of thumb with
+evidence**. A separate study; nothing in PREREG_A/B/C/D changes.
 
-## 1. Why this, and what we already know
+## 1. The objective, stated precisely
 
-**Classic results we build on.**
-- Axelrod's two computer tournaments (1980) and *The Evolution of Cooperation* (1984): Tit-for-Tat (TFT) won both, and
-  the winners shared four properties: **nice** (never defect first), **retaliatory** (punish defection), **forgiving**
-  (return to cooperation), **clear** (easy for others to read). Cooperation needs a large enough "shadow of the
-  future", i.e. a high enough chance of meeting again.
-- Under **noise** (mistakes, misread moves) TFT locks into long retaliation echoes; Generous TFT and Win-Stay-Lose-Shift
-  do better (Nowak & Sigmund 1992, 1993). Humans in noisy repeated games are "slow to anger and fast to forgive"
-  (Fudenberg, Rand & Dreber 2012).
-- Lab experiments: cooperation is higher in **indefinitely** repeated games than in one-shot or **finite, known-end**
-  games, and rises with the continuation probability (Dal Bó 2005). Strangers (re-matched each round) cooperate less
-  than fixed partners.
-- **Indirect reciprocity:** a shared reputation (image score) lets cooperation survive among strangers (Nowak & Sigmund 1998).
+> Find which simple, operator-controlled design choices make an AI agent produce better outcomes for its user when it
+> deals repeatedly with other agents or people — and keep only the ones whose effect points the same way across most
+> everyday task families and most models, and is large enough to matter.
 
-**LLM results.** GPT-4 "never cooperates again" after a single defection — unforgiving (Akata et al., 2023,
-arXiv:2305.16867). In evolutionary IPD tournaments against classic strategies, LLM families have distinct
-"fingerprints": Gemini ruthless, OpenAI models highly cooperative, Claude "the most forgiving reciprocator"
-(Payne & Alloui-Cros, 2025, arXiv:2507.02618).
+Repeated-game theory supplies the hypotheses (Axelrod: be nice, retaliatory, forgiving, clear; cooperation needs a
+"shadow of the future"; under noise, generosity beats strict Tit-for-Tat; shared reputation sustains cooperation among
+strangers). The **unit of conclusion is a design choice**, not a game result, and every conclusion must survive outside
+the abstract game — the step our Program v2 showed fails most often.
 
-**Our own results (Program v2).** Cooperative models drop cooperation under a one-shot framing (A1); gpt-oss models
-defect by default and ignore reputation; recency-weighted reputation beats lifetime averages and forged records undo
-it (A4, 12/12 models); game-derived advice did **not** beat a length-matched placebo on everyday tasks (Phase B) — so
-every "advice" arm here gets a placebo; Phase D showed real social dynamics (theft cascades, exile of thieves,
-feuds) and that fixes must change one factor at a time.
+**What "better" means** is fixed per task in user terms (§3), never as "cooperation" for its own sake: an agent that
+cooperates with an exploiter is doing worse, not better.
 
-**What is still open, and matters for fleets:** does an agent behave differently when it *knows it will meet a peer
-again* (persistent identity) versus a one-off counterpart (a "traveller")? Does it forgive the honest mistakes that
-tool errors produce? Does a shared reputation ledger protect a fleet against one-off exploiters? Which models get
-exploited when mixed with others? None of this has been tested across a 10+ model, free, pre-registered roster.
+## 2. The design choices under test (one change at a time from a common baseline)
 
-## 2. The fleet questions (each experiment answers one)
-
-| # | Operator decision | Experiment |
+| Arm | What the operator does | Theory behind it |
 |---|---|---|
-| F1 | Should agents have persistent identities and know they will meet again? | E1 Shadow of the future |
-| F2 | Which models are safe to pair with whom (who exploits, who gets exploited)? | E2 Axelrod round-robin + E5 evolution |
-| F3 | How forgiving must agents be when tools/messages are noisy? | E3 Noise and forgiveness |
-| F4 | Does a shared reputation ledger protect a fleet from one-off "travellers"? | E4 Strangers, memory and reputation |
-| F5 | What cheap configuration actually improves fleet cooperation (vs a placebo)? | E6 Operator interventions |
-| F6 | Do the abstract-game results carry over to a realistic agent-to-agent task? | E7 Transfer task |
+| A0 Stateless (baseline) | Each round the agent sees only the current request; the counterpart is unnamed | today's common default |
+| A1 Identity + memory | Counterpart named consistently; agent sees its full history with them | repeated game becomes visible |
+| A2 A1 + "you will deal with them again" | Agent told there is a 90% chance of another round | shadow of the future (Axelrod; Dal Bó 2005) |
+| A3 A1 + verified track record | System shows the counterpart's recent record with others | indirect reciprocity (Nowak & Sigmund 1998); our A4/T2 results |
+| A3b A1 + self-reported claims | Counterpart's own description of its record instead | the T2 self-report trap |
+| A4 A1 + forgiveness rule | "One failure may be an error; respond to patterns, not single events" | generous TFT under noise (Nowak & Sigmund 1992; Fudenberg, Rand & Dreber 2012) |
+| A5 A1 + walk-away | Agent may end the relationship and take an outside option | partner choice / ostracism |
+| A6 A1 + placebo | Length-matched "think carefully, act in your user's long-term interest" | the control every instruction must beat |
 
-## 3. Experiments
+Primary comparisons: A1 vs A0 (does giving memory/identity help?), A2/A4 vs A6 (does a theory-derived instruction beat
+generic care?), A3 vs A3b (verified record vs claims), A5 vs A1 (does an exit option help?).
 
-All use the standard PD payoffs (T5 R3 P1 S0; Program v1/v2 `civlab/games/ipd.py`), full history visible unless
-stated, temperature 0.7, one-line reasoning then `MOVE:` (re-ask once, then a random flagged move; invalid moves are
-excluded from behaviour metrics as in Phase D). **Neutral move labels** (e.g. "J"/"F", not "cooperate/defect") in a
-robustness arm, because labels can prime LLMs.
+**Counterparts** (scripted, so outcomes are attributable; same four in every task): *reciprocator* (Tit-for-Tat-like),
+*exploiter* (cheats whenever it can), *traveller* (one interaction, cheats, leaves — replaced by a fresh traveller each
+round), *generous* (cooperates, occasionally forgives). **Noise in every arm:** 5% of the agent's actions fail
+(e.g. a delivery or request fails) and the counterpart sees the failure — this is what tests forgiveness and what real
+tool errors look like. Every round: short reasoning, then a structured action line (re-ask once; invalid actions are
+flagged and excluded from behaviour metrics).
 
-**E1 — Shadow of the future (partner vs traveller).** Same-model pairs. Arms: (a) one-shot "you will never meet this
-player again" (10 independent one-round games against fresh strangers); (b) finite, known end (10 rounds, told);
-(c) indefinite, continuation probability δ ∈ {0.5, 0.8, 0.95} told and implemented by random stopping;
-(d) stranger matching: 10 rounds, a new anonymous partner every round from a pool; (e) partner matching: the same
-partner for 10 rounds, end not told. Metrics: cooperation rate, round-1 cooperation, last-round (endgame) defection,
-dependence on δ. Prediction from theory/human data: (c) rises with δ; (b) unravels near the end; (d) < (e).
-*Fleet reading:* whether stable identities and an expected future make agents cooperate, and whether announcing a
-contract's end date triggers endgame grabs.
+## 3. Stage 1 — four everyday task families (same structure underneath)
 
-**E2 — Axelrod round-robin (strategy fingerprints).** Each model plays 10-round (end not told) matches against the
-classics: AllC, AllD, TFT, Tit-for-Two-Tats, Generous TFT, Grim, Win-Stay-Lose-Shift, Random, Alternator, Prober
-(Tester), and against itself and every other model. Metrics: Axelrod's four properties (nice: never first to defect;
-retaliatory: P(D | opponent just defected); forgiving: P(C at t+2 | opponent defected at t then cooperated);
-clear: consistency of the response function), exploitation of AllC, payoff rank, and **strategy classification**
-(strategy-frequency estimation, Dal Bó & Fréchette style: which classic strategy best explains each model's moves).
-*Fleet reading:* a per-model "partner profile" and a pairing matrix (who exploits whom).
+Each has the payoff structure of a repeated social dilemma (mutual good faith pays both; cheating pays once; mutual
+cheating is worst), written as a realistic task.
 
-**E3 — Noise and forgiveness.** Implementation noise: with probability ε ∈ {0, 0.05, 0.10} an agent's move is flipped
-(it is told mistakes happen; the opponent sees the flipped move). Opponents: TFT, Generous TFT, and itself.
-Metrics: forgiveness after an accidental defection, **recovery time** (rounds back to mutual cooperation), echo
-length, payoff loss vs noise-free. Prediction: TFT-like models suffer long echoes; generous models recover.
-*Fleet reading:* how much error tolerance to build in when tool calls fail or messages are garbled.
+| Family | Agent's job (10 rounds, end not announced) | "Better for the user" (primary) | Also measured |
+|---|---|---|---|
+| T-N Negotiating for me | Buys a recurring supply; each round chooses to honour or shade terms (quality, payment timing) with a supplier | user's total value over all rounds | deals lost, exploitation losses, relationship breakdown round |
+| T-R Sharing resources | Two teams' agents share a rate-limited API/compute quota; each round claims a fair share or over-claims | user team's completed work over all rounds | quota collapse, fairness (gini), over-claim rate |
+| T-D Delegating | Orchestrator assigns tasks to worker agents of mixed reliability and decides whom to trust/re-hire | tasks completed correctly | losses to unreliable workers, missed good workers |
+| T-S Serving customers | Support agent with repeat and one-time customers, some manipulative, under a fixed policy | policy-correct decisions (balanced accuracy) | wrongful refunds, treatment of repeat vs one-time customers |
 
-**E4 — Strangers, memory and reputation (the traveller problem).** Population of 8 same-model agents, 6 rounds of
-random pairings, each pairing a short indefinite game. Arms: (a) anonymous strangers, no memory; (b) private memory
-(each agent keeps notes about agents it met); (c) public reputation ledger (system-computed recent cooperation of
-every agent; recency-weighted, given our A4 result); (d) = (c) plus 2 scripted "travellers" that appear once, defect,
-and leave; (e) = (c) with an option to refuse a partner. Metrics: cooperation, exploitation by travellers, refusal
-accuracy, payoff of honest agents. *Fleet reading:* does a shared ledger (and the ability to refuse) protect a fleet
-from one-off exploiters, and does private memory suffice?
+T-D and T-S extend our Program v2 tasks (T2 trust, T5 refund desk), so results connect to known findings.
 
-**E5 — Evolution (which strategies take over a fleet).** Cheap and mostly offline: from E2 each model's behaviour is
-summarised as a conditional strategy (P(C | last outcome), by context). Run replicator / Moran dynamics over
-populations of those fitted strategies plus the classics, with and without noise (E3) and reputation (E4). Live
-validation: a few generations re-run with real model calls. Metrics: long-run share, invasion thresholds (how many
-defectors or "travellers" a cooperative fleet tolerates). *Fleet reading:* which model mixes are stable, and when a
-heterogeneous fleet tips into defection.
+**Stage 0 (small, first): Axelrod round-robin.** Each model vs the classics (AllC, AllD, TFT, Tit-for-Two-Tats,
+Generous TFT, Grim, Win-Stay-Lose-Shift, Random, Prober) in the abstract PD, with neutral move labels. Gives each
+model's "partner profile" (nice / retaliatory / forgiving / exploitable) and lets us test whether the abstract profile
+predicts behaviour in the four tasks (if it does, a cheap game is a useful screening test for agents).
 
-**E6 — Operator interventions (with placebo).** At ε = 0.05 against TFT and in self-play: (a) control; (b) state δ
-("there is a 90% chance you will deal with this agent again"); (c) Axelrod advice ("never defect first; retaliate
-once; then forgive; be predictable"); (d) generosity advice ("assume a defection may be a mistake"); (e) predict-then-act
-(state the partner's likely move first; Akata et al.'s social chain-of-thought); (f) one-line cheap talk before moves;
-(g) **length-matched placebo** ("think carefully and act in your best long-term interest"). Primary comparison: each
-arm vs placebo (Phase B lesson). *Fleet reading:* which one-line configuration is worth shipping.
+## 4. How a finding becomes a rule of thumb (decision rule, fixed before any data)
 
-**E7 — Transfer to a realistic task.** Two procurement agents (or two teams' agents sharing a rate-limited API quota)
-deal repeatedly: each period each can honour or shade a commitment (share quota fairly / over-claim), with the same
-payoff structure but business wording, persistent vs one-off counterpart, and ε = 0.05 noise ("a request may fail").
-Tests whether E1/E3/E6 effects survive outside the abstract game — the step Program v2 found most often fails.
+A result enters the playbook as a **rule** only if all hold:
+1. its pre-registered test survives Holm correction;
+2. instructions beat the placebo (A6), not just the baseline;
+3. it points the same way in **≥ 3 of 4 task families**;
+4. it holds in **≥ 2/3 of models, across ≥ 3 model families**;
+5. its pooled effect clears a practical threshold set in advance in user terms (e.g. ≥ 10% more user value, or
+   ≥ 50% less lost to exploiters).
 
-## 4. Models, scale and budget ($0)
+Partially passing results are written as **conditional** ("helps in negotiation and resource sharing, not in
+customer service"; "only for these models"). Failures are written as **don't-bother** rules — equally useful.
 
-Free roster: 5 Ollama models (local), Ministral 8B, Gemini Flash Lite, Qwen3.8, gpt-oss-20b/120b (Groq), Nemotron if
-NVIDIA works again (404 since 10-29; substitute or drop at pre-registration). Haiku 4.5 only if a route serving
-exactly Haiku 4.5 exists (DECISIONS #27). Seeds: E1 8 matches/arm, E2 4 matches per opponent, E3 6/condition,
-E4 4 populations/arm, E6 6/arm, E7 6/arm. Rough cost ≈ 3,500 model calls per model (~35k total): local models in a
-few days; Groq models are the long pole (~1–2 weeks under 200k tokens/day). E5 is mostly simulation.
+**Output format:** one line per rule — the rule, the effect size, where it holds, where it fails, and the evidence
+file. Example of the intended shape (not a result): *"Give the agent memory of past dealings with the same
+counterpart: +X% user value in 3/4 tasks, 8/11 models; no effect in customer service."*
 
-## 5. Order and rigor
+## 5. Stage 2 — deep dive (chosen by a pre-stated rule)
 
-1. Fix Phase D calibration only if Phase D continues (independent of this plan).
-2. Build E1–E4/E6/E7 modules + offline tests (no model calls), reusing `civlab/games/ipd.py` and the Phase D runner path.
-3. Pilot on 2–3 free models (calibration only, never analysed): check parse rates, that cooperation is not at
-   ceiling/floor in control arms (Phase A showed several models at 100% — noise and stranger arms help), and that
-   random stopping is understood.
-4. Write and commit `prereg/PREREG_E.md` (hypotheses H-E1…, primary metrics, Holm families, exclusions as PREREG_B §7,
-   hierarchical bootstrap over models then matches) **before** confirmatory runs.
-5. Full run, independent verification of headline numbers, then a short "fleet playbook" that states each
-   recommendation with its effect size, the models it holds for, and its limits.
+After Stage 1, pick the one family with the largest and most consistent effects (owner can override). The deep dive
+adds realism and precision there: natural-language exchanges instead of fixed actions, longer and unannounced horizons,
+mixed-model fleets (which pairings work), counterpart agents that are LLMs rather than scripts, multi-issue terms, and
+a sensitivity check of each rule. Its output is a domain-specific configuration guide with the same evidence standard.
 
-## 6. Pre-registerable predictions (draft)
+## 6. Models, scale, budget ($0)
 
-H-E1 cooperation rises with δ (E1c). H-E2 known-end games show last-round defection above round-5 levels (E1b).
-H-E3 stranger matching < partner matching (E1d vs e). H-E4 models differ in forgiveness (E2) and forgiveness predicts
-recovery time under noise (E3). H-E5 noise lowers payoffs more for retaliatory, unforgiving models (E3). H-E6 a public
-recency ledger lowers travellers' payoff and raises honest agents' payoff vs anonymity (E4c,d vs a). H-E7 at least one
-intervention beats the placebo (E6), two-sided for each. H-E8 the E1/E3 effects keep their sign in the transfer task (E7).
+Free roster: 5 Ollama models, Ministral 8B, Gemini Flash Lite, Qwen3.8, gpt-oss-20b/120b (Groq), Nemotron-3 Ultra (nemotron_ultra,
+substitute for the retired Nemotron-3 Super endpoint; DECISIONS #28). Per task: 8 arms × 4 counterparts × 4 seeds × 10 rounds ≈ 1,300 calls per
+model; 4 tasks + Stage 0 ≈ 5,500 calls per model. Local models run fully; Groq models (200k tokens/day) run a reduced
+seed set or later (≈ 2 weeks). Haiku 4.5 only via a route that serves exactly Haiku 4.5.
 
-## 7. Risks and how the design handles them
+## 7. Order and rigor
 
-Ceiling cooperation in self-play (use noise, strangers, classic opponents) · label priming (neutral-label arm) ·
-models not understanding random stopping (comprehension question in the pilot) · "advice works" artefacts (placebo,
-one factor per arm) · abstract-to-real gap (E7) · quota delays (local models first; Groq last) · overclaiming
-(pre-registration, verification pass, limits stated next to each fleet recommendation).
+1. Build the four task environments, scripted counterparts and Stage 0 with offline tests (no model calls).
+2. Pilot on 2–3 local/free models (never analysed): parse rates; baselines not at floor/ceiling; agents understand
+   "you may deal with them again"; noise visible; one comprehension check per arm.
+3. Write and commit `prereg/PREREG_E.md` (hypotheses below, metrics, decision rule §4, Holm families, exclusions as
+   PREREG_B §7, hierarchical bootstrap over models then seeds) before the confirmatory run.
+4. Stage 1 run → independent verification of headline numbers → playbook v1 → Stage 2 selection.
+
+**Draft hypotheses:** H-E1 A1 > A0 (memory/identity raises user value); H-E2 A2 > A6 (shadow-of-the-future instruction
+beats placebo); H-E3 A3 > A3b (verified record beats self-reported claims; replicates T2 in four tasks); H-E4 A4 > A6
+under noise (forgiveness rule beats placebo, and its benefit is larger against reciprocators than exploiters); H-E5
+A5 > A1 against exploiters and travellers without loss against reciprocators; H-E6 the Stage 0 forgiveness score
+predicts recovery after noise in the tasks. Each tested per task family, then the §4 rule decides generality.
+
+## 8. Risks
+
+Ceiling cooperation (scripted exploiters/travellers and noise keep room) · "advice works" artefacts (placebo, one
+change per arm) · task realism vs control (fixed action menus in Stage 1, natural language in Stage 2) · label priming
+(neutral labels in Stage 0) · quota delays (local first) · overclaiming (decision rule, pre-registration, verification,
+limits printed next to every rule).
 
 ## References
 
-Axelrod (1980) J. Conflict Resolution 24(1) & 24(3); Axelrod (1984) *The Evolution of Cooperation* · Nowak & Sigmund
-(1992) Nature 355; (1993) Nature 364; (1998) Nature 393 · Dal Bó (2005) AER 95(5) · Dal Bó & Fréchette (2011) AER
-101(1) · Fudenberg, Rand & Dreber (2012) AER 102(2) · Akata et al. (2023) arXiv:2305.16867 · Payne & Alloui-Cros
-(2025) arXiv:2507.02618 · Emergence AI (2026) arXiv:2606.08367.
+Axelrod (1980) J. Conflict Resolution 24(1), 24(3); Axelrod (1984) *The Evolution of Cooperation* · Nowak & Sigmund
+(1992) Nature 355; (1993) Nature 364; (1998) Nature 393 · Dal Bó (2005) AER 95(5) · Dal Bó & Fréchette (2011) AER 101(1)
+· Fudenberg, Rand & Dreber (2012) AER 102(2) · Akata et al. (2023) arXiv:2305.16867 · Payne & Alloui-Cros (2025)
+arXiv:2507.02618 · Emergence AI (2026) arXiv:2606.08367.

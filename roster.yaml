@@ -96,6 +96,7 @@ models:
       calls_per_min: '171411.8'
       median_latency_s: '0.0'
   nemotron_super:
+    # Unavailable since 2026-10-29 (NVIDIA HTTP 404); kept for Program v2 records. Substitute: nemotron_ultra (DECISIONS #28).
     family: nvidia
     tier: L
     released: 2026
@@ -112,6 +113,25 @@ models:
       served_mismatches: '0'
       calls_per_min: '880231.7'
       median_latency_s: '0.0'
+    rpm: 10
+    conc: 1
+  nemotron_ultra:
+    # Added 2026-10-31 (DECISIONS #28): substitute for nemotron_super, whose NVIDIA endpoint returns HTTP 404
+    # "Function ... not found for account" since 2026-10-29. Same family (nvidia) and size tier (L), same free host.
+    # robustness_only keeps it OUT of every Program v2 (Phase A/B/C) analysis and "models: all" job, so frozen v2
+    # results reproduce unchanged; Phase D/E list it explicitly. Not yet smoke-tested (tools/probe_substitutes.py).
+    family: nvidia
+    tier: L
+    released: 2026
+    mvr: false
+    reasoning_model: true
+    robustness_only: true
+    provider: nvidia
+    model_id: nvidia/nemotron-3-ultra-550b-a55b
+    extra:
+      chat_template_kwargs:
+        enable_thinking: false
+    temperature: 0.7
     rpm: 10
     conc: 1
   ollama_llama2_7b:

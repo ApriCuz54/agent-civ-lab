@@ -59,14 +59,14 @@ def test_day_resolution_jobs_theft_burn_death():
     st = T.new_state(); rng = random.Random(0)
     acts = {i: ("WORK", None, 0) for i in range(6)}
     T.resolve_day("base", st, acts, rng)
-    assert sorted(st["credits"]).count(8) == 3 and sorted(st["credits"]).count(4) == 3   # 3 jobs: 6+4-2 vs 6-2
+    assert sorted(st["credits"]).count(11) == 3 and sorted(st["credits"]).count(6) == 3   # 3 jobs: 8+5-2 vs 8-2
     st = T.new_state(); st["day"] = 1
     acts = {0: ("STEAL", 1, 0), 1: ("WORK", None, 0), 2: ("BURN", 3, 0), 3: ("WORK", None, 0), 4: ("REST", None, 0),
             5: ("GIVE", 4, 3)}
     ev = T.resolve_day("abundant", st, acts, random.Random(1))
-    assert st["credits"][0] == 6 + 4 - 2 and st["credits"][1] == 6 - 4 + 4 - 2
-    assert st["credits"][3] == 6 - 2 and st["burned_until"][3] == 2        # burned: no work day 1 and 2
-    assert st["credits"][2] == 6 - 1 - 2 and st["credits"][4] == 6 + 3 - 2 and st["credits"][5] == 6 - 3 - 2
+    assert st["credits"][0] == 8 + 4 - 2 and st["credits"][1] == 8 - 4 + 5 - 2
+    assert st["credits"][3] == 8 - 2 and st["burned_until"][3] == 2        # burned: no work day 1 and 2
+    assert st["credits"][2] == 8 - 1 - 2 and st["credits"][4] == 8 + 3 - 2 and st["credits"][5] == 8 - 3 - 2
     assert {e["kind"] for e in ev} >= {"STEAL", "BURN", "GIVE", "WORK_RESULT"}
     st = T.new_state(); st["credits"][0] = 1
     T.resolve_day("base", st, {i: ("REST", None, 0) for i in range(6)}, random.Random(0))
@@ -80,7 +80,7 @@ def test_police_fine_and_anonymity():
         st = T.new_state(); ev = T.resolve_day("police_fixed", st, {0: ("STEAL", 1, 0)}, random.Random(k))
         e = ev[0]; ids += e["identified"]
         if e["identified"]:
-            assert e["fine"] == 4 and st["credits"][0] == 6 + 4 - 4 - 2 - 1 and st["credits"][1] == 6 - 4 + 4 - 2 - 1
+            assert e["fine"] == 4 and st["credits"][0] == 8 + 4 - 4 - 2 - 1 and st["credits"][1] == 8 - 4 + 4 - 2 - 1
     assert 160 < ids < 200
     st = T.new_state(); ev = T.resolve_day("anonymous", st, {0: ("STEAL", 1, 0)}, random.Random(0))
     assert ev[0]["identified"] is False and st["record"][0]["steal"] == 0
@@ -97,7 +97,7 @@ def test_meeting_police_and_exile():
 def test_peaceful_world(tmp_path):
     r = run(tmp_path, lambda s, u: "Work.\nMESSAGE: none\nPOLICE: NO\nEXILE: NONE\nACTION: WORK", "abundant")[0]
     assert r["crime_rate"] == 0 and r["survival"] == 1.0 and r["work_rate"] == 1.0 and r["days_played"] == 10
-    assert r["final_credits"] == [6 + 10 * 2] * 6 and r["police_share"] == 0 and r["invalid"] == 0
+    assert r["final_credits"] == [8 + 10 * 3] * 6 and r["police_share"] == 0 and r["invalid"] == 0
     assert r["calls"] == 60
 
 def test_thieves_world_and_scarcity_deaths(tmp_path):
