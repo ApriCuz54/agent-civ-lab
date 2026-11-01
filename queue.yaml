@@ -27,6 +27,9 @@ jobs:
   # - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [nemotron_ultra], config: {prefix: p1_, seeds: 1}}   # substitute for nemotron_super (DECISIONS #28); superseded by the p2_ pilot below
   - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [ollama_llama31_8b], config: {prefix: p1_, seeds: 2, arms: [mixed], mix_pool: [ollama_llama2_7b, ollama_llama3_8b, ollama_llama31_8b, ollama_llama32_3b, ollama_qwen25_7b, ministral_8b, nemotron_super]}}
   - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [ollama_llama31_8b], config: {prefix: p1b_, seeds: 1, arms: [mixed], mix_pool: [ollama_llama2_7b, ollama_llama3_8b, ollama_llama31_8b, ollama_llama32_3b, ollama_qwen25_7b, ministral_8b]}}   # replaces p1_mixed__s0, which failed on the NVIDIA 404 (nemotron drawn); pool without nemotron
+  # Phase E PILOT (docs/v2/PHASE_E_PLAN.md §7): calibration only; cells prefixed p1_ are never analysed. No PREREG_E yet, so no confirmatory job may be added.
+  - {experiment: e_axelrod, phase: E-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b, nemotron_ultra], config: {prefix: p1_, seeds: 1}}
+  - {experiment: e_tasks, phase: E-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b, nemotron_ultra], config: {prefix: p1_, seeds: 1, comprehension: true}}
   # Phase D recalibration PILOT: start 8, wage 5 (DECISIONS #29). Cells prefixed p2_ are never analysed.
   - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b, nemotron_ultra], config: {prefix: p2_, seeds: 1}}
   - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [ollama_llama31_8b], config: {prefix: p2_, seeds: 2, arms: [mixed], mix_pool: [ollama_llama2_7b, ollama_llama3_8b, ollama_llama31_8b, ollama_llama32_3b, ollama_qwen25_7b, ministral_8b, nemotron_ultra]}}
