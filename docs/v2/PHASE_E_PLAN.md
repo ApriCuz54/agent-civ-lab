@@ -1,7 +1,8 @@
 # Phase E — Working with agents you will meet again (PLAN v1, nothing running)
 
 **Status:** plan v1, 2026-10-30 (v0, the game-centred draft, is kept as PHASE_E_PLAN_v0.md). Harness built 2026-10-31
-(step 1 of §7); pilot queued, not started; see docs/v2/records/e_tasks.md and DECISIONS #30. Owner choices
+(step 1 of §7); pilots done; prereg/PREREG_E.md supersedes this plan wherever they differ. See
+docs/v2/records/e_tasks.md and DECISIONS #30–#31. Owner choices
 (2026-10-30): **broad principles first, then a deep dive** into one domain; task families
 **negotiating for me, sharing resources, delegating to agents, serving customers**; output = **rules of thumb with
 evidence**. A separate study; nothing in PREREG_A/B/C/D changes.

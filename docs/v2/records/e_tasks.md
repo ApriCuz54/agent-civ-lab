@@ -14,13 +14,15 @@ Tests L3 and L4 for P2 and P3, plus forgiveness and exit as new design choices. 
 
 ## Execution log
 - 2026-10-31: built; suite 79/79. Local smoke on ollama_llama31_8b: 54 calls, 0 invalid, 4/4 comprehension correct.
-- 2026-10-31: pilot queued as p1_ (1 seed; 137 cells on each of ollama_llama31_8b, ministral_8b, nemotron_ultra). Not started.
+- 2026-10-31: pilot queued as p1_ (1 seed; 137 cells on each of ollama_llama31_8b, ministral_8b, nemotron_ultra).
+- 2026-11-01: p1_ complete (411 cells, 0 failed, 0 invalid). Noise and `serve` fixed (DECISIONS #31).
+- 2026-11-01: p2_ complete (100 cells, 0 failed, 0 invalid). prereg/PREREG_E.md written; full run not started.
 
 ## Findings
 None. Pilot cells are calibration only and are never analysed as results.
 
 ## Conclusion
-Pending. PREREG_E must be committed before any confirmatory cell runs.
+Pending. prereg/PREREG_E.md must be in a pushed commit before any confirmatory cell runs.
 
 ## Deviations
 None yet (no pre-registration exists).

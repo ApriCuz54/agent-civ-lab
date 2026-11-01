@@ -1,0 +1,6 @@
+# Phase E full-run jobs (prereg/PREREG_E.md). ACTIVATE ONLY after PREREG_E.md is in a pushed commit on origin/main
+# (check: git --no-optional-locks log -1 --format=%H%x20%cd -- prereg/PREREG_E.md) and the owner has asked for the run.
+# To activate: append the job lines below to queue.yaml. Local models start at once; quota-limited models follow as free
+# limits allow.
+  - {experiment: e_axelrod, phase: E, priority: 1, models: [ollama_llama2_7b, ollama_llama3_8b, ollama_llama31_8b, ollama_llama32_3b, ollama_qwen25_7b, ministral_8b, gemini_flash_lite, qwen38_27b, gptoss_20b, gptoss_120b, nemotron_ultra], config: {}}
+  - {experiment: e_tasks, phase: E, priority: 2, models: [ollama_llama2_7b, ollama_llama3_8b, ollama_llama31_8b, ollama_llama32_3b, ollama_qwen25_7b, ministral_8b, gemini_flash_lite, qwen38_27b, gptoss_20b, gptoss_120b, nemotron_ultra], config: {}}
