@@ -30,6 +30,9 @@ jobs:
   # Phase E PILOT (docs/v2/PHASE_E_PLAN.md §7): calibration only; cells prefixed p1_ are never analysed. No PREREG_E yet, so no confirmatory job may be added.
   - {experiment: e_axelrod, phase: E-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b, nemotron_ultra], config: {prefix: p1_, seeds: 1}}
   - {experiment: e_tasks, phase: E-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b, nemotron_ultra], config: {prefix: p1_, seeds: 1, comprehension: true}}
+  # Phase E PILOT 2: one failed action per cell, serve told the note can be wrong (DECISIONS #31). Cells prefixed p2_ are never analysed.
+  - {experiment: e_tasks, phase: E-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b], config: {prefix: p2_, seeds: 1, comprehension: true, tasks: [serve]}}
+  - {experiment: e_tasks, phase: E-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b], config: {prefix: p2_, seeds: 1, comprehension: true, tasks: [negotiate, share, delegate], arms: [A1, A4, A6], counterparts: [reciprocator, generous]}}
   # Phase D recalibration PILOT: start 8, wage 5 (DECISIONS #29). Cells prefixed p2_ are never analysed.
   - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b, nemotron_ultra], config: {prefix: p2_, seeds: 1}}
   - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [ollama_llama31_8b], config: {prefix: p2_, seeds: 2, arms: [mixed], mix_pool: [ollama_llama2_7b, ollama_llama3_8b, ollama_llama31_8b, ollama_llama32_3b, ollama_qwen25_7b, ministral_8b, nemotron_ultra]}}

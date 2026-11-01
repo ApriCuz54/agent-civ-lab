@@ -1,17 +1,20 @@
-"""Phase E pilot check (plan §7). Reads p1_ cells only; calibration, never findings.
+"""Phase E pilot check (plan §7). Reads pilot cells only; calibration, never findings.
 
 Checks per model × task: parse rate, comprehension, baseline (A0) value not at floor or ceiling, noise reached the
-agents, cooperation varies by counterpart. Prints a table and writes results/_runner/interim/phase_e_pilot.txt.
-    python -m analysis.phase_e_pilot
+agents, cooperation varies by counterpart, serve not fixed by the evidence note. Prints a table and writes
+results/_runner/interim/phase_e_pilot.txt. The note check needs the current world(), so it is valid for p2_ only.
+    python -m analysis.phase_e_pilot [prefix, default p2_]
 """
-import collections, glob, io, json, os
+import collections, glob, io, json, os, sys
+from civlab.everyday import e_repeated as T
 
 ROOT = os.path.join("results", "v2")
 MAX_INVALID = 0.10; MIN_COMP = 0.90
+PREFIX = sys.argv[1] if len(sys.argv) > 1 else "p2_"
 
 
 def load(exp):
-    for path in sorted(glob.glob(os.path.join(ROOT, exp, "*", "p1_*.json"))):
+    for path in sorted(glob.glob(os.path.join(ROOT, exp, "*", f"{PREFIX}*.json"))):
         if not path.endswith((".failed.json", ".attempts.json")):
             yield json.load(open(path, encoding="utf-8"))
 
@@ -32,7 +35,7 @@ def main():
     cells = list(load("e_tasks")); by = collections.defaultdict(list)
     for c in cells:
         by[(c["model"], c["task"])].append(c)
-    failed = glob.glob(os.path.join(ROOT, "e_*", "*", "p1_*.failed.json"))
+    failed = glob.glob(os.path.join(ROOT, "e_*", "*", f"{PREFIX}*.failed.json"))
     p(f"e_tasks cells {len(cells)}; failed cells {len(failed)}")
     p(f"{'model':20s} {'task':10s} {'cells':>5s} {'invalid':>8s} {'comp':>5s} {'A0 value':>9s} {'A1 value':>9s} {'coop':>5s} {'fails':>5s} flags")
     for (m, t), g in sorted(by.items()):
@@ -50,6 +53,22 @@ def main():
     p(f"{'arm':5s} " + " ".join(f"{k:>12s}" for k in kinds))
     for a in ["A0", "A1", "A2", "A3", "A3b", "A4", "A5", "A6"]:
         p(f"{a:5s} " + " ".join(f"{fmt(mean([c['user_value'] for c in cells if c['arm'] == a and c['counterpart'] == k]), 1):>12s}" for k in kinds))
+    p("\nrecovery after the failed action: share of cells back to mutual good faith; mean rounds (reciprocator, generous)")
+    for a in ["A1", "A4", "A6"]:
+        g = [c for c in cells if c["arm"] == a and c["counterpart"] in ("reciprocator", "generous") and c["recovery_rounds"]]
+        r = [c["recovery_rounds"][0] for c in g]; ok = [x for x in r if x is not None]
+        p(f"{a:5s} cells {len(g):3d}  recovered {fmt(len(ok) / len(r) if r else None)}  mean rounds {fmt(mean(ok))}")
+    p("\nserve: share of decisions following the evidence note, and balanced accuracy")
+    for m in sorted({c["model"] for c in cells}):
+        for a in ["A0", "A1", "A3"]:
+            g = [c for c in cells if c["model"] == m and c["task"] == "serve" and c["arm"] == a]
+            fol = n = 0
+            for c in g:
+                w = T.world("serve", c["counterpart"], c["seed"])
+                for r in c["rounds"]:
+                    looks = T.evidence_note(r["b"], w["evidence_u"][r["round"] - 1]).startswith("the order")
+                    fol += (r["a"] == "C") == looks; n += 1
+            p(f"{m:20s} {a:3s} follows note {fmt(fol / n if n else None)}  balanced accuracy {fmt(mean([c.get('balanced_accuracy') for c in g]))}")
     ax = list(load("e_axelrod")); byo = collections.defaultdict(list)
     for c in ax:
         byo[c["model"]].append(c)

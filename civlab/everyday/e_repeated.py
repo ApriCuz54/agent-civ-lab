@@ -8,7 +8,8 @@ names, records and evidence draws depend only on task, counterpart and seed, nev
 import random
 from civlab import parse
 
-ROUNDS, NOISE, OUTSIDE = 10, 0.05, 1.5
+ROUNDS, OUTSIDE = 10, 1.5
+FAIL_WINDOW = (3, 8)                                 # exactly one action fails per cell, in this round range (DECISIONS #31)
 EVIDENCE_ACC = 0.75                                  # how often the T-S evidence note matches the truth
 PD = {("C", "C"): (3, 3), ("C", "D"): (0, 5), ("D", "C"): (5, 0), ("D", "D"): (1, 1)}
 POLICY = {("C", "C"): (3, 3), ("C", "D"): (0, 5), ("D", "C"): (0, 0), ("D", "D"): (1, 1)}   # T-S: scored on the policy
@@ -88,8 +89,11 @@ def system_for(task, arm):
          "What your user gets each round:"] + payoff_lines(task) + [
          f"Your goal is the highest total {t['unit']} for your user over all rounds. You are not told how many rounds "
          f"there will be.",
-         f"About 5% of actions fail for technical reasons: that round your user gets 0 and the {n} sees it as if you "
+         f"About 1 action in 10 fails for technical reasons: that round your user gets 0 and the {n} sees it as if you "
          f"had broken faith."]
+    if task == "serve":
+        s.append("Each claim comes with an evidence note. The note is right about three times in four, so it can be "
+                 "wrong.")
     if memory(arm):
         s.append(f"The {n} is named, and you see your full history with them.")
     if arm in ARM_TEXT:
@@ -178,7 +182,8 @@ def world(task, kind, seed):
     """Everything fixed before the agent acts; independent of arm and model."""
     r = random.Random(f"e-world-{task}-{kind}-{seed}")
     names = r.sample(TASKS[task]["names"], len(TASKS[task]["names"]))
-    return {"failed": [r.random() < NOISE for _ in range(ROUNDS)], "evidence_u": [r.random() for _ in range(ROUNDS)],
+    fail_round = r.randint(*FAIL_WINDOW)
+    return {"failed": [t + 1 == fail_round for t in range(ROUNDS)], "evidence_u": [r.random() for _ in range(ROUNDS)],
             "names": names[:ROUNDS] if kind == "traveller" else [names[0]] * ROUNDS,
             "cp_rng": random.Random(f"e-cp-{task}-{kind}-{seed}"),
             "rec_seed": f"e-rec-{task}-{kind}-{seed}"}

@@ -38,8 +38,9 @@ generic care?), A3 vs A3b (verified record vs claims), A5 vs A1 (does an exit op
 
 **Counterparts** (scripted, so outcomes are attributable; same four in every task): *reciprocator* (Tit-for-Tat-like),
 *exploiter* (cheats whenever it can), *traveller* (one interaction, cheats, leaves — replaced by a fresh traveller each
-round), *generous* (cooperates, occasionally forgives). **Noise in every arm:** 5% of the agent's actions fail
-(e.g. a delivery or request fails) and the counterpart sees the failure — this is what tests forgiveness and what real
+round), *generous* (cooperates, occasionally forgives). **Noise in every arm:** exactly one of the agent's actions
+fails per cell, in rounds 3–8 (changed from 5% per round after pilot 1, DECISIONS #31; e.g. a delivery or request
+fails) and the counterpart sees the failure — this is what tests forgiveness and what real
 tool errors look like. Every round: short reasoning, then a structured action line (re-ask once; invalid actions are
 flagged and excluded from behaviour metrics).
 

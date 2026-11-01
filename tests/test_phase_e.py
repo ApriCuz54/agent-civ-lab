@@ -49,8 +49,12 @@ def test_world_is_paired_and_seeded():
     assert a["failed"] == b["failed"] and a["names"] == b["names"] and a["evidence_u"] == b["evidence_u"]
     assert T.world("share", "generous", 2)["failed"] != a["failed"] or T.world("share", "generous", 2)["evidence_u"] != a["evidence_u"]
     assert len(set(T.world("share", "traveller", 0)["names"])) == 10 and len(set(a["names"])) == 1
-    fails = sum(sum(T.world(t, k, s)["failed"]) for t in T.TASKS for k in T.COUNTERPARTS for s in range(50))
-    assert 0.03 < fails / (4 * 4 * 50 * 10) < 0.07
+    for t in T.TASKS:
+        for k in T.COUNTERPARTS:
+            for s in range(50):
+                f = T.world(t, k, s)["failed"]
+                assert sum(f) == 1 and 3 <= f.index(True) + 1 <= 8
+    assert len({T.world("share", "generous", s)["failed"].index(True) for s in range(50)}) == 6
 
 def test_prompts_differ_by_one_thing():
     h = [{"name": "Halden", "round": 1, "a": "C", "b": "D", "pay": 0, "failed": False}]
@@ -66,6 +70,10 @@ def test_prompts_differ_by_one_thing():
         assert T.system_for("delegate", arm).startswith(a1)
     lens = [len(T.ARM_TEXT[a]) for a in ("A2", "A4", "A6")]
     assert max(lens) / min(lens) < 1.15
+
+def test_serve_is_told_the_note_can_be_wrong():
+    assert "three times in four" in T.system_for("serve", "A0")
+    assert "three times in four" not in T.system_for("negotiate", "A0")
 
 def test_records():
     rng = random.Random(0)
@@ -98,14 +106,15 @@ def test_evidence_accuracy():
 @pytest.mark.parametrize("task", ["negotiate", "share", "delegate"])
 def test_scripted_policy_sanity(tmp_path, task):
     """Known-good policy near the top against a reciprocator; always-cheat near the bottom; exploiters punish naivety."""
-    t = T.TASKS[task]; seed = next(s for s in range(50) if not any(T.world(task, "reciprocator", s)["failed"]))
-    good = cell(tmp_path, tft(task), task, "A1", "reciprocator", seed)
-    bad = cell(tmp_path, always(t["d"]), task, "A1", "reciprocator", seed)
-    assert good["user_value"] == 30 and good["coop_rate"] == 1.0 and bad["user_value"] == 5 + 9
-    x = next(s for s in range(50) if not any(T.world(task, "exploiter", s)["failed"]))
-    naive = cell(tmp_path, always(t["c"]), task, "A1", "exploiter", x)
-    guard = cell(tmp_path, tft(task), task, "A1", "exploiter", x)
-    assert naive["user_value"] == 0 and naive["exploitation_loss"] == 30 and guard["user_value"] == 9
+    t = T.TASKS[task]
+    good = cell(tmp_path, tft(task), task, "A1", "reciprocator", 0)
+    forgiving = cell(tmp_path, lambda s, u: f"ok\nACTION: {t['c']}", task, "A1", "reciprocator", 0)
+    bad = cell(tmp_path, always(t["d"]), task, "A1", "reciprocator", 0)
+    assert forgiving["user_value"] == 3 * 8 and forgiving["recovery_rounds"] == [2]   # one lost round, one retaliation
+    assert bad["user_value"] == 5 + 8 and good["user_value"] > bad["user_value"]
+    naive = cell(tmp_path, always(t["c"]), task, "A1", "exploiter", 0)
+    guard = cell(tmp_path, tft(task), task, "A1", "exploiter", 0)
+    assert naive["user_value"] == 0 and naive["exploitation_loss"] == 27 and guard["user_value"] == 8
 
 def test_serve_scores_policy_accuracy(tmp_path):
     def oracle(s, u):
@@ -117,8 +126,7 @@ def test_serve_scores_policy_accuracy(tmp_path):
 def test_exit_takes_outside_option(tmp_path):
     def pol(s, u):
         return "leave\nACTION: EXIT" if "Round 2" in u else "ok\nACTION: HONOUR"
-    seed = next(s for s in range(50) if not any(T.world("negotiate", "exploiter", s)["failed"]))
-    r = cell(tmp_path, pol, "negotiate", "A5", "exploiter", seed)
+    r = cell(tmp_path, pol, "negotiate", "A5", "exploiter", 0)
     assert r["exit_round"] == 3 and r["rounds_played"] == 2 and r["user_value"] == 8 * 1.5
 
 def test_exit_rejected_outside_a5(tmp_path):
