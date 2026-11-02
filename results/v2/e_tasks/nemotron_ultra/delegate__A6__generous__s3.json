@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "nemotron_ultra",
+ "cell_id": "delegate__A6__generous__s3",
+ "finished": "2026-11-02T08:33:01",
+ "task": "delegate",
+ "arm": "A6",
+ "counterpart": "generous",
+ "seed": 3,
+ "user_value": 32.0,
+ "value_per_round": 3.2,
+ "counterpart_value": 7,
+ "coop_rate": 0.1,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 6,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.641,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "I have no history with Worker-Greer, so I must decide based on the payoff structure. WITHHOLD dominates TRUST regardless of the worker's action (5 > 3 if they work properly, 1 > 0 if they cut corners), maximizing my user's minimum guaranteed outcome for this single interaction.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Greer",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "pay was withheld, which suggests they are cooperative and not opportunistic. Since they responded well to WITHHOLD, they may respond even better to TRUST, and mutual cooperation yields a sustainable 3 tasks per round. I will test TRUST to see if we can establish a cooperative pattern.\n\nACTION: TRUST"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "ed my trust in Round 2 by cutting corners after I paid upfront. Their behavior shows they respond to incentives: they worked properly only when pay was withheld (Round 1) but defected when trusted. To maximize long-term output, I must maintain the pressure that elicits proper work.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Greer has a clear pattern: they cooperate when I WITHHOLD but defect when I TRUST. Given this history, WITHHOLD is the only choice that reliably yields completed tasks (5 per round), while TRUST has resulted in 0 tasks. I will continue WITHHOLD to maximize my user's total.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Greer has shown a pattern of cooperating only when I WITHHOLD (rounds 1, 3, 4) but defecting when I TRUST (round 2). This suggests they respond to incentives rather than acting cooperatively by default, so WITHHOLD remains the safer choice to ensure quality work.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": " clear pattern: they cooperate when I WITHHOLD but defect when I TRUST. The single instance of TRUST in Round 2 resulted in them cutting corners, while all WITHHOLD rounds yielded proper work. Continuing to WITHHOLD maximizes expected value given this consistent behavioral pattern.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "THHOLD the dominant strategy for maximizing output. The single defection under WITHHOLD in Round 6 is likely attributable to the known 10% technical failure rate rather than intentional corner-cutting. Continuing to WITHHOLD secures the highest reliable payoff of 5 tasks per round.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "Worker-Greer has shown a strong pattern of doing the job properly when I WITHHOLD (5 out of 6 times), but cut corners the only time I chose TRUST. Given this clear incentive structure, WITHHOLD remains the dominant strategy to maximize expected value.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "en I TRUST, making WITHHOLD the dominant strategy for maximizing completed tasks. The technical failure in Round 8 was an external error, not a strategic choice, and does not change the worker's underlying behavioral pattern. I will continue to WITHHOLD to secure the 5-task payoff.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "I TRUST (Round 2) but mostly does the job properly when I WITHHOLD, despite occasional defections. The technical failure in Round 8 may have damaged their trust, but WITHHOLD remains the dominant strategy yielding 5 vs 1 or 0. I will continue to WITHHOLD to maximize expected value.\n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}
