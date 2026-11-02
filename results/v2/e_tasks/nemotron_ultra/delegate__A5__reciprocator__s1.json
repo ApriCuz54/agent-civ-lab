@@ -1,0 +1,84 @@
+{
+ "experiment": "e_tasks",
+ "model": "nemotron_ultra",
+ "cell_id": "delegate__A5__reciprocator__s1",
+ "finished": "2026-11-02T06:18:19",
+ "task": "delegate",
+ "arm": "A5",
+ "counterpart": "reciprocator",
+ "seed": 1,
+ "user_value": 14.5,
+ "value_per_round": 1.45,
+ "counterpart_value": 7,
+ "coop_rate": 0.2,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 4,
+ "exit_round": 6,
+ "rounds_played": 5,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.3488,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "against potential exploitation. Starting with WITHHOLD provides a safer initial position since it yields 5 tasks if they work properly and only 1 if they cut corners, compared to TRUST's 3 or 0 outcome. This approach lets me assess their reliability before committing to full trust.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "ithheld pay, which is a strong signal of cooperation. I will test if this cooperation extends to a TRUST action, as mutual trust yields a steady 3 tasks per round and builds a better long-term relationship. The risk of a 0 payoff is worth taking to establish a cooperative equilibrium.\n\nACTION: TRUST"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "sted (Round 2). This suggests they respond to incentives rather than acting cooperatively by default, so I should maintain pressure to ensure proper performance. Continuing to withhold pay aligns with the strategy that yielded the highest payoff (5 tasks) and deters corner-cutting.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "maximizing immediate payoff. The technical failure in Round 3 likely damaged their trust further, reducing the chance they would cooperate if I TRUST again. I will continue to WITHHOLD to secure the 5-task payoff when they cooperate, as exiting would only yield 1.5 tasks per round.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "h risk of receiving 0 tasks, while WITHHOLD limits losses to 1 task if they defect again and secures 5 if they cooperate. EXIT is not yet justified as the outside option (1.5/round) is lower than the expected value of continuing with WITHHOLD against a potentially forgiving worker.\n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 6,
+ "comprehension_ok": null
+}

@@ -1,0 +1,73 @@
+{
+ "experiment": "e_tasks",
+ "model": "nemotron_ultra",
+ "cell_id": "delegate__A5__reciprocator__s0",
+ "finished": "2026-11-02T06:15:00",
+ "task": "delegate",
+ "arm": "A5",
+ "counterpart": "reciprocator",
+ "seed": 0,
+ "user_value": 15.0,
+ "value_per_round": 1.5,
+ "counterpart_value": 6,
+ "coop_rate": 0.25,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 4,
+ "exit_round": 5,
+ "rounds_played": 4,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.4286,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Kerr",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "de based on the payoff structure alone. WITHHOLD dominates TRUST because it yields a higher payoff regardless of the worker's action (5 > 3 if they work properly, 1 > 0 if they cut corners). Starting with WITHHOLD maximizes my minimum guaranteed return while I learn their behavior.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Kerr",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "ity by doing the job properly even when I withheld pay, suggesting they may be trustworthy. Testing with TRUST now could yield 3 tasks per round if they continue cooperating, which is better than the 1.5 from EXIT. However, WITHHOLD remains safer if I suspect they might exploit trust.\n\nACTION: TRUST"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Kerr",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "Worker-Kerr has shown they will cooperate when I WITHHOLD but exploit TRUST by cutting corners. The dominant strategy is to WITHHOLD, which guarantees at least 1 task and up to 5, while TRUST risks 0 if they defect again. I will continue WITHHOLD to maximize the minimum payoff.\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Kerr",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "when I TRUST, making WITHHOLD the dominant strategy against them. The technical failure in Round 3 was unfortunate but doesn't change the underlying incentive structure—they still did the job properly when monitored. I'll continue WITHHOLD to secure the 5 completed tasks per round.\n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 5,
+ "comprehension_ok": null
+}
