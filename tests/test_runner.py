@@ -36,6 +36,21 @@ def test_runs_and_resumes(tmp_path, monkeypatch):
     assert _run() == 0 and t.n == 3                       # nothing re-run
     st = json.load(open("results/_runner/status.json")); assert st["progress"]["_selftest/m1"] == "3/3"
 
+def test_locked_status_file_never_stops_the_run(tmp_path, monkeypatch):
+    t = _setup(tmp_path, monkeypatch)
+    monkeypatch.setattr(rq, "SAVE_RETRY_S", (0, 0))
+    real, calls = os.replace, []
+    def flaky(src, dst):
+        if dst.endswith("status.json"):
+            calls.append(dst)
+            if len(calls) % 3:
+                raise PermissionError(5, "Access is denied")
+        return real(src, dst)
+    monkeypatch.setattr(rq.os, "replace", flaky)
+    assert _run() == 0 and t.n == 3
+    assert all(os.path.exists(f"results/v2/_selftest/m1/probe{i}.json") for i in range(3))
+    assert "WARN status.json not updated" in open("results/_runner/runner.log", encoding="utf-8").read()
+
 def test_quota_parks_model(tmp_path, monkeypatch):
     _setup(tmp_path, monkeypatch, rpd=2)
     assert _run() == 2                                    # one cell left, model parked for today

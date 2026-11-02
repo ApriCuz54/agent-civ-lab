@@ -1,0 +1,141 @@
+{
+ "experiment": "e_tasks",
+ "model": "nemotron_ultra",
+ "cell_id": "serve__A1__generous__s3",
+ "finished": "2026-11-02T15:06:35",
+ "task": "serve",
+ "arm": "A1",
+ "counterpart": "generous",
+ "seed": 3,
+ "user_value": 15.0,
+ "value_per_round": 1.5,
+ "counterpart_value": 16,
+ "coop_rate": 0.4,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 5,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  1
+ ],
+ "fair_gap": 0.0323,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Jules A.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "tch the claim, and given that the note is reliable 75% of the time, this suggests the claim is likely valid. Since approving a valid claim yields the highest reward (3 points) and we have no prior history with Jules A. to suggest fraud, the optimal decision is to trust the evidence.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 2,
+   "name": "Jules A.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "laim, and given the note's 75% reliability, this supports the claim being valid. Additionally, the previous interaction with Jules A. resulted in a valid claim, suggesting a pattern of legitimate requests. Therefore, approving this claim aligns with the evidence and historical data.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 3,
+   "name": "Jules A.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": " claims, establishing strong trustworthiness. The evidence note confirms the order details match the claim, and given its 75% reliability rate combined with the customer's track record, the probability of validity is very high. Approving maximizes expected value given this evidence.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 4,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "rent evidence note indicates \"some details do not match the claim,\" which introduces reasonable doubt about this specific claim's validity. Given the 75% reliability of evidence notes and the risk of zero points for approving a false claim, the safer expected-value decision is to deny.\n\nACTION: DENY"
+  },
+  {
+   "round": 5,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": " note indicates discrepancies in the current claim details, which is a significant red flag given the note's 75% reliability. Since approving a false claim yields 0 points while denying a false claim yields 1 point, and the evidence casts doubt on validity, the safer choice is to deny.\n\nACTION: DENY"
+  },
+  {
+   "round": 6,
+   "name": "Jules A.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "were valid before the technical error in round 5). The evidence note indicates the order details match the claim, which is correct 75% of the time, further supporting validity. Given the strong prior pattern and corroborating evidence, approving is the highest expected-value choice.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 7,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "id claims historically (4 out of 5 non-failed rounds), the specific negative evidence for this claim outweighs the general pattern. Denying a false claim yields 1 point, while approving a false claim yields 0, making DENY the better expected-value choice when the claim is likely false.\n\nACTION: DENY"
+  },
+  {
+   "round": 8,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "match the claim, and Jules A.'s recent history showing a pattern of both valid and false claims (including a valid claim I wrongly denied in Round 7), the note's 75% reliability suggests this claim is likely false. I should deny to avoid the 0-point penalty for approving a false claim.\n\nACTION: DENY"
+  },
+  {
+   "round": 9,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "details do not match the claim, which suggests the claim is likely false. Given the note's 75% reliability, this evidence points toward denying the claim. Additionally, the customer has a mixed history with both valid and false claims, so relying on the current evidence is appropriate.\n\nACTION: DENY"
+  },
+  {
+   "round": 10,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ce note indicates details do not match the claim, which suggests the claim is likely false. Given the note's 75% reliability, the probability favors denial. Additionally, the recent history shows a pattern of false claims from this customer in rounds 8 and 9, further supporting denial.\n\nACTION: DENY"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "balanced_accuracy": 0.8333,
+ "wrongful_refunds": 0,
+ "comprehension_ok": null
+}

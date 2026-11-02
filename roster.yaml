@@ -44,13 +44,7 @@ models:
       served_mismatches: '0'
       calls_per_min: '599115.0'
       median_latency_s: '0.0'
-    fallback:   # prereg/DEVIATIONS.md #2: same open weights on NVIDIA NIM free tier once Groq's daily cap is hit
-      provider: nvidia
-      model_id: openai/gpt-oss-20b
-      rpm: 20
-      conc: 2
-      extra:
-        reasoning_effort: low
+    # NVIDIA fallback removed 2026-11-02 (prereg/DEVIATIONS.md #3): it timed out on every call; Groq only, parked at its daily cap.
   gptoss_120b:
     family: openai
     tier: L

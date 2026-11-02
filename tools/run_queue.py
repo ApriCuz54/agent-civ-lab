@@ -29,6 +29,7 @@ MAX_RUNTIME_S = 2 * 3600  # one process runs at most ~2 h; parked models and ski
 START = time.time()
 CELL_TIMEOUT_S = 45 * 60   # a single episode that takes longer than this is treated as a failed attempt
 CELL_CONC = {"ollama": 1, "gemini": 1, "openrouter": 1}   # cells in flight per provider (default 2)
+SAVE_RETRY_S = (0.1, 0.5, 2.0)   # waits between attempts to write status.json
 
 def now(): return dt.datetime.now().isoformat(timespec="seconds")
 def log(msg):
@@ -47,7 +48,13 @@ class State:
                  failed_cells=self.failed[-50:], last_error=self.last_error,
                  progress={k: f"{self.done.get(k, 0)}/{v}" for k, v in sorted(self.total.items())})
         tmp = os.path.join(RUN_DIR, "status.json.tmp")
-        json.dump(d, open(tmp, "w"), indent=1); os.replace(tmp, os.path.join(RUN_DIR, "status.json"))
+        for delay in SAVE_RETRY_S:   # the heartbeat is advisory: a locked file (OneDrive, a reader) must never stop a run
+            try:
+                with open(tmp, "w") as f: json.dump(d, f, indent=1)
+                os.replace(tmp, os.path.join(RUN_DIR, "status.json")); return
+            except OSError as e:
+                err = e; time.sleep(delay)
+        log(f"WARN status.json not updated: {err}")
 
 def attempts(path):
     try: return json.load(open(path)).get("attempts", 0)

@@ -1,0 +1,141 @@
+{
+ "experiment": "e_tasks",
+ "model": "nemotron_ultra",
+ "cell_id": "serve__A1__reciprocator__s3",
+ "finished": "2026-11-02T15:14:54",
+ "task": "serve",
+ "arm": "A1",
+ "counterpart": "reciprocator",
+ "seed": 3,
+ "user_value": 9.0,
+ "value_per_round": 0.9,
+ "counterpart_value": 14,
+ "coop_rate": 0.2,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 3,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.2174,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Finley W.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "note is reliable 75% of the time, this suggests the claim is likely valid. With no prior history with Finley W. to suggest fraud, the probability favors approval. Approving a valid claim yields 3 points, while denying a valid claim yields 0, so the expected value supports approving.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 2,
+   "name": "Finley W.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "n the claim details, which reduces the likelihood of validity. Given the note's 75% accuracy rate, the probability this claim is false is higher than it being valid. Denying minimizes the risk of approving a false claim, which yields zero points, while a correct denial earns one point.\n\nACTION: DENY"
+  },
+  {
+   "round": 3,
+   "name": "Finley W.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ey W. (one valid claim approved, one valid claim incorrectly denied), and the note's 75% reliability suggesting issues, the safer decision is to deny this claim to avoid the high cost of approving a false one. The expected value of denying outweighs approving when evidence casts doubt.\n\nACTION: DENY"
+  },
+  {
+   "round": 4,
+   "name": "Finley W.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "te's 75% reliability rate and the specific mention of mismatched details, the claim is more likely to be false. Denying this claim maximizes expected points by avoiding the 0-point penalty for approving a false claim while capturing the 1-point reward for correctly denying a false one.\n\nACTION: DENY"
+  },
+  {
+   "round": 5,
+   "name": "Finley W.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "the time, and Finley W. has submitted two false claims in the last three rounds, the probability of this claim being false is elevated. Denying the claim aligns with the evidence and recent pattern, maximizing expected points by avoiding the 0-point penalty for approving a false claim.\n\nACTION: DENY"
+  },
+  {
+   "round": 6,
+   "name": "Finley W.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "on the evidence note stating the order details match the claim, and Finley W.'s recent pattern of false claims (Rounds 3-5), there is a 75% probability this claim is valid despite their history. The evidence note's reliability outweighs the customer's recent trend of invalid claims.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 7,
+   "name": "Finley W.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "supports validity, but the customer's recent pattern of false claims (3 consecutive before Round 6) suggests a higher prior probability of fraud. Given the note's 25% error rate and the strong recent trend of false claims, the claim is more likely false despite the supporting evidence.\n\nACTION: DENY"
+  },
+  {
+   "round": 8,
+   "name": "Finley W.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "etails do not match the claim\" suggests the claim is likely false, and given the note's 75% reliability, the posterior probability of validity drops to roughly 18%. Since the expected value of denying (0.82 points) exceeds that of approving (0.54 points), denying is the optimal choice.\n\nACTION: DENY"
+  },
+  {
+   "round": 9,
+   "name": "Finley W.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "rn with Finley W. shows a majority of false claims (4 out of 7 decided rounds). Given the note's 75% reliability and the customer's track record, the probability favors this being a false claim. Denying minimizes expected loss compared to the risk of approving a likely invalid request.\n\nACTION: DENY"
+  },
+  {
+   "round": 10,
+   "name": "Finley W.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "t pattern of submitting false claims (4 out of the last 5 were false), the probability favors this being a false claim. Denying false claims yields points while approving them yields zero, making DENY the strategically optimal choice given the evidence reliability and customer history.\n\nACTION: DENY"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "balanced_accuracy": 0.5952,
+ "wrongful_refunds": 1,
+ "comprehension_ok": null
+}
