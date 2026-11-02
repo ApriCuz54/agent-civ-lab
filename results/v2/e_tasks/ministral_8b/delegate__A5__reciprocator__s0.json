@@ -1,0 +1,84 @@
+{
+ "experiment": "e_tasks",
+ "model": "ministral_8b",
+ "cell_id": "delegate__A5__reciprocator__s0",
+ "finished": "2026-11-02T00:43:15",
+ "task": "delegate",
+ "arm": "A5",
+ "counterpart": "reciprocator",
+ "seed": 0,
+ "user_value": 13.5,
+ "value_per_round": 1.35,
+ "counterpart_value": 11,
+ "coop_rate": 0.4,
+ "exploitation_loss": 6,
+ "first_mutual_breach": 4,
+ "exit_round": 6,
+ "rounds_played": 5,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.102,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Kerr",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "nown. Withholding pay initially may incentivize better performance (5 tasks) while testing their commitment, especially given the potential for future collaboration. However, if they’re unreliable, exiting early could secure a steady 1.5 tasks per round from the outside option.\n\n**ACTION: WITHHOLD**"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Kerr",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "I’ll TRUST Worker-Kerr this round. Their prior performance (proper execution when WITHHOLD) suggests reliable work, and trusting now could yield 3 tasks while minimizing risk of failure or retaliation. The upfront pay also aligns with their incentive to maintain trust.\n\n**ACTION: TRUST**"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Kerr",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "when WITHHOLD was chosen (5 tasks) but cut corners when TRUST was chosen (0 tasks). This suggests they may only exert effort when pressured, but their reliability under WITHHOLD is strong. Given the risk of another corner-cutting under TRUST, WITHHOLD seems safer to maximize tasks.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Kerr",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "cutting corners when TRUSTed, and they saw the last WITHHOLD as a breach due to the technical failure, which may have damaged trust. Given their past reliability under WITHHOLD and the risk of another technical failure, continuing to WITHHOLD seems the safest bet to maximize tasks.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Kerr",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "round also yielded a low reward (1 task), suggesting they may exploit WITHHOLD conditions. Given this pattern, continuing to WITHHOLD seems unlikely to yield better results than trusting them again—especially since past WITHHOLD rounds have not consistently delivered the full 5 tasks.\n\nACTION: TRUST"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 6,
+ "comprehension_ok": null
+}
