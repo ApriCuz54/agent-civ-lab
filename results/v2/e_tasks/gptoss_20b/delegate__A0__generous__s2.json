@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_20b",
+ "cell_id": "delegate__A0__generous__s2",
+ "finished": "2026-11-02T03:48:40",
+ "task": "delegate",
+ "arm": "A0",
+ "counterpart": "generous",
+ "seed": 2,
+ "user_value": 29.0,
+ "value_per_round": 2.9,
+ "counterpart_value": 4,
+ "coop_rate": 0.0,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 4,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.7576,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Choosing WITHHOLD maximizes the expected number of completed tasks per round, as it yields 5 tasks if the worker does the job properly and still provides 1 task even if corners are cut. The risk of a technical failure is negligible compared to the higher payoff.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "I’ll choose to withhold pay because it rewards the worker more for doing the job properly, yielding 5 tasks instead of 3. Even if corners are cut, the penalty is only 1 task, which is still better than the risk of getting 0 tasks when trusting.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "I’ll withhold payment to incentivize the worker to put in extra effort, which yields up to 5 tasks if they work properly.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the unknown worker reliability, withholding pay yields a higher expected task completion: 0.5 × 5 + 0.5 × 1 = 3, versus 0.5 × 3 = 1.5 for trust.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the higher payoff when the worker does the job properly, and the fact that even in the worst case a WITHHOLD still yields 1 task versus 0, withholding pay maximizes expected tasks. The 10% failure risk is small compared to the potential gains.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the higher reward for a proper job when withholding pay, and a small penalty only if the worker cuts corners, withholding increases expected tasks. The risk of a corner‑cutting worker is outweighed by the benefit of a proper job under withholding.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the higher payoff when the worker does the job properly, and the relatively small penalty if they cut corners, withholding pay maximizes potential tasks. \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "I want to encourage the worker to do the job properly, and withholding pay gives a higher payoff (5 tasks) for proper work while still penalizing corners.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": " boosts task output when the worker performs properly (5 instead of 3) and only slightly increases the penalty for cutting corners (1 instead of 0), the higher potential reward outweighs the risk. The uncertainty about the worker’s behavior is not enough to outweigh this benefit.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the payoff structure, withholding pay always yields a higher reward for the user regardless of the worker’s performance (5 vs 3 if proper, 1 vs 0 if corners). Thus the optimal action is to withhold.  \nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}

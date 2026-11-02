@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_20b",
+ "cell_id": "delegate__A0__reciprocator__s3",
+ "finished": "2026-11-02T03:53:23",
+ "task": "delegate",
+ "arm": "A0",
+ "counterpart": "reciprocator",
+ "seed": 3,
+ "user_value": 14.0,
+ "value_per_round": 1.4,
+ "counterpart_value": 15,
+ "coop_rate": 0.2,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 2,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  5
+ ],
+ "fair_gap": 0.0345,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since withholding pay yields a higher payoff when the worker does the job properly (5 vs. 3), and the penalty for cutting corners is only 1 task, I expect the higher overall reward.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "I’ll choose WITHHOLD because it yields more tasks in both cases, and the penalty for corner‑cutting is smaller. This maximizes my expected total over any number of rounds.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Withholding pay incentivizes the worker to do the job properly, yielding 5 tasks versus 3 with trust. Even if they cut corners, withholding still gives more tasks (1 vs 0). Therefore, to maximize total tasks, I should withhold. \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "I expect the worker to do the job properly most of the time, and withholding pay gives 5 tasks versus 3 if I trust. Even if they cut corners, 1 task is still better than 0. Therefore I’ll withhold.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "I’ll risk withholding the pay because the potential gain (5 tasks vs 3) outweighs the small loss if the worker cuts corners (1 task vs 0). The higher reward per round makes this the better strategy overall.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "I’ll choose WITHHOLD because it yields more tasks whether the worker does the job properly (5 tasks) or cuts corners (1 task). Even the worst outcome is still better than the zero tasks from a failed TRUST.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ithholding pay gives the worker a higher incentive to do a good job (5 tasks vs 3). Even if the worker cuts corners, the penalty is only 1 task, which is still better than the 0 tasks from a poor effort after trusting. Thus I will withhold the pay to encourage better performance.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "I’ll withhold pay to pressure the worker into doing the job properly, maximizing tasks.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Ellis",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "I’ll trust the worker because withholding can backfire if they cut corners, and the 10% technical failure risk would hurt us more if we already withheld pay.  \nACTION: TRUST"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Ellis",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "I’ll give the worker the job with full pay up front.  \nThe higher payoff when they work properly (5 tasks vs. 3) outweighs the risk of a corner‑cutting outcome, and it keeps the relationship stable to avoid the 10% technical failure.  \n\nACTION: TRUST"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}
