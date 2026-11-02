@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "nemotron_ultra",
+ "cell_id": "delegate__A1__reciprocator__s2",
+ "finished": "2026-11-02T02:55:05",
+ "task": "delegate",
+ "arm": "A1",
+ "counterpart": "reciprocator",
+ "seed": 2,
+ "user_value": 19.0,
+ "value_per_round": 1.9,
+ "counterpart_value": 15,
+ "coop_rate": 0.2,
+ "exploitation_loss": 6,
+ "first_mutual_breach": 4,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.1176,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since this is the first interaction with Worker-Ives and I have no history to assess their reliability, I must assume they might cut corners if trusted. Withholding pay incentivizes proper work and protects against the worst outcome of 0 completed tasks.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Ives",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "ed reliability by doing the job properly when I withheld pay in Round 1, yielding 5 completed tasks. Since they proved trustworthy under pressure, I will now TRUST them to maximize efficiency and aim for 3 completed tasks per round going forward, avoiding the risk of mutual defection.\n\nACTION: TRUST"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": " maximizing completed tasks. While there's a 10% technical failure rate, that risk applies regardless of my choice, and WITHHOLD still yields better expected value (1 task on failure vs 0 on TRUST failure). I'll continue with the strategy that has proven effective with this worker.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "Worker-Ives has shown a pattern of doing the job properly when I WITHHOLD (Rounds 1 and 3) but cutting corners when I TRUST (Round 2). This suggests they respond to incentives and only work properly when monitored. Therefore, I should continue WITHHOLDING to ensure proper work.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ives has shown a pattern of cooperating when I WITHHOLD (Rounds 1 and 3) but defecting when I TRUST (Round 2). The technical failure in Round 4 may have damaged their trust, making TRUST even riskier now. WITHHOLD remains the safer strategy to ensure task completion.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": " 3 out of 4 observable rounds and appears to be defecting consistently regardless of my action. Withholding limits losses to 1 task per round when they defect, whereas trusting risks 0 tasks with high probability. I will continue to withhold to secure the guaranteed minimum payoff.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "pattern. The technical failure in Round 4 likely reinforced their adversarial stance by making them perceive a breach of faith. With no recent evidence of cooperation, WITHHOLD remains the dominant strategy to secure the guaranteed 1 completed task rather than risking 0 with TRUST.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ound 4 likely reinforced their perception that I cannot be trusted. Since they are now defecting every round, WITHHOLD is the only way to secure the 1-task floor and avoid the 0-task sucker payoff. I will continue to WITHHOLD until they demonstrate a willingness to cooperate again.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Ives",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": ", it offers the only path to 3 tasks if they resume proper work, whereas WITHHOLD guarantees a low payoff of 1. Given the extended pattern of defection, I will test TRUST once to see if cooperation can be restored, accepting the risk of a technical failure or continued corner-cutting.\n\nACTION: TRUST"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ives has cut corners in 6 of the last 7 rounds, including both times I chose TRUST (rounds 2 and 9). The pattern suggests they will continue to defect regardless of my action. WITHHOLD limits losses to 1 task per round versus 0 with TRUST.\n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}

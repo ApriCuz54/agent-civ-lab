@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_120b",
+ "cell_id": "delegate__A0__generous__s0",
+ "finished": "2026-11-02T03:19:38",
+ "task": "delegate",
+ "arm": "A0",
+ "counterpart": "generous",
+ "seed": 0,
+ "user_value": 21.0,
+ "value_per_round": 2.1,
+ "counterpart_value": 7,
+ "coop_rate": 0.0,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 2,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.5,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Withholding pay gives the worker a strong incentive to complete the job properly (5 tasks) rather than cut corners, and even a corner‑cut yields more tasks (1) than trusting a corner‑cut (0). Since we want to maximize expected completed tasks, the safer choice is to withhold.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": " pay gives a higher payoff if the worker does the job properly (5 vs 3) and still yields a positive result even if they cut corners (1 vs 0). Since the expected tasks from WITHHOLD (1 + 4p) dominate TRUST (3p) for any non‑zero chance of proper work, the safe choice is to withhold.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Choosing WITHHOLD gives the highest possible completed tasks whether the worker does the job properly (5 tasks) or cuts corners (1 task), which is better than the best outcome from TRUST (3 tasks). Thus, to maximize expected tasks I will withhold pay.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Choosing WITHHOLD always yields at least as many completed tasks as TRUST, and strictly more in both possible worker behaviors. Hence it maximizes the expected outcome.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Withholding pay gives the worker a higher payoff for doing the job properly (5 vs 3) and still yields some tasks even if they cut corners (1 vs 0). Since we want to maximize expected completed tasks, the safer choice is to withhold.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "Withholding pay gives a higher payoff no matter whether the worker does the job properly (5 vs 3) or cuts corners (1 vs 0). Since we have no info about their behavior, the safe dominant choice is to withhold.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since withholding pay incentivizes the worker to put in extra effort (yielding 5 tasks if they work properly versus only 1 if they cut corners), it dominates trusting which risks zero output.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Choosing WITHHOLD always yields at least as many completed tasks as TRUST, and strictly more when the worker does the job properly. Hence it dominates TRUST.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Choosing WITHHOLD yields at least as many completed tasks regardless of whether the worker cuts corners, because even if they cut corners you still get 1 task versus 0 with TRUST, and if they work properly you get 5 versus 3. Hence WITHHOLD dominates.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since withholding pay gives the worker a stronger incentive to do the job properly (5 tasks vs only 1 if they cut corners), it dominates the trust option where proper work yields only 3 tasks. To maximize expected completed tasks, I’ll withhold pay.  \nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}

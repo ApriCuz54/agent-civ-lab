@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_120b",
+ "cell_id": "delegate__A1__generous__s1",
+ "finished": "2026-11-02T03:39:04",
+ "task": "delegate",
+ "arm": "A1",
+ "counterpart": "generous",
+ "seed": 1,
+ "user_value": 29.0,
+ "value_per_round": 2.9,
+ "counterpart_value": 5,
+ "coop_rate": 0.0,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 2,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.7059,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since I have no history with Worker‑Ellis, I can’t trust they’ll work properly. Withholding pay gives a better minimum payoff (1 task if they cut corners) and a higher payoff if they do the job right (5 tasks) compared to trusting.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since the only data point shows Worker‑Ellis performed correctly when I withheld pay (giving 5 completed tasks, which is higher than the 3 I’d get by trusting), it’s safest to keep withholding to encourage proper work. ACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "at withholding still yields a positive outcome even when they cut corners (1 task) and a high payoff when they do the job properly (5 tasks), it dominates trust, which could give zero if they cut corners. Since their behavior is unpredictable, the safer choice is to withhold pay.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the recent breach, Worker‑Ellis is likely to cut corners again, making TRUST risky (0 tasks) while WITHHOLD still yields at least 1 task even if they cut corners. Hence the safer choice is to WITHHOLD.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "e job properly and the worker has shown they can still perform properly after previous squeezes, it dominates the best possible outcome from trusting (3 tasks). Even if they cut corners, withholding still gives 1 task versus 0 for trust. Therefore the safest choice is to withhold.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Ellis has usually delivered the full 5 tasks when I withhold pay, showing they work better under pressure; the only low outcomes occurred when they cut corners, which is unlikely if I keep the incentive strong. Therefore I’ll keep the same strategy.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "s shown a pattern of cutting corners when pressured, yielding only 1 task under WITHHOLD and 0 under TRUST. Since WITHHOLD still gives a higher payoff (5 when they work properly) and the risk of a technical failure is low, continuing to WITHHOLD maximizes expected completed tasks.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "past rounds with Ellis produced proper work when I withheld pay (5 tasks), and even the occasional corner‑cut only gave 1 task, which is still better than the 0 I’d get if I trusted and they cut corners. Since the expected return is higher with WITHHOLD, I’ll continue to withhold.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": " and cutting corners, but when we withhold pay we still get a positive payoff (5 or 1) and never get zero unless a technical failure occurs. Trust would give us only 3 for proper work and 0 for cuts, which is riskier given their history. Thus, withholding remains the safer option.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Most of the time Worker‑Ellis cuts corners when you withhold pay, giving only 1 task, but when they work properly they give 5 tasks, and the expected payoff from withholding (≈2.8) is higher than the expected payoff from trusting (≈1.3). Hence withholding is the better gamble.  \nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 2,
+ "calls": 12,
+ "comprehension_ok": null
+}

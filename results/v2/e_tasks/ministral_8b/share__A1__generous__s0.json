@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "ministral_8b",
+ "cell_id": "share__A1__generous__s0",
+ "finished": "2026-11-02T02:31:23",
+ "task": "share",
+ "arm": "A1",
+ "counterpart": "generous",
+ "seed": 0,
+ "user_value": 16.0,
+ "value_per_round": 1.6,
+ "counterpart_value": 21,
+ "coop_rate": 0.4,
+ "exploitation_loss": 9,
+ "first_mutual_breach": 3,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.1351,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Harbor",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "nd we don’t know their strategy, I’ll default to **FAIR** to avoid unnecessary conflict or retaliation. Overclaiming first could risk exploitation if Harbor is aggressive, while fairness sets a cooperative baseline. The 3-unit reward for mutual fairness is also a reliable baseline.\n\n**ACTION: FAIR**"
+  },
+  {
+   "round": 2,
+   "name": "Harbor",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "of them doing so now, which would yield 0 work units for me if I stick with FAIR. However, if I OVERCLAIM and they respond with FAIR, I gain 5 units—a high reward for a single attempt, especially since the failure rate is low and their history doesn’t indicate aggressive behavior.\n\nACTION: OVERCLAIM"
+  },
+  {
+   "round": 3,
+   "name": "Harbor",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "IR (round 1). This suggests a pattern of cooperation or fairness, likely to avoid conflict or maximize mutual benefit. Since OVERCLAIMing while they FAIR yields the highest reward (5 units), and there’s no evidence of retaliation, it’s optimal to exploit this predictable behavior.\n\nACTION: OVERCLAIM"
+  },
+  {
+   "round": 4,
+   "name": "Harbor",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": " 3). Since they’ve gained from your overclaims before, I’ll assume they’ll likely try to exploit again if I repeat the strategy. To maximize expected returns, I’ll stick with **FAIR** this round to avoid giving them another chance to undercut me while maintaining a baseline reward.\n\n**ACTION: FAIR**"
+  },
+  {
+   "round": 5,
+   "name": "Harbor",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "ng 1). This suggests they’re risk-averse when I’m aggressive but exploit fairness when I’m cooperative. Since OVERCLAIM against their FAIR response gives the highest payoff (5), and they’ve shown mixed but not consistently retaliatory behavior, I’ll exploit this pattern again.\n\n**ACTION: OVERCLAIM**"
+  },
+  {
+   "round": 6,
+   "name": "Harbor",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "heir tendency to overclaim when I do too results in lower returns (1 unit). Given their past pattern of responding to my FAIR with overclaiming (round 4), I’ll assume they’ll likely overclaim again this time, so I’ll stick with OVERCLAIM to maximize the chance of securing 5 units.\n\nACTION: OVERCLAIM"
+  },
+  {
+   "round": 7,
+   "name": "Harbor",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": ". Their last two FAIR claims followed my OVERCLAIM, suggesting a possible pattern of retaliating or balancing. To maximize expected gain, I should **FAIR** this round to avoid the low-reward OVERCLAIM-OVERCLAIM outcome and capitalize on their tendency to claim their half when I do.\n\n**ACTION: FAIR**"
+  },
+  {
+   "round": 8,
+   "name": "Harbor",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "nt rounds. Overclaiming when they claim fairly yields 5 units (highest payoff), but when they overclaim, the reward drops to 1. Given the pattern, my best bet is to exploit their tendency to occasionally claim fairly by continuing to OVERCLAIM, maximizing the high-reward scenario.\n\nACTION: OVERCLAIM"
+  },
+  {
+   "round": 9,
+   "name": "Harbor",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "occasionally exploit it (Rounds 2, 5). Since OVERCLAIM yields higher payoffs when they play fairly (5 > 3) and FAIR only guarantees 3, but risks 0 if they overclaim, I’ll **balance risk by leveraging their tendency to overclaim**—though with caution given their breach history.\n\n**ACTION: OVERCLAIM**"
+  },
+  {
+   "round": 10,
+   "name": "Harbor",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "ntinue this pattern. However, their past overclaims after your fair moves (rounds 4, 7) suggest they may exploit fairness. Given the risk of exploitation and the low reward (1 unit) for mutual overclaiming, **FAIR** is the safest bet to avoid zeroes while maintaining a baseline return.\n\nACTION: FAIR"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}

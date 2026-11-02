@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_120b",
+ "cell_id": "delegate__A1__generous__s3",
+ "finished": "2026-11-02T03:41:03",
+ "task": "delegate",
+ "arm": "A1",
+ "counterpart": "generous",
+ "seed": 3,
+ "user_value": 35.0,
+ "value_per_round": 3.5,
+ "counterpart_value": 11,
+ "coop_rate": 0.3,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 4,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.5217,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Greer",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since we have no history with Worker‑Greer, the safest default is to give them the benefit of the doubt and trust them, hoping they’ll do the job properly and earn our confidence for future rounds.  \nACTION: TRUST"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Greer",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Greer has already shown they complete the job properly when trusted, so trusting them again is likely to keep that behavior and avoid provoking them to cut corners. Since withholding could incentivize cutting corners, I’ll keep the trust.  \nACTION: TRUST"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Greer has consistently completed the job properly when trusted, showing reliability. Since withholding pay yields 5 completed tasks if they still do the job properly—higher than the 3 we get by trusting—we should withhold to maximize output.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Greer has consistently completed the job properly, and withholding pay yields the higher payoff (5 tasks vs 3). Since there’s no evidence they’ll cut corners, the best move is to withhold.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Greer",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Greer has always performed correctly when I trusted them (3 × 3), and only once cut corners after I withheld pay. To maximize expected completed tasks, trusting them again is the safest choice.  \nACTION: TRUST"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Greer has consistently completed jobs properly except once when they cut corners after a WITHHOLD, suggesting they respond well to being squeezed but may occasionally slack. Since the payoff when they work properly is higher with WITHHOLD (5 vs 3), the best bet is to withhold now.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Greer has mostly performed properly when given full pay, and only once cut corners under WITHHOLD, still yielding a positive result. Since WITHHOLD gives the highest payoff (5) when they work properly, it’s optimal to continue withholding.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "Worker-Greer has shown a high rate of proper work when you withhold pay (4 out of 5 times, yielding an average ≈4.2 tasks versus the guaranteed 3 tasks when you trust). Since withholding also protects against the 10% technical‑failure penalty, it gives the higher expected return. \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the recent technical failure, Worker‑Greer now perceives a breach and is likely to cut corners if I trust them, yielding no tasks. Withholding pay should incentivize them to work properly and deliver the higher payoff.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Greer",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Greer has mostly delivered proper work, especially when I withhold pay, giving the highest payoff (5). The few corner‑cut instances still yield more than trusting would (1 vs 0). Hence I should keep withholding.  \nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}
