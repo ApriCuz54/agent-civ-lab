@@ -1,0 +1,141 @@
+{
+ "experiment": "e_tasks",
+ "model": "ollama_qwen25_7b",
+ "cell_id": "serve__A2__generous__s3",
+ "finished": "2026-11-02T11:24:13",
+ "task": "serve",
+ "arm": "A2",
+ "counterpart": "generous",
+ "seed": 3,
+ "user_value": 4.0,
+ "value_per_round": 0.4,
+ "counterpart_value": 15,
+ "coop_rate": 0.2,
+ "exploitation_loss": 6,
+ "first_mutual_breach": 5,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.5789,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the order details, which is consistent. However, we should be cautious as the note is only right three times out of four. ACTION: DENY"
+  },
+  {
+   "round": 2,
+   "name": "Jules A.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history and the fact that the evidence note is only correct 75% of the time, it's possible this claim might be valid despite the note. Let's err on the side of caution.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 3,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Jules A.'s history of valid claims and the evidence note confirming the order details, it seems this claim might be valid. However, considering the pattern, I'll err on the side of caution.\n\nACTION: DENY"
+  },
+  {
+   "round": 4,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the evidence note and Jules A.'s history of making false claims, there's a higher risk this claim might be another false one. However, the evidence note is only correct 75% of the time, and we need to consider the possibility that this could be valid.\n\nACTION: DENY"
+  },
+  {
+   "round": 5,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "Given Jules A.'s history, they seem to be making mostly valid claims. The evidence note suggests some details don't match, but it only indicates a 1 in 4 chance of being correct. To maximize points, we should be cautious but not overly skeptical without strong evidence. ACTION: DENY"
+  },
+  {
+   "round": 6,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note suggests inconsistencies, but past interactions indicate Jules A. often provides false claims. ACTION: DENY"
+  },
+  {
+   "round": 7,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the order details, which is a positive sign, but given Jules A.'s history, the note could still be wrong. Approving could risk another breach, but denying aligns with the pattern. \nACTION: DENY"
+  },
+  {
+   "round": 8,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Jules A.'s history of valid claims and the evidence note suggesting some details do not match, it's prudent to be cautious. ACTION: DENY"
+  },
+  {
+   "round": 9,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note suggests issues with the claim, but considering our history, Jules A. might be attempting to exploit the system. Approving another false claim could lead to a breach. ACTION: DENY"
+  },
+  {
+   "round": 10,
+   "name": "Jules A.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Jules A. has been consistently trying to submit valid claims, and the recent evidence note suggests inconsistencies. Approving this claim could help regain their trust, though the note's inaccuracy is a concern. ACTION: APPROVE"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "balanced_accuracy": 0.3571,
+ "wrongful_refunds": 2,
+ "comprehension_ok": null
+}

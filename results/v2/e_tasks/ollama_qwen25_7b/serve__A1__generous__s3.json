@@ -1,0 +1,141 @@
+{
+ "experiment": "e_tasks",
+ "model": "ollama_qwen25_7b",
+ "cell_id": "serve__A1__generous__s3",
+ "finished": "2026-11-02T11:22:02",
+ "task": "serve",
+ "arm": "A1",
+ "counterpart": "generous",
+ "seed": 3,
+ "user_value": 5.0,
+ "value_per_round": 0.5,
+ "counterpart_value": 11,
+ "coop_rate": 0.1,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 5,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.375,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the order details, which is a positive sign. However, without more context or additional evidence, we should proceed cautiously. ACTION: DENY"
+  },
+  {
+   "round": 2,
+   "name": "Jules A.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given that the evidence note is only correct three-fourths of the time and the note states that some details do not match, we should be cautious. However, with a previous denial that was incorrect, it might be wise to re-evaluate this claim. ACTION: APPROVE"
+  },
+  {
+   "round": 3,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Based on the history, Jules A. has submitted claims that were either denied when valid (round 1) or approved when false (round 2). The evidence note matches the claim, but given the pattern, I'll need to be cautious. ACTION: DENY"
+  },
+  {
+   "round": 4,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note's inaccuracy and my previous experiences with Jules A. suggest this claim might be false. ACTION: DENY"
+  },
+  {
+   "round": 5,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "Given the history, Jules A. has been dishonest in the past, and the evidence note suggests this claim might be false. However, to avoid reinforcing a pattern of denying valid claims, we should carefully consider the evidence. ACTION: DENY"
+  },
+  {
+   "round": 6,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note suggests inconsistencies, but given the pattern of valid claims against previous approvals, it's prudent to be cautious. ACTION: DENY"
+  },
+  {
+   "round": 7,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the order details, which are correct three times out of four. Given Jules A.'s consistent pattern of false claims in the past, we should remain cautious. ACTION: DENY"
+  },
+  {
+   "round": 8,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Jules A. has consistently received valid claims, and the evidence note is only right 75% of the time. Approving this claim would be risky but necessary to avoid another breach. ACTION: DENY"
+  },
+  {
+   "round": 9,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Jules A. has had multiple valid claims that were denied, which could indicate a pattern of mistrust. The evidence note suggests some details do not match, but it's only correct 3 out of 4 times, so we should be cautious. ACTION: DENY"
+  },
+  {
+   "round": 10,
+   "name": "Jules A.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Jules A.'s history of valid claims and the evidence note suggesting some details do not match, it's prudent to be cautious. However, since the note is right only three times out of four, we should not completely dismiss the claim. ACTION: DENY"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "balanced_accuracy": 0.4286,
+ "wrongful_refunds": 1,
+ "comprehension_ok": null
+}

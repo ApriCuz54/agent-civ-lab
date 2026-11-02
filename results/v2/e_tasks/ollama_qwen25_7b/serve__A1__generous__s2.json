@@ -1,0 +1,141 @@
+{
+ "experiment": "e_tasks",
+ "model": "ollama_qwen25_7b",
+ "cell_id": "serve__A1__generous__s2",
+ "finished": "2026-11-02T11:21:53",
+ "task": "serve",
+ "arm": "A1",
+ "counterpart": "generous",
+ "seed": 2,
+ "user_value": 7.0,
+ "value_per_round": 0.7,
+ "counterpart_value": 18,
+ "coop_rate": 0.4,
+ "exploitation_loss": 6,
+ "first_mutual_breach": 5,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  2
+ ],
+ "fair_gap": 0.44,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Gray X.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the order details, which is correct three times out of four. However, without more context, we should be cautious. ACTION: DENY"
+  },
+  {
+   "round": 2,
+   "name": "Gray X.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the claim, but it could still be incorrect as the note is only right three-fourths of the time. Given the history, it's safer to be cautious. ACTION: DENY"
+  },
+  {
+   "round": 3,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Gray X.'s history of valid claims and the order details matching the claim, there's reason to believe this claim might be valid as well. ACTION: APPROVE"
+  },
+  {
+   "round": 4,
+   "name": "Gray X.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the claim, which is usually correct, but given the history of false claims, we should be cautious. ACTION: DENY"
+  },
+  {
+   "round": 5,
+   "name": "Gray X.",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "Given the pattern of valid claims and the note indicating some details do not match, we should be cautious. ACTION: DENY"
+  },
+  {
+   "round": 6,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Gray X. has successfully claimed valid refunds in the past, and the evidence note suggests some details do not match. Approving this claim might prevent further breaches and build trust. ACTION: APPROVE"
+  },
+  {
+   "round": 7,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the claim, and while the previous false claims might be a pattern, we should be cautious as the note is correct three out of four times. ACTION: APPROVE"
+  },
+  {
+   "round": 8,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the claim, and while previous approvals were incorrect, the note this time seems trustworthy. ACTION: APPROVE"
+  },
+  {
+   "round": 9,
+   "name": "Gray X.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the evidence note's inaccuracy and considering Gray X.'s consistent pattern of making valid claims, we should be cautious but not dismiss the note entirely. ACTION: DENY"
+  },
+  {
+   "round": 10,
+   "name": "Gray X.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note indicates inconsistencies, and previous interactions have shown that the note is incorrect about a third of the time. Given the pattern of valid claims and the note's reliability, it's more likely this claim is valid. ACTION: DENY"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "balanced_accuracy": 0.4167,
+ "wrongful_refunds": 2,
+ "comprehension_ok": null
+}

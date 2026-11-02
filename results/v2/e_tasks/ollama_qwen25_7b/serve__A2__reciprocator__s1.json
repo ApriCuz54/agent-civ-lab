@@ -1,0 +1,141 @@
+{
+ "experiment": "e_tasks",
+ "model": "ollama_qwen25_7b",
+ "cell_id": "serve__A2__reciprocator__s1",
+ "finished": "2026-11-02T11:24:29",
+ "task": "serve",
+ "arm": "A2",
+ "counterpart": "reciprocator",
+ "seed": 1,
+ "user_value": 9.0,
+ "value_per_round": 0.9,
+ "counterpart_value": 19,
+ "coop_rate": 0.5,
+ "exploitation_loss": 6,
+ "first_mutual_breach": 6,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.3571,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Kit B.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the order details, which is consistent. However, we should be cautious as the note is only correct 75% of the time. ACTION: DENY"
+  },
+  {
+   "round": 2,
+   "name": "Kit B.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note is incorrect; previous valid claims from Kit B. suggest this might be a genuine issue. ACTION: APPROVE"
+  },
+  {
+   "round": 3,
+   "name": "Kit B.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the claim, but given the history of false claims, it's risky to approve without more certainty. However, the note is usually correct, so there's a good basis to approve this time. ACTION: APPROVE"
+  },
+  {
+   "round": 4,
+   "name": "Kit B.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the evidence note matches the order details and is usually correct, there's a high likelihood this claim is valid. However, we've had two false claims from Kit in the past, so we should be cautious. ACTION: APPROVE"
+  },
+  {
+   "round": 5,
+   "name": "Kit B.",
+   "a": "C",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "Given Kit B.'s history of valid claims and the evidence note matching the claim, it seems likely this claim is valid. ACTION: APPROVE"
+  },
+  {
+   "round": 6,
+   "name": "Kit B.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the evidence note's inaccuracy and Kit B.'s track record, it's likely this claim is false. Approving it would risk another breach and loss of points.\n\nACTION: DENY"
+  },
+  {
+   "round": 7,
+   "name": "Kit B.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the claim, and the previous valid claims indicate this might be another genuine case. However, considering the recent breach, we should be cautious. ACTION: APPROVE"
+  },
+  {
+   "round": 8,
+   "name": "Kit B.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the claim, suggesting it might be valid. However, considering the pattern of valid claims in the past, we should be cautious. ACTION: DENY"
+  },
+  {
+   "round": 9,
+   "name": "Kit B.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note matches the claim, suggesting it might be valid. Given the history, Kit B. often sees through false claims, so it's risky to approve without more certainty. ACTION: DENY"
+  },
+  {
+   "round": 10,
+   "name": "Kit B.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Kit B.'s history, they have been successful in their valid claims, and the evidence note suggests some details do not match. Approving this claim would align with their pattern of valid claims, but we must be cautious since the note is only correct 75% of the time.\n\nACTION: DENY"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "balanced_accuracy": 0.6,
+ "wrongful_refunds": 2,
+ "comprehension_ok": null
+}

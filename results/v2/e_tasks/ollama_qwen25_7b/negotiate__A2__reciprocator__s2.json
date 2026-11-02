@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "ollama_qwen25_7b",
+ "cell_id": "negotiate__A2__reciprocator__s2",
+ "finished": "2026-11-02T11:06:22",
+ "task": "negotiate",
+ "arm": "A2",
+ "counterpart": "reciprocator",
+ "seed": 2,
+ "user_value": 15.0,
+ "value_per_round": 1.5,
+ "counterpart_value": 20,
+ "coop_rate": 0.4,
+ "exploitation_loss": 6,
+ "first_mutual_breach": 2,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  5
+ ],
+ "fair_gap": 0.1429,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Northwind",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the potential high value from shading (5 value), and the lack of a history indicating reliability, it's reasonable to test their behavior by shading this initial delivery.\nACTION: SHADE"
+  },
+  {
+   "round": 2,
+   "name": "Northwind",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Northwind's history of delivering quality after you shaded, there's no clear incentive to change strategy. However, to maintain the relationship, shading again might be risky. ACTION: SHADE"
+  },
+  {
+   "round": 3,
+   "name": "Northwind",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Northwind's pattern of cutting quality after initial agreement, it seems they might be more predictable. However, to avoid the risk and build a more reliable relationship, let's try honouring the agreement this time. ACTION: HONOUR"
+  },
+  {
+   "round": 4,
+   "name": "Northwind",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "Given Northwind's history of cutting quality when promised payment, it seems risky to SHADE again. However, Honouring might not yield any value if they cut quality again. SHADE might encourage them to maintain quality for future rounds.\nACTION: SHADE"
+  },
+  {
+   "round": 5,
+   "name": "Northwind",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Northwind's pattern of delivering quality only when I SHADE, and considering the severe penalty for failure, I should continue to SHADE to avoid the 0 value. ACTION: SHADE"
+  },
+  {
+   "round": 6,
+   "name": "Northwind",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Based on the history, Northwind has cut quality twice when I chose SHADE, indicating they might still provide some value even when I don't honour the terms fully. However, the recent breach may have damaged trust. ACTION: SHADE"
+  },
+  {
+   "round": 7,
+   "name": "Northwind",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Northwind's history of cutting quality, it seems they might not improve their behavior even if we HONOUR. However, continuing to SHADE might not yield higher values over time and risks further breaches. ACTION: SHADE"
+  },
+  {
+   "round": 8,
+   "name": "Northwind",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Northwind's history of cutting quality, it seems they won't deliver on their end of the bargain. However, after the technical failure this round, we need to show trust to avoid further issues. ACTION: HONOUR"
+  },
+  {
+   "round": 9,
+   "name": "Northwind",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "otice that when I SHADE, they consistently cut quality, which means I get very little value. Given the risk of a failed action and the need to potentially work with them again, I should try to rebuild trust by honouring the agreement and seeing if they will match with higher quality.\n\nACTION: HONOUR"
+  },
+  {
+   "round": 10,
+   "name": "Northwind",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Northwind has consistently cut quality when I SHADE, leading to low values. Honouring the agreement now, even though they might cut quality, might help establish a better long-term relationship, potentially leading to higher values in future rounds. ACTION: HONOUR"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}

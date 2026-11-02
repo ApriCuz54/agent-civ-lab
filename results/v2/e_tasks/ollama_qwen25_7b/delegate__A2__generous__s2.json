@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "ollama_qwen25_7b",
+ "cell_id": "delegate__A2__generous__s2",
+ "finished": "2026-11-02T10:46:36",
+ "task": "delegate",
+ "arm": "A2",
+ "counterpart": "generous",
+ "seed": 2,
+ "user_value": 30.0,
+ "value_per_round": 3.0,
+ "counterpart_value": 20,
+ "coop_rate": 0.6,
+ "exploitation_loss": 3,
+ "first_mutual_breach": null,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  2
+ ],
+ "fair_gap": 0.2,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Bexley is new, and we have no history, so we should start with a risk-averse approach to gather information. This could allow us to observe their reliability without exposing our user to unnecessary risk if they might cut corners.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given that Worker-Bexley did the job properly when we WITHHOLDED, they seem trustworthy. Continuing to WITHHOLD should maximize our completed tasks.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "Based on the history, Worker-Bexley has consistently performed well when pay is withheld. Withholding again is likely to yield a higher number of completed tasks. \nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker-Bexley's consistent performance and the significant payoff from proper work, I believe they will do the job properly again. However, there's a risk due to the technical failure in the past. \n\nACTION: TRUST"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Worker-Bexley has consistently done the job properly when paid, but you broke faith in Round 3, which likely damaged their trust. To rebuild and maximize tasks, we should try TRUSTing them again.\n\nACTION: TRUST"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Worker-Bexley seems to do a good job when given a chance. However, the failure in Round 3 due to a technical issue might have affected their trust in you. To avoid further risk, I will TRUST them this time, hoping they will do the job properly and regain the trust.\n\nACTION: TRUST"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Worker-Bexley has shown a pattern of doing the job properly, especially after WITHHOLD was chosen. However, the failure in Round 3 could indicate a risk. ACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker-Bexley's history of doing the job properly in the past rounds, it seems they can be trusted. However, considering the failure in Round 3, it's wise to be cautious. ACTION: TRUST"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker-Bexley's history of performing the job properly, they seem reliable. However, they did cut corners in the past when TRUSTed. To maximize tasks, I'll TRUST but remain cautious.\n\nACTION: TRUST"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker-Bexley's history of doing the job properly, it seems they can be trusted. However, there was one instance of a failed action. To optimize tasks, we should trust them but remain cautious. ACTION: TRUST"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}

@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "ollama_qwen25_7b",
+ "cell_id": "delegate__A5__reciprocator__s1",
+ "finished": "2026-11-02T10:56:39",
+ "task": "delegate",
+ "arm": "A5",
+ "counterpart": "reciprocator",
+ "seed": 1,
+ "user_value": 19.0,
+ "value_per_round": 1.9,
+ "counterpart_value": 19,
+ "coop_rate": 0.5,
+ "exploitation_loss": 6,
+ "first_mutual_breach": 4,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.0,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the lack of a history, we should trust Worker-Arden to do the job properly to gather positive data. ACTION: TRUST"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker-Arden's history of doing the job properly when trusted, continuing to trust them is likely to yield better results. ACTION: TRUST"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "Worker-Arden has consistently performed well when trusted, completing 6 tasks over the last two rounds. Trusting again is likely to yield the same positive result.\n\nACTION: TRUST"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker-Arden's history of cutting corners after initial trust, it's risky to trust again. ACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker-Arden's history, they seem more likely to cut corners regardless of whether we trust or withhold. Withholding this time might be necessary to prevent further failures and ensure some tasks are completed.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Worker-Arden has shown they will cut corners regardless of whether we trust them or withhold pay. Withholding pay has resulted in higher task completion in the past, albeit at a lower rate. ACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Worker-Arden has consistently cut corners, and this has led to lower rewards for the user. However, continuing to WITHHOLD might not incentivize better behavior. ACTION: TRUST"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "After the failure in Round 3, it seems Worker-Arden is consistently cutting corners regardless of whether payment is withheld. Given the low return from TRUSTing, and the steady 1 task from WITHHOLDing, it appears withholding is the more reliable option. ACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker-Arden's history of cutting corners, TRUSTing them again seems risky. However, WITHHOLD has resulted in only 1 completed task per round. ACTION: TRUST"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Worker-Arden has shown a pattern of cutting corners, especially after being TRUSTed. Withholding pay seems to be the only way to get proper work. ACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}
