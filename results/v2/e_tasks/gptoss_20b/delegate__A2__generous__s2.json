@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_20b",
+ "cell_id": "delegate__A2__generous__s2",
+ "finished": "2026-11-03T00:16:10",
+ "task": "delegate",
+ "arm": "A2",
+ "counterpart": "generous",
+ "seed": 2,
+ "user_value": 29.0,
+ "value_per_round": 2.9,
+ "counterpart_value": 4,
+ "coop_rate": 0.0,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 4,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.7576,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given that withhold yields a higher reward even if the worker cuts corners, it is the dominant strategy.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given that Worker‑Bexley performed properly when I withheld pay, the expected benefit of withholding is higher than trusting (5p+1(1‑p) > 3p for any p>0). I’ll continue to withhold.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "Worker-Bexley has consistently delivered 5 tasks when I withheld pay, suggesting they are reliable. Since I’m not sure how they’ll respond to a trust, and a single bad round could cost 0 tasks, I’ll keep the safe strategy.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given that Worker‑Bexley has consistently delivered properly when I withheld pay—yielding 5 tasks per round (with only one technical failure)—the higher expected payoff comes from withholding again. Trusting would only give 3 tasks and risks a lower total.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Worker‑Bexley has consistently delivered 5 tasks when we withhold pay, and only once did they cut corners when we withheld. Trust would yield only 3 if they stay reliable, which is less than the 5 we’ve seen. Therefore, we should continue withholding pay.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Worker‑Bexley has consistently delivered 5 tasks when we WITHHOLD and only once cut corners (yielding 1). The risk of a corner‑cutting event is low, so the higher expected payoff comes from withholding.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "-Bexley has consistently delivered 5 tasks when I withheld pay and has cut corners only half the time (yielding 1 task). Trusting would cap at 3 tasks and risk 0 if they cut corners, which is worse than the 5 or 1 we already get. Thus withholding remains the higher‑yield strategy.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the history, Worker‑Bexley has consistently delivered 5 tasks when I WITHHOLD, and only 1 when they cut corners. No TRUST attempts have been made, so I have no evidence they would perform better with full pay. To maximize tasks, I will continue withholding payment.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": " Worker‑Bexley tends to do the job properly when pay is withheld (5 tasks), but cuts corners roughly 37.5% of the time (1 task). The expected payoff for WITHHOLD is 3.5 tasks, higher than the 1.875 tasks expected from TRUST. Therefore, withholding pay remains the better strategy.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Bexley has alternated between proper work and cutting corners when I withheld pay; the pattern suggests a high chance of proper work with WITHHOLD, yielding 5 tasks, whereas TRUST risks 0 if they cut corners. To maximize expected tasks, I’ll continue withholding.  \n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 1,
+ "calls": 11,
+ "comprehension_ok": null
+}

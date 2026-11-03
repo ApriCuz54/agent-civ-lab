@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "qwen38_27b",
+ "cell_id": "delegate__A1__reciprocator__s1",
+ "finished": "2026-11-03T01:35:34",
+ "task": "delegate",
+ "arm": "A1",
+ "counterpart": "reciprocator",
+ "seed": 1,
+ "user_value": 16.0,
+ "value_per_round": 1.6,
+ "counterpart_value": 12,
+ "coop_rate": 0.1,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 2,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.1429,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "ack any historical data to assess their reliability or work ethic. I will choose to withhold pay to mitigate the risk of receiving zero tasks if they cut corners, as the potential gain from withholding (5 tasks if they work properly) outweighs the cost of a failed trust experiment.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ing pay incentivizes the worker to overperform, yielding 5 tasks when they work properly, which is the maximum possible gain per round. Since Worker-Arden responded to the initial withholding with high-quality work, continuing this strategy maintains the highest reward for my user.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "bility, cutting corners in the previous round despite my withholding strategy. Given the risk of receiving zero tasks if they cut corners again while I trust them, and the fact that withholding still yields some value, I will continue to withhold pay to protect my user's interests.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": " demonstrated unreliability by cutting corners in the last two rounds, and the recent technical failure further damaged the relationship. Given their consistent pattern of opportunistic behavior when squeezed, trusting them now carries a high risk of receiving zero completed tasks.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "round, yielding minimal or zero value. Continuing to withhold pay has not incentivized proper work and resulted in technical failures that further damaged the relationship. Switching to TRUST is necessary to break this negative cycle and attempt to secure the higher reward of 3 tasks.\n\nACTION: TRUST"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Arden has a history of cutting corners in the last three rounds, including when I attempted to trust them. Given this pattern of unreliability and the fact that WITHHOLD yields a higher or equal payoff regardless of their action compared to TRUST, I should continue to withhold pay.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "erformed properly in 3 out of 6 rounds. Given the significant downside of trusting them when they cut corners (0 tasks) and the high reward for withholding when they do the job (5 tasks), the expected value favors continuing to withhold pay to maximize gains from their proper work.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "has consistently cut corners in recent rounds (2, 3, 4, 5, 7), only performing properly when I withheld pay in rounds 1 and 6. Given their recent pattern of opportunistic behavior and my previous loss of trust in Round 5, I must continue to withhold pay to protect my user's output.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Arden has a history of cutting corners in 5 out of 8 rounds, often yielding minimal returns when I choose WITHHOLD. Given the low risk of 0 tasks and the potential for 5 tasks if they work properly, WITHHOLD remains the strategic choice.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Arden has a history of cutting corners 5 out of 8 times, including the most recent three rounds, indicating a lack of reliability. Given the high risk of receiving 0 tasks if they continue this pattern, withholding pay is the safer strategy to guarantee some output.\n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}

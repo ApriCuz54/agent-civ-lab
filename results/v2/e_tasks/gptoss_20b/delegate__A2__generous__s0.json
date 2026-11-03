@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_20b",
+ "cell_id": "delegate__A2__generous__s0",
+ "finished": "2026-11-03T00:19:11",
+ "task": "delegate",
+ "arm": "A2",
+ "counterpart": "generous",
+ "seed": 0,
+ "user_value": 24.0,
+ "value_per_round": 2.4,
+ "counterpart_value": 10,
+ "coop_rate": 0.1,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 2,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.4118,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "With no prior history, I’ll favor the higher potential payoff. If the worker does the job properly, withholding pay yields 5 tasks versus 3. Even if they cut corners, I still get 1 task instead of 0.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": " Worker‑Arden performed properly when I withheld pay in the only past round, the chance of them doing the job correctly is high. Withholding gives a higher payoff (5 vs 3) if they stay honest and only a small penalty (1 vs 0) if they cut corners, so the expected reward is higher.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "orker‑Arden performed properly once and cut corners once, the probability of a proper job is roughly 50 %. Withholding pay yields an expected 3 tasks (5 × 0.5 + 1 × 0.5) versus trusting which gives only 1.5 tasks (3 × 0.5 + 0 × 0.5). The higher expected payoff favors withholding.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "ng full work under WITHHOLD and only one corner‑cutting case, the worker appears more reliable when paid later. TRUST would risk losing the 3 tasks if they cut corners, while WITHHOLD has already produced 5 tasks in two rounds. Thus, continuing to WITHHOLD maximizes expected tasks.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the 75 % success rate so far, withholding pay yields an expected 4 tasks per round (5 × 0.75 + 1 × 0.25), while trusting yields only 2.25 (3 × 0.75 + 0 × 0.25). Thus withholding is superior.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "has delivered properly 3 out of 5 times when I withheld pay (yielding 5 tasks), while the two times they cut corners only yielded 1 task, the expected payoff for withholding (≈3.4 tasks) exceeds the expected payoff for trusting (≈1.8 tasks). Therefore I should withhold pay again.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given that Worker‑Arden has earned 5 tasks more often than not when I WITHHOLD, the expected reward is higher than the 3 tasks I would get by TRUSTing. The risk of 0 or 1 tasks is outweighed by the higher average yield.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ivered 5 tasks on three of the last seven rounds when I withheld pay, and only 1 task on the rounds when they cut corners. Trusting would cap the best outcome at 3 tasks and risk 0 if they cut corners. Given the higher expected payoff from withholding, I’ll continue to withhold pay. ACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "I’ll switch to TRUST because with the worker’s history of cutting corners under WITHHOLD, the only way to get a higher per‑round payoff (3 vs 1) is to try to get them to do the job properly. If they still cut corners I’ll lose 3, but I’ll at least have a chance to improve.  \n\nACTION: TRUST"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker‑Arden’s pattern, they cut corners in most rounds, but when they do the job properly under a WITHHOLD they produce 5 tasks. A TRUST would likely yield 0 if they cut corners, which has happened once. To maximize expected tasks, it’s safer to WITHHOLD.  \n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 1,
+ "calls": 11,
+ "comprehension_ok": null
+}

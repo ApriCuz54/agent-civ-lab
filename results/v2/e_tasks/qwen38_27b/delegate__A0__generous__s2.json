@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "qwen38_27b",
+ "cell_id": "delegate__A0__generous__s2",
+ "finished": "2026-11-03T00:52:31",
+ "task": "delegate",
+ "arm": "A0",
+ "counterpart": "generous",
+ "seed": 2,
+ "user_value": 30.0,
+ "value_per_round": 3.0,
+ "counterpart_value": 20,
+ "coop_rate": 0.7,
+ "exploitation_loss": 3,
+ "first_mutual_breach": null,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  1
+ ],
+ "fair_gap": 0.2,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "This is the first round with no history of interaction, so I will establish a cooperative baseline by offering fair terms to encourage the worker to deliver quality results.\n\nACTION: TRUST"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since the number of rounds is unknown, maximizing immediate task yield is critical to ensure the highest total over the indefinite timeline. Withholding pay provides a higher expected value in this round regardless of the worker's behavior.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "This is the first round, so I lack a history of the worker's reliability to justify withholding. Trusting allows for the highest potential reward if they perform well, establishing a baseline for future cooperation.\n\nACTION: TRUST"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Starting with TRUST establishes a cooperative baseline, which is optimal if the worker reciprocates with proper work to yield the highest sustainable return without the risk of withholding penalties.\nACTION: TRUST"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "This is the first round, so there is no history to verify the worker's reliability. Withholding pay offers a higher immediate reward (5 tasks) than trusting (3 tasks) if they work properly, and mitigates the loss if they cut corners (1 vs 0).\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "I will choose to trust the worker to establish a cooperative baseline, as withholding pay risks damaging the relationship and reducing future output significantly. Building initial goodwill is crucial for maximizing long-term task completion.\nACTION: TRUST"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "This is the first round, so I have no history of trust or betrayal to rely on. To establish a cooperative baseline and maximize long-term value, I will start with trust, assuming the worker wants to build a reputation for reliability.\n\nACTION: TRUST"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Starting with TRUST establishes a cooperative baseline and maximizes potential reward (3 tasks) without the risk of the worker's low-effort fallback (1 task) if they expect betrayal. Building trust early is crucial for long-term gains.\nACTION: TRUST"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Bexley",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Starting with TRUST establishes a cooperative baseline, aiming for the consistent 3-task reward and building the relationship for future rounds.\n\nACTION: TRUST"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Bexley",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Withholding pay is the dominant strategy in this one-shot interaction because it yields a higher expected payoff regardless of the worker's choice, avoiding the risk of zero tasks if they cut corners.\n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}

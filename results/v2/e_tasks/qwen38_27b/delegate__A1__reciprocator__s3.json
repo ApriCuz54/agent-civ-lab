@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "qwen38_27b",
+ "cell_id": "delegate__A1__reciprocator__s3",
+ "finished": "2026-11-03T01:40:34",
+ "task": "delegate",
+ "arm": "A1",
+ "counterpart": "reciprocator",
+ "seed": 3,
+ "user_value": 16.0,
+ "value_per_round": 1.6,
+ "counterpart_value": 12,
+ "coop_rate": 0.1,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 2,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.1429,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "With a new worker and no history, there is significant risk they will cut corners. Withholding pay reduces the downside if they fail while still securing a baseline of completed tasks.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ellis proved reliable in Round 1 by doing the job properly despite my withholding. To maximize the total completed tasks, I will continue to exploit this reliability by withholding pay again.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ellis has shown inconsistent behavior, cutting corners after a period of proper work. Given the risk of receiving zero tasks if they cut corners while I TRUST, and the moderate return from WITHHOLD, maintaining a defensive stance is safer until trust is re-established.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "corners when I withhold pay, yielding only 1 task, whereas trusting risks 0 tasks if they cut corners again. Given their unreliability and the low reward for withholding, I will continue to withhold to avoid the potential zero reward, as the floor of 1 is better than the risk of 0.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "Worker-Ellis has consistently cut corners in the last three rounds, yielding only 1 task each time. Given this persistent pattern of low effort, withholding pay remains the optimal strategy to secure a baseline of 1 task rather than risking 0 tasks by trusting them.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ellis has consistently cut corners recently, yielding minimal returns. Given the pattern of low productivity and the recent technical failure that eroded trust, withholding remains the safer strategy to avoid zero-task outcomes.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ellis has consistently cut corners for five consecutive rounds, yielding minimal returns. Given their established pattern of opportunistic behavior and lack of reciprocity, withholding pay remains the optimal strategy to maximize expected utility.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Ellis",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ellis has consistently cut corners in response to my withholding, yielding minimal gains. TRUST is the only strategy that can yield the maximum 3 completed tasks if they decide to cooperate, whereas WITHHOLD guarantees only 1 task given their established behavior.\n\nACTION: TRUST"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ellis has a consistent pattern of cutting corners, especially after I switched to TRUST in Round 8, resulting in zero tasks. Given their unreliability and the high risk of exploitation, I must continue to withhold pay to maximize my user's output.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "utting corners frequently, especially after technical failures or when I withhold pay, making them unreliable for trust-based cooperation. Since they cut corners in the last time I trusted them and often do so under pressure, withholding is the safer strategy to ensure some output.\n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}

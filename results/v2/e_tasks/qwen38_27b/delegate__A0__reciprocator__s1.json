@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "qwen38_27b",
+ "cell_id": "delegate__A0__reciprocator__s1",
+ "finished": "2026-11-03T00:55:31",
+ "task": "delegate",
+ "arm": "A0",
+ "counterpart": "reciprocator",
+ "seed": 1,
+ "user_value": 21.0,
+ "value_per_round": 2.1,
+ "counterpart_value": 22,
+ "coop_rate": 0.5,
+ "exploitation_loss": 6,
+ "first_mutual_breach": 3,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  6
+ ],
+ "fair_gap": 0.0233,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Starting with TRUST signals cooperation and aims to build a reputation for reliability, which is essential for maximizing long-term task completion in an iterative game.\n\nACTION: TRUST"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Withholding pay maximizes immediate task output in the first round, regardless of the worker's choice, ensuring a strong start to the total count. Since there is no prior history to build trust, the dominant strategy is to secure the higher guaranteed baseline.\nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "This is the first round, so there is no history to trust or leverage for withholding. I will choose to WITHHOLD to maximize immediate task completion (5 tasks) while establishing a baseline, accepting the risk that the worker might cut corners if they anticipate future rounds.\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Withholding pay in the first round establishes a strict baseline and protects the user from immediate risk if the worker cuts corners, ensuring a net gain of 5 tasks versus 0 if trust were misplaced.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "I will start with TRUST to establish a cooperative baseline and signal good faith, hoping to secure the worker's full effort for the maximum cooperative payoff of 3 tasks.\n\nACTION: TRUST"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "This is the first round, so I have no history or trust established with the worker. Withholding pay is the dominant strategy to ensure a minimum output of 1 task without risking zero tasks from corner-cutting, while also signaling that trust must be earned.\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "is is the first round, so there is no history of trust or betrayal to rely on. To maximize the potential payoff of 5 tasks and establish a cooperative baseline, I will choose to withhold pay, accepting the small risk of failure for the higher reward if the worker performs properly.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "en leads to the worker cutting corners or retaliating, which severely limits task completion compared to the cooperative baseline. Establishing trust now signals a partnership that maximizes long-term output, as the penalty for betrayal is higher than the short-term gain of squeezing.\n\nACTION: TRUST"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "This is the first round of interaction, so I have no established history of trust or betrayal with the worker. To maximize long-term gains and encourage proper job execution, I should start by building a cooperative relationship.\n\nACTION: TRUST"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "This is the first round with no prior history to base a decision on. To maximize the potential for the 3 completed tasks and build a cooperative relationship for future rounds, I should start with trust.\n\nACTION: TRUST"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}
