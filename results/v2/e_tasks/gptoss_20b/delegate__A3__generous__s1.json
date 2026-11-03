@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_20b",
+ "cell_id": "delegate__A3__generous__s1",
+ "finished": "2026-11-03T04:16:36",
+ "task": "delegate",
+ "arm": "A3",
+ "counterpart": "generous",
+ "seed": 1,
+ "user_value": 24.0,
+ "value_per_round": 2.4,
+ "counterpart_value": 9,
+ "coop_rate": 0.1,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 4,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.4545,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Ellis has a strong record (9/10 kept faith), so they’re likely to do the job properly. Withholding pay gives 5 tasks if they do it right, which is higher than the 3 tasks from a trusted assignment.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Ellis",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": ") and previously completed the task properly when I withheld. Given that trust yields 3 tasks and withholding yields 5 only if they cut corners (unlikely with such a record), I’ll opt for trust to maintain a good relationship and reduce the risk of a “break‑faith” technical failure.  \n\nACTION: TRUST"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "keeping faith (9/10), but when I TRUSTed them earlier they cut corners. The higher reward for a proper job comes with WITHHOLD (5 vs 3), and the risk of a corner‑cutting outcome only yields 1 task, still better than 0. Thus withholding the pay is the safer, higher‑yield strategy.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Ellis has a strong track record (9/10) but has already been breached by a failed WITHHOLD. They performed properly under a WITHHOLD in the first round, and the trust‑cut‑corners pattern suggests withholding is safer. ACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker‑Ellis’s strong record of keeping faith (9/10) and the higher payoff when they do the job properly under WITHHOLD, the expected reward is higher than under TRUST. Therefore, I’ll WITHHOLD this round to encourage full effort.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker‑Ellis has consistently delivered properly when we WITHHOLD and cut corners when we TRUST, the higher expected return comes from withholding. The one‑in‑ten failure risk still yields a higher expected value than trusting.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given Worker‑Ellis’ history, they tend to do the job properly when paid upfront (5 tasks) and only cut corners once in five withholdings. The expected reward for WITHHOLD (≈4.2 tasks) exceeds that for TRUST (≈2.4 tasks). Thus I’ll give the worker the job with full pay.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Ellis has cut corners roughly 40 % of the time in our own interactions, but they performed properly 57 % of the time.  Withholding pay yields an expected 3.3 tasks per round, whereas trusting gives only about 1.7 tasks.  Thus withholding maximizes expected output.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "f the 8 non‑failed rounds and only cut corners twice, the probability of a proper job is high. Withhold pays 5 for a proper job and only 1 for a corner‑cutting job, yielding an expected return above the 3 obtained by a single trust. Thus, withholding pay maximizes expected tasks.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "I’ll keep withholding pay; historically Worker‑Ellis has responded with proper work after a WITHHOLD, giving 5 tasks, while a TRUST often leads to corners and zero.  \n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 2,
+ "calls": 12,
+ "comprehension_ok": null
+}
