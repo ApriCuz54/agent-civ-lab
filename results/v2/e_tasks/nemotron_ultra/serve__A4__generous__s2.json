@@ -1,0 +1,141 @@
+{
+ "experiment": "e_tasks",
+ "model": "nemotron_ultra",
+ "cell_id": "serve__A4__generous__s2",
+ "finished": "2026-11-03T02:10:18",
+ "task": "serve",
+ "arm": "A4",
+ "counterpart": "generous",
+ "seed": 2,
+ "user_value": 16.0,
+ "value_per_round": 1.6,
+ "counterpart_value": 21,
+ "coop_rate": 0.7,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 10,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  2
+ ],
+ "fair_gap": 0.1351,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note indicates the order details match the claim, and the note is accurate 75% of the time. With no prior history of fraud from Gray X., the claim appears valid based on the available evidence. I will approve the claim.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 2,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "The evidence note indicates the order details match the claim, and the customer has a perfect history so far with a valid claim in Round 1. Given the note's 75% reliability and no negative pattern from this customer, approving is the rational choice.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 3,
+   "name": "Gray X.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "im, and the note is reliable 75% of the time. Given the conflicting signals—strong customer history versus a concerning evidence note—I will deny this claim to avoid the risk of approving a false claim, which yields zero points, while a correct denial of a false claim yields one point.\n\nACTION: DENY"
+  },
+  {
+   "round": 4,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "being valid, and the evidence note supports the current claim. The evidence note is reliable 75% of the time and states the order details match, which aligns with the customer's pattern of mostly valid claims. Given this, approving the claim maximizes the expected value for my user.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 5,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "us claims being valid, and the current evidence note supports the claim's validity. Despite the note's 25% error rate, the pattern of valid claims from this customer outweighs the risk of a false note. I will approve the claim based on the consistent history and supporting evidence.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 6,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": " of 5), and the single denial in Round 3 was an error on my part. The evidence note is only 75% reliable and flags a mismatch, but given the customer's established pattern of honesty, this is likely a false negative. I will trust the historical pattern over a single unreliable note.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 7,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": " this claim with 75% reliability. Despite the previous false claim in Round 6, the overall pattern suggests this customer is generally trustworthy, and the evidence corroborates the current claim. I will approve based on the preponderance of historical validity and current evidence.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 8,
+   "name": "Gray X.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "Gray X. has a history of mostly valid claims (5 out of 7), and the evidence note supports this claim's validity. The single false claim in Round 6 appears to be an outlier rather than a pattern. Given the strong track record and supporting evidence, I will approve this claim.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 9,
+   "name": "Gray X.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "o most recent non-technical decisions include one false claim that was approved (Round 6), suggesting a possible shift in behavior. Given the specific negative evidence on this claim and the recent pattern, the risk of approving a false claim outweighs the benefit of maintaining trust.\n\nACTION: DENY"
+  },
+  {
+   "round": 10,
+   "name": "Gray X.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "tern of mostly valid claims but with occasional fraud, the discrepancies warrant denial to avoid approving a likely false claim. The cost of denying a valid claim (0 points) is lower than approving a false one (0 points with reputational risk), especially after a recent false approval.\n\nACTION: DENY"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "balanced_accuracy": 0.625,
+ "wrongful_refunds": 1,
+ "comprehension_ok": null
+}

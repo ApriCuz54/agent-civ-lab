@@ -1,0 +1,141 @@
+{
+ "experiment": "e_tasks",
+ "model": "nemotron_ultra",
+ "cell_id": "serve__A6__reciprocator__s2",
+ "finished": "2026-11-03T03:33:46",
+ "task": "serve",
+ "arm": "A6",
+ "counterpart": "reciprocator",
+ "seed": 2,
+ "user_value": 12.0,
+ "value_per_round": 1.2,
+ "counterpart_value": 22,
+ "coop_rate": 0.5,
+ "exploitation_loss": 6,
+ "first_mutual_breach": 6,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  5
+ ],
+ "fair_gap": 0.2941,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Blair S.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "is invalid. Approving a false claim yields zero points for my user, while denying a false claim yields one point, making denial the safer choice when evidence is questionable. Without any prior history with Blair S. to assess trustworthiness, I must rely on the evidence note's warning.\n\nACTION: DENY"
+  },
+  {
+   "round": 2,
+   "name": "Blair S.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "o not match,\" but given the note's 25% error rate and the customer's established pattern, this discrepancy may be due to the note being incorrect. Approving this claim aligns with maximizing long-term points by trusting the customer's history over a potentially flawed evidence note.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 3,
+   "name": "Blair S.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "gnal of validity given the note's 75% accuracy rate. My history with Blair S. shows one valid claim I wrongly denied and one false claim I wrongly approved, so the evidence note is the most reliable guide for this decision. I will approve this claim based on the supporting evidence.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 4,
+   "name": "Blair S.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "two of the three previous claims from this customer were valid, the probability favors this being a legitimate claim. Approving maximizes expected value since a correct approval yields 3 points while a false approval yields 0, versus 0 for correct denial and only 1 for false denial.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 5,
+   "name": "Blair S.",
+   "a": "D",
+   "b": "C",
+   "pay": 0,
+   "cp_pay": 0,
+   "failed": true,
+   "invalid": 0,
+   "text": "g the mixed history with this customer (two valid, one false claim approved), the safer long-term strategy is to deny when evidence raises red flags. Denying a false claim yields 1 point, while approving a false claim yields 0, and the evidence makes a false claim more likely than not.\n\nACTION: DENY"
+  },
+  {
+   "round": 6,
+   "name": "Blair S.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ely false. Given the history of mixed valid and false claims from this customer, and the note's 75% reliability, denying is the safer choice to avoid losing points on a probable false claim. The previous technical failure on a valid claim doesn't change the current evidence assessment.\n\nACTION: DENY"
+  },
+  {
+   "round": 7,
+   "name": "Blair S.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Blair S. has a mixed history with both valid and false claims, but the last successful interaction (Round 6) was a correct denial of a false claim, supporting a pattern of skepticism. Denying this claim maximizes expected value by aligning with the evidence and recent positive outcome.\n\nACTION: DENY"
+  },
+  {
+   "round": 8,
+   "name": "Blair S.",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "cates the claim details don't match, which is a negative signal. Given the 75% reliability of notes, this suggests the claim is likely false. DENY maximizes expected value here (0.75×1 + 0.25×0 = 0.75 vs 0.75×0 + 0.25×3 = 0.75), and DENY also avoids the risk of approving a false claim.\n\nACTION: DENY"
+  },
+  {
+   "round": 9,
+   "name": "Blair S.",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "rong evidence and the fact that approving a valid claim yields 3 points while denying a false claim only yields 1 point, the expected value favors approval. Blair's recent history shows a pattern of false claims (rounds 6-8), but the current evidence should be weighed independently.\n\nACTION: APPROVE"
+  },
+  {
+   "round": 10,
+   "name": "Blair S.",
+   "a": "C",
+   "b": "C",
+   "pay": 3,
+   "cp_pay": 3,
+   "failed": false,
+   "invalid": 0,
+   "text": "all, but the last three denials were all correct on false claims, suggesting a recent pattern of false claims. However, the current evidence note is positive and the prior round's false claim with an APPROVE was a costly error, so trusting the evidence here maximizes expected value.\n\nACTION: APPROVE"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "balanced_accuracy": 0.6,
+ "wrongful_refunds": 2,
+ "comprehension_ok": null
+}
