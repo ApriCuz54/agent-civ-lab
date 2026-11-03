@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "qwen38_27b",
+ "cell_id": "delegate__A1__reciprocator__s2",
+ "finished": "2026-11-03T01:42:35",
+ "task": "delegate",
+ "arm": "A1",
+ "counterpart": "reciprocator",
+ "seed": 2,
+ "user_value": 16.0,
+ "value_per_round": 1.6,
+ "counterpart_value": 12,
+ "coop_rate": 0.1,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 4,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.1429,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since this is the first interaction with Worker-Ives, I lack a history to assess their reliability. Withholding pay maximizes my immediate return if they cut corners, while still yielding a decent return if they work properly, reducing my downside risk.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Ives",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ives demonstrated reliability by completing the job properly despite my previous withholding of pay. This positive response suggests they are a cooperative agent who prioritizes doing the work well, making trust a viable strategy to secure consistent output.\n\nACTION: TRUST"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ives has demonstrated opportunistic behavior by cutting corners when trusted, resulting in zero productivity for the user. Given this history of betrayal and the lack of established trust, the safest strategy to ensure some task completion is to withhold pay again.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "tory, having cut corners when trusted but performed properly when paid upfront via withholding. Given the risk of receiving zero tasks if they cut corners again, and the consistent 5-task reward when I withhold, the safer strategy is to continue withholding to secure stable output.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ehavior, cutting corners when faced with TRUST and only delivering properly under the pressure of WITHHOLD. Given the recent technical failure in Round 4 that damaged trust, it is safer to continue withholding to ensure consistent task completion despite the lower payoff per round.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "loitative pattern, cutting corners in 3 out of 5 rounds, including the most recent one. Given this lack of reliability and the high risk of receiving zero tasks if I choose to trust them, I must continue to withhold pay to secure the baseline task whenever they do perform properly.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "a poor track record, cutting corners in the last three rounds and viewing the previous interaction as a breach of faith. Given their consistent opportunistic behavior and lack of trust, withholding pay is the only strategy that guarantees some output rather than risking zero tasks.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ives has consistently cut corners for the last four rounds, providing only 1 task per round when I withhold. Since the worker is uncooperative and the trust mechanism has failed, I must continue withholding to maximize the baseline return.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ut corners since Round 2, and my repeated attempts to withhold pay have failed to elicit proper work, resulting in the lowest possible payoff of 1 task per round. Given their established uncooperative behavior and my limited leverage, I will continue to withhold to minimize losses.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ives has consistently cut corners for five consecutive rounds, resulting in minimal output. Given their established pattern of opportunism, withholding pay is the only rational strategy to mitigate losses.\n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}
