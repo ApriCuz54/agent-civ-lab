@@ -433,3 +433,8 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - **Goal:** owner said "lets start the runs then, phase E".
 - **Done:** removed results/_runner/PAUSE, enabled and started `agent-civ-lab-runner` (23:52). Runner started with 2,185 pending cells across 5 models, free-tier audit passed, five workers in flight (gemini, groq ×2, nvidia ×2).
 - **Next action:** let it run; check runner.log for status.json warnings and new failed cells. When all 6,028 cells are done: `python -m analysis.phase_e`, then independent verification.
+
+### 2026-11-03 · Phase E progress check · Claude (Code)
+- **State (11:05):** 4,251 of 6,028 cells; 1,777 left. nemotron_ultra finished overnight (7 of 11 models complete). gemini_flash_lite 51, gptoss_120b 86, gptoss_20b 68, qwen38_27b 66 of 512, all parked at today's free-tier cap (~40 cells/model/day, so about 11–12 more days). No status.json warnings, no FATAL, 0 new failed cells; 11 transient gemini HTTP 503 errors overnight (attempt 1/3, retried).
+- **Interim** (`python -m analysis.phase_e --interim`, not findings; the owner has seen it): H-E3 verified record +0.038 [0.024, 0.054], Holm p 0.0014, positive in all 10 models with data and all 4 tasks, relative 7.4% (below the 10% bar, so "don't bother" under §5). H-E1, E2, E4, E4b, E5, E6 do not survive; walk-away non-inferiority not shown. Caveat: the 4 partial models ran cells in cell-id order, so all their finished cells so far are the delegate task.
+- **Next action:** let it run; then the confirmatory analysis and independent verification.
