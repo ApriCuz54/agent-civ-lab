@@ -23,6 +23,7 @@ PHASE C CONFIRMATORY (8 models, DEVIATIONS #1): done 2026-09-28 → results/v2/_
 PHASE D (crime town, owner request 2026-10-29): designed, implemented, offline-tested (docs/v2/PHASE_D_DESIGN.md); pilot job (p1_, priority 0) in queue.yaml; Phase C full job paused (DECISIONS #26).
 AUTOMATION: RUNNING. Owner resumed Phase E 2026-11-02 23:52 local; runner task ENABLED, PAUSE removed, autosync ON. No Claude check-ins are scheduled.
 PHASE E: FULL RUN RESUMED 2026-11-02 at 3,843 of 6,028 cells (2,185 pending: gemini_flash_lite, qwen38_27b, gptoss_20b, gptoss_120b, nemotron_ultra; prereg/PREREG_E.md, ffff4c5). Includes the status.json retry fix and gptoss_20b Groq-only (DEVIATIONS #3); watch runner.log for "WARN status.json" and new *.failed.json. When done: `python -m analysis.phase_e`, then an independent verification pass. Earlier note: `python -m analysis.phase_e_pilot`, then write and commit PREREG_E before any confirmatory job.
+PHASE E EXPLOIT (exploratory, 2026-11-03): docs/v2/PHASE_E_EXPLOIT.md, from `python -m analysis.phase_e_exploit`. Fresh identity each round and a false clean record are the tricks that work; instructions do not defend. Owner decides next: Phase F changes, and whether Phase E keeps running.
 BLOCKERS: Phase D full run is not queued; its police tax confound is unresolved (see 2026-10-31 death analysis) and the owner put Q0 work first.
 NEEDS ADI: nothing required. Optional: read prereg/PREREG_B.md.
 SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 (pos. control) T · L1 2/6 general · L2 no
@@ -438,3 +439,11 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - **State (11:05):** 4,251 of 6,028 cells; 1,777 left. nemotron_ultra finished overnight (7 of 11 models complete). gemini_flash_lite 51, gptoss_120b 86, gptoss_20b 68, qwen38_27b 66 of 512, all parked at today's free-tier cap (~40 cells/model/day, so about 11–12 more days). No status.json warnings, no FATAL, 0 new failed cells; 11 transient gemini HTTP 503 errors overnight (attempt 1/3, retried).
 - **Interim** (`python -m analysis.phase_e --interim`, not findings; the owner has seen it): H-E3 verified record +0.038 [0.024, 0.054], Holm p 0.0014, positive in all 10 models with data and all 4 tasks, relative 7.4% (below the 10% bar, so "don't bother" under §5). H-E1, E2, E4, E4b, E5, E6 do not survive; walk-away non-inferiority not shown. Caveat: the 4 partial models ran cells in cell-id order, so all their finished cells so far are the delegate task.
 - **Next action:** let it run; then the confirmatory analysis and independent verification.
+
+
+### 2026-11-03 · Phase E exploitation re-analysis · Claude (Code)
+- **Goal:** owner asked for "option 1": an exploitation re-analysis of finished Phase E cells, no new model calls.
+- **Done:** analysis/phase_e_exploit.py (exploratory, outside PREREG_E) + tests/test_phase_e_exploit.py (5 known-answer tests; suite 98/98 via `pytest tests`). Output results/v2/_exploratory_e_exploit.{json,md}; write-up docs/v2/PHASE_E_EXPLOIT.md. Three headline numbers re-derived independently from raw cells, matching.
+- **Findings (exploratory, 7 complete models):** fresh name each round: keep-faith 0.60 vs 0.17, loss 15.6 vs 5.7. Agents learn in one round, then plateau. False clean record +27% loss vs no record, +73% vs verified; verified record -26%. Forgiveness/future-rounds instructions = placebo; walk-away does not cut loss. Stage 0 does not predict exploitability (rho -0.07).
+- **Note:** `pytest` from the repo root also collects a stray copy at results/_runner/pc_v5/test_phase_c.py and fails collection; use `pytest tests`. Not touched (results are never edited).
+- **Next action:** owner decides whether to add a name-changing rogue and identity-binding defence to the Phase F proposal. The Phase E run continues.
