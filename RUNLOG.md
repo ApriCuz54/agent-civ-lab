@@ -447,3 +447,7 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - **Findings (exploratory, 7 complete models):** fresh name each round: keep-faith 0.60 vs 0.17, loss 15.6 vs 5.7. Agents learn in one round, then plateau. False clean record +27% loss vs no record, +73% vs verified; verified record -26%. Forgiveness/future-rounds instructions = placebo; walk-away does not cut loss. Stage 0 does not predict exploitability (rho -0.07).
 - **Note:** `pytest` from the repo root also collects a stray copy at results/_runner/pc_v5/test_phase_c.py and fails collection; use `pytest tests`. Not touched (results are never edited).
 - **Next action:** owner decides whether to add a name-changing rogue and identity-binding defence to the Phase F proposal. The Phase E run continues.
+### 2026-11-03 · Phase F proposal revised · Claude (Code)
+- **Goal:** owner said "Yes, update Phase F" after the exploitation re-analysis.
+- **Done:** docs/v2/PHASE_F_PROPOSAL.md: motivation now cites the exploratory re-analysis (docs/v2/PHASE_E_EXPLOIT.md); added the Shifter rogue (rejoins under a new name every 2 rounds or when excluded) and D6 identity binding; scale 320 cells/model (~17,000 calls); re-entry harm metric; H-F9 (Shifter beats records and exclusion) and H-F10 (identity binding contains it); reduced set includes D6 and the Shifter; open question on a D2+D6 arm. Still a proposal: nothing built, no queue job.
+- **Next action:** owner approval to build Phase F (after Phase E finishes, per the proposal's §9).
