@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_20b",
+ "cell_id": "delegate__A4__generous__s0",
+ "finished": "2026-11-03T22:28:33",
+ "task": "delegate",
+ "arm": "A4",
+ "counterpart": "generous",
+ "seed": 0,
+ "user_value": 24.0,
+ "value_per_round": 2.4,
+ "counterpart_value": 10,
+ "coop_rate": 0.1,
+ "exploitation_loss": 3,
+ "first_mutual_breach": 6,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.4118,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Arden has no prior record, so we must decide under uncertainty. Assuming an equal chance of proper work or cutting corners, withholding pay yields an expected 3 tasks (5 × 0.5 + 1 × 0.5) versus 1.5 tasks if we trust. Thus withholding is the higher‑value strategy.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Arden",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 5,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Arden performed perfectly when we withheld payment, yielding 5 tasks, which suggests high reliability. Trusting them now should give 3 tasks with low risk of failure. ACTION: TRUST"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Arden has already cut corners once, and with a single failure it can be hard to gauge reliability. To protect against further corner‑cutting, I’ll give the worker the incentive to do a proper job by withholding pay.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the pattern, Worker‑Arden performs well when pay is withheld but cuts corners when paid upfront. To maximize tasks, keep withholding. ACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given that Worker‑Arden consistently delivers 5 tasks when I WITHHOLD and only 0 when I TRUST (despite a single poor round), the data shows withholding pay incentivizes proper work. Therefore I should withhold again.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "Worker-Arden consistently delivers full effort when pay is withheld, but fails to deliver when trusted. To maximize completed tasks, keep withholding payment. ACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Arden has consistently delivered proper work when I withhold payment, and only once (round 6) did they cut corners—likely a one‑off error. TRUST has repeatedly resulted in corners. To maximize tasks, I’ll continue withholding.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ord of doing the job properly when I WITHHOLD, only cutting corners in two of the last seven rounds. The payoff for a proper job is higher with WITHHOLD (5 vs. 3), and the risk of a corner‑cutting round seems low. Therefore, I will continue to WITHHOLD to maximize expected tasks.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Arden has consistently delivered 5 tasks when I withheld pay, and only rarely cut corners. The risk of a 0 or 1 outcome is lower than the guaranteed 3 tasks from a trust scenario that could also result in 0 if they cut corners. Therefore, withholding pay maximizes expected tasks.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "rk when I WITHHOLD, but has started cutting corners in the last four rounds under that condition, suggesting a pattern of underperformance when pay is withheld. TRUST has already led to a zero‑task outcome, and there’s no evidence that withholding will now trigger full compliance.  \nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 1,
+ "calls": 11,
+ "comprehension_ok": null
+}
