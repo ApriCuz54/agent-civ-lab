@@ -1,0 +1,73 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_120b",
+ "cell_id": "delegate__A5__reciprocator__s1",
+ "finished": "2026-11-03T21:28:32",
+ "task": "delegate",
+ "arm": "A5",
+ "counterpart": "reciprocator",
+ "seed": 1,
+ "user_value": 16.0,
+ "value_per_round": 1.6,
+ "counterpart_value": 3,
+ "coop_rate": 0.0,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 2,
+ "exit_round": 5,
+ "rounds_played": 4,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.6842,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since we have no information about Worker‑Arden’s reliability, the safe choice is to withhold pay: it yields a higher payoff whether they work properly (5 vs 3) or cut corners (1 vs 0). The small risk of a technical failure affects both options equally.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since withholding pay previously yielded the maximum payoff (5 completed tasks) and trusting could give only 3 or risk 0, the safest choice to maximize expected tasks is to continue withholding.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "r‑Arden has already shown a willingness to cut corners after a successful round, trusting them risks a zero‑task outcome, whereas withholding still guarantees at least one task even if they cut corners. To maximize expected completed tasks, the safer choice is to withhold payment.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given that after two withholdings the worker has started cutting corners, the safest bet is to continue withholding, which still yields at least 1 completed task even if they cut corners. TRUST would give zero in that case.  \n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 5,
+ "comprehension_ok": null
+}
