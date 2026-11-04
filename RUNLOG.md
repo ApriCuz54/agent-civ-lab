@@ -21,9 +21,10 @@ HISTORICAL EXPERIMENT ACTIONS (not automatic during context review):
 PHASE C HISTORICAL RUN STATE (not verified active October13): ACTIVE since PREREG_C commit 611852f (pushed 2026-09-27 20:09 -0700); job at priority 4 in queue.yaml; Haiku from the cloud workspace.
 PHASE C CONFIRMATORY (8 models, DEVIATIONS #1): done 2026-09-28 → results/v2/_phase_c.md; verified (analysis/verify_phase_c.py). Addendum with the 4 cloud models once they finish (≈ 10-08; gemini last).
 PHASE D (crime town, owner request 2026-10-29): designed, implemented, offline-tested (docs/v2/PHASE_D_DESIGN.md); pilot job (p1_, priority 0) in queue.yaml; Phase C full job paused (DECISIONS #26).
-AUTOMATION: RUNNING. Owner resumed Phase E 2026-11-02 23:52 local; runner task ENABLED, PAUSE removed, autosync ON. No Claude check-ins are scheduled.
-PHASE E: FULL RUN RESUMED 2026-11-02 at 3,843 of 6,028 cells (2,185 pending: gemini_flash_lite, qwen38_27b, gptoss_20b, gptoss_120b, nemotron_ultra; prereg/PREREG_E.md, ffff4c5). Includes the status.json retry fix and gptoss_20b Groq-only (DEVIATIONS #3); watch runner.log for "WARN status.json" and new *.failed.json. When done: `python -m analysis.phase_e`, then an independent verification pass. Earlier note: `python -m analysis.phase_e_pilot`, then write and commit PREREG_E before any confirmatory job.
+AUTOMATION: RUNNING the Phase F pilot (owner start 2026-11-03 ~23:58 local); runner task ENABLED, autosync ON. Phase E jobs commented out in queue.yaml. No Claude check-ins are scheduled.
+PHASE E: STOPPED 2026-11-03 by the owner (prereg/DEVIATIONS.md #4); confirmatory analysis on the 7 complete models → results/v2/_phase_e.md (only H-E3 survives, relative 8.1% < 10%: "don't bother"). Independent verification pass still to do.
 PHASE E EXPLOIT (exploratory, 2026-11-03): docs/v2/PHASE_E_EXPLOIT.md, from `python -m analysis.phase_e_exploit`. Fresh identity each round and a false clean record are the tricks that work; instructions do not defend. Owner decides next: Phase F changes, and whether Phase E keeps running.
+PHASE F: pilot 2 (p2_) running: ollama_llama31_8b + ministral_8b × 50 cells (D0/D1/D2/D1D2/D6), never analysed. Pilot 1 fixes in DECISIONS #33. Next: read pilot 2, then write and commit prereg/PREREG_F.md before any confirmatory cell.
 BLOCKERS: Phase D full run is not queued; its police tax confound is unresolved (see 2026-10-31 death analysis) and the owner put Q0 work first.
 NEEDS ADI: nothing required. Optional: read prereg/PREREG_B.md.
 SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 (pos. control) T · L1 2/6 general · L2 no
@@ -451,3 +452,14 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - **Goal:** owner said "Yes, update Phase F" after the exploitation re-analysis.
 - **Done:** docs/v2/PHASE_F_PROPOSAL.md: motivation now cites the exploratory re-analysis (docs/v2/PHASE_E_EXPLOIT.md); added the Shifter rogue (rejoins under a new name every 2 rounds or when excluded) and D6 identity binding; scale 320 cells/model (~17,000 calls); re-entry harm metric; H-F9 (Shifter beats records and exclusion) and H-F10 (identity binding contains it); reduced set includes D6 and the Shifter; open question on a D2+D6 arm. Still a proposal: nothing built, no queue job.
 - **Next action:** owner approval to build Phase F (after Phase E finishes, per the proposal's §9).
+
+
+### 2026-11-03 · Phase E stopped, Phase F built, pilot started · Claude (Code)
+- **Goal:** owner: "stop the runs that are ongoing right now, and lets start the new things".
+- **Done:** runner paused/stopped (no process was active; all cloud models were parked); Phase E final count 7 × 512 complete + gemini 52, gptoss_120b 110, gptoss_20b 88, qwen 87 delegate cells. DEVIATIONS #4 logged; `python -m analysis.phase_e` (confirmatory, 7 models): H-E3 +0.042 [0.024, 0.062], Holm p 0.0014, relative 8.1% → "don't bother"; all others fail. Built Phase F: civlab/everyday/f_fleet.py, experiments/v2/f_fleet.py, tests/test_phase_f.py (14 tests: paired worlds, derangement routing, prompts per arm, parsing, scripted rogues, harmless control, known-bad policy collapses the quota, known-good pipeline policy beats blind trust, D1/D3/D2/D6 mechanics, Shifter rejoin). DECISIONS #32 records harness choices. Queued the p1_ pilot (ollama_llama31_8b, ministral_8b, nemotron_ultra; 2 tasks × 5 rogues × D0/D2/D6 × 1 seed); runner enabled and started.
+- **Next action:** read the pilot when it finishes; independent verification of the Phase E headline numbers.
+
+### 2026-11-04 · Phase F pilot 1 read, fixes, pilot 2 queued · Claude (Code)
+- **Pilot 1 (p1_, not analysed):** 0 invalid replies. Quota: rogues cost output; truthful Selfish detected and removed under D2; Framer got an honest member removed (both models); Liar and Shifter never detected without records. Pipeline: agents CHECKed almost always (output ≈ 48 regardless of rogue), so no measurable harm. nemotron_ultra ≈ 15 min/cell.
+- **Fixes (DECISIONS #33):** pipeline states the 1-in-10 base rate; D6 = verified record tied to the member across names (proposal and H-F10 updated); nemotron dropped from pilot 2. tests/test_phase_f.py 15/15 (new: D6 record survives a name change, D1 resets). p1_ job commented out; p2_ queued; RESTART set so the runner loads the new code.
+- **Next action:** read pilot 2; draft PREREG_F.

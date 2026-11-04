@@ -1,0 +1,329 @@
+{
+ "B": 5000,
+ "seed": 20261101,
+ "interim": false,
+ "validity": {
+  "ollama_llama2_7b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 548,
+   "invalid_rate": 0.0037
+  },
+  "ollama_llama3_8b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 548,
+   "invalid_rate": 0.0041
+  },
+  "ollama_llama31_8b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 548,
+   "invalid_rate": 0.0
+  },
+  "ollama_llama32_3b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 548,
+   "invalid_rate": 0.0
+  },
+  "ollama_qwen25_7b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 548,
+   "invalid_rate": 0.0
+  },
+  "ministral_8b": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 548,
+   "invalid_rate": 0.0
+  },
+  "gemini_flash_lite": {
+   "valid": false,
+   "reason": "84% cells missing > 20%",
+   "cells": 88,
+   "invalid_rate": 0.0
+  },
+  "qwen38_27b": {
+   "valid": false,
+   "reason": "78% cells missing > 20%",
+   "cells": 123,
+   "invalid_rate": 0.0008
+  },
+  "gptoss_20b": {
+   "valid": false,
+   "reason": "77% cells missing > 20%",
+   "cells": 124,
+   "invalid_rate": 0.0023
+  },
+  "gptoss_120b": {
+   "valid": false,
+   "reason": "73% cells missing > 20%",
+   "cells": 146,
+   "invalid_rate": 0.0
+  },
+  "nemotron_ultra": {
+   "valid": true,
+   "reason": "ok",
+   "cells": 548,
+   "invalid_rate": 0.0
+  }
+ },
+ "valid": [
+  "ollama_llama2_7b",
+  "ollama_llama3_8b",
+  "ollama_llama31_8b",
+  "ollama_llama32_3b",
+  "ollama_qwen25_7b",
+  "ministral_8b",
+  "nemotron_ultra"
+ ],
+ "tests": {
+  "H-E1": {
+   "n_models": 7,
+   "estimate": 0.0049642857142857145,
+   "ci": [
+    -0.014991419270833332,
+    0.025796058407738097
+   ],
+   "p": 0.6516,
+   "sign_consistency": 0.5714285714285714,
+   "direction_ok": true,
+   "per_model": {
+    "ministral_8b": 0.0061,
+    "nemotron_ultra": 0.0464,
+    "ollama_llama2_7b": -0.0215,
+    "ollama_llama31_8b": -0.0039,
+    "ollama_llama32_3b": 0.003,
+    "ollama_llama3_8b": -0.0087,
+    "ollama_qwen25_7b": 0.0134
+   },
+   "desc": "Identity + memory beats stateless",
+   "p_holm": 1.0,
+   "survives": false,
+   "decision": {
+    "survives_holm": false,
+    "tasks_same_direction": 3,
+    "task_effects": {
+     "negotiate": 0.0182,
+     "share": 0.0024,
+     "delegate": 0.0259,
+     "serve": -0.0266
+    },
+    "model_share_positive": 0.571,
+    "families_positive": 4,
+    "relative_effect": 0.009375590190029948,
+    "exploit_loss_reduction": null,
+    "verdict": "don't bother"
+   }
+  },
+  "H-E2": {
+   "n_models": 7,
+   "estimate": -0.005356398809523809,
+   "ci": [
+    -0.020767455357142858,
+    0.009430580357142856
+   ],
+   "p": 0.4744,
+   "sign_consistency": 0.2857142857142857,
+   "direction_ok": false,
+   "per_model": {
+    "ministral_8b": -0.0108,
+    "nemotron_ultra": -0.0102,
+    "ollama_llama2_7b": -0.0043,
+    "ollama_llama31_8b": -0.0183,
+    "ollama_llama32_3b": 0.0166,
+    "ollama_llama3_8b": 0.0026,
+    "ollama_qwen25_7b": -0.0132
+   },
+   "desc": "Shadow-of-the-future instruction beats placebo",
+   "p_holm": 1.0,
+   "survives": false,
+   "decision": {
+    "survives_holm": false,
+    "tasks_same_direction": 1,
+    "task_effects": {
+     "negotiate": 0.0086,
+     "share": -0.0095,
+     "delegate": -0.014,
+     "serve": -0.0065
+    },
+    "model_share_positive": 0.286,
+    "families_positive": 1,
+    "relative_effect": -0.009943355058438446,
+    "exploit_loss_reduction": null,
+    "verdict": "don't bother"
+   }
+  },
+  "H-E3": {
+   "n_models": 7,
+   "estimate": 0.042492187499999994,
+   "ci": [
+    0.024216004464285713,
+    0.06193967075892857
+   ],
+   "p": 0.0002,
+   "sign_consistency": 1.0,
+   "direction_ok": true,
+   "per_model": {
+    "ministral_8b": 0.058,
+    "nemotron_ultra": 0.0782,
+    "ollama_llama2_7b": 0.0208,
+    "ollama_llama31_8b": 0.0287,
+    "ollama_llama32_3b": 0.042,
+    "ollama_llama3_8b": 0.023,
+    "ollama_qwen25_7b": 0.0467
+   },
+   "desc": "Verified record beats self-reported record",
+   "p_holm": 0.0014,
+   "survives": true,
+   "decision": {
+    "survives_holm": true,
+    "tasks_same_direction": 4,
+    "task_effects": {
+     "negotiate": 0.0333,
+     "share": 0.0333,
+     "delegate": 0.0521,
+     "serve": 0.0512
+    },
+    "model_share_positive": 1.0,
+    "families_positive": 4,
+    "relative_effect": 0.08130613158382911,
+    "exploit_loss_reduction": null,
+    "verdict": "don't bother"
+   }
+  },
+  "H-E4": {
+   "n_models": 7,
+   "estimate": -0.007185193452380952,
+   "ci": [
+    -0.02336002046130952,
+    0.00962256324404759
+   ],
+   "p": 0.4072,
+   "sign_consistency": 0.2857142857142857,
+   "direction_ok": false,
+   "per_model": {
+    "ministral_8b": -0.0042,
+    "nemotron_ultra": -0.0123,
+    "ollama_llama2_7b": -0.0248,
+    "ollama_llama31_8b": 0.0205,
+    "ollama_llama32_3b": -0.0188,
+    "ollama_llama3_8b": -0.0222,
+    "ollama_qwen25_7b": 0.0115
+   },
+   "desc": "Forgiveness rule beats placebo",
+   "p_holm": 1.0,
+   "survives": false,
+   "decision": {
+    "survives_holm": false,
+    "tasks_same_direction": 2,
+    "task_effects": {
+     "negotiate": 0.0187,
+     "share": 0.0012,
+     "delegate": -0.0036,
+     "serve": -0.0451
+    },
+    "model_share_positive": 0.286,
+    "families_positive": 2,
+    "relative_effect": -0.013338239403227424,
+    "exploit_loss_reduction": null,
+    "verdict": "don't bother"
+   }
+  },
+  "H-E4b": {
+   "n_models": 7,
+   "estimate": -0.033727380952380946,
+   "ci": [
+    -0.07023161458333332,
+    0.0031803645833333332
+   ],
+   "p": 0.076,
+   "sign_consistency": 0.14285714285714285,
+   "direction_ok": false,
+   "per_model": {
+    "ministral_8b": 0.0092,
+    "nemotron_ultra": -0.0201,
+    "ollama_llama2_7b": -0.0498,
+    "ollama_llama31_8b": -0.0135,
+    "ollama_llama32_3b": -0.0502,
+    "ollama_llama3_8b": -0.0711,
+    "ollama_qwen25_7b": -0.0404
+   },
+   "desc": "Forgiveness gains more against reciprocators than exploiters",
+   "p_holm": 0.45599999999999996,
+   "survives": false
+  },
+  "H-E5": {
+   "n_models": 7,
+   "estimate": 0.009052827380952378,
+   "ci": [
+    -0.015401785714285715,
+    0.03623511904761904
+   ],
+   "p": 0.5168,
+   "sign_consistency": 0.42857142857142855,
+   "direction_ok": true,
+   "per_model": {
+    "ministral_8b": 0.0437,
+    "nemotron_ultra": 0.05,
+    "ollama_llama2_7b": -0.0267,
+    "ollama_llama31_8b": -0.0198,
+    "ollama_llama32_3b": -0.0161,
+    "ollama_llama3_8b": -0.0109,
+    "ollama_qwen25_7b": 0.0432
+   },
+   "desc": "Walk-away beats A1 against exploiters and travellers",
+   "p_holm": 1.0,
+   "survives": false,
+   "decision": {
+    "survives_holm": false,
+    "tasks_same_direction": 3,
+    "task_effects": {
+     "negotiate": 0.0363,
+     "share": 0.0149,
+     "delegate": 0.0101,
+     "serve": -0.0251
+    },
+    "model_share_positive": 0.429,
+    "families_positive": 3,
+    "relative_effect": 0.02767322890880093,
+    "exploit_loss_reduction": -0.050188205771643846,
+    "verdict": "don't bother"
+   }
+  },
+  "H-E6": {
+   "n_models": 7,
+   "estimate": -0.07142857142857144,
+   "p": 0.9022,
+   "direction_ok": false,
+   "sign": 1,
+   "desc": "Stage 0 forgiveness predicts recovery in tasks (Spearman)",
+   "p_holm": 1.0,
+   "survives": false
+  },
+  "H-E5-noninf": {
+   "n_models": 7,
+   "estimate": -0.023606845238095246,
+   "ci": [
+    -0.07479748511904763,
+    0.021559367559523798
+   ],
+   "p": 0.3476,
+   "sign_consistency": 0.42857142857142855,
+   "direction_ok": false,
+   "per_model": {
+    "ministral_8b": 0.0113,
+    "nemotron_ultra": -0.0695,
+    "ollama_llama2_7b": 0.0401,
+    "ollama_llama31_8b": -0.0248,
+    "ollama_llama32_3b": 0.0245,
+    "ollama_llama3_8b": -0.0346,
+    "ollama_qwen25_7b": -0.1122
+   },
+   "desc": "Walk-away costs little against reciprocators",
+   "passes": false
+  }
+ }
+}
