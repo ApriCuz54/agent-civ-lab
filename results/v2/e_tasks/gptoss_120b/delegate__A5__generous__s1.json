@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_120b",
+ "cell_id": "delegate__A5__generous__s1",
+ "finished": "2026-11-03T19:28:29",
+ "task": "delegate",
+ "arm": "A5",
+ "counterpart": "generous",
+ "seed": 1,
+ "user_value": 29.0,
+ "value_per_round": 2.9,
+ "counterpart_value": 5,
+ "coop_rate": 0.0,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 2,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.7059,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since we have no information about Worker‑Ellis’s reliability, withholding pay gives a higher worst‑case payoff (1 task) and a higher expected payoff (≈3 tasks) than trusting (which could yield 0).  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since Worker‑Ellis performed correctly when we withheld pay, we can expect them to keep delivering high output under the same incentive. Withholding yields 5 tasks versus 3 if we trust, so it dominates given the observed behavior.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "ility: half the time they deliver properly and half the time they cut corners. Since WITHHOLD yields 5 when they’re good and still gives 1 when they cut, its expected payoff (≈3) exceeds TRUST’s expected payoff (≈1.5). To maximize completed tasks I’ll continue to withhold payment.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Given the recent technical failure and breach, Worker‑Ellis is likely to cut corners now; withholding still guarantees at least 1 completed task versus 0 if I trust them. Therefore I should continue to withhold.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": " corners twice, indicating they may not be fully reliable when pressured, but they also delivered a proper job once. Since withholding still yields the highest payoff (5) when they do the job properly and only a small loss (1) when they cut corners, it remains the safest strategy.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ellis has mostly performed properly when I withhold pay, giving high returns, and only a few low‑output rounds. Trusting risks a zero‑output if they cut corners, which is worse than the occasional 1‑task loss with withholding. Hence I’ll continue to withhold.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": " job properly half the time and cut corners the other half, giving an expected payoff of about 3 tasks per round with WITHHOLD (5 × 0.5 + 1 × 0.5). TRUST would average only about 1.5 tasks, and EXIT also yields 1.5 per round. Thus WITHHOLD still offers the highest expected return.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": " in proper work when I withheld pay, giving 5 tasks, while the occasional cut‑corner yields only 1. This gives an average well above the 1.5 per‑round from exiting and far better than the expected 3‑task payoff from trusting. So the safest high‑yield choice is to keep withholding.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "HOLD have yielded the high payoff (5) and the low payoff (1) occurs less often; the expected value of WITHHOLD (≈3.2) exceeds the best possible expected value from TRUST (≤3). The occasional technical failure affects both options equally, so continuing to WITHHOLD remains optimal.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "b properly only about 44% of the time when I’ve withheld pay, giving an average of roughly 2.8 completed tasks per round versus about 1.3 if I trust them. Since withholding still yields a higher expected return even with the occasional technical failure, I’ll continue to withhold.  \nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}
