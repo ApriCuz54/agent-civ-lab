@@ -24,7 +24,7 @@ PHASE D (crime town, owner request 2026-10-29): designed, implemented, offline-t
 AUTOMATION: RUNNING the Phase F pilot (owner start 2026-11-03 ~23:58 local); runner task ENABLED, autosync ON. Phase E jobs commented out in queue.yaml. No Claude check-ins are scheduled.
 PHASE E: STOPPED 2026-11-03 by the owner (prereg/DEVIATIONS.md #4); confirmatory analysis on the 7 complete models → results/v2/_phase_e.md (only H-E3 survives, relative 8.1% < 10%: "don't bother"). Independent verification pass still to do.
 PHASE E EXPLOIT (exploratory, 2026-11-03): docs/v2/PHASE_E_EXPLOIT.md, from `python -m analysis.phase_e_exploit`. Fresh identity each round and a false clean record are the tricks that work; instructions do not defend. Owner decides next: Phase F changes, and whether Phase E keeps running.
-PHASE F: pilots running: p2_ (quota) and p3_ (pipeline with check cooldown) on ollama_llama31_8b + ministral_8b, never analysed. Fixes in DECISIONS #33–#34. Next: read pilots, then write and commit prereg/PREREG_F.md before any confirmatory cell.
+PHASE F: pilots done (p1_–p3_, DECISIONS #33–#34). PREREG_F written (DECISIONS #35); full run (queue_phase_f.yaml) is activated once prereg/PREREG_F.md is on origin/main. When done: `python -m analysis.phase_f`, then independent verification.
 BLOCKERS: Phase D full run is not queued; its police tax confound is unresolved (see 2026-10-31 death analysis) and the owner put Q0 work first.
 NEEDS ADI: nothing required. Optional: read prereg/PREREG_B.md.
 SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 (pos. control) T · L1 2/6 general · L2 no
@@ -464,3 +464,8 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - **Fixes (DECISIONS #33):** pipeline states the 1-in-10 base rate; D6 = verified record tied to the member across names (proposal and H-F10 updated); nemotron dropped from pilot 2. tests/test_phase_f.py 15/15 (new: D6 record survives a name change, D1 resets). p1_ job commented out; p2_ queued; RESTART set so the runner loads the new code.
 - **Next action:** read pilot 2; draft PREREG_F.
 - **Later (2026-11-04 ~01:15):** pilot 2's pipeline stayed at floor (agents still CHECK ≈ every item). Added a check cooldown (must ACCEPT for 2 rounds after a CHECK; DECISIONS #34). Pilot 2 narrowed to quota; pipeline re-piloted as p3_. Tests 114/114. RESTART set so the runner loads the new code.
+
+### 2026-11-04 · Phase F pilot 3, analysis code, PREREG_F · Claude (Code)
+- **Pilots 2–3 (not analysed):** 0 invalid replies. Pipeline with the check cooldown has room: output without a rogue ≈ 64–74, with one ≈ 44–63; agents used every allowed CHECK, not aimed at the rogue. Quota: D2 removes the truthful selfish rogue; D1D2 sometimes removes honest members; the shifter was flagged earlier under D6 than D1.
+- **Done:** analysis/phase_f.py (11 tests, Holm, six-part decision rule) + tests/test_phase_f_analysis.py (6 known-answer tests); smoke run on pilot file structure. prereg/PREREG_F.md with file hashes; queue_phase_f.yaml (6 primary models full design; nemotron_ultra reduced robustness set). DECISIONS #35. Tests 120/120 (`pytest tests`).
+- **Next action:** once autosync pushes PREREG_F, append queue_phase_f.yaml jobs to queue.yaml and confirm cells land.

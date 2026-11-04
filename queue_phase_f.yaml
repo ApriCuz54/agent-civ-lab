@@ -1,0 +1,6 @@
+# Phase F full-run jobs (prereg/PREREG_F.md). ACTIVATE ONLY after PREREG_F.md is in a pushed commit on origin/main
+# (check: git --no-optional-locks log -1 --format=%H%x20%cd origin/main -- prereg/PREREG_F.md).
+# To activate: append the job lines below to queue.yaml. Ollama models share one local GPU and run one after another;
+# ministral_8b and nemotron_ultra run in parallel on their own hosts.
+  - {experiment: f_fleet, phase: F, priority: 1, models: [ollama_llama31_8b, ollama_llama3_8b, ollama_qwen25_7b, ollama_llama32_3b, ollama_llama2_7b, ministral_8b], config: {}}
+  - {experiment: f_fleet, phase: F-robust, priority: 2, models: [nemotron_ultra], config: {arms: [D0, D1, D5, D6], rogues: [none, selfish, liar, shifter]}}
