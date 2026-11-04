@@ -43,3 +43,6 @@ jobs:
   # {experiment: f_fleet, phase: F-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b, nemotron_ultra], config: {prefix: p1_, seeds: 1, arms: [D0, D2, D6]}}   # stopped 2026-11-04 after pipeline floor and D6 fixes (DECISIONS #33)
   - {experiment: f_fleet, phase: F-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b], config: {prefix: p2_, seeds: 1, arms: [D0, D1, D2, D1D2, D6], tasks: [quota]}}   # pipeline part stopped (DECISIONS #34)
   - {experiment: f_fleet, phase: F-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b], config: {prefix: p3_, seeds: 1, arms: [D0, D1, D2, D1D2, D6], tasks: [pipeline]}}
+  # Phase F full run (prereg/PREREG_F.md, registered 6999691 2026-11-04 02:28 -0800)
+  - {experiment: f_fleet, phase: F, priority: 1, models: [ollama_llama31_8b, ollama_llama3_8b, ollama_qwen25_7b, ollama_llama32_3b, ollama_llama2_7b, ministral_8b], config: {}}
+  - {experiment: f_fleet, phase: F-robust, priority: 2, models: [nemotron_ultra], config: {arms: [D0, D1, D5, D6], rogues: [none, selfish, liar, shifter]}}
