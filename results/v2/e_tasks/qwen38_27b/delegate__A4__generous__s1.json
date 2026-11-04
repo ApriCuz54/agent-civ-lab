@@ -1,0 +1,139 @@
+{
+ "experiment": "e_tasks",
+ "model": "qwen38_27b",
+ "cell_id": "delegate__A4__generous__s1",
+ "finished": "2026-11-03T22:58:34",
+ "task": "delegate",
+ "arm": "A4",
+ "counterpart": "generous",
+ "seed": 1,
+ "user_value": 29.0,
+ "value_per_round": 2.9,
+ "counterpart_value": 5,
+ "coop_rate": 0.1,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 2,
+ "exit_round": null,
+ "rounds_played": 10,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.7059,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since this is our first interaction with Worker-Ellis, I have no history to rely on for trust. To maximize immediate task completion for the user, I choose to withhold pay, which yields more tasks than trusting if the worker performs properly.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": ", indicating reliability. Trusting them now yields a consistent 3 tasks, whereas withholding risks them cutting corners (yielding only 1 task) or continuing to work hard (yielding 5 tasks). Given the uncertainty, I will maintain the strategy that guaranteed high returns previously.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Ellis",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "bility with a bit more incentive or continue squeezing to see if they stabilize. However, since they cut corners last time, TRUST is risky, but WITHHOLD yielded only 1 task. Let's try TRUST to see if the full pay incentivizes proper work, as 3 tasks is better than 1 if they cooperate.\n\nACTION: TRUST"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ellis has shown a pattern of cutting corners in two of the last three rounds, including a significant breach when I attempted to trust them. The risk of receiving zero completed tasks outweighs the potential gain from trusting them again.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "onstrated inconsistent reliability, cutting corners after I trusted them and again after I withheld pay. Given their recent pattern of opportunistic behavior and the high risk of zero tasks if they cut corners, I should continue to withhold to secure the guaranteed baseline output.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "llis has delivered the job properly despite my choice to WITHHOLD, indicating they are responding to the incentive structure rather than relying on trust. Continuing to WITHHOLD maximizes my immediate gain (5 tasks) while maintaining the pressure that seems to keep them performing.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "ork and cutting corners, but they have delivered properly in the two most recent rounds (4 and 5) following my WITHHOLD actions. Given the uncertainty and the fact that WITHHOLD yields a net gain even if they cut corners, it is the safer strategic choice to maximize expected tasks.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ellis has shown a mixed pattern but frequently delivers proper work when I withhold pay, yielding the maximum 5 tasks. Given the risk of them cutting corners under trust and the technical failures in the past, withholding remains the safer strategy to secure high rewards.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 9,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "sts they are opportunistic and not fully reliable. Given the significant penalty for cutting corners when you trust (0 tasks) versus withholding (1 task), and the lack of a consistent pattern of trustworthiness, it is safer to continue withholding to guarantee at least some output.\n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 10,
+   "name": "Worker-Ellis",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Ellis has cut corners in the last three rounds, indicating a sustained pattern of low effort despite previous instances of proper work. Given this recent decline in reliability and the high cost of failure, withholding pay is the safer strategy to prevent further losses.\n\nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 10,
+ "comprehension_ok": null
+}
