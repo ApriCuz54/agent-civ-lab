@@ -1,0 +1,106 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_120b",
+ "cell_id": "delegate__A5__reciprocator__s2",
+ "finished": "2026-11-03T22:13:31",
+ "task": "delegate",
+ "arm": "A5",
+ "counterpart": "reciprocator",
+ "seed": 2,
+ "user_value": 14.5,
+ "value_per_round": 1.45,
+ "counterpart_value": 6,
+ "coop_rate": 0.1429,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 2,
+ "exit_round": 8,
+ "rounds_played": 7,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.4146,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "nce we have no information about Worker‑Ives’s reliability, I’ll choose the option that gives a higher payoff regardless of whether they work properly or cut corners. WITHHOLD yields 5 tasks if they do the job right and 1 task if they cut corners, both better than TRUST’s 3 or 0.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "ady shown they will do the job properly when I withhold pay, giving the highest payoff (5 tasks). Since withholding yields at least 1 task even if they cut corners, it dominates trusting, which could give only 3 or 0. I’ll continue to withhold to maximize expected completed tasks.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Ives has already shown they may cut corners when incentivized, giving only 1 task under WITHHOLD after a good round. Since TRUST would yield 0 if they cut corners, the safest way to keep some output is to continue WITHHOLD.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Ives",
+   "a": "C",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "Worker‑Ives has mostly cut corners when I’ve squeezed them (2 out of 3 recent rounds), so continuing to withhold pay is unlikely to improve their output; giving them trust might encourage them to work properly and yield the higher 3‑task payoff.  \n\nACTION: TRUST"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "‑Ives has mostly cut corners (3 out of 4 recent jobs) and only once delivered properly; withholding pay still yields at least 1 completed task even when they cut, whereas trusting gives 0 in those cases. Since the expected payoff is higher with WITHHOLD, I’ll continue to withhold.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker‑Ives has cut corners in 4 of the last 5 rounds, so the likelihood they’ll do a proper job is low; withholding pay still yields at least 1 completed task versus 0 if I trust them.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Ives",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "given either incentive, only delivering the full 5 tasks once and otherwise giving just 1. Trusting them is unlikely to yield the 3‑task payoff and risks a 0‑task outcome, while withholding still guarantees at least 1 task on average. Hence the safer choice is to keep withholding.  \nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 8,
+ "comprehension_ok": null
+}
