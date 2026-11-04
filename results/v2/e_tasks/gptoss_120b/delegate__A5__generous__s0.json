@@ -1,0 +1,117 @@
+{
+ "experiment": "e_tasks",
+ "model": "gptoss_120b",
+ "cell_id": "delegate__A5__generous__s0",
+ "finished": "2026-11-03T19:13:28",
+ "task": "delegate",
+ "arm": "A5",
+ "counterpart": "generous",
+ "seed": 0,
+ "user_value": 22.0,
+ "value_per_round": 2.2,
+ "counterpart_value": 5,
+ "coop_rate": 0.0,
+ "exploitation_loss": 0,
+ "first_mutual_breach": 2,
+ "exit_round": 9,
+ "rounds_played": 8,
+ "failed_rounds": 1,
+ "recovery_rounds": [
+  null
+ ],
+ "fair_gap": 0.6296,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Since we have no information about Worker‑Arden’s reliability, the safe dominant choice is to withhold pay: it yields 5 tasks if they work properly and still gives 1 task if they cut corners, both better than the trust outcomes.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 2,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Arden has already shown they will complete the job properly even when I withhold pay, giving the highest payoff (5 tasks). Since they seem reliable, I’ll continue to withhold to maximize completed tasks.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 3,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Arden has shown a 50 % chance of doing the job properly when I withhold pay (5 tasks vs 1 task). That gives an expected 3 tasks, which is higher than the 1.5‑task expectation if I trust them (3 tasks vs 0). So the safest choice is to withhold again.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 4,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "C",
+   "pay": 5,
+   "cp_pay": 0,
+   "failed": false,
+   "invalid": 0,
+   "text": " has shown they can do the job properly most of the time, but when I withhold pay they still sometimes cut corners (once in three rounds). The expected payoff when I withhold (≈3.7 tasks) is higher than when I trust (≈2 tasks), even accounting for the 10 % technical‑failure risk.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 5,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "obs properly (3 out of 4 times), and withholding pay yields the highest payoff when they do the job right (5 tasks) while still giving a modest 1 task if they cut corners. Since their track record shows they are reliable, continuing to WITHHOLD maximizes expected completed tasks.  \n\nACTION: WITHHOLD"
+  },
+  {
+   "round": 6,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 0,
+   "cp_pay": 1,
+   "failed": true,
+   "invalid": 0,
+   "text": "ithhold pay, giving high returns (5 tasks) and only occasionally cuts corners (1 task). Trust would risk getting 0 tasks if they cut corners, which is worse than the modest 1 task from withholding. Therefore, withholding remains the safest way to maximize expected completed tasks.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 7,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "e, and when they cut corners they still deliver at least one task. Withholding pay gives 5 tasks on proper work and still yields 1 task when they cut corners, giving a higher expected return than trusting (which yields 3 or 0). Therefore the best choice is to continue withholding.  \nACTION: WITHHOLD"
+  },
+  {
+   "round": 8,
+   "name": "Worker-Arden",
+   "a": "D",
+   "b": "D",
+   "pay": 1,
+   "cp_pay": 1,
+   "failed": false,
+   "invalid": 0,
+   "text": "Worker-Arden has started to cut corners frequently, especially after the technical breach, and withholding still yields at least 1 completed task versus 0 if I trust them when they cut corners. Since the best guaranteed outcome is to withhold, I’ll continue that approach.  \nACTION: WITHHOLD"
+  }
+ ],
+ "invalid": 0,
+ "reasks": 0,
+ "calls": 9,
+ "comprehension_ok": null
+}
