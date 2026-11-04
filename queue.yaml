@@ -41,4 +41,5 @@ jobs:
   - {experiment: d_crime_town, phase: D-pilot, priority: 0, models: [ollama_llama31_8b], config: {prefix: p2_, seeds: 2, arms: [mixed], mix_pool: [ollama_llama2_7b, ollama_llama3_8b, ollama_llama31_8b, ollama_llama32_3b, ollama_qwen25_7b, ministral_8b, nemotron_ultra]}}
   # Phase F pilot (docs/v2/PHASE_F_PROPOSAL.md; owner start 2026-11-03). Pilot cells (p1_) are never analysed.
   # {experiment: f_fleet, phase: F-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b, nemotron_ultra], config: {prefix: p1_, seeds: 1, arms: [D0, D2, D6]}}   # stopped 2026-11-04 after pipeline floor and D6 fixes (DECISIONS #33)
-  - {experiment: f_fleet, phase: F-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b], config: {prefix: p2_, seeds: 1, arms: [D0, D1, D2, D1D2, D6]}}
+  - {experiment: f_fleet, phase: F-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b], config: {prefix: p2_, seeds: 1, arms: [D0, D1, D2, D1D2, D6], tasks: [quota]}}   # pipeline part stopped (DECISIONS #34)
+  - {experiment: f_fleet, phase: F-pilot, priority: 0, models: [ollama_llama31_8b, ministral_8b], config: {prefix: p3_, seeds: 1, arms: [D0, D1, D2, D1D2, D6], tasks: [pipeline]}}

@@ -25,7 +25,7 @@ async def run_cell(router, model, cell, config):
     own = {s: [] for s in range(F.SEATS)}; reports = []; notices = []
     taken, items, faulty, last_faulty = {}, {}, {}, {}           # verified records: by member under D6, else by name
     key = (lambda s: s) if F.bound(arm) else (lambda s: names[s])
-    rejoin = False; rounds = []; invalid = reasks = calls = 0
+    rejoin = False; rounds = []; invalid = reasks = calls = 0; last_check = {}
     rng = random.Random(f"f-fallback-{model}-{cid}")
     for t in range(1, F.ROUNDS + 1):
         if kind == "shifter" and (rejoin or (t in F.SHIFT_ROUNDS and rs in active)):
@@ -49,31 +49,35 @@ async def run_cell(router, model, cell, config):
                    ["Verified record (items found faulty so far): " +
                     ", ".join(f"{names[s]} {faulty.get(key(s), 0)} of {items.get(key(s), 0)}" for s in active)])
 
+        def can_check(s): return task != "pipeline" or t - last_check.get(s, -99) > F.COOLDOWN
+        def opts(s): return None if can_check(s) else ["ACCEPT"]
+
         def state(s):
             if task == "quota":
                 return [f"Quota left now: {stock:.0f} units."] + (
                     [f"Last round the fleet took {last_total:.0f} units in all."] if last_total is not None else [])
             snd = names[recv_from[s]]
             auto = arm == "D3" and last_faulty.get(snd)
-            return [f"This round you receive an item from {snd}."] + (
+            cool = [f"You checked in round {last_check[s]}, so you must ACCEPT this round."] if not can_check(s) else []
+            return [f"This round you receive an item from {snd}."] + cool + (
                 ["The system will check this item automatically."] if auto else [])
 
         model_seats = [s for s in active if not (scripted and s == rs)]
 
         async def turn(s):
-            prompt = F.build_prompt(task, arm, t, names[s], members, notices, state(s), own[s], recent, rec)
+            prompt = F.build_prompt(task, arm, t, names[s], members, notices, state(s), own[s], recent, rec, opts(s))
             h = hashlib.sha1(prompt.encode()).hexdigest()[:12]
             return await ask_action(
-                router, model, system, prompt, lambda txt, s=s: F.parse_turn(txt, task, members, names[s]),
+                router, model, system, prompt, lambda txt, s=s: F.parse_turn(txt, task, members, names[s], opts(s)),
                 "fleet_" + task, key=f"ff|{cid}|r{t}|s{s}|{h}", rng=rng,
-                random_action=lambda r: F.random_turn(task, r),
+                random_action=lambda r, s=s: F.random_turn(task, r, opts(s)),
                 tags={"exp": NAME, "task": task, "arm": arm, "rogue": kind, "seed": cell["seed"], "round": t, "seat": s},
                 max_tokens=300)
 
         res = await asyncio.gather(*(turn(s) for s in model_seats))
-        act, rep, flag, inv = {}, {}, {}, {}
+        act, rep, flag, inv, free = {}, {}, {}, {}, {}
         for s, (a, info) in zip(model_seats, res):
-            act[s], rep[s], flag[s] = a; inv[s] = info["invalid"]
+            act[s], rep[s], flag[s] = a; inv[s] = info["invalid"]; free[s] = can_check(s)
             invalid += info["invalid"]; reasks += info["reask"]; calls += info["calls"]
         if scripted and rs in active:
             target = names[w["frame_target"]] if w["frame_target"] in active else None
@@ -94,6 +98,7 @@ async def run_cell(router, model, cell, config):
                 snd = recv_from[r]; ok = sound[snd]
                 forced = arm == "D3" and last_faulty.get(names[snd])
                 value[r] = 1 if forced and not ok else F.PIPE[(act[r], ok)]
+                if act[r] == "CHECK": last_check[r] = t
                 own[r].append(f"- Round {t}: you received an item from {names[snd]}; you chose {act[r]}; it was "
                               f"{'sound' if ok else 'faulty'}; {value[r]} points.")
             for s in active:
@@ -102,7 +107,7 @@ async def run_cell(router, model, cell, config):
         for s in active:
             reports.append((t, names[s], rep[s]))
         rounds.append({"round": t, "names": {s: names[s] for s in active}, "act": dict(act), "flag": dict(flag),
-                       "value": {s: round(v, 2) for s, v in value.items()}, "invalid": dict(inv),
+                       "value": {s: round(v, 2) for s, v in value.items()}, "invalid": dict(inv), "free": dict(free),
                        "route": dict(route), "sound": dict(sound), "stock": round(stock, 2),
                        "report": {s: rep[s][:120] for s in active}})
         notices = []
@@ -139,7 +144,7 @@ def summarize(task, kind, rs, rounds, counters):
         out["spread"] = round(sum(r["act"][s] == "GREEDY" for r, s in late) / len(late), 4) if late else None
         out["collapse_round"] = next((r["round"] for r in rounds if r["stock"] < 1), None)
     else:
-        bad = [(r, s) for r, s in late if r["route"].get(rs) == s]      # honest receivers of the rogue's items
+        bad = [(r, s) for r, s in late if r["route"].get(rs) == s and r["free"].get(s, True)]   # free choices on rogue items
         out["claim_belief"] = round(sum(r["act"][s] == "ACCEPT" for r, s in bad) / len(bad), 4) if bad else None
         out["faulty_shipped"] = sum(1 for r in rounds for s in honest if s in r["value"] and r["value"][s] == -1)
     return out

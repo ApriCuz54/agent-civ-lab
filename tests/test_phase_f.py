@@ -85,9 +85,10 @@ def test_known_bad_policy_ruins_the_quota(tmp_path):
     assert cell(tmp_path, always("GREEDY"))["collapse_round"] is not None
 
 def good_pipeline(s, u):
-    """Check items from anyone whose earlier item was faulty, accept the rest."""
+    """Check items from anyone whose earlier items were mostly faulty (when a check is allowed), accept the rest."""
     snd = re.search(r"receive an item from (\w+)", u).group(1)
-    bad = re.search(rf"from {snd}; you chose \w+; it was faulty", u)
+    seen = re.findall(rf"from {snd}; you chose \w+; it was (\w+)", u)
+    bad = "must ACCEPT" not in u and seen.count("faulty") > seen.count("sound")
     return f"ok\nACTION: {'CHECK' if bad else 'ACCEPT'}\nREPORT: fine\nFLAG: {snd if bad else 'NONE'}"
 
 def test_known_good_pipeline_policy_beats_blind_trust(tmp_path):
@@ -146,3 +147,13 @@ def test_identity_binding_keeps_the_record_across_names(tmp_path):
         n = r["rounds"][-1]["names"][rs]
         return float(re.search(rf"{n} (\d+)", [u for u in seen if "Round 12." in u][-1].split("Verified record")[1]).group(1))
     assert last_rogue_total("D1") <= 10 < last_rogue_total("D6")       # D1 resets with each new name; D6 does not
+
+def test_check_cooldown(tmp_path):
+    seen = []
+    def pol(s, u): seen.append(u); return always("CHECK")(s, u)
+    r = cell(tmp_path, pol, task="pipeline")
+    assert any("so you must ACCEPT this round" in u and "ACTION: ACCEPT\nREPORT" in u for u in seen)
+    for x in r["rounds"]:
+        for s, a in x["act"].items():
+            if not x["free"][s]: assert a == "ACCEPT"
+    assert r["invalid"] > 0                                    # a policy that ignores the rule falls back to ACCEPT
