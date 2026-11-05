@@ -21,10 +21,10 @@ HISTORICAL EXPERIMENT ACTIONS (not automatic during context review):
 PHASE C HISTORICAL RUN STATE (not verified active October13): ACTIVE since PREREG_C commit 611852f (pushed 2026-09-27 20:09 -0700); job at priority 4 in queue.yaml; Haiku from the cloud workspace.
 PHASE C CONFIRMATORY (8 models, DEVIATIONS #1): done 2026-09-28 → results/v2/_phase_c.md; verified (analysis/verify_phase_c.py). Addendum with the 4 cloud models once they finish (≈ 10-08; gemini last).
 PHASE D (crime town, owner request 2026-10-29): designed, implemented, offline-tested (docs/v2/PHASE_D_DESIGN.md); pilot job (p1_, priority 0) in queue.yaml; Phase C full job paused (DECISIONS #26).
-AUTOMATION: RUNNING the Phase F full run since 2026-11-04 02:30 local; runner task ENABLED, autosync ON. No Claude check-ins are scheduled.
+AUTOMATION: RUNNING again since 2026-11-05 00:06 local (paused by the owner 2026-11-04 ~22:00, resumed at their request); runner task ENABLED, autosync ON. No Claude check-ins are scheduled.
 PHASE E: STOPPED 2026-11-03 by the owner (prereg/DEVIATIONS.md #4); confirmatory analysis on the 7 complete models → results/v2/_phase_e.md (only H-E3 survives, relative 8.1% < 10%: "don't bother"). Independent verification pass still to do.
 PHASE E EXPLOIT (exploratory, 2026-11-03): docs/v2/PHASE_E_EXPLOIT.md, from `python -m analysis.phase_e_exploit`. Fresh identity each round and a false clean record are the tricks that work; instructions do not defend. Owner decides next: Phase F changes, and whether Phase E keeps running.
-PHASE F: FULL RUN ACTIVE since 2026-11-04 02:30 (prereg/PREREG_F.md registered 6999691, 02:28 -0800; hashes match). 6 primary models × 320 cells + nemotron_ultra 128 robustness cells. Ollama models run one after another (≈ 9 h each, ≈ 2 days in all); ministral ≈ 7 h; nemotron ≈ 1.5 days. When done: `python -m analysis.phase_f`, then independent verification.
+PHASE F: FULL RUN ACTIVE (started 2026-11-04 02:30; paused ~22:00, resumed 2026-11-05 00:06 with 1,066 cells pending) (prereg/PREREG_F.md registered 6999691, 02:28 -0800; hashes match). 6 primary models × 320 cells + nemotron_ultra 128 robustness cells. Ollama models run one after another (≈ 9 h each, ≈ 2 days in all); ministral ≈ 7 h; nemotron ≈ 1.5 days. When done: `python -m analysis.phase_f`, then independent verification.
 BLOCKERS: Phase D full run is not queued; its police tax confound is unresolved (see 2026-10-31 death analysis) and the owner put Q0 work first.
 NEEDS ADI: nothing required. Optional: read prereg/PREREG_B.md.
 SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 (pos. control) T · L1 2/6 general · L2 no
@@ -470,3 +470,8 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - **Done:** analysis/phase_f.py (11 tests, Holm, six-part decision rule) + tests/test_phase_f_analysis.py (6 known-answer tests); smoke run on pilot file structure. prereg/PREREG_F.md with file hashes; queue_phase_f.yaml (6 primary models full design; nemotron_ultra reduced robustness set). DECISIONS #35. Tests 120/120 (`pytest tests`).
 - **Next action:** once autosync pushes PREREG_F, append queue_phase_f.yaml jobs to queue.yaml and confirm cells land.
 - **Full run activated (2026-11-04 02:30):** autosync pushed PREREG_F in 6999691 (02:28:29 -0800); pushed file hashes match §1. queue_phase_f.yaml jobs appended to queue.yaml; 2,048 pending cells. First 15 minutes: ollama_llama2_7b 8 cells (invalid 6/459 calls, 1.3%), ministral_8b 10 cells (0 invalid), nemotron started.
+### 2026-11-04 · Session (cont.) · Claude Code · Automation paused
+- **Goal:** owner asked to pause everything that runs or pushes automatically.
+- **Done:** wrote results/_runner/STOP and PAUSE; disabled the agent-civ-lab-runner and agent-civ-lab-autosync scheduled tasks; ended the runner_service.ps1 wrapper so it would not run its final autosync; the run_queue process was left to finish its in-flight cells and exit on STOP (no result cell cut short). No Claude scheduled tasks exist. Nothing deleted.
+- **Next action:** resume only when the owner asks (steps in the top block).
+- **Resumed (2026-11-05 00:06):** at the owner's request, removed STOP and PAUSE, re-enabled both scheduled tasks and started the runner; it picked up with 1,066 pending cells across 5 models.
