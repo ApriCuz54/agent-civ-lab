@@ -139,7 +139,7 @@ def md_test(name, t):
 def to_md(res):
     a, b = res["A"], res["B"]
     L = ["# Phase F exploratory results (no verdicts; PREREG_F §5)", "",
-         f"From `python -m analysis.phase_f_explore` (B = {res['B']}, seed {res['seed']}). Pooled = mean over models of "
+         f"From `python -m analysis.phase_f_explore` (B = {res['iters']}, seed {res['seed']}). Pooled = mean over models of "
          "per-model means. CIs are hierarchical bootstrap, uncorrected; none of this is confirmatory.", "",
          "## A. nemotron_ultra robustness set", ""]
     for m, v in a["validity"].items():
@@ -185,11 +185,9 @@ def main(argv=None):
     rng = np.random.default_rng(a.seed)
     val = P.validity(); ok = [m for m, v in val.items() if v["valid"]]
     data = {m: P.add_harm(P.cells(m)) for m in ok}
-    res = {"B": a.B, "seed": a.seed, "A": part_a(data, a.B, rng), "B": part_b(data, a.B, rng)}
-    res["B_iter"] = a.B
+    res = {"iters": a.B, "seed": a.seed, "A": part_a(data, a.B, rng), "B": part_b(data, a.B, rng)}
     json.dump(res, open(OUT + ".json", "w", encoding="utf-8"), indent=1, default=float)
-    md = to_md({**res, "B": a.B})
-    md = md.replace(f"(B = {a.B}", f"(B = {a.B}")
+    md = to_md(res)
     open(OUT + ".md", "w", encoding="utf-8").write(md)
     print(md.encode("ascii", "replace").decode())
 
