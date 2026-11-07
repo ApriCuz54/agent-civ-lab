@@ -26,7 +26,7 @@ PHASE E: STOPPED 2026-11-03 by the owner (prereg/DEVIATIONS.md #4); confirmatory
 PHASE E EXPLOIT (exploratory, 2026-11-03): docs/v2/PHASE_E_EXPLOIT.md, from `python -m analysis.phase_e_exploit`. Fresh identity each round and a false clean record are the tricks that work; instructions do not defend. Owner decides next: Phase F changes, and whether Phase E keeps running.
 PHASE F: DONE. Full run finished 2026-11-05 19:18 (6 × 320 + nemotron_ultra 128). Confirmatory analysis 2026-11-06 → results/v2/_phase_f.md (`python -m analysis.phase_f`); verified independently → results/v2/_phase_f_verification.txt (analysis/verify_phase_f.py; all headline numbers match). Only D3 (damage cap) is a rule: harm −0.108, 77% cut, every model, both tasks. Records (D1), identity binding (D6) and the warning (D4): don't bother. Exclusion (D2) cuts harm but removes honest members in 35% of cells. Exploratory follow-up done: results/v2/_exploratory_f.md (`python -m analysis.phase_f_explore`), incl. nemotron_ultra.
 BLOCKERS: Phase D full run is not queued; its police tax confound is unresolved (see 2026-10-31 death analysis) and the owner put Q0 work first.
-NEEDS ADI: nothing required. Optional: read prereg/PREREG_B.md.
+NEEDS ADI: approve or change docs/v2/PHASE_G_PROPOSAL.md (open questions §8). Optional: read prereg/PREREG_B.md.
 SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no · P5 no · P6 (pos. control) T · L1 2/6 general · L2 no
   → results/v2/_scorecard.md; verified (results/v2/_verification.txt); DEVIATIONS #2 robustness unchanged (results/v2/_robust_nvidia_*).
 ```
@@ -491,3 +491,9 @@ SCORECARD (CONFIRMATORY 2026-10-02): P1 partial · P2 no · P3 partial · P4 no 
 - **Exclusion:** removes the rogue often when flags line up (D1D2: selfish 81%, liar 65%, framer 79%) but removes an honest member in 27–31% of cells even with no rogue. The shifter is almost never removed (2–8%): its fresh name resets the flags. D2 − D0 harm: shifter −0.053 [−0.132, 0.012], liar −0.064 [−0.142, −0.001].
 - **Damage cap:** holds without each family (without Meta, 2 models: −0.063 [−0.117, −0.008]). Quota pool never ran out under D3 (0/all cells vs about half at D0).
 - **Untested idea this points to:** identity binding plus exclusion (D2+D6) was the open question in the proposal; D6 raised shifter detection to 52% but had no removal to act on. A new pre-registration would be needed.
+
+### 2026-11-06 · Phase G proposal drafted · Claude Code
+- **Goal:** draft a follow-up testing identity binding with exclusion (owner: "Yes, draft it").
+- **Done:** docs/v2/PHASE_G_PROPOSAL.md. Proposal only: no code, no queue job, no model calls. Arms D1D2 (comparator), D6D2, D6D2x (no re-entry), D1D2c (removal needs 2 consecutive rounds of majority flags); rogues none/liar/framer/shifter; 6 seeds; 192 cells per model (≈ 27 h on the Phase F model set). Draft hypotheses G1–G4 plus a non-inferiority check.
+- **Next action:** owner answers the §8 open questions and approves; then build, pilot, PREREG_G.
+- **Approved and built (2026-11-06, owner: "Approve as drafted"):** civlab/everyday/g_fleet.py, experiments/v2/g_fleet.py, analysis/phase_g.py; tests/test_phase_g.py (7) and tests/test_phase_g_analysis.py (4); suite 134/134 offline. DECISIONS #36. Pilot p1_ queued (priority 0): ollama_llama31_8b, ministral_8b, 32 cells each; runner started 23:52.
