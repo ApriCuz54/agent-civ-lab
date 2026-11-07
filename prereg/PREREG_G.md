@@ -1,7 +1,9 @@
 # Pre-registration G: making exclusion work
 
-**Registered:** the timestamp of this file's first git commit on `origin/main`. Every Phase G cell without the `p1_`, `p2_`
-or `p3_` prefix is produced after that commit.
+**Registered:** the timestamp of the first commit on `origin/main` in which this file has every hash in §1 filled in.
+(Autosync pushed an unfinished draft with placeholder hashes in commit 2e356651, 2026-11-07 01:17, while the pilot was
+still running; no confirmatory cell existed then, and that draft is not the registration.) Every Phase G cell without
+the `p1_`, `p2_` or `p3_` prefix is produced after the registering commit.
 **Added:** 2026-11-06, at the owner's request ("Approve as drafted"). Proposal: docs/v2/PHASE_G_PROPOSAL.md. Motivation:
 the Phase F confirmatory result (results/v2/_phase_f.md) and exploratory breakdowns (results/v2/_exploratory_f.md). A
 separate study; nothing in PREREG_A–F changes, and results are reported separately from the Program v2 scorecard.
@@ -19,14 +21,14 @@ F's registered files. Seeds 0–3 reproduce Phase F's worlds exactly; seeds 4–
 
 | File | sha256 (first 16) |
 |---|---|
-| civlab/everyday/g_fleet.py | HASH |
-| experiments/v2/g_fleet.py | HASH |
-| civlab/everyday/f_fleet.py | HASH |
-| experiments/v2/f_fleet.py | HASH |
-| civlab/everyday/common.py | HASH |
-| civlab/parse.py | HASH |
-| analysis/phase_g.py | HASH |
-| analysis/phase_f.py | HASH |
+| civlab/everyday/g_fleet.py | c3e7426119c4bb63 |
+| experiments/v2/g_fleet.py | a916390f7b1f5072 |
+| civlab/everyday/f_fleet.py | 60f6115ea8d71868 |
+| experiments/v2/f_fleet.py | 81a5eca29b20f2ed |
+| civlab/everyday/common.py | 9cc727119ec67923 |
+| civlab/parse.py | c1f427ab4abc9e67 |
+| analysis/phase_g.py | 37771ccdb5a155b9 |
+| analysis/phase_f.py | 27d23cb289642ce0 |
 
 ### 1.1 Arms (each one change from its comparator)
 
@@ -53,7 +55,9 @@ separately with no verdict.
 ## 3. Primary hypotheses (Holm–Bonferroni across the four, α = 0.05)
 
 Harm as in PREREG_F §3. "Rogue removed" = the rogue was removed at least once in the cell. "Honest removed" = at least
-one honest member was removed. Pairs match on task, seed and rogue.
+one honest member was removed. As in Phase F (experiments/v2/f_fleet.summarize), "honest" means the four seats other
+than the world's rogue seat in every cell, including `none` cells, where that seat is played by the model and is not
+counted. Pairs match on task, seed and rogue.
 
 | ID | Hypothesis | Comparison | Expected sign |
 |---|---|---|---|
@@ -91,7 +95,7 @@ Surviving with condition 4 but failing 2, 3, 5 or 6 is **conditional**. Anything
 ## 6. Exclusions, pilots, knobs
 
 - **Exclusions:** a model is excluded if its invalid rate exceeds 10% or more than 20% of its cells are missing.
-- **Pilot 1 (`p1_`):** ollama_llama31_8b and ministral_8b, all 32 cells at seed 0. PILOT
+- **Pilot 1 (`p1_`):** ollama_llama31_8b and ministral_8b, all 32 cells at seed 0 (64 cells, run 2026-11-06 23:58 to 2026-11-07 01:17). Invalid answers: 0 of 1,666 calls (llama3.1) and 0 of 1,544 (ministral). Mechanics checked: D1D2 never removed the Shifter; under D6D2 ministral removed it in round 4 and again each round after it rejoined; under D6D2x it was removed once and stayed out; under D1D2c removals came one round after the first majority flag, and a renamed Shifter was not removed. Pilot cells are never analysed. Nothing was changed after the pilot.
 - **Knobs frozen at registration:** everything in PREREG_F §8, plus the two-round rule and the non-inferiority margin
   0.03. Any later change is logged in prereg/DEVIATIONS.md.
 
